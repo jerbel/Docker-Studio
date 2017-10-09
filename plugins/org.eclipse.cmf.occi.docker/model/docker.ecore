@@ -7,12 +7,12 @@
     <details key="validationDelegates" value="http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"/>
   </eAnnotations>
   <eAnnotations source="http://www.eclipse.org/OCL/Import">
-    <details key="core" value="http://schemas.ogf.org/occi/core/ecore"/>
+    <details key="occi" value="http://schemas.ogf.org/occi/core/ecore"/>
     <details key="infrastructure" value="http://schemas.ogf.org/occi/infrastructure/ecore"/>
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="ArrayOfString">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" upperBound="-1"
-        eType="ecore:EDataType platform:/plugin/org.eclipse.cmf.occi.core/model/OCCI.ecore#//String"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="values" unique="false"
+        upperBound="-1" eType="ecore:EDataType platform:/plugin/org.eclipse.cmf.occi.core/model/OCCI.ecore#//String"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Mode">
     <eLiterals name="readWrite" literal="readWrite"/>
@@ -82,27 +82,32 @@
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ports" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ports" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="expose" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="expose" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="volumes" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="volumes" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="environment" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="environment" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="envFile" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="envFile" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
@@ -112,22 +117,26 @@
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dns" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dns" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dnsSearch" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dnsSearch" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capAdd" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capAdd" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="capDrop" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capDrop" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
@@ -201,7 +210,8 @@
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="addHost" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addHost" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
@@ -216,17 +226,20 @@
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="securityOpt" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="securityOpt" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="device" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lxcConf" eType="#//ArrayOfString">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lxcConf" eType="#//ArrayOfString"
+        containment="true">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
         <details key="documentation" value=""/>
       </eAnnotations>

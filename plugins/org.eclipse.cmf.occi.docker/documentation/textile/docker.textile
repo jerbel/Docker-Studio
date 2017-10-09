@@ -562,4 +562,4 @@ h2. EnumerationType Mode
 * readWrite  
 * read  
 
-Generated at Wed Sep 27 13:27:42 CEST 2017 from platform:/resource/org.eclipse.cmf.occi.docker/model/docker.occie by org.eclipse.cmf.occi.core.gen.textile
+Generated at Mon Oct 02 09:33:31 CEST 2017 from platform:/resource/org.eclipse.cmf.occi.docker/model/docker.occie by org.eclipse.cmf.occi.core.gen.textile
