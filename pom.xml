@@ -19,136 +19,7 @@
     <artifactId>org.eclipse.cmf.occi.docker.parent</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
-    <dependencies>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.edit</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.editor</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.design</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- xtext dependencies plugin -->
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.xtext</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.xtext.ide</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.xtext.ui</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- generator core plugins -->
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.gen.emf</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.gen.emf.ui</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.gen.design</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.gen.design.ui</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.gen.connector</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.core.gen.connector.ui</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- infrastructure, monitoring and other extensions plugins dependencies -->
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.infrastructure</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.infrastructure.edit</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.infrastructure.editor</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- <dependency>
-         <groupId>org.occiware</groupId>
-         <artifactId>org.eclipse.cmf.occi.infrastructure.design</artifactId>
-         <version>1.0.0-SNAPSHOT</version>
-         </dependency> -->
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.crtp</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.crtp.edit</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.crtp.editor</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- <dependency>
-         <groupId>org.occiware</groupId>
-         <artifactId>org.eclipse.cmf.occi.crtp.design</artifactId>
-         <version>1.0.0-SNAPSHOT</version>
-         </dependency> -->
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.monitoring</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.monitoring.edit</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.occiware</groupId>
-            <artifactId>org.eclipse.cmf.occi.monitoring.editor</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!-- <dependency>
-         <groupId>org.occiware</groupId>
-         <artifactId>org.eclipse.cmf.occi.monitoring.design</artifactId>
-         <version>1.0.0-SNAPSHOT</version>
-         </dependency> -->
-    </dependencies>
+    
     <modules>
         <!-- Docker modules -->
         <module>plugins/org.eclipse.cmf.occi.docker.connector.dependencies</module>
@@ -181,6 +52,11 @@
     
     <repositories>
         <!-- configure p2 repository to resolve against -->
+        <repository>
+            <id>OCCI-Studio</id>
+            <url>http://dl.bintray.com/occiware/OCCI-Studio/update-site/current-release</url>
+            <layout>p2</layout>
+        </repository>
         <repository>
             <id>oxygen</id>
             <layout>p2</layout>
