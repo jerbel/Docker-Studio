@@ -5,3 +5,4 @@ build.acceleo
 *.xtendbin
 *~
 /.metadata/
+/plugins/org.eclipse.cmf.occi.docker.connector/lib/

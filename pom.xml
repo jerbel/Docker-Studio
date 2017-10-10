@@ -151,6 +151,7 @@
     </dependencies>
     <modules>
         <!-- Docker modules -->
+        <module>plugins/org.eclipse.cmf.occi.docker.connector.dependencies</module>
         <module>plugins/org.eclipse.cmf.occi.docker</module>
         <module>plugins/org.eclipse.cmf.occi.docker.edit</module>
         <module>plugins/org.eclipse.cmf.occi.docker.editor</module>
