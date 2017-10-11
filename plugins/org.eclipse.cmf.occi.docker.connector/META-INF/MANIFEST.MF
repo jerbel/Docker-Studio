@@ -59,4 +59,5 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.slf4j.api,
  org.eclipse.cmf.occi.core,
  org.eclipse.cmf.occi.docker
-Export-Package: org.eclipse.cmf.occi.docker.connector
+Export-Package: org.eclipse.cmf.occi.docker.connector,
+ org.eclipse.cmf.occi.docker.connector.helpers
