@@ -130,7 +130,7 @@
     <actions name="pause" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="unpause" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="kill" scheme="http://occiware.org/occi/docker/container/action#">
-      <attributes name="signal" mutable="false" default="KILL">
+      <attributes name="signal" mutable="true" default="KILL">
         <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
       </attributes>
     </actions>
