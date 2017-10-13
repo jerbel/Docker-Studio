@@ -14,6 +14,10 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.eclipse.cmf.occi.core.Link;
+import org.eclipse.cmf.occi.docker.Contains;
+import org.eclipse.cmf.occi.docker.Machine;
+import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -191,4 +195,19 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	}
 		// End of user code
 
+	/**
+	 * Get the compute that contains this container.
+	 * @return the Compute that contains this container. Null if the container is executed locally (on linux only).
+	 */
+	public Compute getCompute() {
+		Compute compute = null;
+		for (Link link : this.getRlinks()) {
+			if (link instanceof Contains && link.getSource() instanceof Machine) {
+				compute = (Compute) link.getSource();
+				break;
+			}
+		}
+		return compute;
+	}
+	
 }	

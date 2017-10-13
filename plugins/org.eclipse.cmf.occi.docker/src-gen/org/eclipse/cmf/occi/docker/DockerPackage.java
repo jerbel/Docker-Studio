@@ -723,13 +723,31 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__CORE_MAX = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 48;
 
 	/**
+	 * The feature id for the '<em><b>Cpu Set Cpus</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__CPU_SET_CPUS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 49;
+
+	/**
+	 * The feature id for the '<em><b>Cpu Set Mems</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__CPU_SET_MEMS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 50;
+
+	/**
 	 * The number of structural features of the '<em>Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 49;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 51;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -11353,6 +11371,28 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_CoreMax();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu Set Cpus</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getCpuSetCpus()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_CpuSetCpus();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu Set Mems</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getCpuSetMems()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_CpuSetMems();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.cmf.occi.docker.Container#create() <em>Create</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14283,6 +14323,22 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__CORE_MAX = eINSTANCE.getContainer_CoreMax();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu Set Cpus</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_SET_CPUS = eINSTANCE.getContainer_CpuSetCpus();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu Set Mems</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_SET_MEMS = eINSTANCE.getContainer_CpuSetMems();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.

@@ -170,6 +170,12 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/coreMax"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/cpuSetCpus"/>
+      </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/cpuSetMems"/>
+      </genFeatures>
       <genOperations>
         <ecoreOperation href="docker.ecore#//Container/create"/>
       </genOperations>

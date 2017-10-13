@@ -4,12 +4,12 @@
     <semanticResources>model/docker.occie</semanticResources>
     <semanticResources>http://schemas.ogf.org/occi/core</semanticResources>
     <semanticResources>http://schemas.ogf.org/occi/infrastructure</semanticResources>
-    <semanticResources>model/docker.ecore</semanticResources>
     <semanticResources>platform:/plugin/org.eclipse.cmf.occi.core/model/OCCI.ecore</semanticResources>
     <semanticResources>platform:/plugin/org.eclipse.cmf.occi.infrastructure/model/Infrastructure.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
     <semanticResources>platform:/plugin/org.eclipse.cmf.occi.infrastructure/model/Infrastructure.genmodel</semanticResources>
     <semanticResources>platform:/plugin/org.eclipse.cmf.occi.core/model/OCCI.genmodel</semanticResources>
+    <semanticResources>model/docker.ecore</semanticResources>
     <semanticResources>model/docker.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_bzH9EJ3oEeeINtugSuSJIg">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']"/>
@@ -1224,6 +1224,14 @@
             <children xmi:type="notation:Node" xmi:id="_GSmjc53_EeeINtugSuSJIg" type="3010" element="_GSenop3_EeeINtugSuSJIg">
               <styles xmi:type="notation:FontStyle" xmi:id="_GSmjdJ3_EeeINtugSuSJIg" fontName=".AppleSystemUIFont" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_GSmjdZ3_EeeINtugSuSJIg"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_F_haQLAlEee6r9uqjlKx1Q" type="3010" element="_F8LLULAlEee6r9uqjlKx1Q">
+              <styles xmi:type="notation:FontStyle" xmi:id="_F_haQbAlEee6r9uqjlKx1Q" fontName=".AppleSystemUIFont" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_F_haQrAlEee6r9uqjlKx1Q"/>
+            </children>
+            <children xmi:type="notation:Node" xmi:id="_R4X3kLAlEee6r9uqjlKx1Q" type="3010" element="_R3Ca0LAlEee6r9uqjlKx1Q">
+              <styles xmi:type="notation:FontStyle" xmi:id="_R4X3kbAlEee6r9uqjlKx1Q" fontName=".AppleSystemUIFont" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_R4X3krAlEee6r9uqjlKx1Q"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_JFDc8J3_EeeINtugSuSJIg" type="3010" element="_JET2EJ3_EeeINtugSuSJIg">
               <styles xmi:type="notation:FontStyle" xmi:id="_JFDc8Z3_EeeINtugSuSJIg" fontName=".AppleSystemUIFont" fontHeight="10"/>
@@ -5942,6 +5950,22 @@
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.48"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.48"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_GSfOsJ3_EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_F8LLULAlEee6r9uqjlKx1Q" name="cpuSetCpus: String">
+        <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.49"/>
+        <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.49"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_F8oeULAlEee6r9uqjlKx1Q" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_R3Ca0LAlEee6r9uqjlKx1Q" name="cpuSetMems: String">
+        <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.50"/>
+        <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.50"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_R3DB4LAlEee6r9uqjlKx1Q" labelSize="10" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>

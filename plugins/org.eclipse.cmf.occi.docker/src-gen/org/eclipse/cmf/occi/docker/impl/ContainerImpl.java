@@ -86,6 +86,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuMaxValue <em>Cpu Max Value</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getMemoryMaxValue <em>Memory Max Value</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCoreMax <em>Core Max</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuSetCpus <em>Cpu Set Cpus</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuSetMems <em>Cpu Set Mems</em>}</li>
  * </ul>
  *
  * @generated
@@ -940,6 +942,46 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * @ordered
 	 */
 	protected Integer coreMax = CORE_MAX_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCpuSetCpus() <em>Cpu Set Cpus</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpuSetCpus()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CPU_SET_CPUS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCpuSetCpus() <em>Cpu Set Cpus</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpuSetCpus()
+	 * @generated
+	 * @ordered
+	 */
+	protected String cpuSetCpus = CPU_SET_CPUS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCpuSetMems() <em>Cpu Set Mems</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpuSetMems()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String CPU_SET_MEMS_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCpuSetMems() <em>Cpu Set Mems</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCpuSetMems()
+	 * @generated
+	 * @ordered
+	 */
+	protected String cpuSetMems = CPU_SET_MEMS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2280,6 +2322,48 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getCpuSetCpus() {
+		return cpuSetCpus;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCpuSetCpus(String newCpuSetCpus) {
+		String oldCpuSetCpus = cpuSetCpus;
+		cpuSetCpus = newCpuSetCpus;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CPU_SET_CPUS, oldCpuSetCpus, cpuSetCpus));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getCpuSetMems() {
+		return cpuSetMems;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setCpuSetMems(String newCpuSetMems) {
+		String oldCpuSetMems = cpuSetMems;
+		cpuSetMems = newCpuSetMems;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CPU_SET_MEMS, oldCpuSetMems, cpuSetMems));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void create() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!create()
 	}
@@ -2473,6 +2557,10 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return getMemoryMaxValue();
 			case DockerPackage.CONTAINER__CORE_MAX:
 				return getCoreMax();
+			case DockerPackage.CONTAINER__CPU_SET_CPUS:
+				return getCpuSetCpus();
+			case DockerPackage.CONTAINER__CPU_SET_MEMS:
+				return getCpuSetMems();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2631,6 +2719,12 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return;
 			case DockerPackage.CONTAINER__CORE_MAX:
 				setCoreMax((Integer)newValue);
+				return;
+			case DockerPackage.CONTAINER__CPU_SET_CPUS:
+				setCpuSetCpus((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__CPU_SET_MEMS:
+				setCpuSetMems((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2791,6 +2885,12 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__CORE_MAX:
 				setCoreMax(CORE_MAX_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__CPU_SET_CPUS:
+				setCpuSetCpus(CPU_SET_CPUS_EDEFAULT);
+				return;
+			case DockerPackage.CONTAINER__CPU_SET_MEMS:
+				setCpuSetMems(CPU_SET_MEMS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2901,6 +3001,10 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return MEMORY_MAX_VALUE_EDEFAULT == null ? memoryMaxValue != null : !MEMORY_MAX_VALUE_EDEFAULT.equals(memoryMaxValue);
 			case DockerPackage.CONTAINER__CORE_MAX:
 				return CORE_MAX_EDEFAULT == null ? coreMax != null : !CORE_MAX_EDEFAULT.equals(coreMax);
+			case DockerPackage.CONTAINER__CPU_SET_CPUS:
+				return CPU_SET_CPUS_EDEFAULT == null ? cpuSetCpus != null : !CPU_SET_CPUS_EDEFAULT.equals(cpuSetCpus);
+			case DockerPackage.CONTAINER__CPU_SET_MEMS:
+				return CPU_SET_MEMS_EDEFAULT == null ? cpuSetMems != null : !CPU_SET_MEMS_EDEFAULT.equals(cpuSetMems);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -3017,6 +3121,10 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 		result.append(memoryMaxValue);
 		result.append(", coreMax: ");
 		result.append(coreMax);
+		result.append(", cpuSetCpus: ");
+		result.append(cpuSetCpus);
+		result.append(", cpuSetMems: ");
+		result.append(cpuSetMems);
 		result.append(')');
 		return result.toString();
 	}

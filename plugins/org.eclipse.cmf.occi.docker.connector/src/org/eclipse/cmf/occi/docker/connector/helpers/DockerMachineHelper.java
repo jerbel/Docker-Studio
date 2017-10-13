@@ -16,12 +16,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.cmf.occi.core.Link;
+import org.eclipse.cmf.occi.docker.Container;
+import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.github.dockerjava.api.command.InspectContainerResponse;
 
 /**
  * Define docker-machine command helper to use on local compute.
@@ -52,13 +57,12 @@ public class DockerMachineHelper {
 			// Get url from docker-machine command output.
 			endpoint = executeUrlCommand(Runtime.getRuntime(), machine.getName());
 			LOGGER.warn("Endpoint : " + endpoint);
-		} 
-		
-		// TODO : include other extension providers like vmware instance, aws instance etc without pass by docker-machine for sample : else if (compute instanceof InstanceVMware) { instancevmware.getGuestIpv4Address();}
-		
-		
+		} else {
+			// TODO : include other extension providers like vmware instance, aws instance etc without pass by docker-machine for sample : else if (compute instanceof InstanceVMware) { instancevmware.getGuestIpv4Address();}
+			// Use infrastructure extension to find public ipaddress with networkinterface and mixin ipNetworkInterface.
+			throw new DockerException("Not a supported machine, will come in future !");
+		}
 		return endpoint;
-		
 	}
 	
 	
@@ -221,9 +225,24 @@ public class DockerMachineHelper {
 		} else {
 			// Must never be here.
 			throw new DockerException("No machine certificate path could be found !, please set environnement variable with DOCKER_CERT_PATH");
+		}	
+	}
+	
+	/**
+	 * List all the containers contains by this compute (on model only).
+	 * @param compute the compute where to list the containers.
+	 * @return
+	 */
+	public static List<Container> listContainerModels(Compute compute) {
+		// TODO : To export to a specific model management class (to get mixins, get linked entities etc.).
+		List<Container> containers = new ArrayList<>();
+		for (Link link : compute.getLinks()) {
+			if (link instanceof Contains && link.getTarget() instanceof Container) {
+				Container container = (Container) link.getTarget();
+				containers.add(container);
+			}
 		}
-		
-		
+		return containers;
 	}
 	
 }

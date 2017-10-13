@@ -483,44 +483,46 @@ public class DockerTables
 		public static final /*@NonNull*/ ExecutorProperty _Container__coreMax = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CORE_MAX, Types._Container, 8);
 		public static final /*@NonNull*/ ExecutorProperty _Container__cpuMaxValue = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_MAX_VALUE, Types._Container, 9);
 		public static final /*@NonNull*/ ExecutorProperty _Container__cpuPercent = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_PERCENT, Types._Container, 10);
-		public static final /*@NonNull*/ ExecutorProperty _Container__cpuShares = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_SHARES, Types._Container, 11);
-		public static final /*@NonNull*/ ExecutorProperty _Container__cpuUsed = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_USED, Types._Container, 12);
-		public static final /*@NonNull*/ ExecutorProperty _Container__device = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DEVICE, Types._Container, 13);
-		public static final /*@NonNull*/ ExecutorProperty _Container__diskPercent = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DISK_PERCENT, Types._Container, 14);
-		public static final /*@NonNull*/ ExecutorProperty _Container__diskUsed = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DISK_USED, Types._Container, 15);
-		public static final /*@NonNull*/ ExecutorProperty _Container__dns = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DNS, Types._Container, 16);
-		public static final /*@NonNull*/ ExecutorProperty _Container__dnsSearch = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DNS_SEARCH, Types._Container, 17);
-		public static final /*@NonNull*/ ExecutorProperty _Container__domainName = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DOMAIN_NAME, Types._Container, 18);
-		public static final /*@NonNull*/ ExecutorProperty _Container__entrypoint = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ENTRYPOINT, Types._Container, 19);
-		public static final /*@NonNull*/ ExecutorProperty _Container__envFile = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ENV_FILE, Types._Container, 20);
-		public static final /*@NonNull*/ ExecutorProperty _Container__environment = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ENVIRONMENT, Types._Container, 21);
-		public static final /*@NonNull*/ ExecutorProperty _Container__expose = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__EXPOSE, Types._Container, 22);
-		public static final /*@NonNull*/ ExecutorProperty _Container__image = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__IMAGE, Types._Container, 23);
-		public static final /*@NonNull*/ ExecutorProperty _Container__interactive = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__INTERACTIVE, Types._Container, 24);
-		public static final /*@NonNull*/ ExecutorProperty _Container__ipc = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__IPC, Types._Container, 25);
-		public static final /*@NonNull*/ ExecutorProperty _Container__lxcConf = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__LXC_CONF, Types._Container, 26);
-		public static final /*@NonNull*/ ExecutorProperty _Container__macAddress = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MAC_ADDRESS, Types._Container, 27);
-		public static final /*@NonNull*/ ExecutorProperty _Container__memLimit = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEM_LIMIT, Types._Container, 28);
-		public static final /*@NonNull*/ ExecutorProperty _Container__memoryMaxValue = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_MAX_VALUE, Types._Container, 29);
-		public static final /*@NonNull*/ ExecutorProperty _Container__memoryPercent = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_PERCENT, Types._Container, 30);
-		public static final /*@NonNull*/ ExecutorProperty _Container__memorySwap = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_SWAP, Types._Container, 31);
-		public static final /*@NonNull*/ ExecutorProperty _Container__memoryUsed = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_USED, Types._Container, 32);
-		public static final /*@NonNull*/ ExecutorProperty _Container__monitored = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MONITORED, Types._Container, 33);
-		public static final /*@NonNull*/ ExecutorProperty _Container__monitoringInterval = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MONITORING_INTERVAL, Types._Container, 34);
-		public static final /*@NonNull*/ ExecutorProperty _Container__name = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__NAME, Types._Container, 35);
-		public static final /*@NonNull*/ ExecutorProperty _Container__net = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__NET, Types._Container, 36);
-		public static final /*@NonNull*/ ExecutorProperty _Container__pid = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PID, Types._Container, 37);
-		public static final /*@NonNull*/ ExecutorProperty _Container__ports = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PORTS, Types._Container, 38);
-		public static final /*@NonNull*/ ExecutorProperty _Container__privileged = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PRIVILEGED, Types._Container, 39);
-		public static final /*@NonNull*/ ExecutorProperty _Container__publishAll = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PUBLISH_ALL, Types._Container, 40);
-		public static final /*@NonNull*/ ExecutorProperty _Container__readOnly = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__READ_ONLY, Types._Container, 41);
-		public static final /*@NonNull*/ ExecutorProperty _Container__restart = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__RESTART, Types._Container, 42);
-		public static final /*@NonNull*/ ExecutorProperty _Container__rm = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__RM, Types._Container, 43);
-		public static final /*@NonNull*/ ExecutorProperty _Container__securityOpt = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__SECURITY_OPT, Types._Container, 44);
-		public static final /*@NonNull*/ ExecutorProperty _Container__stdinOpen = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__STDIN_OPEN, Types._Container, 45);
-		public static final /*@NonNull*/ ExecutorProperty _Container__user = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__USER, Types._Container, 46);
-		public static final /*@NonNull*/ ExecutorProperty _Container__volumes = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__VOLUMES, Types._Container, 47);
-		public static final /*@NonNull*/ ExecutorProperty _Container__workingDir = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__WORKING_DIR, Types._Container, 48);
+		public static final /*@NonNull*/ ExecutorProperty _Container__cpuSetCpus = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_SET_CPUS, Types._Container, 11);
+		public static final /*@NonNull*/ ExecutorProperty _Container__cpuSetMems = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_SET_MEMS, Types._Container, 12);
+		public static final /*@NonNull*/ ExecutorProperty _Container__cpuShares = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_SHARES, Types._Container, 13);
+		public static final /*@NonNull*/ ExecutorProperty _Container__cpuUsed = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__CPU_USED, Types._Container, 14);
+		public static final /*@NonNull*/ ExecutorProperty _Container__device = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DEVICE, Types._Container, 15);
+		public static final /*@NonNull*/ ExecutorProperty _Container__diskPercent = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DISK_PERCENT, Types._Container, 16);
+		public static final /*@NonNull*/ ExecutorProperty _Container__diskUsed = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DISK_USED, Types._Container, 17);
+		public static final /*@NonNull*/ ExecutorProperty _Container__dns = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DNS, Types._Container, 18);
+		public static final /*@NonNull*/ ExecutorProperty _Container__dnsSearch = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DNS_SEARCH, Types._Container, 19);
+		public static final /*@NonNull*/ ExecutorProperty _Container__domainName = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__DOMAIN_NAME, Types._Container, 20);
+		public static final /*@NonNull*/ ExecutorProperty _Container__entrypoint = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ENTRYPOINT, Types._Container, 21);
+		public static final /*@NonNull*/ ExecutorProperty _Container__envFile = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ENV_FILE, Types._Container, 22);
+		public static final /*@NonNull*/ ExecutorProperty _Container__environment = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__ENVIRONMENT, Types._Container, 23);
+		public static final /*@NonNull*/ ExecutorProperty _Container__expose = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__EXPOSE, Types._Container, 24);
+		public static final /*@NonNull*/ ExecutorProperty _Container__image = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__IMAGE, Types._Container, 25);
+		public static final /*@NonNull*/ ExecutorProperty _Container__interactive = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__INTERACTIVE, Types._Container, 26);
+		public static final /*@NonNull*/ ExecutorProperty _Container__ipc = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__IPC, Types._Container, 27);
+		public static final /*@NonNull*/ ExecutorProperty _Container__lxcConf = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__LXC_CONF, Types._Container, 28);
+		public static final /*@NonNull*/ ExecutorProperty _Container__macAddress = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MAC_ADDRESS, Types._Container, 29);
+		public static final /*@NonNull*/ ExecutorProperty _Container__memLimit = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEM_LIMIT, Types._Container, 30);
+		public static final /*@NonNull*/ ExecutorProperty _Container__memoryMaxValue = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_MAX_VALUE, Types._Container, 31);
+		public static final /*@NonNull*/ ExecutorProperty _Container__memoryPercent = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_PERCENT, Types._Container, 32);
+		public static final /*@NonNull*/ ExecutorProperty _Container__memorySwap = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_SWAP, Types._Container, 33);
+		public static final /*@NonNull*/ ExecutorProperty _Container__memoryUsed = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MEMORY_USED, Types._Container, 34);
+		public static final /*@NonNull*/ ExecutorProperty _Container__monitored = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MONITORED, Types._Container, 35);
+		public static final /*@NonNull*/ ExecutorProperty _Container__monitoringInterval = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__MONITORING_INTERVAL, Types._Container, 36);
+		public static final /*@NonNull*/ ExecutorProperty _Container__name = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__NAME, Types._Container, 37);
+		public static final /*@NonNull*/ ExecutorProperty _Container__net = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__NET, Types._Container, 38);
+		public static final /*@NonNull*/ ExecutorProperty _Container__pid = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PID, Types._Container, 39);
+		public static final /*@NonNull*/ ExecutorProperty _Container__ports = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PORTS, Types._Container, 40);
+		public static final /*@NonNull*/ ExecutorProperty _Container__privileged = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PRIVILEGED, Types._Container, 41);
+		public static final /*@NonNull*/ ExecutorProperty _Container__publishAll = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__PUBLISH_ALL, Types._Container, 42);
+		public static final /*@NonNull*/ ExecutorProperty _Container__readOnly = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__READ_ONLY, Types._Container, 43);
+		public static final /*@NonNull*/ ExecutorProperty _Container__restart = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__RESTART, Types._Container, 44);
+		public static final /*@NonNull*/ ExecutorProperty _Container__rm = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__RM, Types._Container, 45);
+		public static final /*@NonNull*/ ExecutorProperty _Container__securityOpt = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__SECURITY_OPT, Types._Container, 46);
+		public static final /*@NonNull*/ ExecutorProperty _Container__stdinOpen = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__STDIN_OPEN, Types._Container, 47);
+		public static final /*@NonNull*/ ExecutorProperty _Container__user = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__USER, Types._Container, 48);
+		public static final /*@NonNull*/ ExecutorProperty _Container__volumes = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__VOLUMES, Types._Container, 49);
+		public static final /*@NonNull*/ ExecutorProperty _Container__workingDir = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__WORKING_DIR, Types._Container, 50);
 
 		public static final /*@NonNull*/ ExecutorProperty _Link__alias = new EcoreExecutorProperty(DockerPackage.Literals.LINK__ALIAS, Types._Link, 0);
 
@@ -2604,6 +2606,8 @@ public class DockerTables
 			DockerTables.Properties._Container__coreMax,
 			DockerTables.Properties._Container__cpuMaxValue,
 			DockerTables.Properties._Container__cpuPercent,
+			DockerTables.Properties._Container__cpuSetCpus,
+			DockerTables.Properties._Container__cpuSetMems,
 			DockerTables.Properties._Container__cpuShares,
 			DockerTables.Properties._Container__cpuUsed,
 			DockerTables.Properties._Container__device,

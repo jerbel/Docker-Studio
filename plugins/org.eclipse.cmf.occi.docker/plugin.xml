@@ -54,8 +54,7 @@
       <!-- @generated docker -->
       <package
             uri="http://occiware.org/occi/docker/ecore"
-            class="org.eclipse.cmf.occi.docker.DockerPackage"
-            genModel="model/docker.genmodel"/>
+            class="org.eclipse.cmf.occi.docker.DockerPackage"/>
    </extension>
 
 </plugin>

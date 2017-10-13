@@ -76,6 +76,8 @@ import org.eclipse.cmf.occi.infrastructure.Compute;
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuMaxValue <em>Cpu Max Value</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getMemoryMaxValue <em>Memory Max Value</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}</li>
  * </ul>
  *
  * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer()
@@ -1366,6 +1368,58 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setCoreMax(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu Set Cpus</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * CPUs in which to allow execution (0-3, 0,1)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Cpu Set Cpus</em>' attribute.
+	 * @see #setCpuSetCpus(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetCpus()
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuSetCpus'"
+	 * @generated
+	 */
+	String getCpuSetCpus();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu Set Cpus</em>' attribute.
+	 * @see #getCpuSetCpus()
+	 * @generated
+	 */
+	void setCpuSetCpus(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu Set Mems</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Cpu Set Mems</em>' attribute.
+	 * @see #setCpuSetMems(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetMems()
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuSetMems'"
+	 * @generated
+	 */
+	String getCpuSetMems();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu Set Mems</em>' attribute.
+	 * @see #getCpuSetMems()
+	 * @generated
+	 */
+	void setCpuSetMems(String value);
 
 	/**
 	 * <!-- begin-user-doc -->

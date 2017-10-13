@@ -124,6 +124,12 @@
     <attributes name="coreMax" mutable="true" default="1">
       <type xsi:type="occi:NumericType" href="http://schemas.ogf.org/occi/core#//@types.2"/>
     </attributes>
+    <attributes name="cpuSetCpus" mutable="true" description="CPUs in which to allow execution (0-3, 0,1)">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="cpuSetMems" mutable="true" description="Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems.">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <actions name="create" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="stop" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="run" scheme="http://occiware.org/occi/docker/container/action#"/>

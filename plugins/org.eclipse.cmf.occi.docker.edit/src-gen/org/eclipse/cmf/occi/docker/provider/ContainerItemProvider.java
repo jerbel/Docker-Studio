@@ -100,6 +100,8 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addCpuMaxValuePropertyDescriptor(object);
 			addMemoryMaxValuePropertyDescriptor(object);
 			addCoreMaxPropertyDescriptor(object);
+			addCpuSetCpusPropertyDescriptor(object);
+			addCpuSetMemsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -897,6 +899,50 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Cpu Set Cpus feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpuSetCpusPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpuSetCpus_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuSetCpus_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_SET_CPUS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu Set Mems feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpuSetMemsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpuSetMems_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuSetMems_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_SET_MEMS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -1012,6 +1058,8 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__CPU_MAX_VALUE:
 			case DockerPackage.CONTAINER__MEMORY_MAX_VALUE:
 			case DockerPackage.CONTAINER__CORE_MAX:
+			case DockerPackage.CONTAINER__CPU_SET_CPUS:
+			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DockerPackage.CONTAINER__PORTS:

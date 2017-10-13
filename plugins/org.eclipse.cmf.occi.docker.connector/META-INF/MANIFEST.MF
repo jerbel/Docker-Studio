@@ -58,6 +58,7 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.slf4j.api,
  org.eclipse.cmf.occi.core,
- org.eclipse.cmf.occi.docker
+ org.eclipse.cmf.occi.docker,
+ org.eclipse.emf.transaction
 Export-Package: org.eclipse.cmf.occi.docker.connector,
  org.eclipse.cmf.occi.docker.connector.helpers
