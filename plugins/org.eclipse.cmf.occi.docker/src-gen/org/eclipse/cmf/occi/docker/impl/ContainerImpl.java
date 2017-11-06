@@ -88,6 +88,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCoreMax <em>Core Max</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuSetCpus <em>Cpu Set Cpus</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuSetMems <em>Cpu Set Mems</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isTty <em>Tty</em>}</li>
  * </ul>
  *
  * @generated
@@ -982,6 +983,26 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * @ordered
 	 */
 	protected String cpuSetMems = CPU_SET_MEMS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isTty() <em>Tty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTty()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean TTY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isTty() <em>Tty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isTty()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean tty = TTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2364,6 +2385,27 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public boolean isTty() {
+		return tty;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTty(boolean newTty) {
+		boolean oldTty = tty;
+		tty = newTty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__TTY, oldTty, tty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public void create() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!create()
 	}
@@ -2561,6 +2603,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return getCpuSetCpus();
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				return getCpuSetMems();
+			case DockerPackage.CONTAINER__TTY:
+				return isTty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2725,6 +2769,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return;
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				setCpuSetMems((String)newValue);
+				return;
+			case DockerPackage.CONTAINER__TTY:
+				setTty((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -2891,6 +2938,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				setCpuSetMems(CPU_SET_MEMS_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__TTY:
+				setTty(TTY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -3005,6 +3055,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return CPU_SET_CPUS_EDEFAULT == null ? cpuSetCpus != null : !CPU_SET_CPUS_EDEFAULT.equals(cpuSetCpus);
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				return CPU_SET_MEMS_EDEFAULT == null ? cpuSetMems != null : !CPU_SET_MEMS_EDEFAULT.equals(cpuSetMems);
+			case DockerPackage.CONTAINER__TTY:
+				return tty != TTY_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -3125,6 +3177,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 		result.append(cpuSetCpus);
 		result.append(", cpuSetMems: ");
 		result.append(cpuSetMems);
+		result.append(", tty: ");
+		result.append(tty);
 		result.append(')');
 		return result.toString();
 	}

@@ -798,6 +798,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getContainer_Tty() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(51);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EOperation getContainer__Create() {
 		return containerEClass.getEOperations().get(0);
 	}
@@ -2937,6 +2946,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__CORE_MAX);
 		createEAttribute(containerEClass, CONTAINER__CPU_SET_CPUS);
 		createEAttribute(containerEClass, CONTAINER__CPU_SET_MEMS);
+		createEAttribute(containerEClass, CONTAINER__TTY);
 		createEOperation(containerEClass, CONTAINER___CREATE);
 		createEOperation(containerEClass, CONTAINER___STOP);
 		createEOperation(containerEClass, CONTAINER___RUN);
@@ -3306,6 +3316,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_CoreMax(), theOCCIPackage.getInteger(), "coreMax", "1", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_CpuSetCpus(), theOCCIPackage.getString(), "cpuSetCpus", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_CpuSetMems(), theOCCIPackage.getString(), "cpuSetMems", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Tty(), theOCCIPackage.getBoolean(), "tty", "false", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 

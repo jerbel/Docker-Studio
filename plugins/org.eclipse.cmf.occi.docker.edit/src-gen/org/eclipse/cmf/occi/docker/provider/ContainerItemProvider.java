@@ -102,6 +102,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addCoreMaxPropertyDescriptor(object);
 			addCpuSetCpusPropertyDescriptor(object);
 			addCpuSetMemsPropertyDescriptor(object);
+			addTtyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -943,6 +944,28 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Tty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTtyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_tty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_tty_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__TTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -1060,6 +1083,7 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__CORE_MAX:
 			case DockerPackage.CONTAINER__CPU_SET_CPUS:
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
+			case DockerPackage.CONTAINER__TTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 			case DockerPackage.CONTAINER__PORTS:

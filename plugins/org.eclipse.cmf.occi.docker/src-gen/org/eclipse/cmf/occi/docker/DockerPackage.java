@@ -741,13 +741,22 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__CPU_SET_MEMS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 50;
 
 	/**
+	 * The feature id for the '<em><b>Tty</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__TTY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 51;
+
+	/**
 	 * The number of structural features of the '<em>Container</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 51;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 52;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -11393,6 +11402,17 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_CpuSetMems();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isTty <em>Tty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tty</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#isTty()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Tty();
+
+	/**
 	 * Returns the meta object for the '{@link org.eclipse.cmf.occi.docker.Container#create() <em>Create</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -14339,6 +14359,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__CPU_SET_MEMS = eINSTANCE.getContainer_CpuSetMems();
+
+		/**
+		 * The meta object literal for the '<em><b>Tty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__TTY = eINSTANCE.getContainer_Tty();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.

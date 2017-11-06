@@ -1233,6 +1233,10 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_R4X3kbAlEee6r9uqjlKx1Q" fontName=".AppleSystemUIFont" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_R4X3krAlEee6r9uqjlKx1Q"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="__zYf0ML2EeeDy8zyWnrg9Q" type="3010" element="__vQNwML2EeeDy8zyWnrg9Q">
+              <styles xmi:type="notation:FontStyle" xmi:id="__zYf0cL2EeeDy8zyWnrg9Q" fontName=".AppleSystemUIFont" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="__zYf0sL2EeeDy8zyWnrg9Q"/>
+            </children>
             <children xmi:type="notation:Node" xmi:id="_JFDc8J3_EeeINtugSuSJIg" type="3010" element="_JET2EJ3_EeeINtugSuSJIg">
               <styles xmi:type="notation:FontStyle" xmi:id="_JFDc8Z3_EeeINtugSuSJIg" fontName=".AppleSystemUIFont" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_JFDc8p3_EeeINtugSuSJIg"/>
@@ -5966,6 +5970,14 @@
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.50"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.50"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_R3DB4LAlEee6r9uqjlKx1Q" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="__vQNwML2EeeDy8zyWnrg9Q" name="tty: Boolean=false">
+        <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.51"/>
+        <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.51"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="__vp2YML2EeeDy8zyWnrg9Q" labelSize="10" labelAlignment="LEFT" labelPosition="node">
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>

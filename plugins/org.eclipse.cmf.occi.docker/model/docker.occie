@@ -130,6 +130,9 @@
     <attributes name="cpuSetMems" mutable="true" description="Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems.">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <attributes name="tty" mutable="true" default="false">
+      <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
+    </attributes>
     <actions name="create" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="stop" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="run" scheme="http://occiware.org/occi/docker/container/action#"/>

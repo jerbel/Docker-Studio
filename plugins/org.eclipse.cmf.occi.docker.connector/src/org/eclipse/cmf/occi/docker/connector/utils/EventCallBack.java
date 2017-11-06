@@ -54,7 +54,7 @@ public class EventCallBack extends EventsResultCallback {
 	 * @param state
 	 * @param containerId
 	 */
-	public void modifyResourceSet(Resource resource, String state, String containerId) {
+	public void modifyResourceSet(final Resource resource, final String state, final String containerId) {
 		
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource().getResourceSet());
 		Command cmd = new RecordingCommand(domain) {
@@ -73,6 +73,7 @@ public class EventCallBack extends EventsResultCallback {
 				if (state.equalsIgnoreCase("create")) {
 					LOGGER.warn("container created");
 					// TODO : Attach observer to the Container object.
+					final ModelHandler instanceMH = new ModelHandler();
 					
 					// Old xtend code for overview in Clouddesigner.
 //					instanceMH = new ModelHandler();

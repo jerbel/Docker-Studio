@@ -176,6 +176,9 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/cpuSetMems"/>
       </genFeatures>
+      <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/tty"/>
+      </genFeatures>
       <genOperations>
         <ecoreOperation href="docker.ecore#//Container/create"/>
       </genOperations>

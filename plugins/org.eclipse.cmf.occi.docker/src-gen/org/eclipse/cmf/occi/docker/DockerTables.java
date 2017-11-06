@@ -520,9 +520,10 @@ public class DockerTables
 		public static final /*@NonNull*/ ExecutorProperty _Container__rm = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__RM, Types._Container, 45);
 		public static final /*@NonNull*/ ExecutorProperty _Container__securityOpt = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__SECURITY_OPT, Types._Container, 46);
 		public static final /*@NonNull*/ ExecutorProperty _Container__stdinOpen = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__STDIN_OPEN, Types._Container, 47);
-		public static final /*@NonNull*/ ExecutorProperty _Container__user = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__USER, Types._Container, 48);
-		public static final /*@NonNull*/ ExecutorProperty _Container__volumes = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__VOLUMES, Types._Container, 49);
-		public static final /*@NonNull*/ ExecutorProperty _Container__workingDir = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__WORKING_DIR, Types._Container, 50);
+		public static final /*@NonNull*/ ExecutorProperty _Container__tty = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__TTY, Types._Container, 48);
+		public static final /*@NonNull*/ ExecutorProperty _Container__user = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__USER, Types._Container, 49);
+		public static final /*@NonNull*/ ExecutorProperty _Container__volumes = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__VOLUMES, Types._Container, 50);
+		public static final /*@NonNull*/ ExecutorProperty _Container__workingDir = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__WORKING_DIR, Types._Container, 51);
 
 		public static final /*@NonNull*/ ExecutorProperty _Link__alias = new EcoreExecutorProperty(DockerPackage.Literals.LINK__ALIAS, Types._Link, 0);
 
@@ -2645,6 +2646,7 @@ public class DockerTables
 			DockerTables.Properties._Container__rm,
 			DockerTables.Properties._Container__securityOpt,
 			DockerTables.Properties._Container__stdinOpen,
+			DockerTables.Properties._Container__tty,
 			DockerTables.Properties._Container__user,
 			DockerTables.Properties._Container__volumes,
 			DockerTables.Properties._Container__workingDir

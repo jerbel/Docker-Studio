@@ -78,6 +78,7 @@ import org.eclipse.cmf.occi.infrastructure.Compute;
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#isTty <em>Tty</em>}</li>
  * </ul>
  *
  * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer()
@@ -1420,6 +1421,33 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setCpuSetMems(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Tty</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Tty</em>' attribute.
+	 * @see #setTty(boolean)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Tty()
+	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
+	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!tty'"
+	 * @generated
+	 */
+	boolean isTty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isTty <em>Tty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Tty</em>' attribute.
+	 * @see #isTty()
+	 * @generated
+	 */
+	void setTty(boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

@@ -12,14 +12,20 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
+import com.github.dockerjava.api.model.Link;
+import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.ArrayOfString;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Machine;
+import org.eclipse.cmf.occi.docker.Volumesfrom;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerConfigurationHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
@@ -31,6 +37,15 @@ import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerCmd;
 import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.model.Bind;
+import com.github.dockerjava.api.model.ExposedPort;
+import com.github.dockerjava.api.model.LxcConf;
+import com.github.dockerjava.api.model.PortBinding;
+import com.github.dockerjava.api.model.Ports.Binding;
+import com.github.dockerjava.api.model.RestartPolicy;
+import com.github.dockerjava.api.model.Volume;
+import com.github.dockerjava.api.model.VolumesFrom;
+import com.google.common.collect.Multimap;
 
 /**
  * Manage the docker client and used by connector when executing actions.
@@ -47,6 +62,8 @@ public class DockerClientManager {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(DockerClientManager.class);
 
+	// private PreferenceValues properties = new PreferenceValues();
+	
 	public static final String DEFAULT_IMAGE_NAME = "busybox";
 	
 	public DockerClientManager(Compute compute) throws DockerException {
@@ -106,35 +123,54 @@ public class DockerClientManager {
 		return false;
 	}
 	
-	public InspectContainerResponse inspectContainer(Compute compute, final String containerId) {
-		
-		// TODO : complete this method !!!
-		InspectContainerResponse containerResponse = null;
-		return containerResponse;
-	}
-	
 	/**
 	 * 
 	 * @param compute
 	 * @param container
 	 * @return A response docker-java object CreateContainerResponse.
+	 * @throws DockerException 
 	 */
 	public CreateContainerResponse createContainer(Compute computeMachine, Container container) throws DockerException {
 
-		if (this.dockerClient == null) {
-			// Must never be thrown here.
-			throw new DockerException("No docker client found to execute createContainer.");
-		}
+		preCheckDockerClient(computeMachine);
 		
-		if (compute != null 
-				&& compute instanceof Machine 
-				&& computeMachine instanceof Machine 
-				&& !(((Machine)compute).getName().equalsIgnoreCase(((Machine)computeMachine).getName()))) {
-			
-			this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
-			this.compute = computeMachine;
-		}
+		CreateContainerCmd createContainer = containerBuilder(container, null);
 		
+		CreateContainerResponse createContainerResponse = createContainer.exec();
+		container.setContainerid(createContainerResponse.getId());
+		LOGGER.info("Created container: {}", container.getContainerid());
+		
+		return createContainerResponse;
+	}
+	
+	/**
+	 * 
+	 * @param computeMachine
+	 * @param container
+	 * @param containerDependency
+	 * @return
+	 * @throws DockerException
+	 */
+	public CreateContainerResponse createContainer(Compute computeMachine, Container container, Multimap<String, String> containerDependency) throws DockerException {
+		preCheckDockerClient(computeMachine);
+		CreateContainerCmd createContainer = containerBuilder(container, containerDependency);
+		
+		CreateContainerResponse createContainerResponse = createContainer.exec();
+		container.setContainerid(createContainerResponse.getId());
+		LOGGER.info("Created container: {}", container.getContainerid());
+		
+		return createContainerResponse;
+	}
+	
+	
+	/**
+	 * 
+	 * @param container
+	 * @param containerDependency may be null if no dependencies.
+	 * @return
+	 * @throws DockerException
+	 */
+	public CreateContainerCmd containerBuilder(Container container, Multimap<String, String> containerDependency) throws DockerException {
 		CreateContainerCmd createContainer = null;
 		
 		if (container.getImage() == null || container.getImage().trim().isEmpty()) {
@@ -142,10 +178,11 @@ public class DockerClientManager {
 		} else {
 			createContainer = this.dockerClient.createContainerCmd(container.getImage().trim());
 		}
+		
 		String command = container.getCommand(); // internal command to execute on creation.
-		if (command != null || !command.trim().isEmpty()) {
+		if (command != null && !command.trim().isEmpty()) {
 			String[] commands = (StringUtils.deleteWhitespace(command)).split(","); 
-			createContainer.withCmd(command);
+			createContainer.withCmd(commands);
 		} else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
 			createContainer.withCmd("sleep", "9999");
 		}
@@ -156,7 +193,7 @@ public class DockerClientManager {
 		
 		// Add hostname container.
 		if (container.getOcciComputeHostname() != null && !container.getOcciComputeHostname().trim().isEmpty()) {
-			createContainer.withHostName(container.getOcciComputeHostname());
+			createContainer.withHostName(StringUtils.deleteWhitespace(container.getOcciComputeHostname()));
 		}
 		
 		// Add hostnames to /etc/hosts in the container.
@@ -173,14 +210,257 @@ public class DockerClientManager {
 		if (StringUtils.isNotBlank(container.getCpuSetMems())) {
 			createContainer.withCpusetCpus(container.getCpuSetMems());
 		}
+		if (container.isPrivileged()) {
+			createContainer.withPrivileged(container.isPrivileged());
+		}
 		
+		if (container.getDns() != null && !container.getDns().getValues().isEmpty()) {
+			createContainer.withDns(container.getDns().getValues());
+		}
 		
-		// TODO : to complete !!!
-		CreateContainerResponse createContainerResponse = null;
+		if (container.getEnvironment() != null && !container.getEnvironment().getValues().isEmpty()) {
+			createContainer.withEnv(container.getEnvironment().getValues());
+		}
+		// Define exposed port and port binding access.
+		ArrayOfString ports = container.getPorts();
+		if ( ports != null && ports.getValues().isEmpty()) {
+			LOGGER.info("Container ports : ");
+			List<ExposedPort> exposedPorts = new LinkedList<>();
+			List<PortBinding> portBindings = new LinkedList<>();
+			
+			for (String port : ports.getValues()) {
+				LOGGER.info("port: " + port);
+				String[] lrports = port.split(":"); // ex: 2000:80
+				ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(lrports[0]));
+				PortBinding portBinding = null;
+				// Exposed port is set with lrPorts[0]
+				// Binding port is set with lrPorts[1]
+				if (lrports.length == 2) {
+					if (StringUtils.isNotBlank(lrports[1])) {
+						portBinding = new PortBinding(Binding.bindPort(Integer.parseInt(lrports[1])), tcp);
+					} else {
+						portBinding = new PortBinding(Binding.bindPort(32768), tcp); // TODO Create dynamic port number
+					}
+					portBindings.add(portBinding);
+				}
+				exposedPorts.add(tcp);
+			}
+			if (!exposedPorts.isEmpty()) {
+				createContainer.withExposedPorts(exposedPorts);
+			}
+			if (!portBindings.isEmpty()) {
+				createContainer.withPortBindings(portBindings);
+			}
+		} else {
+			LOGGER.warn("No exposed nor binding ports defined for the container : " + container.getName());
+		}
+		if (StringUtils.isNotBlank(createContainer.getName())) {
+			createContainer.withName(StringUtils.deleteWhitespace(container.getName()));
+		}
+		if (StringUtils.isNotBlank(container.getNet())) {
+			createContainer.withNetworkMode(StringUtils.deleteWhitespace(container.getNet()));
+		}
+		if (container.isPublishAll()) {
+			createContainer.withPublishAllPorts(container.isPublishAll());
+		}
+		if (container.isStdinOpen()) {
+			createContainer.withStdinOpen(container.isStdinOpen());
+		}
+		if (StringUtils.isNotBlank(container.getUser())) {
+			createContainer.withUser(container.getUser());
+		}
+		if (container.getVolumes() != null && !container.getVolumes().getValues().isEmpty()) {
+			List<Volume> vs = new LinkedList<Volume>();
+			for(String volume : container.getVolumes().getValues()){
+				 Volume newVolume = new Volume(volume);
+				 vs.add(newVolume);
+			}
+			createContainer.withVolumes(vs);
+		}
 		
-		return createContainerResponse;
+		if (container.getMemLimit() > 0) {
+			// TODO : Replace integer by Long in specification model occie.
+			createContainer.withMemory(Long.valueOf(container.getMemLimit()));
+		}
+		
+		if (container.getMemorySwap() > 0) {
+			// TODO : Replace integer by Long in specification model occie.
+			createContainer.withMemory(Long.valueOf(container.getMemorySwap()));
+		}
+		
+		if (container.getLxcConf() != null && !container.getLxcConf().getValues().isEmpty()) {
+			List<LxcConf> lxcConfigs = new LinkedList<>();
+			// Example : lxc.aa_profile:unconfined etc.
+			for (String lxcConf : container.getLxcConf().getValues()) {
+				String[] lxcKeyVal = lxcConf.split(":");
+				if (lxcConf.length() == 2) {
+					LxcConf lxcCon = new LxcConf(lxcKeyVal[0], lxcKeyVal[1]);
+					lxcConfigs.add(lxcCon);
+				} else {
+					throw new DockerException("Lxc conf format must be like this one --> lxc.aa_profile:unconfined --> key:value");
+				}
+			}
+			if (!lxcConfigs.isEmpty()) {
+				createContainer.withLxcConf(lxcConfigs);
+			}
+		}	
+		
+		if(StringUtils.isNotBlank(container.getDomainName())){
+			createContainer.withDomainName(container.getDomainName());
+		}
+		
+		if(container.getDnsSearch() != null && !container.getDnsSearch().getValues().isEmpty()) {
+			createContainer.withDnsSearch(container.getDnsSearch().getValues());
+		}
+		
+		if(StringUtils.isNotBlank(container.getEntrypoint())) {
+			// TODO : Convert to ArrayOfString in model occie.
+			String[] entrypoint = container.getEntrypoint().split(",");
+			createContainer.withEntrypoint(entrypoint);
+		}
+		
+		if (StringUtils.isNotBlank(container.getPid())) {
+			createContainer.withPidMode(StringUtils.deleteWhitespace(container.getPid()));
+		}
+		
+		if(container.isReadOnly()) {
+			createContainer.withReadonlyRootfs(container.isReadOnly());
+		}
+		
+		if(container.isTty()) {
+			createContainer.withTty(container.isTty());
+		}
+		
+		if(StringUtils.isNotBlank(container.getRestart())) {
+			createContainer.withRestartPolicy(RestartPolicy.parse(StringUtils.deleteWhitespace(container.getRestart())));
+		}
+		
+		if(StringUtils.isNotBlank(container.getWorkingDir())) {
+			createContainer.withWorkingDir(StringUtils.deleteWhitespace(container.getWorkingDir()));
+			// createContainer.getCpusetCpus();
+		}
+		
+		List<Container> containersWithVolumes = new LinkedList<>();
+		
+		List<org.eclipse.cmf.occi.docker.Volume> volumesInsideHost = new LinkedList<>();
+		
+		for (Resource r: containersWithVolumes(container)){
+			if(r instanceof Container){
+				containersWithVolumes.add((Container)r);
+			}
+			if(r instanceof org.eclipse.cmf.occi.docker.Volume){
+				volumesInsideHost.add((org.eclipse.cmf.occi.docker.Volume)r);
+			}
+		}
+	
+		if (!containersWithVolumes.isEmpty()) {
+			List<VolumesFrom> volumesFrom = new LinkedList<>();
+			for(Container c : containersWithVolumes) {
+				volumesFrom.add(new VolumesFrom(c.getName()));
+				LOGGER.info(c.getName());
+			}
+			createContainer.withVolumesFrom(volumesFrom);
+		}
+
+		if (!volumesInsideHost.isEmpty()) {
+			List<Bind> volumesBind = new LinkedList<>();
+			List<Volume> vs = new ArrayList<>();
+			for(org.eclipse.cmf.occi.docker.Volume v : volumesInsideHost) {
+				Volume newVolume = null;
+				if (!StringUtils.isBlank(v.getDestination())) {
+					newVolume = new Volume(v.getDestination());
+					vs.add(newVolume);
+				}
+				
+				if(!StringUtils.isBlank(v.getSource())) {
+					Bind newBind = new Bind(v.getSource(), newVolume);
+					volumesBind.add(newBind);
+				}
+			}
+			createContainer.withVolumes(vs);
+			createContainer.withBinds(volumesBind);
+		}
+		
+		// Define container network links if any.
+		if (containerDependency != null && containerDependency.containsKey(container.getName())) {
+			List<String> depdupeContainers = new ArrayList<String>(
+				new LinkedHashSet<String>(containerDependency.get(container.getName())));
+			
+			List<Link> dockeClientlinks = new ArrayList<>();
+			Link dockeClientlink = null;
+			for (String entry : depdupeContainers) {
+				dockeClientlink = new Link(entry, container.getName() + "LinkTo" + entry);
+				dockeClientlinks.add(dockeClientlink);
+			}
+			if (depdupeContainers.size() > 1) {
+				createContainer.withLinks(dockeClientlinks);
+			} else if (depdupeContainers.size() == 1) {
+				createContainer.withLinks(dockeClientlink);
+			}
+		}
+		
+		return createContainer;
 	}
-		// TODO : The following migration code..
+	
+	
+	/**
+	 * List target volumes resources from a container.
+	 * @param c a model container
+	 * @return
+	 */
+	public List<Resource> containersWithVolumes(Container c) {
+		List<Resource> containersFrom = new ArrayList<>(); 
+		for (org.eclipse.cmf.occi.core.Link l : c.getLinks()) {
+			if(l instanceof Volumesfrom){
+				containersFrom.add(l.getTarget());
+			}
+		}
+		return containersFrom;
+	}
+	
+	/**
+	 * Control if docker client is set on the good machine.
+	 * @param computeMachine
+	 * @return
+	 * @throws DockerException
+	 */
+	public void preCheckDockerClient(Compute computeMachine) throws DockerException {
+		if (this.dockerClient == null) {
+			// Must never be thrown here.
+			throw new DockerException("No docker client found to execute createContainer.");
+		}
+		if (compute != null 
+				&& compute instanceof Machine 
+				&& computeMachine instanceof Machine 
+				&& !(((Machine)compute).getName().equalsIgnoreCase(((Machine)computeMachine).getName()))) {
+			
+			this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
+			this.compute = computeMachine;
+		}
+		
+	}
+
+	/**
+	 * Inspect/describe a container.
+	 * @param computeMachine
+	 * @param containerId
+	 * @return
+	 * @throws DockerException
+	 */
+	public InspectContainerResponse inspectContainer(Compute computeMachine, final String containerId) throws DockerException {
+		preCheckDockerClient(computeMachine);
+		if (containerId == null) {
+			throw new DockerException("Container id is not set !");
+		}
+		
+		InspectContainerResponse containerResponse = dockerClient.inspectContainerCmd(containerId).exec();
+		return containerResponse;
+	}
+	
+	
+	
+	// TODO : The following migration code..
+	
 //		
 //		if (container.privileged) {
 //			create.withPrivileged(container.privileged)
