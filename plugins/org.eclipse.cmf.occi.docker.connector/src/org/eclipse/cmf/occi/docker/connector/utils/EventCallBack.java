@@ -16,7 +16,6 @@ import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
-import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
@@ -43,7 +42,7 @@ public class EventCallBack extends EventsResultCallback {
 	private static Logger LOGGER = LoggerFactory.getLogger(EventCallBack.class);
 
 	private ContainerConnector container;
-	
+
 	public EventCallBack(ContainerConnector container) {
 		this.container = container;
 	}
@@ -55,59 +54,61 @@ public class EventCallBack extends EventsResultCallback {
 	 * @param containerId
 	 */
 	public void modifyResourceSet(final Resource resource, final String state, final String containerId) {
-		
+
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource().getResourceSet());
 		Command cmd = new RecordingCommand(domain) {
-			
+
 			@Override
 			protected void doExecute() {
 				// these modifications require a write transaction in this editing domain
 				if (state.equalsIgnoreCase("stop")) {
 					LOGGER.warn("container stopped");
-					((Compute)resource).setOcciComputeState(ComputeStatus.INACTIVE);
+					((Compute) resource).setOcciComputeState(ComputeStatus.INACTIVE);
 				}
 				if (state.equalsIgnoreCase("start")) {
 					LOGGER.warn("container started");
-					((Compute)resource).setOcciComputeState(ComputeStatus.ACTIVE);
+					((Compute) resource).setOcciComputeState(ComputeStatus.ACTIVE);
 				}
 				if (state.equalsIgnoreCase("create")) {
 					LOGGER.warn("container created");
 					// TODO : Attach observer to the Container object.
 					final ModelHandler instanceMH = new ModelHandler();
-					
+
 					// Old xtend code for overview in Clouddesigner.
-//					instanceMH = new ModelHandler();
-//					machine = (resource as ExecutableContainer).currentMachine;
-//					Container c = instanceMH.buildContainer(machine,
-//						containerId);
-//					// Attach listener to the new container created
-//					val observer = new DockerObserver
-//					observer.listener(c, machine)
-//
-//					instanceMH.linkContainerToMachine(c, machine)
-//					if (machine.eContainer instanceof Configuration) {
-//						(machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
-//						LOGGER.info("Load new container")
-//					}
+					// instanceMH = new ModelHandler();
+					// machine = (resource as ExecutableContainer).currentMachine;
+					// Container c = instanceMH.buildContainer(machine,
+					// containerId);
+					// // Attach listener to the new container created
+					// val observer = new DockerObserver
+					// observer.listener(c, machine)
+					//
+					// instanceMH.linkContainerToMachine(c, machine)
+					// if (machine.eContainer instanceof Configuration) {
+					// (machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
+					// LOGGER.info("Load new container")
+					// }
 				}
 				if (state.equalsIgnoreCase("destroy")) {
 					LOGGER.warn("Container destroyed");
 					// TODO : Remove observer from container object.
-					
-//					val instanceMH = new ModelHandler
-//					var container = (resource as org.occiware.clouddesigner.occi.docker.Container)
-//					var machine = (resource as ExecutableContainer).currentMachine
-//					instanceMH.removeContainerFromMachine(container, machine)
-//					if (machine.eContainer instanceof Configuration) {
-//						(machine.eContainer as Configuration).resources.remove(container as ExecutableContainer)
-//						LOGGER.info("Destroy a container")
-//					}
+
+					// val instanceMH = new ModelHandler
+					// var container = (resource as
+					// org.occiware.clouddesigner.occi.docker.Container)
+					// var machine = (resource as ExecutableContainer).currentMachine
+					// instanceMH.removeContainerFromMachine(container, machine)
+					// if (machine.eContainer instanceof Configuration) {
+					// (machine.eContainer as Configuration).resources.remove(container as
+					// ExecutableContainer)
+					// LOGGER.info("Destroy a container")
+					// }
 				}
-				
+
 			}
 		};
 		try {
-			((TransactionalCommandStack)domain.getCommandStack()).execute(cmd, null); // default options.
+			((TransactionalCommandStack) domain.getCommandStack()).execute(cmd, null); // default options.
 		} catch (RollbackException rbe) {
 			LOGGER.error(rbe.getStatus().toString());
 			rbe.printStackTrace();
@@ -115,28 +116,29 @@ public class EventCallBack extends EventsResultCallback {
 			LOGGER.error(ex.getMessage());
 			ex.printStackTrace();
 		}
-		
+
 	}
 
-	
 	@Override
 	public void onNext(Event item) {
-		LOGGER.info("Received event #{}", item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
-		
+		LOGGER.info("Received event #{}",
+				item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
+
 		// Get the machine that contains this container.
 		Compute compute = this.container.getCompute();
-		
+
 		if (compute != null && compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 			// Apply modification only when the machine is active
 			EList<Link> links = compute.getLinks();
 			LOGGER.warn("Links size : ", links.size());
 			for (Link link : links) {
 				Contains contains;
-				// TODO : To refactor... Check if this is necessary to update all containers in Machine.
+				// TODO : To refactor... Check if this is necessary to update all containers in
+				// Machine.
 				if (link instanceof Contains && link.getTarget() instanceof Container) {
 					// contains = (Contains) link;
 					// Update all the container status on this compute.
-					Container containerComp = (Container)link.getTarget();
+					Container containerComp = (Container) link.getTarget();
 					// Check between event id and container id of this current container.
 					if (containerComp.getContainerid().equals(item.getId())) {
 						if (item.getStatus().equalsIgnoreCase("stop")) {
@@ -151,24 +153,22 @@ public class EventCallBack extends EventsResultCallback {
 							modifyResourceSet(containerComp, item.getStatus(), item.getId());
 							LOGGER.info("Apply destroy notification to model.");
 						}
-					
+
 					} else {
 						// TODO : uncomment the following test.
 						// if (item.getStatus().equalsIgnoreCase("create") &&
-						//		!container.getDockerClientManager.containerIsInsideMachine(compute, item.getId())) {
-						//		modifyResourceSet(containerComp, item.getStatus(), item.getId());
-						//		LOGGER.info("Apply create notification to model");
-						//}
+						// !container.getDockerClientManager.containerIsInsideMachine(compute,
+						// item.getId())) {
+						// modifyResourceSet(containerComp, item.getStatus(), item.getId());
+						// LOGGER.info("Apply create notification to model");
+						// }
 					}
-					
-					
+
 				}
 			}
-			
+
 		}
-			
+
 	}
-	
-	
-	
+
 }

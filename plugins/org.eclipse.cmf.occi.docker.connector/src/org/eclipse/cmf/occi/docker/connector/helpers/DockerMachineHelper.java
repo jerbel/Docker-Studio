@@ -26,8 +26,6 @@ import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.github.dockerjava.api.command.InspectContainerResponse;
-
 /**
  * Define docker-machine command helper to use on local compute.
  * 
