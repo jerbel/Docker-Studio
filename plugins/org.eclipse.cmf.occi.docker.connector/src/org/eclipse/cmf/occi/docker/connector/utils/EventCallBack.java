@@ -12,11 +12,15 @@
  */
 package org.eclipse.cmf.occi.docker.connector.utils;
 
+import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
+import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
+import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.emf.common.command.Command;
@@ -73,38 +77,30 @@ public class EventCallBack extends EventsResultCallback {
 					LOGGER.warn("container created");
 					// TODO : Attach observer to the Container object.
 					final ModelHandler instanceMH = new ModelHandler();
-
-					// Old xtend code for overview in Clouddesigner.
-					// instanceMH = new ModelHandler();
-					// machine = (resource as ExecutableContainer).currentMachine;
-					// Container c = instanceMH.buildContainer(machine,
-					// containerId);
-					// // Attach listener to the new container created
-					// val observer = new DockerObserver
-					// observer.listener(c, machine)
-					//
-					// instanceMH.linkContainerToMachine(c, machine)
-					// if (machine.eContainer instanceof Configuration) {
-					// (machine.eContainer as Configuration).resources.add(c as ExecutableContainer)
-					// LOGGER.info("Load new container")
-					// }
+					Machine machine = ((ContainerConnector)resource).getCurrentMachine();
+					Container c = instanceMH.buildContainer(machine, containerId);
+					// Attach listener to the new container created
+					ContainerObserver observer = new ContainerObserver();
+					observer.listener(c, machine);
+					instanceMH.linkContainerToMachine(c, machine);
+					if (machine.eContainer() instanceof Configuration) {
+						((Configuration) machine.eContainer()).getResources().add((ContainerConnector) c);
+						LOGGER.info("Load new container model");
+					}
 				}
 				if (state.equalsIgnoreCase("destroy")) {
 					LOGGER.warn("Container destroyed");
-					// TODO : Remove observer from container object.
-
-					// val instanceMH = new ModelHandler
-					// var container = (resource as
-					// org.occiware.clouddesigner.occi.docker.Container)
-					// var machine = (resource as ExecutableContainer).currentMachine
-					// instanceMH.removeContainerFromMachine(container, machine)
-					// if (machine.eContainer instanceof Configuration) {
-					// (machine.eContainer as Configuration).resources.remove(container as
-					// ExecutableContainer)
-					// LOGGER.info("Destroy a container")
-					// }
+					final ModelHandler instanceMH = new ModelHandler();
+					Container container = (Container) resource;
+					Machine machine = ((ContainerConnector)resource).getCurrentMachine();
+					ContainerObserver observer = container.getObserver();
+					observer.removeListener(container, machine);
+					instanceMH.removeContainerFromMachine(container, machine);
+					if (machine.eContainer() instanceof Configuration) {
+						((Configuration) machine.eContainer()).getResources().remove((ContainerConnector) container);
+						LOGGER.info("Destroy a container");
+					}
 				}
-
 			}
 		};
 		try {

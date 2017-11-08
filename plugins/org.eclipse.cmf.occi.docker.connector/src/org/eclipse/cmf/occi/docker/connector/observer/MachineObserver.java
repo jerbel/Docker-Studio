@@ -12,6 +12,8 @@
  */
 package org.eclipse.cmf.occi.docker.connector.observer;
 
+import org.eclipse.cmf.occi.infrastructure.Compute;
+
 /**
  * Observe the docker machine states and update attributes if it change.
  * @author Christophe Gourdin
@@ -19,4 +21,10 @@ package org.eclipse.cmf.occi.docker.connector.observer;
  */
 public class MachineObserver {
 
+	public void listener(Compute compute) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 }

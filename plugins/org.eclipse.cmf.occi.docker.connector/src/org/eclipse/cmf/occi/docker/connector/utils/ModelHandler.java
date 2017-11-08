@@ -20,6 +20,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.ArrayOfString;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
@@ -48,6 +49,7 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.model.ContainerConfig;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.NetworkSettings;
@@ -301,6 +303,87 @@ public class ModelHandler {
 
 		return containerList;
 	}
+	
+	/**
+	 * 
+	 * @param machine
+	 * @param containerId
+	 * @return
+	 * @throws DockerException
+	 */
+	public Container buildContainer(Machine machine, String containerId) throws DockerException {
+		DockerClientManager instance = new DockerClientManager(machine);
+		InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
+		Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+		
+		currentContainer.getId();
+
+		modelContainer.setName(currentContainer.getName().replace("/", ""));
+		modelContainer.setImage(currentContainer.getImageId());
+		modelContainer.setCommand(
+				Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", ""));
+		modelContainer.setContainerid(currentContainer.getId());
+		String user = currentContainer.getConfig().getUser();
+		if (user != null && !user.trim().isEmpty()) {
+			modelContainer.setUser(user);
+		}
+
+		ExposedPort[] exposedPorts = currentContainer.getConfig().getExposedPorts();
+		NetworkSettings netSettings = currentContainer.getNetworkSettings();
+		final Ports ports = netSettings.getPorts();
+		// Prepare the model with complex data Array of String.
+		ArrayOfString modelPorts = DockerFactory.eINSTANCE.createArrayOfString();
+		List<String> portsToAdd = new LinkedList<>();
+		for (ExposedPort exposedPort : exposedPorts) {
+			String expoPort = exposedPort.toString().replace("[", "").replace("]", "");
+			String portFinal = expoPort;
+			if (ports != null && ports.getBindings() != null && !ports.getBindings().isEmpty()) {
+				final Map<ExposedPort, Ports.Binding[]> bindings = ports.getBindings();
+				// get binding and assign to port
+				Ports.Binding[] bindedPorts = bindings.get(exposedPort);
+				// Add exposed and binded port to model.
+				String bindedPort = "";
+				if (bindedPorts != null && bindedPorts.length > 0) {
+					for (Ports.Binding bind : bindedPorts) {
+						bindedPort = bind.getHostPortSpec().replace("[", "").replace("]", "");
+						portFinal = portFinal + ":" + bindedPort;
+					}
+				}
+
+			} else {
+				// No bindings.
+				// Get exposed ports only.
+			}
+			portsToAdd.add(portFinal);
+
+		}
+		modelPorts.getValues().addAll(portsToAdd);
+		modelContainer.setPorts(modelPorts);
+		modelContainer.setMacAddress(currentContainer.getConfig().getMacAddress());
+		modelContainer.setDomainName(currentContainer.getConfig().getDomainName());
+		modelContainer.setOcciComputeHostname(currentContainer.getConfig().getHostName());
+		modelContainer.setWorkingDir(currentContainer.getConfig().getWorkingDir());
+
+		ArrayOfString modelEnv = DockerFactory.eINSTANCE.createArrayOfString();
+
+		String[] dockerEnv = currentContainer.getConfig().getEnv();
+		if (dockerEnv != null && dockerEnv.length > 0) {
+			for (String dockEnv : dockerEnv) {
+				modelEnv.getValues().add(dockEnv.replace("[", "").replace("]", ""));
+			}
+		}
+		modelContainer.setEnvironment(modelEnv);
+		modelContainer.setEntrypoint(Arrays.toString(currentContainer.getConfig().getEntrypoint()));
+		modelContainer.setTty(currentContainer.getConfig().getTty());
+		modelContainer.setStdinOpen(currentContainer.getConfig().getStdinOpen());
+		modelContainer.setPid(currentContainer.getProcessLabel());
+
+		if (currentContainer.getState().getRunning()) {
+			modelContainer.setOcciComputeState(ComputeStatus.get(0));
+		}
+		
+		return modelContainer;
+	}
 
 	/**
 	 * 
@@ -401,6 +484,11 @@ public class ModelHandler {
 		machine.getLinks().add(contains);
 	}
 
+	/**
+	 * 
+	 * @param left
+	 * @param right
+	 */
 	public void linkContainerToContainer(Container left, Container right) {
 
 		// Retrieve the default factory singleton
@@ -411,6 +499,21 @@ public class ModelHandler {
 
 		// Link Container to another
 		left.getLinks().add(links);
+	}
+	
+	/**
+	 * 
+	 * @param container
+	 * @param machine
+	 */
+	public void removeContainerFromMachine(Container container, Machine machine) {
+
+		// Retrieve the default factory singleton
+		Contains contains = DockerFactory.eINSTANCE.createContains();
+
+		// Add Container to the Contains
+		contains.setTarget(container);
+		machine.getLinks().remove(contains);
 	}
 
 }
