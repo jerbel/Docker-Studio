@@ -19,6 +19,7 @@ import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.Compute;
@@ -64,6 +65,7 @@ public class EventCallBack extends EventsResultCallback {
 
 			@Override
 			protected void doExecute() {
+				try {
 				// these modifications require a write transaction in this editing domain
 				if (state.equalsIgnoreCase("stop")) {
 					LOGGER.warn("container stopped");
@@ -77,14 +79,14 @@ public class EventCallBack extends EventsResultCallback {
 					LOGGER.warn("container created");
 					// TODO : Attach observer to the Container object.
 					final ModelHandler instanceMH = new ModelHandler();
-					Machine machine = ((ContainerConnector)resource).getCurrentMachine();
-					Container c = instanceMH.buildContainer(machine, containerId);
+					Compute compute = ((ContainerConnector)resource).getCompute();
+					Container c = instanceMH.buildContainer(compute, containerId);
 					// Attach listener to the new container created
 					ContainerObserver observer = new ContainerObserver();
-					observer.listener(c, machine);
-					instanceMH.linkContainerToMachine(c, machine);
-					if (machine.eContainer() instanceof Configuration) {
-						((Configuration) machine.eContainer()).getResources().add((ContainerConnector) c);
+					observer.listener(c, compute);
+					instanceMH.linkContainerToMachine(c, compute);
+					if (compute.eContainer() instanceof Configuration) {
+						((Configuration) compute.eContainer()).getResources().add((ContainerConnector) c);
 						LOGGER.info("Load new container model");
 					}
 				}
@@ -92,14 +94,20 @@ public class EventCallBack extends EventsResultCallback {
 					LOGGER.warn("Container destroyed");
 					final ModelHandler instanceMH = new ModelHandler();
 					Container container = (Container) resource;
-					Machine machine = ((ContainerConnector)resource).getCurrentMachine();
-					ContainerObserver observer = container.getObserver();
-					observer.removeListener(container);
-					instanceMH.removeContainerFromMachine(container, machine);
-					if (machine.eContainer() instanceof Configuration) {
-						((Configuration) machine.eContainer()).getResources().remove((ContainerConnector) container);
+					Compute compute = ((ContainerConnector)resource).getCompute();
+					ContainerObserver observer = ((ContainerConnector)container).getObserver();
+					if (observer != null) {
+						observer.removeListener(container);
+					}
+					instanceMH.removeContainerFromMachine(container, compute);
+					if (compute.eContainer() instanceof Configuration) {
+						((Configuration) compute.eContainer()).getResources().remove((ContainerConnector) container);
 						LOGGER.info("Destroy a container");
 					}
+				}
+				} catch (DockerException ex) {
+					LOGGER.error("Exception thrown : " + ex.getMessage());
+					ex.printStackTrace();
 				}
 			}
 		};

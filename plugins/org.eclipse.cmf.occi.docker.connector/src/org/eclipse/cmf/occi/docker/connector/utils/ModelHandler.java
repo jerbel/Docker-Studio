@@ -42,6 +42,7 @@ import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerConfigurationHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -311,7 +312,7 @@ public class ModelHandler {
 	 * @return
 	 * @throws DockerException
 	 */
-	public Container buildContainer(Machine machine, String containerId) throws DockerException {
+	public Container buildContainer(Compute machine, String containerId) throws DockerException {
 		DockerClientManager instance = new DockerClientManager(machine);
 		InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
 		Container modelContainer = DockerFactory.eINSTANCE.createContainer();
@@ -474,7 +475,7 @@ public class ModelHandler {
 	 * @param container
 	 * @param machine
 	 */
-	public void linkContainerToMachine(Container container, Machine machine) {
+	public void linkContainerToMachine(Container container, Compute machine) {
 
 		// Retrieve the default factory singleton
 		Contains contains = DockerFactory.eINSTANCE.createContains();
@@ -506,14 +507,14 @@ public class ModelHandler {
 	 * @param container
 	 * @param machine
 	 */
-	public void removeContainerFromMachine(Container container, Machine machine) {
+	public void removeContainerFromMachine(Container container, Compute compute) {
 
 		// Retrieve the default factory singleton
 		Contains contains = DockerFactory.eINSTANCE.createContains();
 
 		// Add Container to the Contains
 		contains.setTarget(container);
-		machine.getLinks().remove(contains);
+		compute.getLinks().remove(contains);
 	}
 
 }

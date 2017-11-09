@@ -17,29 +17,33 @@ package org.eclipse.cmf.occi.docker.connector;
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
+import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Connector implementation for the OCCI kind:
- * - scheme: http://occiware.org/occi/docker#
- * - term: container
- * - title: Container Resource
+ * Connector implementation for the OCCI kind: - scheme:
+ * http://occiware.org/occi/docker# - term: container - title: Container
+ * Resource
  */
-public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.ContainerImpl
-{
+public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.ContainerImpl {
 	/**
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(ContainerConnector.class);
 
+	/**
+	 * Notifier change observer.
+	 */
+	private ContainerObserver containerObserver = null;
+	
+	
 	// Start of user code Containerconnector_constructor
 	/**
 	 * Constructs a container connector.
 	 */
-	ContainerConnector()
-	{
+	ContainerConnector() {
 		LOGGER.debug("Constructor called on " + this);
 		// TODO: Implement this constructor.
 	}
@@ -47,15 +51,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	//
 	// OCCI CRUD callback operations.
 	//
-	
+
 	// Start of user code ContainerocciCreate
 	/**
 	 * Called when this Container instance is completely created.
 	 */
 	@Override
-	public void occiCreate()
-	{
+	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
+		// TODO : Add notifier observer on create but only when container is created on real infrastructure (status created or create).
 		// TODO: Implement this callback or remove this method.
 	}
 	// End of user code
@@ -65,8 +69,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * Called when this Container instance must be retrieved.
 	 */
 	@Override
-	public void occiRetrieve()
-	{
+	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -77,8 +80,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * Called when this Container instance is completely updated.
 	 */
 	@Override
-	public void occiUpdate()
-	{
+	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -89,8 +91,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * Called when this Container instance will be deleted.
 	 */
 	@Override
-	public void occiDelete()
-	{
+	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -101,103 +102,87 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	//
 	// Start of user code Container_Kind_create_action
 	/**
-	 * Implement OCCI action:
-     * - scheme: http://occiware.org/occi/docker/container/action#
-     * - term: create
-     * - title: 
+	 * Implement OCCI action: - scheme:
+	 * http://occiware.org/occi/docker/container/action# - term: create - title:
 	 */
 	@Override
-	public void create()
-	{
+	public void create() {
 		LOGGER.debug("Action create() called on " + this);
 
 		// TODO: Implement how to create this container.
 	}
-		// End of user code
+	// End of user code
 
 	// Start of user code Container_Kind_stop_action
 	/**
-	 * Implement OCCI action:
-     * - scheme: http://occiware.org/occi/docker/container/action#
-     * - term: stop
-     * - title: 
+	 * Implement OCCI action: - scheme:
+	 * http://occiware.org/occi/docker/container/action# - term: stop - title:
 	 */
 	@Override
-	public void stop()
-	{
+	public void stop() {
 		LOGGER.debug("Action stop() called on " + this);
 
 		// TODO: Implement how to stop this container.
 	}
-		// End of user code
+	// End of user code
 
 	// Start of user code Container_Kind_run_action
 	/**
-	 * Implement OCCI action:
-     * - scheme: http://occiware.org/occi/docker/container/action#
-     * - term: run
-     * - title: 
+	 * Implement OCCI action: - scheme:
+	 * http://occiware.org/occi/docker/container/action# - term: run - title:
 	 */
 	@Override
-	public void run()
-	{
+	public void run() {
 		LOGGER.debug("Action run() called on " + this);
 
 		// TODO: Implement how to run this container.
 	}
-		// End of user code
+	// End of user code
 
 	// Start of user code Container_Kind_pause_action
 	/**
-	 * Implement OCCI action:
-     * - scheme: http://occiware.org/occi/docker/container/action#
-     * - term: pause
-     * - title: 
+	 * Implement OCCI action: - scheme:
+	 * http://occiware.org/occi/docker/container/action# - term: pause - title:
 	 */
 	@Override
-	public void pause()
-	{
+	public void pause() {
 		LOGGER.debug("Action pause() called on " + this);
 
 		// TODO: Implement how to pause this container.
 	}
-		// End of user code
+	// End of user code
 
 	// Start of user code Container_Kind_unpause_action
 	/**
-	 * Implement OCCI action:
-     * - scheme: http://occiware.org/occi/docker/container/action#
-     * - term: unpause
-     * - title: 
+	 * Implement OCCI action: - scheme:
+	 * http://occiware.org/occi/docker/container/action# - term: unpause - title:
 	 */
 	@Override
-	public void unpause()
-	{
+	public void unpause() {
 		LOGGER.debug("Action unpause() called on " + this);
 
 		// TODO: Implement how to unpause this container.
 	}
-		// End of user code
+	// End of user code
 
 	// Start of user code Container_Kind_kill_action
 	/**
-	 * Implement OCCI action:
-     * - scheme: http://occiware.org/occi/docker/container/action#
-     * - term: kill
-     * - title: 
+	 * Implement OCCI action: - scheme:
+	 * http://occiware.org/occi/docker/container/action# - term: kill - title:
 	 */
 	@Override
-	public void kill(final String signal)
-	{
+	public void kill(final String signal) {
 		LOGGER.debug("Action kill(" + "signal=" + signal + ") called on " + this);
 
 		// TODO: Implement how to kill this container.
 	}
-		// End of user code
+	// End of user code
 
 	/**
 	 * Get the compute that contains this container.
-	 * @return the Compute that contains this container. Null if the container is executed locally (on linux only).
+	 * 
+	 * @return the Compute that contains this container. Null if the container is
+	 *         executed locally (on linux only).
 	 */
 	public Compute getCompute() {
 		Compute compute = null;
@@ -210,4 +195,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		return compute;
 	}
 	
-}	
+	public ContainerObserver getObserver() {
+		return this.containerObserver;
+	}
+
+}
