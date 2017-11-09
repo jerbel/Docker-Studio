@@ -94,7 +94,7 @@ public class EventCallBack extends EventsResultCallback {
 					Container container = (Container) resource;
 					Machine machine = ((ContainerConnector)resource).getCurrentMachine();
 					ContainerObserver observer = container.getObserver();
-					observer.removeListener(container, machine);
+					observer.removeListener(container);
 					instanceMH.removeContainerFromMachine(container, machine);
 					if (machine.eContainer() instanceof Configuration) {
 						((Configuration) machine.eContainer()).getResources().remove((ContainerConnector) container);

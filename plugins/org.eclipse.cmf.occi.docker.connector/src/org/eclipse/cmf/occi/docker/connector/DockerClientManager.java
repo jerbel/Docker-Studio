@@ -18,6 +18,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -879,6 +880,36 @@ public class DockerClientManager {
 			return tempDir;
 		}
 		throw new DockerException("Cannot locate a temp directory.");
+	}
+
+	/**
+	 * Check if a container name already exist on a compute.
+	 * @param containerName
+	 * @param compute
+	 * @return true if container name exist, false if not.
+	 */
+	public boolean containerNameExists(final String containerName, final Compute compute) throws DockerException {
+		List<com.github.dockerjava.api.model.Container> containers = listContainer(compute);
+		String nameTmp = "";
+		List<String> names;
+		String linkName = "LinkTo";
+		for (com.github.dockerjava.api.model.Container container : containers) {
+			names = Arrays.asList(container.getNames());
+			if (names != null) {
+				for (String name : names) {
+					int index = name.indexOf(linkName);
+					if (index == -1) {
+						nameTmp = name.replaceAll("/", "");
+					} else {
+						nameTmp = name.substring(index + linkName.length());
+					}
+					if (nameTmp.equals(containerName)) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
 	}
 
 }
