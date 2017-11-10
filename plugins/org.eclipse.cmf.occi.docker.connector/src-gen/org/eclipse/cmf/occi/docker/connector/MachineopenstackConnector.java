@@ -7,10 +7,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * - Philippe Merle <philippe.merle@inria.fr>
- * - Faiez Zalila <faiez.zalila@inria.fr>
- *
- * Generated at Mon Oct 02 09:35:55 CEST 2017 from platform:/resource/org.eclipse.cmf.occi.docker/model/docker.occie by org.eclipse.cmf.occi.core.gen.connector
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
+ *  
  */
 package org.eclipse.cmf.occi.docker.connector;
 
@@ -18,13 +16,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Connector implementation for the OCCI kind:
- * - scheme: http://occiware.org/occi/docker#
- * - term: machineopenstack
- * - title: Machine on OpenStack
+ * Connector implementation for the OCCI kind: - scheme:
+ * http://occiware.org/occi/docker# - term: machineopenstack - title: Machine on
+ * OpenStack
  */
-public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl
-{
+public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl {
 	/**
 	 * Initialize the logger.
 	 */
@@ -34,8 +30,7 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	/**
 	 * Constructs a machineopenstack connector.
 	 */
-	MachineopenstackConnector()
-	{
+	MachineopenstackConnector() {
 		LOGGER.debug("Constructor called on " + this);
 		// TODO: Implement this constructor.
 	}
@@ -43,14 +38,13 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	//
 	// OCCI CRUD callback operations.
 	//
-	
+
 	// Start of user code MachineopenstackocciCreate
 	/**
 	 * Called when this Machineopenstack instance is completely created.
 	 */
 	@Override
-	public void occiCreate()
-	{
+	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -61,8 +55,7 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	 * Called when this Machineopenstack instance must be retrieved.
 	 */
 	@Override
-	public void occiRetrieve()
-	{
+	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -73,8 +66,7 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	 * Called when this Machineopenstack instance is completely updated.
 	 */
 	@Override
-	public void occiUpdate()
-	{
+	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -85,8 +77,7 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	 * Called when this Machineopenstack instance will be deleted.
 	 */
 	@Override
-	public void occiDelete()
-	{
+	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -95,4 +86,4 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	//
 	// Machineopenstack actions.
 	//
-}	
+}

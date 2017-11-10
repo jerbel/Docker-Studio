@@ -7,25 +7,19 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * - Philippe Merle <philippe.merle@inria.fr>
- * - Faiez Zalila <faiez.zalila@inria.fr>
- *
- * Generated at Mon Oct 02 09:35:55 CEST 2017 from platform:/resource/org.eclipse.cmf.occi.docker/model/docker.occie by org.eclipse.cmf.occi.core.gen.connector
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
+ *  
  */
 package org.eclipse.cmf.occi.docker.connector;
 
 /**
- * Connector EFactory for the OCCI extension:
- * - name: docker
- * - scheme: http://occiware.org/occi/docker#
+ * Connector EFactory for the OCCI extension: - name: docker - scheme:
+ * http://occiware.org/occi/docker#
  */
-public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFactoryImpl
-{
+public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFactoryImpl {
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: container
-	 * - title: Container Resource
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: container - title: Container Resource
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Container createContainer() {
@@ -33,10 +27,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: link
-	 * - title: Link between containers
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: link - title: Link between containers
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Link createLink() {
@@ -44,10 +36,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: networklink
-	 * - title: 
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: networklink - title:
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Networklink createNetworklink() {
@@ -55,10 +45,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: volumesfrom
-	 * - title: VolumsFrom
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: volumesfrom - title: VolumsFrom
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Volumesfrom createVolumesfrom() {
@@ -66,10 +54,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: contains
-	 * - title: 
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: contains - title:
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Contains createContains() {
@@ -77,10 +63,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machine
-	 * - title: Machine Resource
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machine - title: Machine Resource
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machine createMachine() {
@@ -88,10 +72,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: volume
-	 * - title: Volume Disk
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: volume - title: Volume Disk
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Volume createVolume() {
@@ -99,10 +81,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: network
-	 * - title: Network resource
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: network - title: Network resource
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Network createNetwork() {
@@ -110,10 +90,9 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinegeneric
-	 * - title: Create machines using an existing VM/Host with SSH
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinegeneric - title: Create machines using an existing VM/Host with
+	 * SSH
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinegeneric createMachinegeneric() {
@@ -121,10 +100,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machineamazonec2
-	 * - title: 
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machineamazonec2 - title:
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machineamazonec2 createMachineamazonec2() {
@@ -132,10 +109,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinedigitalocean
-	 * - title: Machine on Digital Ocean
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinedigitalocean - title: Machine on Digital Ocean
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinedigitalocean createMachinedigitalocean() {
@@ -143,10 +118,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinegooglecomputeengine
-	 * - title: Machine on Google Compute Engine
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinegooglecomputeengine - title: Machine on Google Compute Engine
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinegooglecomputeengine createMachinegooglecomputeengine() {
@@ -154,10 +127,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machineibmsoftlayer
-	 * - title: Machine on IBM SoftLayer
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machineibmsoftlayer - title: Machine on IBM SoftLayer
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machineibmsoftlayer createMachineibmsoftlayer() {
@@ -165,10 +136,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinemicrosoftazure
-	 * - title: Machine on Microsoft Azure
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinemicrosoftazure - title: Machine on Microsoft Azure
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinemicrosoftazure createMachinemicrosoftazure() {
@@ -176,10 +145,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinemicrosofthyperv
-	 * - title: Machine on Microsoft Hyper-V
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinemicrosofthyperv - title: Machine on Microsoft Hyper-V
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinemicrosofthyperv createMachinemicrosofthyperv() {
@@ -187,10 +154,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machineopenstack
-	 * - title: Machine on OpenStack
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machineopenstack - title: Machine on OpenStack
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machineopenstack createMachineopenstack() {
@@ -198,10 +163,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinerackspace
-	 * - title: Machine on Rackspace cloud
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinerackspace - title: Machine on Rackspace cloud
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinerackspace createMachinerackspace() {
@@ -209,10 +172,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinevirtualbox
-	 * - title: Machine on VirtualBox
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinevirtualbox - title: Machine on VirtualBox
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinevirtualbox createMachinevirtualbox() {
@@ -220,10 +181,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinevmwarefusion
-	 * - title: Machine on VMware Fusion
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinevmwarefusion - title: Machine on VMware Fusion
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinevmwarefusion createMachinevmwarefusion() {
@@ -231,10 +190,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinevmwarevcloudair
-	 * - title: Machine on VMware vCloud Air
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinevmwarevcloudair - title: Machine on VMware vCloud Air
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinevmwarevcloudair createMachinevmwarevcloudair() {
@@ -242,10 +199,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinevmwarevsphere
-	 * - title: Machine on VMware vSphere
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinevmwarevsphere - title: Machine on VMware vSphere
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinevmwarevsphere createMachinevmwarevsphere() {
@@ -253,10 +208,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machineexoscale
-	 * - title: Machine Exoscale
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machineexoscale - title: Machine Exoscale
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machineexoscale createMachineexoscale() {
@@ -264,10 +217,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: machinegrid5000
-	 * - title: Grid5000
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: machinegrid5000 - title: Grid5000
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Machinegrid5000 createMachinegrid5000() {
@@ -275,10 +226,8 @@ public class ConnectorFactory extends org.eclipse.cmf.occi.docker.impl.DockerFac
 	}
 
 	/**
-	 * EFactory method for OCCI kind:
-	 * - scheme: http://occiware.org/occi/docker#
-	 * - term: cluster
-	 * - title: Docker cluster
+	 * EFactory method for OCCI kind: - scheme: http://occiware.org/occi/docker# -
+	 * term: cluster - title: Docker cluster
 	 */
 	@Override
 	public org.eclipse.cmf.occi.docker.Cluster createCluster() {

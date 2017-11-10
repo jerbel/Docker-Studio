@@ -42,7 +42,6 @@ public class ContainerObserver {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(ContainerObserver.class);
 	protected static Container cpContainer = null;
-	protected static Machine cpMachine = null;
 
 	public Container listener(Container container, Compute compute) throws DockerException {
 
@@ -159,6 +158,7 @@ public class ContainerObserver {
 
 	/**
 	 * Remove the notifier (listener) previously assigned to this container.
+	 * 
 	 * @param container
 	 * @param compute
 	 * @throws DockerException
@@ -166,18 +166,16 @@ public class ContainerObserver {
 	public void removeListener(Container container) throws DockerException {
 		EContentAdapter eAdapterToRemove = null;
 		for (Adapter eAdapter : container.eAdapters()) {
-			
+
 			if (eAdapter instanceof EContentAdapter) {
 				eAdapterToRemove = (EContentAdapter) eAdapter;
 				break;
 			}
-			
+
 		}
 		if (eAdapterToRemove != null) {
 			container.eAdapters().remove(eAdapterToRemove);
 		}
 	}
-	
-	
 
 }

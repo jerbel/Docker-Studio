@@ -7,10 +7,8 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * - Philippe Merle <philippe.merle@inria.fr>
- * - Faiez Zalila <faiez.zalila@inria.fr>
- *
- * Generated at Mon Oct 02 09:35:55 CEST 2017 from platform:/resource/org.eclipse.cmf.occi.docker/model/docker.occie by org.eclipse.cmf.occi.core.gen.connector
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
+ *  
  */
 package org.eclipse.cmf.occi.docker.connector;
 
@@ -18,13 +16,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Connector implementation for the OCCI kind:
- * - scheme: http://occiware.org/occi/docker#
- * - term: volumesfrom
- * - title: VolumsFrom
+ * Connector implementation for the OCCI kind: - scheme:
+ * http://occiware.org/occi/docker# - term: volumesfrom - title: VolumsFrom
  */
-public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.VolumesfromImpl
-{
+public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.VolumesfromImpl {
 	/**
 	 * Initialize the logger.
 	 */
@@ -34,8 +29,7 @@ public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.Volum
 	/**
 	 * Constructs a volumesfrom connector.
 	 */
-	VolumesfromConnector()
-	{
+	VolumesfromConnector() {
 		LOGGER.debug("Constructor called on " + this);
 		// TODO: Implement this constructor.
 	}
@@ -43,14 +37,13 @@ public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.Volum
 	//
 	// OCCI CRUD callback operations.
 	//
-	
+
 	// Start of user code VolumesfromocciCreate
 	/**
 	 * Called when this Volumesfrom instance is completely created.
 	 */
 	@Override
-	public void occiCreate()
-	{
+	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -61,8 +54,7 @@ public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.Volum
 	 * Called when this Volumesfrom instance must be retrieved.
 	 */
 	@Override
-	public void occiRetrieve()
-	{
+	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -73,8 +65,7 @@ public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.Volum
 	 * Called when this Volumesfrom instance is completely updated.
 	 */
 	@Override
-	public void occiUpdate()
-	{
+	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -85,8 +76,7 @@ public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.Volum
 	 * Called when this Volumesfrom instance will be deleted.
 	 */
 	@Override
-	public void occiDelete()
-	{
+	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
 		// TODO: Implement this callback or remove this method.
 	}
@@ -95,4 +85,4 @@ public class VolumesfromConnector extends org.eclipse.cmf.occi.docker.impl.Volum
 	//
 	// Volumesfrom actions.
 	//
-}	
+}

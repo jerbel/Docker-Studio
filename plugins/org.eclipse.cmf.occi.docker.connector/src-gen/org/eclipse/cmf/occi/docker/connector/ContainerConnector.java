@@ -7,17 +7,19 @@
  * http://www.eclipse.org/legal/epl-v10.html
  * 
  * Contributors:
- * - Philippe Merle <philippe.merle@inria.fr>
- * - Faiez Zalila <faiez.zalila@inria.fr>
- *
- * Generated at Mon Oct 02 09:35:55 CEST 2017 from platform:/resource/org.eclipse.cmf.occi.docker/model/docker.occie by org.eclipse.cmf.occi.core.gen.connector
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
+ *  
  */
 package org.eclipse.cmf.occi.docker.connector;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
+import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,8 +39,12 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * Notifier change observer.
 	 */
 	private ContainerObserver containerObserver = null;
-	
-	
+
+	private EventCallBack eventCallBack = new EventCallBack(this);
+
+	// Listener of the stats
+	// private StatsCallBack statsCallback = new StatsCallback(this);
+
 	// Start of user code Containerconnector_constructor
 	/**
 	 * Constructs a container connector.
@@ -59,7 +65,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO : Add notifier observer on create but only when container is created on real infrastructure (status created or create).
+		// TODO : Add notifier observer on create but only when container is created on
+		// real infrastructure (status created or create).
 		// TODO: Implement this callback or remove this method.
 	}
 	// End of user code
@@ -194,7 +201,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 		return compute;
 	}
-	
+
 	public ContainerObserver getObserver() {
 		return this.containerObserver;
 	}
