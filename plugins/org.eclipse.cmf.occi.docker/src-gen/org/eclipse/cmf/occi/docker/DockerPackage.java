@@ -327,7 +327,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__COMMAND = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Ports</b></em>' containment reference.
+	 * The feature id for the '<em><b>Ports</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -336,7 +336,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__PORTS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>Expose</b></em>' containment reference.
+	 * The feature id for the '<em><b>Expose</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -345,7 +345,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__EXPOSE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Volumes</b></em>' containment reference.
+	 * The feature id for the '<em><b>Volumes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -354,7 +354,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__VOLUMES = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Environment</b></em>' containment reference.
+	 * The feature id for the '<em><b>Environment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -363,7 +363,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__ENVIRONMENT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Env File</b></em>' containment reference.
+	 * The feature id for the '<em><b>Env File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -381,7 +381,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__NET = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 10;
 
 	/**
-	 * The feature id for the '<em><b>Dns</b></em>' containment reference.
+	 * The feature id for the '<em><b>Dns</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -390,7 +390,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__DNS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 11;
 
 	/**
-	 * The feature id for the '<em><b>Dns Search</b></em>' containment reference.
+	 * The feature id for the '<em><b>Dns Search</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -399,7 +399,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__DNS_SEARCH = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 12;
 
 	/**
-	 * The feature id for the '<em><b>Cap Add</b></em>' containment reference.
+	 * The feature id for the '<em><b>Cap Add</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -408,7 +408,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__CAP_ADD = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 13;
 
 	/**
-	 * The feature id for the '<em><b>Cap Drop</b></em>' containment reference.
+	 * The feature id for the '<em><b>Cap Drop</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -534,7 +534,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__IPC = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 27;
 
 	/**
-	 * The feature id for the '<em><b>Add Host</b></em>' containment reference.
+	 * The feature id for the '<em><b>Add Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -561,7 +561,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__RM = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 30;
 
 	/**
-	 * The feature id for the '<em><b>Security Opt</b></em>' containment reference.
+	 * The feature id for the '<em><b>Security Opt</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -570,7 +570,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__SECURITY_OPT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 31;
 
 	/**
-	 * The feature id for the '<em><b>Device</b></em>' containment reference.
+	 * The feature id for the '<em><b>Device</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -579,7 +579,7 @@ public interface DockerPackage extends EPackage {
 	int CONTAINER__DEVICE = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 32;
 
 	/**
-	 * The feature id for the '<em><b>Lxc Conf</b></em>' containment reference.
+	 * The feature id for the '<em><b>Lxc Conf</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -10896,59 +10896,59 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Command();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getPorts <em>Ports</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getPorts <em>Ports</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Ports</em>'.
+	 * @return the meta object for the attribute '<em>Ports</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getPorts()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Ports();
+	EAttribute getContainer_Ports();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getExpose <em>Expose</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getExpose <em>Expose</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Expose</em>'.
+	 * @return the meta object for the attribute '<em>Expose</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getExpose()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Expose();
+	EAttribute getContainer_Expose();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getVolumes <em>Volumes</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getVolumes <em>Volumes</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Volumes</em>'.
+	 * @return the meta object for the attribute '<em>Volumes</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getVolumes()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Volumes();
+	EAttribute getContainer_Volumes();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getEnvironment <em>Environment</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getEnvironment <em>Environment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Environment</em>'.
+	 * @return the meta object for the attribute '<em>Environment</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getEnvironment()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Environment();
+	EAttribute getContainer_Environment();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getEnvFile <em>Env File</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getEnvFile <em>Env File</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Env File</em>'.
+	 * @return the meta object for the attribute '<em>Env File</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getEnvFile()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_EnvFile();
+	EAttribute getContainer_EnvFile();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getNet <em>Net</em>}'.
@@ -10962,48 +10962,48 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Net();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getDns <em>Dns</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getDns <em>Dns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Dns</em>'.
+	 * @return the meta object for the attribute '<em>Dns</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getDns()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Dns();
+	EAttribute getContainer_Dns();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getDnsSearch <em>Dns Search</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getDnsSearch <em>Dns Search</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Dns Search</em>'.
+	 * @return the meta object for the attribute '<em>Dns Search</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getDnsSearch()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_DnsSearch();
+	EAttribute getContainer_DnsSearch();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getCapAdd <em>Cap Add</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCapAdd <em>Cap Add</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Cap Add</em>'.
+	 * @return the meta object for the attribute '<em>Cap Add</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getCapAdd()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_CapAdd();
+	EAttribute getContainer_CapAdd();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getCapDrop <em>Cap Drop</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCapDrop <em>Cap Drop</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Cap Drop</em>'.
+	 * @return the meta object for the attribute '<em>Cap Drop</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getCapDrop()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_CapDrop();
+	EAttribute getContainer_CapDrop();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getWorkingDir <em>Working Dir</em>}'.
@@ -11149,15 +11149,15 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Ipc();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getAddHost <em>Add Host</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getAddHost <em>Add Host</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Add Host</em>'.
+	 * @return the meta object for the attribute '<em>Add Host</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getAddHost()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_AddHost();
+	EAttribute getContainer_AddHost();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMacAddress <em>Mac Address</em>}'.
@@ -11182,37 +11182,37 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Rm();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getSecurityOpt <em>Security Opt</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getSecurityOpt <em>Security Opt</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Security Opt</em>'.
+	 * @return the meta object for the attribute '<em>Security Opt</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getSecurityOpt()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_SecurityOpt();
+	EAttribute getContainer_SecurityOpt();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getDevice <em>Device</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getDevice <em>Device</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Device</em>'.
+	 * @return the meta object for the attribute '<em>Device</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getDevice()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_Device();
+	EAttribute getContainer_Device();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link org.eclipse.cmf.occi.docker.Container#getLxcConf <em>Lxc Conf</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getLxcConf <em>Lxc Conf</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Lxc Conf</em>'.
+	 * @return the meta object for the attribute '<em>Lxc Conf</em>'.
 	 * @see org.eclipse.cmf.occi.docker.Container#getLxcConf()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EReference getContainer_LxcConf();
+	EAttribute getContainer_LxcConf();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isPublishAll <em>Publish All</em>}'.
@@ -13993,44 +13993,44 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__COMMAND = eINSTANCE.getContainer_Command();
 
 		/**
-		 * The meta object literal for the '<em><b>Ports</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Ports</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__PORTS = eINSTANCE.getContainer_Ports();
+		EAttribute CONTAINER__PORTS = eINSTANCE.getContainer_Ports();
 
 		/**
-		 * The meta object literal for the '<em><b>Expose</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Expose</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__EXPOSE = eINSTANCE.getContainer_Expose();
+		EAttribute CONTAINER__EXPOSE = eINSTANCE.getContainer_Expose();
 
 		/**
-		 * The meta object literal for the '<em><b>Volumes</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Volumes</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__VOLUMES = eINSTANCE.getContainer_Volumes();
+		EAttribute CONTAINER__VOLUMES = eINSTANCE.getContainer_Volumes();
 
 		/**
-		 * The meta object literal for the '<em><b>Environment</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Environment</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__ENVIRONMENT = eINSTANCE.getContainer_Environment();
+		EAttribute CONTAINER__ENVIRONMENT = eINSTANCE.getContainer_Environment();
 
 		/**
-		 * The meta object literal for the '<em><b>Env File</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Env File</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__ENV_FILE = eINSTANCE.getContainer_EnvFile();
+		EAttribute CONTAINER__ENV_FILE = eINSTANCE.getContainer_EnvFile();
 
 		/**
 		 * The meta object literal for the '<em><b>Net</b></em>' attribute feature.
@@ -14041,36 +14041,36 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__NET = eINSTANCE.getContainer_Net();
 
 		/**
-		 * The meta object literal for the '<em><b>Dns</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Dns</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__DNS = eINSTANCE.getContainer_Dns();
+		EAttribute CONTAINER__DNS = eINSTANCE.getContainer_Dns();
 
 		/**
-		 * The meta object literal for the '<em><b>Dns Search</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Dns Search</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__DNS_SEARCH = eINSTANCE.getContainer_DnsSearch();
+		EAttribute CONTAINER__DNS_SEARCH = eINSTANCE.getContainer_DnsSearch();
 
 		/**
-		 * The meta object literal for the '<em><b>Cap Add</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Cap Add</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__CAP_ADD = eINSTANCE.getContainer_CapAdd();
+		EAttribute CONTAINER__CAP_ADD = eINSTANCE.getContainer_CapAdd();
 
 		/**
-		 * The meta object literal for the '<em><b>Cap Drop</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Cap Drop</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__CAP_DROP = eINSTANCE.getContainer_CapDrop();
+		EAttribute CONTAINER__CAP_DROP = eINSTANCE.getContainer_CapDrop();
 
 		/**
 		 * The meta object literal for the '<em><b>Working Dir</b></em>' attribute feature.
@@ -14177,12 +14177,12 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__IPC = eINSTANCE.getContainer_Ipc();
 
 		/**
-		 * The meta object literal for the '<em><b>Add Host</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Add Host</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__ADD_HOST = eINSTANCE.getContainer_AddHost();
+		EAttribute CONTAINER__ADD_HOST = eINSTANCE.getContainer_AddHost();
 
 		/**
 		 * The meta object literal for the '<em><b>Mac Address</b></em>' attribute feature.
@@ -14201,28 +14201,28 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__RM = eINSTANCE.getContainer_Rm();
 
 		/**
-		 * The meta object literal for the '<em><b>Security Opt</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Security Opt</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__SECURITY_OPT = eINSTANCE.getContainer_SecurityOpt();
+		EAttribute CONTAINER__SECURITY_OPT = eINSTANCE.getContainer_SecurityOpt();
 
 		/**
-		 * The meta object literal for the '<em><b>Device</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Device</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__DEVICE = eINSTANCE.getContainer_Device();
+		EAttribute CONTAINER__DEVICE = eINSTANCE.getContainer_Device();
 
 		/**
-		 * The meta object literal for the '<em><b>Lxc Conf</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Lxc Conf</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONTAINER__LXC_CONF = eINSTANCE.getContainer_LxcConf();
+		EAttribute CONTAINER__LXC_CONF = eINSTANCE.getContainer_LxcConf();
 
 		/**
 		 * The meta object literal for the '<em><b>Publish All</b></em>' attribute feature.

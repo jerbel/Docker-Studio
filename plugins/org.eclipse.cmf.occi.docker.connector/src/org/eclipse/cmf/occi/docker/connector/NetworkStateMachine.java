@@ -1,3 +1,15 @@
+/**
+ * Copyright (c) 2016-2017 Inria
+ *  
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ * 
+ * Contributors:
+ * - Christophe Gourdin <christophe.gourdin@inria.fr>
+ *  
+ */
 package org.eclipse.cmf.occi.docker.connector;
 
 import org.eclipse.cmf.occi.docker.Network;
@@ -5,6 +17,12 @@ import org.eclipse.cmf.occi.infrastructure.NetworkStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * State machine network class.
+ * @author Christophe Gourdin
+ *
+ * @param <T>
+ */
 public class NetworkStateMachine<T extends Network> {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(NetworkStateMachine.class);

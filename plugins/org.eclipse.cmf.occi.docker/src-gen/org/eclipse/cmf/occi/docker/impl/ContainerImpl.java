@@ -195,54 +195,104 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String command = COMMAND_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' containment reference.
+	 * The default value of the '{@link #getPorts() <em>Ports</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getPorts()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString ports;
+	protected static final String PORTS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getExpose() <em>Expose</em>}' containment reference.
+	 * The cached value of the '{@link #getPorts() <em>Ports</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPorts()
+	 * @generated
+	 * @ordered
+	 */
+	protected String ports = PORTS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getExpose() <em>Expose</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getExpose()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString expose;
+	protected static final String EXPOSE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getVolumes() <em>Volumes</em>}' containment reference.
+	 * The cached value of the '{@link #getExpose() <em>Expose</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getExpose()
+	 * @generated
+	 * @ordered
+	 */
+	protected String expose = EXPOSE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getVolumes() <em>Volumes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getVolumes()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString volumes;
+	protected static final String VOLUMES_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' containment reference.
+	 * The cached value of the '{@link #getVolumes() <em>Volumes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getVolumes()
+	 * @generated
+	 * @ordered
+	 */
+	protected String volumes = VOLUMES_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEnvironment()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString environment;
+	protected static final String ENVIRONMENT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getEnvFile() <em>Env File</em>}' containment reference.
+	 * The cached value of the '{@link #getEnvironment() <em>Environment</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvironment()
+	 * @generated
+	 * @ordered
+	 */
+	protected String environment = ENVIRONMENT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getEnvFile() <em>Env File</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getEnvFile()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString envFile;
+	protected static final String ENV_FILE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getEnvFile() <em>Env File</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getEnvFile()
+	 * @generated
+	 * @ordered
+	 */
+	protected String envFile = ENV_FILE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getNet() <em>Net</em>}' attribute.
@@ -265,44 +315,84 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String net = NET_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getDns() <em>Dns</em>}' containment reference.
+	 * The default value of the '{@link #getDns() <em>Dns</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDns()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString dns;
+	protected static final String DNS_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDnsSearch() <em>Dns Search</em>}' containment reference.
+	 * The cached value of the '{@link #getDns() <em>Dns</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDns()
+	 * @generated
+	 * @ordered
+	 */
+	protected String dns = DNS_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDnsSearch() <em>Dns Search</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDnsSearch()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString dnsSearch;
+	protected static final String DNS_SEARCH_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCapAdd() <em>Cap Add</em>}' containment reference.
+	 * The cached value of the '{@link #getDnsSearch() <em>Dns Search</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDnsSearch()
+	 * @generated
+	 * @ordered
+	 */
+	protected String dnsSearch = DNS_SEARCH_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCapAdd() <em>Cap Add</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCapAdd()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString capAdd;
+	protected static final String CAP_ADD_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getCapDrop() <em>Cap Drop</em>}' containment reference.
+	 * The cached value of the '{@link #getCapAdd() <em>Cap Add</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCapAdd()
+	 * @generated
+	 * @ordered
+	 */
+	protected String capAdd = CAP_ADD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCapDrop() <em>Cap Drop</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getCapDrop()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString capDrop;
+	protected static final String CAP_DROP_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getCapDrop() <em>Cap Drop</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCapDrop()
+	 * @generated
+	 * @ordered
+	 */
+	protected String capDrop = CAP_DROP_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWorkingDir() <em>Working Dir</em>}' attribute.
@@ -565,14 +655,24 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String ipc = IPC_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAddHost() <em>Add Host</em>}' containment reference.
+	 * The default value of the '{@link #getAddHost() <em>Add Host</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAddHost()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString addHost;
+	protected static final String ADD_HOST_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAddHost() <em>Add Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAddHost()
+	 * @generated
+	 * @ordered
+	 */
+	protected String addHost = ADD_HOST_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getMacAddress() <em>Mac Address</em>}' attribute.
@@ -615,34 +715,64 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected boolean rm = RM_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getSecurityOpt() <em>Security Opt</em>}' containment reference.
+	 * The default value of the '{@link #getSecurityOpt() <em>Security Opt</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSecurityOpt()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString securityOpt;
+	protected static final String SECURITY_OPT_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDevice() <em>Device</em>}' containment reference.
+	 * The cached value of the '{@link #getSecurityOpt() <em>Security Opt</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSecurityOpt()
+	 * @generated
+	 * @ordered
+	 */
+	protected String securityOpt = SECURITY_OPT_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getDevice() <em>Device</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getDevice()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString device;
+	protected static final String DEVICE_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getLxcConf() <em>Lxc Conf</em>}' containment reference.
+	 * The cached value of the '{@link #getDevice() <em>Device</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDevice()
+	 * @generated
+	 * @ordered
+	 */
+	protected String device = DEVICE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getLxcConf() <em>Lxc Conf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getLxcConf()
 	 * @generated
 	 * @ordered
 	 */
-	protected ArrayOfString lxcConf;
+	protected static final String LXC_CONF_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getLxcConf() <em>Lxc Conf</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLxcConf()
+	 * @generated
+	 * @ordered
+	 */
+	protected String lxcConf = LXC_CONF_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isPublishAll() <em>Publish All</em>}' attribute.
@@ -1133,7 +1263,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrayOfString getPorts() {
+	public String getPorts() {
 		return ports;
 	}
 
@@ -1142,14 +1272,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetPorts(ArrayOfString newPorts, NotificationChain msgs) {
-		ArrayOfString oldPorts = ports;
+	public void setPorts(String newPorts) {
+		String oldPorts = ports;
 		ports = newPorts;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__PORTS, oldPorts, newPorts);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__PORTS, oldPorts, ports));
 	}
 
 	/**
@@ -1157,26 +1284,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPorts(ArrayOfString newPorts) {
-		if (newPorts != ports) {
-			NotificationChain msgs = null;
-			if (ports != null)
-				msgs = ((InternalEObject)ports).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__PORTS, null, msgs);
-			if (newPorts != null)
-				msgs = ((InternalEObject)newPorts).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__PORTS, null, msgs);
-			msgs = basicSetPorts(newPorts, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__PORTS, newPorts, newPorts));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getExpose() {
+	public String getExpose() {
 		return expose;
 	}
 
@@ -1185,14 +1293,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetExpose(ArrayOfString newExpose, NotificationChain msgs) {
-		ArrayOfString oldExpose = expose;
+	public void setExpose(String newExpose) {
+		String oldExpose = expose;
 		expose = newExpose;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__EXPOSE, oldExpose, newExpose);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__EXPOSE, oldExpose, expose));
 	}
 
 	/**
@@ -1200,26 +1305,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setExpose(ArrayOfString newExpose) {
-		if (newExpose != expose) {
-			NotificationChain msgs = null;
-			if (expose != null)
-				msgs = ((InternalEObject)expose).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__EXPOSE, null, msgs);
-			if (newExpose != null)
-				msgs = ((InternalEObject)newExpose).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__EXPOSE, null, msgs);
-			msgs = basicSetExpose(newExpose, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__EXPOSE, newExpose, newExpose));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getVolumes() {
+	public String getVolumes() {
 		return volumes;
 	}
 
@@ -1228,14 +1314,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetVolumes(ArrayOfString newVolumes, NotificationChain msgs) {
-		ArrayOfString oldVolumes = volumes;
+	public void setVolumes(String newVolumes) {
+		String oldVolumes = volumes;
 		volumes = newVolumes;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__VOLUMES, oldVolumes, newVolumes);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__VOLUMES, oldVolumes, volumes));
 	}
 
 	/**
@@ -1243,26 +1326,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVolumes(ArrayOfString newVolumes) {
-		if (newVolumes != volumes) {
-			NotificationChain msgs = null;
-			if (volumes != null)
-				msgs = ((InternalEObject)volumes).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__VOLUMES, null, msgs);
-			if (newVolumes != null)
-				msgs = ((InternalEObject)newVolumes).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__VOLUMES, null, msgs);
-			msgs = basicSetVolumes(newVolumes, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__VOLUMES, newVolumes, newVolumes));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getEnvironment() {
+	public String getEnvironment() {
 		return environment;
 	}
 
@@ -1271,14 +1335,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEnvironment(ArrayOfString newEnvironment, NotificationChain msgs) {
-		ArrayOfString oldEnvironment = environment;
+	public void setEnvironment(String newEnvironment) {
+		String oldEnvironment = environment;
 		environment = newEnvironment;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ENVIRONMENT, oldEnvironment, newEnvironment);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ENVIRONMENT, oldEnvironment, environment));
 	}
 
 	/**
@@ -1286,26 +1347,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setEnvironment(ArrayOfString newEnvironment) {
-		if (newEnvironment != environment) {
-			NotificationChain msgs = null;
-			if (environment != null)
-				msgs = ((InternalEObject)environment).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__ENVIRONMENT, null, msgs);
-			if (newEnvironment != null)
-				msgs = ((InternalEObject)newEnvironment).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__ENVIRONMENT, null, msgs);
-			msgs = basicSetEnvironment(newEnvironment, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ENVIRONMENT, newEnvironment, newEnvironment));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getEnvFile() {
+	public String getEnvFile() {
 		return envFile;
 	}
 
@@ -1314,33 +1356,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetEnvFile(ArrayOfString newEnvFile, NotificationChain msgs) {
-		ArrayOfString oldEnvFile = envFile;
+	public void setEnvFile(String newEnvFile) {
+		String oldEnvFile = envFile;
 		envFile = newEnvFile;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ENV_FILE, oldEnvFile, newEnvFile);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setEnvFile(ArrayOfString newEnvFile) {
-		if (newEnvFile != envFile) {
-			NotificationChain msgs = null;
-			if (envFile != null)
-				msgs = ((InternalEObject)envFile).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__ENV_FILE, null, msgs);
-			if (newEnvFile != null)
-				msgs = ((InternalEObject)newEnvFile).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__ENV_FILE, null, msgs);
-			msgs = basicSetEnvFile(newEnvFile, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ENV_FILE, newEnvFile, newEnvFile));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ENV_FILE, oldEnvFile, envFile));
 	}
 
 	/**
@@ -1369,7 +1389,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrayOfString getDns() {
+	public String getDns() {
 		return dns;
 	}
 
@@ -1378,14 +1398,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDns(ArrayOfString newDns, NotificationChain msgs) {
-		ArrayOfString oldDns = dns;
+	public void setDns(String newDns) {
+		String oldDns = dns;
 		dns = newDns;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DNS, oldDns, newDns);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DNS, oldDns, dns));
 	}
 
 	/**
@@ -1393,26 +1410,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDns(ArrayOfString newDns) {
-		if (newDns != dns) {
-			NotificationChain msgs = null;
-			if (dns != null)
-				msgs = ((InternalEObject)dns).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__DNS, null, msgs);
-			if (newDns != null)
-				msgs = ((InternalEObject)newDns).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__DNS, null, msgs);
-			msgs = basicSetDns(newDns, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DNS, newDns, newDns));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getDnsSearch() {
+	public String getDnsSearch() {
 		return dnsSearch;
 	}
 
@@ -1421,14 +1419,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDnsSearch(ArrayOfString newDnsSearch, NotificationChain msgs) {
-		ArrayOfString oldDnsSearch = dnsSearch;
+	public void setDnsSearch(String newDnsSearch) {
+		String oldDnsSearch = dnsSearch;
 		dnsSearch = newDnsSearch;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DNS_SEARCH, oldDnsSearch, newDnsSearch);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DNS_SEARCH, oldDnsSearch, dnsSearch));
 	}
 
 	/**
@@ -1436,26 +1431,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDnsSearch(ArrayOfString newDnsSearch) {
-		if (newDnsSearch != dnsSearch) {
-			NotificationChain msgs = null;
-			if (dnsSearch != null)
-				msgs = ((InternalEObject)dnsSearch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__DNS_SEARCH, null, msgs);
-			if (newDnsSearch != null)
-				msgs = ((InternalEObject)newDnsSearch).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__DNS_SEARCH, null, msgs);
-			msgs = basicSetDnsSearch(newDnsSearch, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DNS_SEARCH, newDnsSearch, newDnsSearch));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getCapAdd() {
+	public String getCapAdd() {
 		return capAdd;
 	}
 
@@ -1464,14 +1440,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapAdd(ArrayOfString newCapAdd, NotificationChain msgs) {
-		ArrayOfString oldCapAdd = capAdd;
+	public void setCapAdd(String newCapAdd) {
+		String oldCapAdd = capAdd;
 		capAdd = newCapAdd;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CAP_ADD, oldCapAdd, newCapAdd);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CAP_ADD, oldCapAdd, capAdd));
 	}
 
 	/**
@@ -1479,26 +1452,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCapAdd(ArrayOfString newCapAdd) {
-		if (newCapAdd != capAdd) {
-			NotificationChain msgs = null;
-			if (capAdd != null)
-				msgs = ((InternalEObject)capAdd).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__CAP_ADD, null, msgs);
-			if (newCapAdd != null)
-				msgs = ((InternalEObject)newCapAdd).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__CAP_ADD, null, msgs);
-			msgs = basicSetCapAdd(newCapAdd, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CAP_ADD, newCapAdd, newCapAdd));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getCapDrop() {
+	public String getCapDrop() {
 		return capDrop;
 	}
 
@@ -1507,33 +1461,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetCapDrop(ArrayOfString newCapDrop, NotificationChain msgs) {
-		ArrayOfString oldCapDrop = capDrop;
+	public void setCapDrop(String newCapDrop) {
+		String oldCapDrop = capDrop;
 		capDrop = newCapDrop;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CAP_DROP, oldCapDrop, newCapDrop);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCapDrop(ArrayOfString newCapDrop) {
-		if (newCapDrop != capDrop) {
-			NotificationChain msgs = null;
-			if (capDrop != null)
-				msgs = ((InternalEObject)capDrop).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__CAP_DROP, null, msgs);
-			if (newCapDrop != null)
-				msgs = ((InternalEObject)newCapDrop).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__CAP_DROP, null, msgs);
-			msgs = basicSetCapDrop(newCapDrop, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CAP_DROP, newCapDrop, newCapDrop));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__CAP_DROP, oldCapDrop, capDrop));
 	}
 
 	/**
@@ -1814,7 +1746,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrayOfString getAddHost() {
+	public String getAddHost() {
 		return addHost;
 	}
 
@@ -1823,33 +1755,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetAddHost(ArrayOfString newAddHost, NotificationChain msgs) {
-		ArrayOfString oldAddHost = addHost;
+	public void setAddHost(String newAddHost) {
+		String oldAddHost = addHost;
 		addHost = newAddHost;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ADD_HOST, oldAddHost, newAddHost);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAddHost(ArrayOfString newAddHost) {
-		if (newAddHost != addHost) {
-			NotificationChain msgs = null;
-			if (addHost != null)
-				msgs = ((InternalEObject)addHost).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__ADD_HOST, null, msgs);
-			if (newAddHost != null)
-				msgs = ((InternalEObject)newAddHost).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__ADD_HOST, null, msgs);
-			msgs = basicSetAddHost(newAddHost, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ADD_HOST, newAddHost, newAddHost));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__ADD_HOST, oldAddHost, addHost));
 	}
 
 	/**
@@ -1899,7 +1809,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArrayOfString getSecurityOpt() {
+	public String getSecurityOpt() {
 		return securityOpt;
 	}
 
@@ -1908,14 +1818,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetSecurityOpt(ArrayOfString newSecurityOpt, NotificationChain msgs) {
-		ArrayOfString oldSecurityOpt = securityOpt;
+	public void setSecurityOpt(String newSecurityOpt) {
+		String oldSecurityOpt = securityOpt;
 		securityOpt = newSecurityOpt;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__SECURITY_OPT, oldSecurityOpt, newSecurityOpt);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__SECURITY_OPT, oldSecurityOpt, securityOpt));
 	}
 
 	/**
@@ -1923,26 +1830,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSecurityOpt(ArrayOfString newSecurityOpt) {
-		if (newSecurityOpt != securityOpt) {
-			NotificationChain msgs = null;
-			if (securityOpt != null)
-				msgs = ((InternalEObject)securityOpt).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__SECURITY_OPT, null, msgs);
-			if (newSecurityOpt != null)
-				msgs = ((InternalEObject)newSecurityOpt).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__SECURITY_OPT, null, msgs);
-			msgs = basicSetSecurityOpt(newSecurityOpt, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__SECURITY_OPT, newSecurityOpt, newSecurityOpt));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getDevice() {
+	public String getDevice() {
 		return device;
 	}
 
@@ -1951,14 +1839,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDevice(ArrayOfString newDevice, NotificationChain msgs) {
-		ArrayOfString oldDevice = device;
+	public void setDevice(String newDevice) {
+		String oldDevice = device;
 		device = newDevice;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DEVICE, oldDevice, newDevice);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DEVICE, oldDevice, device));
 	}
 
 	/**
@@ -1966,26 +1851,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDevice(ArrayOfString newDevice) {
-		if (newDevice != device) {
-			NotificationChain msgs = null;
-			if (device != null)
-				msgs = ((InternalEObject)device).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__DEVICE, null, msgs);
-			if (newDevice != null)
-				msgs = ((InternalEObject)newDevice).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__DEVICE, null, msgs);
-			msgs = basicSetDevice(newDevice, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__DEVICE, newDevice, newDevice));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public ArrayOfString getLxcConf() {
+	public String getLxcConf() {
 		return lxcConf;
 	}
 
@@ -1994,33 +1860,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetLxcConf(ArrayOfString newLxcConf, NotificationChain msgs) {
-		ArrayOfString oldLxcConf = lxcConf;
+	public void setLxcConf(String newLxcConf) {
+		String oldLxcConf = lxcConf;
 		lxcConf = newLxcConf;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__LXC_CONF, oldLxcConf, newLxcConf);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setLxcConf(ArrayOfString newLxcConf) {
-		if (newLxcConf != lxcConf) {
-			NotificationChain msgs = null;
-			if (lxcConf != null)
-				msgs = ((InternalEObject)lxcConf).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__LXC_CONF, null, msgs);
-			if (newLxcConf != null)
-				msgs = ((InternalEObject)newLxcConf).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DockerPackage.CONTAINER__LXC_CONF, null, msgs);
-			msgs = basicSetLxcConf(newLxcConf, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__LXC_CONF, newLxcConf, newLxcConf));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__LXC_CONF, oldLxcConf, lxcConf));
 	}
 
 	/**
@@ -2461,44 +2305,6 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case DockerPackage.CONTAINER__PORTS:
-				return basicSetPorts(null, msgs);
-			case DockerPackage.CONTAINER__EXPOSE:
-				return basicSetExpose(null, msgs);
-			case DockerPackage.CONTAINER__VOLUMES:
-				return basicSetVolumes(null, msgs);
-			case DockerPackage.CONTAINER__ENVIRONMENT:
-				return basicSetEnvironment(null, msgs);
-			case DockerPackage.CONTAINER__ENV_FILE:
-				return basicSetEnvFile(null, msgs);
-			case DockerPackage.CONTAINER__DNS:
-				return basicSetDns(null, msgs);
-			case DockerPackage.CONTAINER__DNS_SEARCH:
-				return basicSetDnsSearch(null, msgs);
-			case DockerPackage.CONTAINER__CAP_ADD:
-				return basicSetCapAdd(null, msgs);
-			case DockerPackage.CONTAINER__CAP_DROP:
-				return basicSetCapDrop(null, msgs);
-			case DockerPackage.CONTAINER__ADD_HOST:
-				return basicSetAddHost(null, msgs);
-			case DockerPackage.CONTAINER__SECURITY_OPT:
-				return basicSetSecurityOpt(null, msgs);
-			case DockerPackage.CONTAINER__DEVICE:
-				return basicSetDevice(null, msgs);
-			case DockerPackage.CONTAINER__LXC_CONF:
-				return basicSetLxcConf(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DockerPackage.CONTAINER__NAME:
@@ -2633,34 +2439,34 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				setCommand((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__PORTS:
-				setPorts((ArrayOfString)newValue);
+				setPorts((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__EXPOSE:
-				setExpose((ArrayOfString)newValue);
+				setExpose((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__VOLUMES:
-				setVolumes((ArrayOfString)newValue);
+				setVolumes((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__ENVIRONMENT:
-				setEnvironment((ArrayOfString)newValue);
+				setEnvironment((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__ENV_FILE:
-				setEnvFile((ArrayOfString)newValue);
+				setEnvFile((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__NET:
 				setNet((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__DNS:
-				setDns((ArrayOfString)newValue);
+				setDns((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__DNS_SEARCH:
-				setDnsSearch((ArrayOfString)newValue);
+				setDnsSearch((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__CAP_ADD:
-				setCapAdd((ArrayOfString)newValue);
+				setCapAdd((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__CAP_DROP:
-				setCapDrop((ArrayOfString)newValue);
+				setCapDrop((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__WORKING_DIR:
 				setWorkingDir((String)newValue);
@@ -2702,7 +2508,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				setIpc((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__ADD_HOST:
-				setAddHost((ArrayOfString)newValue);
+				setAddHost((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__MAC_ADDRESS:
 				setMacAddress((String)newValue);
@@ -2711,13 +2517,13 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				setRm((Boolean)newValue);
 				return;
 			case DockerPackage.CONTAINER__SECURITY_OPT:
-				setSecurityOpt((ArrayOfString)newValue);
+				setSecurityOpt((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__DEVICE:
-				setDevice((ArrayOfString)newValue);
+				setDevice((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__LXC_CONF:
-				setLxcConf((ArrayOfString)newValue);
+				setLxcConf((String)newValue);
 				return;
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
 				setPublishAll((Boolean)newValue);
@@ -2801,34 +2607,34 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				setCommand(COMMAND_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__PORTS:
-				setPorts((ArrayOfString)null);
+				setPorts(PORTS_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__EXPOSE:
-				setExpose((ArrayOfString)null);
+				setExpose(EXPOSE_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__VOLUMES:
-				setVolumes((ArrayOfString)null);
+				setVolumes(VOLUMES_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__ENVIRONMENT:
-				setEnvironment((ArrayOfString)null);
+				setEnvironment(ENVIRONMENT_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__ENV_FILE:
-				setEnvFile((ArrayOfString)null);
+				setEnvFile(ENV_FILE_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__NET:
 				setNet(NET_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__DNS:
-				setDns((ArrayOfString)null);
+				setDns(DNS_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__DNS_SEARCH:
-				setDnsSearch((ArrayOfString)null);
+				setDnsSearch(DNS_SEARCH_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__CAP_ADD:
-				setCapAdd((ArrayOfString)null);
+				setCapAdd(CAP_ADD_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__CAP_DROP:
-				setCapDrop((ArrayOfString)null);
+				setCapDrop(CAP_DROP_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__WORKING_DIR:
 				setWorkingDir(WORKING_DIR_EDEFAULT);
@@ -2870,7 +2676,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				setIpc(IPC_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__ADD_HOST:
-				setAddHost((ArrayOfString)null);
+				setAddHost(ADD_HOST_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__MAC_ADDRESS:
 				setMacAddress(MAC_ADDRESS_EDEFAULT);
@@ -2879,13 +2685,13 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				setRm(RM_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__SECURITY_OPT:
-				setSecurityOpt((ArrayOfString)null);
+				setSecurityOpt(SECURITY_OPT_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__DEVICE:
-				setDevice((ArrayOfString)null);
+				setDevice(DEVICE_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__LXC_CONF:
-				setLxcConf((ArrayOfString)null);
+				setLxcConf(LXC_CONF_EDEFAULT);
 				return;
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
 				setPublishAll(PUBLISH_ALL_EDEFAULT);
@@ -2964,25 +2770,25 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__COMMAND:
 				return COMMAND_EDEFAULT == null ? command != null : !COMMAND_EDEFAULT.equals(command);
 			case DockerPackage.CONTAINER__PORTS:
-				return ports != null;
+				return PORTS_EDEFAULT == null ? ports != null : !PORTS_EDEFAULT.equals(ports);
 			case DockerPackage.CONTAINER__EXPOSE:
-				return expose != null;
+				return EXPOSE_EDEFAULT == null ? expose != null : !EXPOSE_EDEFAULT.equals(expose);
 			case DockerPackage.CONTAINER__VOLUMES:
-				return volumes != null;
+				return VOLUMES_EDEFAULT == null ? volumes != null : !VOLUMES_EDEFAULT.equals(volumes);
 			case DockerPackage.CONTAINER__ENVIRONMENT:
-				return environment != null;
+				return ENVIRONMENT_EDEFAULT == null ? environment != null : !ENVIRONMENT_EDEFAULT.equals(environment);
 			case DockerPackage.CONTAINER__ENV_FILE:
-				return envFile != null;
+				return ENV_FILE_EDEFAULT == null ? envFile != null : !ENV_FILE_EDEFAULT.equals(envFile);
 			case DockerPackage.CONTAINER__NET:
 				return NET_EDEFAULT == null ? net != null : !NET_EDEFAULT.equals(net);
 			case DockerPackage.CONTAINER__DNS:
-				return dns != null;
+				return DNS_EDEFAULT == null ? dns != null : !DNS_EDEFAULT.equals(dns);
 			case DockerPackage.CONTAINER__DNS_SEARCH:
-				return dnsSearch != null;
+				return DNS_SEARCH_EDEFAULT == null ? dnsSearch != null : !DNS_SEARCH_EDEFAULT.equals(dnsSearch);
 			case DockerPackage.CONTAINER__CAP_ADD:
-				return capAdd != null;
+				return CAP_ADD_EDEFAULT == null ? capAdd != null : !CAP_ADD_EDEFAULT.equals(capAdd);
 			case DockerPackage.CONTAINER__CAP_DROP:
-				return capDrop != null;
+				return CAP_DROP_EDEFAULT == null ? capDrop != null : !CAP_DROP_EDEFAULT.equals(capDrop);
 			case DockerPackage.CONTAINER__WORKING_DIR:
 				return WORKING_DIR_EDEFAULT == null ? workingDir != null : !WORKING_DIR_EDEFAULT.equals(workingDir);
 			case DockerPackage.CONTAINER__ENTRYPOINT:
@@ -3010,17 +2816,17 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__IPC:
 				return IPC_EDEFAULT == null ? ipc != null : !IPC_EDEFAULT.equals(ipc);
 			case DockerPackage.CONTAINER__ADD_HOST:
-				return addHost != null;
+				return ADD_HOST_EDEFAULT == null ? addHost != null : !ADD_HOST_EDEFAULT.equals(addHost);
 			case DockerPackage.CONTAINER__MAC_ADDRESS:
 				return MAC_ADDRESS_EDEFAULT == null ? macAddress != null : !MAC_ADDRESS_EDEFAULT.equals(macAddress);
 			case DockerPackage.CONTAINER__RM:
 				return rm != RM_EDEFAULT;
 			case DockerPackage.CONTAINER__SECURITY_OPT:
-				return securityOpt != null;
+				return SECURITY_OPT_EDEFAULT == null ? securityOpt != null : !SECURITY_OPT_EDEFAULT.equals(securityOpt);
 			case DockerPackage.CONTAINER__DEVICE:
-				return device != null;
+				return DEVICE_EDEFAULT == null ? device != null : !DEVICE_EDEFAULT.equals(device);
 			case DockerPackage.CONTAINER__LXC_CONF:
-				return lxcConf != null;
+				return LXC_CONF_EDEFAULT == null ? lxcConf != null : !LXC_CONF_EDEFAULT.equals(lxcConf);
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
 				return publishAll != PUBLISH_ALL_EDEFAULT;
 			case DockerPackage.CONTAINER__READ_ONLY:
@@ -3111,8 +2917,26 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 		result.append(build);
 		result.append(", command: ");
 		result.append(command);
+		result.append(", ports: ");
+		result.append(ports);
+		result.append(", expose: ");
+		result.append(expose);
+		result.append(", volumes: ");
+		result.append(volumes);
+		result.append(", environment: ");
+		result.append(environment);
+		result.append(", envFile: ");
+		result.append(envFile);
 		result.append(", net: ");
 		result.append(net);
+		result.append(", dns: ");
+		result.append(dns);
+		result.append(", dnsSearch: ");
+		result.append(dnsSearch);
+		result.append(", capAdd: ");
+		result.append(capAdd);
+		result.append(", capDrop: ");
+		result.append(capDrop);
 		result.append(", workingDir: ");
 		result.append(workingDir);
 		result.append(", entrypoint: ");
@@ -3139,10 +2963,18 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 		result.append(pid);
 		result.append(", ipc: ");
 		result.append(ipc);
+		result.append(", addHost: ");
+		result.append(addHost);
 		result.append(", macAddress: ");
 		result.append(macAddress);
 		result.append(", rm: ");
 		result.append(rm);
+		result.append(", securityOpt: ");
+		result.append(securityOpt);
+		result.append(", device: ");
+		result.append(device);
+		result.append(", lxcConf: ");
+		result.append(lxcConf);
 		result.append(", publishAll: ");
 		result.append(publishAll);
 		result.append(", readOnly: ");

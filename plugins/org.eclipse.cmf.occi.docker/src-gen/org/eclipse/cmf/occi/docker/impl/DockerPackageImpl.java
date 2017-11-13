@@ -384,8 +384,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Ports() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(5);
+	public EAttribute getContainer_Ports() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -393,8 +393,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Expose() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(6);
+	public EAttribute getContainer_Expose() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -402,8 +402,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Volumes() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(7);
+	public EAttribute getContainer_Volumes() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -411,8 +411,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Environment() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(8);
+	public EAttribute getContainer_Environment() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -420,8 +420,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_EnvFile() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(9);
+	public EAttribute getContainer_EnvFile() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(9);
 	}
 
 	/**
@@ -438,8 +438,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Dns() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(11);
+	public EAttribute getContainer_Dns() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(11);
 	}
 
 	/**
@@ -447,8 +447,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_DnsSearch() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(12);
+	public EAttribute getContainer_DnsSearch() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -456,8 +456,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_CapAdd() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(13);
+	public EAttribute getContainer_CapAdd() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -465,8 +465,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_CapDrop() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(14);
+	public EAttribute getContainer_CapDrop() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -591,8 +591,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_AddHost() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(28);
+	public EAttribute getContainer_AddHost() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(28);
 	}
 
 	/**
@@ -618,8 +618,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_SecurityOpt() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(31);
+	public EAttribute getContainer_SecurityOpt() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(31);
 	}
 
 	/**
@@ -627,8 +627,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_Device() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(32);
+	public EAttribute getContainer_Device() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(32);
 	}
 
 	/**
@@ -636,8 +636,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getContainer_LxcConf() {
-		return (EReference)containerEClass.getEStructuralFeatures().get(33);
+	public EAttribute getContainer_LxcConf() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(33);
 	}
 
 	/**
@@ -2900,16 +2900,16 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__IMAGE);
 		createEAttribute(containerEClass, CONTAINER__BUILD);
 		createEAttribute(containerEClass, CONTAINER__COMMAND);
-		createEReference(containerEClass, CONTAINER__PORTS);
-		createEReference(containerEClass, CONTAINER__EXPOSE);
-		createEReference(containerEClass, CONTAINER__VOLUMES);
-		createEReference(containerEClass, CONTAINER__ENVIRONMENT);
-		createEReference(containerEClass, CONTAINER__ENV_FILE);
+		createEAttribute(containerEClass, CONTAINER__PORTS);
+		createEAttribute(containerEClass, CONTAINER__EXPOSE);
+		createEAttribute(containerEClass, CONTAINER__VOLUMES);
+		createEAttribute(containerEClass, CONTAINER__ENVIRONMENT);
+		createEAttribute(containerEClass, CONTAINER__ENV_FILE);
 		createEAttribute(containerEClass, CONTAINER__NET);
-		createEReference(containerEClass, CONTAINER__DNS);
-		createEReference(containerEClass, CONTAINER__DNS_SEARCH);
-		createEReference(containerEClass, CONTAINER__CAP_ADD);
-		createEReference(containerEClass, CONTAINER__CAP_DROP);
+		createEAttribute(containerEClass, CONTAINER__DNS);
+		createEAttribute(containerEClass, CONTAINER__DNS_SEARCH);
+		createEAttribute(containerEClass, CONTAINER__CAP_ADD);
+		createEAttribute(containerEClass, CONTAINER__CAP_DROP);
 		createEAttribute(containerEClass, CONTAINER__WORKING_DIR);
 		createEAttribute(containerEClass, CONTAINER__ENTRYPOINT);
 		createEAttribute(containerEClass, CONTAINER__USER);
@@ -2923,12 +2923,12 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__CPU_SHARES);
 		createEAttribute(containerEClass, CONTAINER__PID);
 		createEAttribute(containerEClass, CONTAINER__IPC);
-		createEReference(containerEClass, CONTAINER__ADD_HOST);
+		createEAttribute(containerEClass, CONTAINER__ADD_HOST);
 		createEAttribute(containerEClass, CONTAINER__MAC_ADDRESS);
 		createEAttribute(containerEClass, CONTAINER__RM);
-		createEReference(containerEClass, CONTAINER__SECURITY_OPT);
-		createEReference(containerEClass, CONTAINER__DEVICE);
-		createEReference(containerEClass, CONTAINER__LXC_CONF);
+		createEAttribute(containerEClass, CONTAINER__SECURITY_OPT);
+		createEAttribute(containerEClass, CONTAINER__DEVICE);
+		createEAttribute(containerEClass, CONTAINER__LXC_CONF);
 		createEAttribute(containerEClass, CONTAINER__PUBLISH_ALL);
 		createEAttribute(containerEClass, CONTAINER__READ_ONLY);
 		createEAttribute(containerEClass, CONTAINER__MONITORED);
@@ -3270,16 +3270,16 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_Image(), theOCCIPackage.getString(), "image", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Build(), theOCCIPackage.getString(), "build", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Command(), theOCCIPackage.getString(), "command", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Ports(), this.getArrayOfString(), null, "ports", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Expose(), this.getArrayOfString(), null, "expose", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Volumes(), this.getArrayOfString(), null, "volumes", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Environment(), this.getArrayOfString(), null, "environment", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_EnvFile(), this.getArrayOfString(), null, "envFile", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Ports(), theOCCIPackage.getString(), "ports", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Expose(), theOCCIPackage.getString(), "expose", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Volumes(), theOCCIPackage.getString(), "volumes", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Environment(), theOCCIPackage.getString(), "environment", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_EnvFile(), theOCCIPackage.getString(), "envFile", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Net(), theOCCIPackage.getString(), "net", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Dns(), this.getArrayOfString(), null, "dns", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_DnsSearch(), this.getArrayOfString(), null, "dnsSearch", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_CapAdd(), this.getArrayOfString(), null, "capAdd", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_CapDrop(), this.getArrayOfString(), null, "capDrop", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Dns(), theOCCIPackage.getString(), "dns", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_DnsSearch(), theOCCIPackage.getString(), "dnsSearch", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_CapAdd(), theOCCIPackage.getString(), "capAdd", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_CapDrop(), theOCCIPackage.getString(), "capDrop", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_WorkingDir(), theOCCIPackage.getString(), "workingDir", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Entrypoint(), theOCCIPackage.getString(), "entrypoint", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_User(), theOCCIPackage.getString(), "user", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -3293,12 +3293,12 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_CpuShares(), theOCCIPackage.getInteger(), "cpuShares", "0", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Pid(), theOCCIPackage.getString(), "pid", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Ipc(), theOCCIPackage.getString(), "ipc", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_AddHost(), this.getArrayOfString(), null, "addHost", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_AddHost(), theOCCIPackage.getString(), "addHost", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_MacAddress(), theInfrastructurePackage.getMac(), "macAddress", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Rm(), theOCCIPackage.getBoolean(), "rm", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_SecurityOpt(), this.getArrayOfString(), null, "securityOpt", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_Device(), this.getArrayOfString(), null, "device", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getContainer_LxcConf(), this.getArrayOfString(), null, "lxcConf", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_SecurityOpt(), theOCCIPackage.getString(), "securityOpt", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Device(), theOCCIPackage.getString(), "device", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_LxcConf(), theOCCIPackage.getString(), "lxcConf", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_PublishAll(), theOCCIPackage.getBoolean(), "publishAll", "false", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_ReadOnly(), theOCCIPackage.getBoolean(), "readOnly", "false", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Monitored(), theOCCIPackage.getBoolean(), "monitored", "false", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

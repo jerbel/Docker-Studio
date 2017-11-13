@@ -69,7 +69,16 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addImagePropertyDescriptor(object);
 			addBuildPropertyDescriptor(object);
 			addCommandPropertyDescriptor(object);
+			addPortsPropertyDescriptor(object);
+			addExposePropertyDescriptor(object);
+			addVolumesPropertyDescriptor(object);
+			addEnvironmentPropertyDescriptor(object);
+			addEnvFilePropertyDescriptor(object);
 			addNetPropertyDescriptor(object);
+			addDnsPropertyDescriptor(object);
+			addDnsSearchPropertyDescriptor(object);
+			addCapAddPropertyDescriptor(object);
+			addCapDropPropertyDescriptor(object);
 			addWorkingDirPropertyDescriptor(object);
 			addEntrypointPropertyDescriptor(object);
 			addUserPropertyDescriptor(object);
@@ -83,8 +92,12 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			addCpuSharesPropertyDescriptor(object);
 			addPidPropertyDescriptor(object);
 			addIpcPropertyDescriptor(object);
+			addAddHostPropertyDescriptor(object);
 			addMacAddressPropertyDescriptor(object);
 			addRmPropertyDescriptor(object);
+			addSecurityOptPropertyDescriptor(object);
+			addDevicePropertyDescriptor(object);
+			addLxcConfPropertyDescriptor(object);
 			addPublishAllPropertyDescriptor(object);
 			addReadOnlyPropertyDescriptor(object);
 			addMonitoredPropertyDescriptor(object);
@@ -218,6 +231,116 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Ports feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPortsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_ports_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_ports_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__PORTS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Expose feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addExposePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_expose_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_expose_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__EXPOSE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Volumes feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addVolumesPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_volumes_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_volumes_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__VOLUMES,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Environment feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnvironmentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_environment_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_environment_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__ENVIRONMENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Env File feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addEnvFilePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_envFile_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_envFile_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__ENV_FILE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Net feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -231,6 +354,94 @@ public class ContainerItemProvider extends ComputeItemProvider {
 				 getString("_UI_Container_net_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Container_net_feature", "_UI_Container_type"),
 				 DockerPackage.Literals.CONTAINER__NET,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Dns feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDnsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_dns_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_dns_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__DNS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Dns Search feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDnsSearchPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_dnsSearch_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_dnsSearch_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__DNS_SEARCH,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cap Add feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCapAddPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_capAdd_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_capAdd_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CAP_ADD,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cap Drop feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCapDropPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_capDrop_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_capDrop_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CAP_DROP,
 				 true,
 				 false,
 				 false,
@@ -526,6 +737,28 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Add Host feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addAddHostPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_addHost_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_addHost_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__ADD_HOST,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Mac Address feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -565,6 +798,72 @@ public class ContainerItemProvider extends ComputeItemProvider {
 				 false,
 				 false,
 				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Security Opt feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addSecurityOptPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_securityOpt_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_securityOpt_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__SECURITY_OPT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Device feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDevicePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_device_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_device_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__DEVICE,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Lxc Conf feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addLxcConfPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_lxcConf_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_lxcConf_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__LXC_CONF,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -966,48 +1265,6 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
-	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
-	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
-	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
-		if (childrenFeatures == null) {
-			super.getChildrenFeatures(object);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__PORTS);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__EXPOSE);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__VOLUMES);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__ENVIRONMENT);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__ENV_FILE);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__DNS);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__DNS_SEARCH);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__CAP_ADD);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__CAP_DROP);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__ADD_HOST);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__SECURITY_OPT);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__DEVICE);
-			childrenFeatures.add(DockerPackage.Literals.CONTAINER__LXC_CONF);
-		}
-		return childrenFeatures;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EStructuralFeature getChildFeature(Object object, Object child) {
-		// Check the type of the specified child object and return the proper feature to use for
-		// adding (see {@link AddCommand}) it as a child.
-
-		return super.getChildFeature(object, child);
-	}
-
-	/**
 	 * This returns Container.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1050,7 +1307,16 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__IMAGE:
 			case DockerPackage.CONTAINER__BUILD:
 			case DockerPackage.CONTAINER__COMMAND:
+			case DockerPackage.CONTAINER__PORTS:
+			case DockerPackage.CONTAINER__EXPOSE:
+			case DockerPackage.CONTAINER__VOLUMES:
+			case DockerPackage.CONTAINER__ENVIRONMENT:
+			case DockerPackage.CONTAINER__ENV_FILE:
 			case DockerPackage.CONTAINER__NET:
+			case DockerPackage.CONTAINER__DNS:
+			case DockerPackage.CONTAINER__DNS_SEARCH:
+			case DockerPackage.CONTAINER__CAP_ADD:
+			case DockerPackage.CONTAINER__CAP_DROP:
 			case DockerPackage.CONTAINER__WORKING_DIR:
 			case DockerPackage.CONTAINER__ENTRYPOINT:
 			case DockerPackage.CONTAINER__USER:
@@ -1064,8 +1330,12 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__CPU_SHARES:
 			case DockerPackage.CONTAINER__PID:
 			case DockerPackage.CONTAINER__IPC:
+			case DockerPackage.CONTAINER__ADD_HOST:
 			case DockerPackage.CONTAINER__MAC_ADDRESS:
 			case DockerPackage.CONTAINER__RM:
+			case DockerPackage.CONTAINER__SECURITY_OPT:
+			case DockerPackage.CONTAINER__DEVICE:
+			case DockerPackage.CONTAINER__LXC_CONF:
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
 			case DockerPackage.CONTAINER__READ_ONLY:
 			case DockerPackage.CONTAINER__MONITORED:
@@ -1085,21 +1355,6 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 			case DockerPackage.CONTAINER__TTY:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
-				return;
-			case DockerPackage.CONTAINER__PORTS:
-			case DockerPackage.CONTAINER__EXPOSE:
-			case DockerPackage.CONTAINER__VOLUMES:
-			case DockerPackage.CONTAINER__ENVIRONMENT:
-			case DockerPackage.CONTAINER__ENV_FILE:
-			case DockerPackage.CONTAINER__DNS:
-			case DockerPackage.CONTAINER__DNS_SEARCH:
-			case DockerPackage.CONTAINER__CAP_ADD:
-			case DockerPackage.CONTAINER__CAP_DROP:
-			case DockerPackage.CONTAINER__ADD_HOST:
-			case DockerPackage.CONTAINER__SECURITY_OPT:
-			case DockerPackage.CONTAINER__DEVICE:
-			case DockerPackage.CONTAINER__LXC_CONF:
-				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
@@ -1135,105 +1390,6 @@ public class ContainerItemProvider extends ComputeItemProvider {
 			(createChildParameter
 				(OCCIPackage.Literals.RESOURCE__LINKS,
 				 DockerFactory.eINSTANCE.createContains()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__PORTS,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__EXPOSE,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__VOLUMES,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__ENVIRONMENT,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__ENV_FILE,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__DNS,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__DNS_SEARCH,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__CAP_ADD,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__CAP_DROP,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__ADD_HOST,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__SECURITY_OPT,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__DEVICE,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(DockerPackage.Literals.CONTAINER__LXC_CONF,
-				 DockerFactory.eINSTANCE.createArrayOfString()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == DockerPackage.Literals.CONTAINER__PORTS ||
-			childFeature == DockerPackage.Literals.CONTAINER__EXPOSE ||
-			childFeature == DockerPackage.Literals.CONTAINER__VOLUMES ||
-			childFeature == DockerPackage.Literals.CONTAINER__ENVIRONMENT ||
-			childFeature == DockerPackage.Literals.CONTAINER__ENV_FILE ||
-			childFeature == DockerPackage.Literals.CONTAINER__DNS ||
-			childFeature == DockerPackage.Literals.CONTAINER__DNS_SEARCH ||
-			childFeature == DockerPackage.Literals.CONTAINER__CAP_ADD ||
-			childFeature == DockerPackage.Literals.CONTAINER__CAP_DROP ||
-			childFeature == DockerPackage.Literals.CONTAINER__ADD_HOST ||
-			childFeature == DockerPackage.Literals.CONTAINER__SECURITY_OPT ||
-			childFeature == DockerPackage.Literals.CONTAINER__DEVICE ||
-			childFeature == DockerPackage.Literals.CONTAINER__LXC_CONF;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 	/**

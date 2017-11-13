@@ -276,7 +276,10 @@ public class ModelHandler {
 
 			}
 			modelPorts.getValues().addAll(portsToAdd);
-			modelContainer.setPorts(modelPorts);
+			
+			String modelPortsStr = listToStringArrayWithSeparatorComma(modelPorts.getValues());
+			
+			modelContainer.setPorts(modelPortsStr);
 			modelContainer.setMacAddress(currentContainer.getConfig().getMacAddress());
 			modelContainer.setDomainName(currentContainer.getConfig().getDomainName());
 			modelContainer.setOcciComputeHostname(currentContainer.getConfig().getHostName());
@@ -290,7 +293,8 @@ public class ModelHandler {
 					modelEnv.getValues().add(dockEnv.replace("[", "").replace("]", ""));
 				}
 			}
-			modelContainer.setEnvironment(modelEnv);
+			String dockerEnvStr = listToStringArrayWithSeparatorComma(modelEnv.getValues());
+			modelContainer.setEnvironment(dockerEnvStr);
 			modelContainer.setEntrypoint(Arrays.toString(currentContainer.getConfig().getEntrypoint()));
 			modelContainer.setTty(currentContainer.getConfig().getTty());
 			modelContainer.setStdinOpen(currentContainer.getConfig().getStdinOpen());
@@ -304,6 +308,30 @@ public class ModelHandler {
 
 		return containerList;
 	}
+	
+	/**
+	 * From a list of String, result will be : myvalue1;myValue2;myValue3
+	 * @param myList
+	 * @return a flat string with separator ";".
+	 */
+	public String listToStringArrayWithSeparatorComma(final List<String> myList) {
+		if (myList == null) {
+			return null;
+		}
+		StringBuilder result = new StringBuilder();
+		String resultStr;
+		for (String currentVal : myList) {
+			result.append(currentVal);
+			result.append(";");
+		}
+		resultStr = result.toString();
+		if (resultStr.endsWith(";")) {
+			// Remove lastest comma.
+			resultStr.substring(0, resultStr.length() - 1);
+		}
+		return resultStr;
+	}
+	
 	
 	/**
 	 * 
@@ -359,7 +387,8 @@ public class ModelHandler {
 
 		}
 		modelPorts.getValues().addAll(portsToAdd);
-		modelContainer.setPorts(modelPorts);
+		String modelPortsStr = listToStringArrayWithSeparatorComma(modelPorts.getValues());
+		modelContainer.setPorts(modelPortsStr);
 		modelContainer.setMacAddress(currentContainer.getConfig().getMacAddress());
 		modelContainer.setDomainName(currentContainer.getConfig().getDomainName());
 		modelContainer.setOcciComputeHostname(currentContainer.getConfig().getHostName());
@@ -373,7 +402,8 @@ public class ModelHandler {
 				modelEnv.getValues().add(dockEnv.replace("[", "").replace("]", ""));
 			}
 		}
-		modelContainer.setEnvironment(modelEnv);
+		String dockerEnvStr = listToStringArrayWithSeparatorComma(modelEnv.getValues());
+		modelContainer.setEnvironment(dockerEnvStr);
 		modelContainer.setEntrypoint(Arrays.toString(currentContainer.getConfig().getEntrypoint()));
 		modelContainer.setTty(currentContainer.getConfig().getTty());
 		modelContainer.setStdinOpen(currentContainer.getConfig().getStdinOpen());

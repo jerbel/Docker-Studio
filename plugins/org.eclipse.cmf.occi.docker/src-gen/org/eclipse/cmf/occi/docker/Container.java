@@ -217,134 +217,134 @@ public interface Container extends Compute {
 	void setCommand(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Ports</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Ports</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Ports</em>' containment reference.
-	 * @see #setPorts(ArrayOfString)
+	 * @return the value of the '<em>Ports</em>' attribute.
+	 * @see #setPorts(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Ports()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!ports'"
 	 * @generated
 	 */
-	ArrayOfString getPorts();
+	String getPorts();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getPorts <em>Ports</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getPorts <em>Ports</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Ports</em>' containment reference.
+	 * @param value the new value of the '<em>Ports</em>' attribute.
 	 * @see #getPorts()
 	 * @generated
 	 */
-	void setPorts(ArrayOfString value);
+	void setPorts(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Expose</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Expose</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Expose</em>' containment reference.
-	 * @see #setExpose(ArrayOfString)
+	 * @return the value of the '<em>Expose</em>' attribute.
+	 * @see #setExpose(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Expose()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!expose'"
 	 * @generated
 	 */
-	ArrayOfString getExpose();
+	String getExpose();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getExpose <em>Expose</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getExpose <em>Expose</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Expose</em>' containment reference.
+	 * @param value the new value of the '<em>Expose</em>' attribute.
 	 * @see #getExpose()
 	 * @generated
 	 */
-	void setExpose(ArrayOfString value);
+	void setExpose(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Volumes</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Volumes</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Volumes</em>' containment reference.
-	 * @see #setVolumes(ArrayOfString)
+	 * @return the value of the '<em>Volumes</em>' attribute.
+	 * @see #setVolumes(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Volumes()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!volumes'"
 	 * @generated
 	 */
-	ArrayOfString getVolumes();
+	String getVolumes();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getVolumes <em>Volumes</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getVolumes <em>Volumes</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Volumes</em>' containment reference.
+	 * @param value the new value of the '<em>Volumes</em>' attribute.
 	 * @see #getVolumes()
 	 * @generated
 	 */
-	void setVolumes(ArrayOfString value);
+	void setVolumes(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Environment</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Environment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Environment</em>' containment reference.
-	 * @see #setEnvironment(ArrayOfString)
+	 * @return the value of the '<em>Environment</em>' attribute.
+	 * @see #setEnvironment(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Environment()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!environment'"
 	 * @generated
 	 */
-	ArrayOfString getEnvironment();
+	String getEnvironment();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getEnvironment <em>Environment</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getEnvironment <em>Environment</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Environment</em>' containment reference.
+	 * @param value the new value of the '<em>Environment</em>' attribute.
 	 * @see #getEnvironment()
 	 * @generated
 	 */
-	void setEnvironment(ArrayOfString value);
+	void setEnvironment(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Env File</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Env File</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Env File</em>' containment reference.
-	 * @see #setEnvFile(ArrayOfString)
+	 * @return the value of the '<em>Env File</em>' attribute.
+	 * @see #setEnvFile(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_EnvFile()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!envFile'"
 	 * @generated
 	 */
-	ArrayOfString getEnvFile();
+	String getEnvFile();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getEnvFile <em>Env File</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getEnvFile <em>Env File</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Env File</em>' containment reference.
+	 * @param value the new value of the '<em>Env File</em>' attribute.
 	 * @see #getEnvFile()
 	 * @generated
 	 */
-	void setEnvFile(ArrayOfString value);
+	void setEnvFile(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Net</b></em>' attribute.
@@ -373,108 +373,108 @@ public interface Container extends Compute {
 	void setNet(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Dns</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Dns</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Dns</em>' containment reference.
-	 * @see #setDns(ArrayOfString)
+	 * @return the value of the '<em>Dns</em>' attribute.
+	 * @see #setDns(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Dns()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!dns'"
 	 * @generated
 	 */
-	ArrayOfString getDns();
+	String getDns();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getDns <em>Dns</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getDns <em>Dns</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dns</em>' containment reference.
+	 * @param value the new value of the '<em>Dns</em>' attribute.
 	 * @see #getDns()
 	 * @generated
 	 */
-	void setDns(ArrayOfString value);
+	void setDns(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Dns Search</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Dns Search</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Dns Search</em>' containment reference.
-	 * @see #setDnsSearch(ArrayOfString)
+	 * @return the value of the '<em>Dns Search</em>' attribute.
+	 * @see #setDnsSearch(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_DnsSearch()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!dnsSearch'"
 	 * @generated
 	 */
-	ArrayOfString getDnsSearch();
+	String getDnsSearch();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getDnsSearch <em>Dns Search</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getDnsSearch <em>Dns Search</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Dns Search</em>' containment reference.
+	 * @param value the new value of the '<em>Dns Search</em>' attribute.
 	 * @see #getDnsSearch()
 	 * @generated
 	 */
-	void setDnsSearch(ArrayOfString value);
+	void setDnsSearch(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cap Add</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Cap Add</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Cap Add</em>' containment reference.
-	 * @see #setCapAdd(ArrayOfString)
+	 * @return the value of the '<em>Cap Add</em>' attribute.
+	 * @see #setCapAdd(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CapAdd()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!capAdd'"
 	 * @generated
 	 */
-	ArrayOfString getCapAdd();
+	String getCapAdd();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCapAdd <em>Cap Add</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCapAdd <em>Cap Add</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cap Add</em>' containment reference.
+	 * @param value the new value of the '<em>Cap Add</em>' attribute.
 	 * @see #getCapAdd()
 	 * @generated
 	 */
-	void setCapAdd(ArrayOfString value);
+	void setCapAdd(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Cap Drop</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Cap Drop</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Cap Drop</em>' containment reference.
-	 * @see #setCapDrop(ArrayOfString)
+	 * @return the value of the '<em>Cap Drop</em>' attribute.
+	 * @see #setCapDrop(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CapDrop()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!capDrop'"
 	 * @generated
 	 */
-	ArrayOfString getCapDrop();
+	String getCapDrop();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCapDrop <em>Cap Drop</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCapDrop <em>Cap Drop</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cap Drop</em>' containment reference.
+	 * @param value the new value of the '<em>Cap Drop</em>' attribute.
 	 * @see #getCapDrop()
 	 * @generated
 	 */
-	void setCapDrop(ArrayOfString value);
+	void setCapDrop(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Working Dir</b></em>' attribute.
@@ -819,30 +819,30 @@ public interface Container extends Compute {
 	void setIpc(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Add Host</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Add Host</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Add Host</em>' containment reference.
-	 * @see #setAddHost(ArrayOfString)
+	 * @return the value of the '<em>Add Host</em>' attribute.
+	 * @see #setAddHost(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_AddHost()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!addHost'"
 	 * @generated
 	 */
-	ArrayOfString getAddHost();
+	String getAddHost();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getAddHost <em>Add Host</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getAddHost <em>Add Host</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Add Host</em>' containment reference.
+	 * @param value the new value of the '<em>Add Host</em>' attribute.
 	 * @see #getAddHost()
 	 * @generated
 	 */
-	void setAddHost(ArrayOfString value);
+	void setAddHost(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Mac Address</b></em>' attribute.
@@ -897,82 +897,82 @@ public interface Container extends Compute {
 	void setRm(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Security Opt</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Security Opt</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Security Opt</em>' containment reference.
-	 * @see #setSecurityOpt(ArrayOfString)
+	 * @return the value of the '<em>Security Opt</em>' attribute.
+	 * @see #setSecurityOpt(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_SecurityOpt()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!securityOpt'"
 	 * @generated
 	 */
-	ArrayOfString getSecurityOpt();
+	String getSecurityOpt();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getSecurityOpt <em>Security Opt</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getSecurityOpt <em>Security Opt</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Security Opt</em>' containment reference.
+	 * @param value the new value of the '<em>Security Opt</em>' attribute.
 	 * @see #getSecurityOpt()
 	 * @generated
 	 */
-	void setSecurityOpt(ArrayOfString value);
+	void setSecurityOpt(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Device</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Device</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Device</em>' containment reference.
-	 * @see #setDevice(ArrayOfString)
+	 * @return the value of the '<em>Device</em>' attribute.
+	 * @see #setDevice(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Device()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!device'"
 	 * @generated
 	 */
-	ArrayOfString getDevice();
+	String getDevice();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getDevice <em>Device</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getDevice <em>Device</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Device</em>' containment reference.
+	 * @param value the new value of the '<em>Device</em>' attribute.
 	 * @see #getDevice()
 	 * @generated
 	 */
-	void setDevice(ArrayOfString value);
+	void setDevice(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Lxc Conf</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Lxc Conf</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Lxc Conf</em>' containment reference.
-	 * @see #setLxcConf(ArrayOfString)
+	 * @return the value of the '<em>Lxc Conf</em>' attribute.
+	 * @see #setLxcConf(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_LxcConf()
-	 * @model containment="true"
+	 * @model dataType="org.eclipse.cmf.occi.core.String"
 	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!lxcConf'"
 	 * @generated
 	 */
-	ArrayOfString getLxcConf();
+	String getLxcConf();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getLxcConf <em>Lxc Conf</em>}' containment reference.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getLxcConf <em>Lxc Conf</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lxc Conf</em>' containment reference.
+	 * @param value the new value of the '<em>Lxc Conf</em>' attribute.
 	 * @see #getLxcConf()
 	 * @generated
 	 */
-	void setLxcConf(ArrayOfString value);
+	void setLxcConf(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Publish All</b></em>' attribute.

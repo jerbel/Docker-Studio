@@ -18,18 +18,36 @@
     <attributes name="command" mutable="true" default="">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="ports" mutable="true" type="//@types.0"/>
-    <attributes name="expose" mutable="true" type="//@types.0"/>
-    <attributes name="volumes" mutable="true" type="//@types.0"/>
-    <attributes name="environment" mutable="true" type="//@types.0"/>
-    <attributes name="envFile" mutable="true" type="//@types.0"/>
+    <attributes name="ports" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="expose" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="volumes" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="environment" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="envFile" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="net" mutable="true">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="dns" mutable="true" type="//@types.0"/>
-    <attributes name="dnsSearch" mutable="true" type="//@types.0"/>
-    <attributes name="capAdd" mutable="true" type="//@types.0"/>
-    <attributes name="capDrop" mutable="true" type="//@types.0"/>
+    <attributes name="dns" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="dnsSearch" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="capAdd" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="capDrop" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="workingDir" mutable="true">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
@@ -69,16 +87,24 @@
     <attributes name="ipc" mutable="true">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
-    <attributes name="addHost" mutable="true" type="//@types.0"/>
+    <attributes name="addHost" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="macAddress" mutable="true">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/infrastructure#//@types.17"/>
     </attributes>
     <attributes name="rm" mutable="true">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>
-    <attributes name="securityOpt" mutable="true" type="//@types.0"/>
-    <attributes name="device" mutable="true" type="//@types.0"/>
-    <attributes name="lxcConf" mutable="true" type="//@types.0"/>
+    <attributes name="securityOpt" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="device" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
+    <attributes name="lxcConf" mutable="true">
+      <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
+    </attributes>
     <attributes name="publishAll" mutable="true" default="false">
       <type xsi:type="occi:BooleanType" href="http://schemas.ogf.org/occi/core#//@types.1"/>
     </attributes>

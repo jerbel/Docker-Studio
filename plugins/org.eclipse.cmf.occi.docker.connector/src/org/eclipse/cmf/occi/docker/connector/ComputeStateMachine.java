@@ -12,6 +12,7 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.cmf.occi.infrastructure.RestartMethod;
@@ -21,7 +22,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 
+ * Compute state machine class.
  * @author Christophe Gourdin
  *
  */
@@ -44,7 +45,7 @@ public class ComputeStateMachine<T extends Compute> {
 	/**
 	 * Start OCCI Action.
 	 */
-	public void start() {
+	public void start() throws DockerException {
 		
 		ComputeStatus currentState = compute.getOcciComputeState();
 		
@@ -79,7 +80,7 @@ public class ComputeStateMachine<T extends Compute> {
 	/**
 	 * StartAll Modeler Action.
 	 */
-	public void startAll() {
+	public void startAll() throws DockerException {
 		ComputeStatus currentState = compute.getOcciComputeState();
 		LOGGER.info(className + ":startAll() - current state is " + currentState);
 		
@@ -113,11 +114,11 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the start_execute method.
 	 */
-	public void start_from_inactive_state() {
+	public void start_from_inactive_state() throws DockerException {
 		start_execute();
 	}
 
-	public void startAll_from_inactive_state() {
+	public void startAll_from_inactive_state() throws DockerException {
 		startAll_execute();
 	}
 
@@ -126,7 +127,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method does nothing.
 	 */
-	public void start_from_active_state() {
+	public void start_from_active_state() throws DockerException {
 		LOGGER.info(className + ":start_from_active_state() - DO NOTHING");
 		startAll_execute();
 	}
@@ -136,25 +137,26 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the start_execute method.
 	 */
-	public void start_from_suspended_state() {
+	public void start_from_suspended_state() throws DockerException {
 		start_execute();
 	}
 
 	/**
 	 * This method is the default implementation of the start action.
+	 * @throws DockerException 
 	 */
-	public void start_execute() {
+	public void start_execute() throws DockerException {
 		LOGGER.info(className + ":start_execute() - DO NOTHING");
 	}
 
-	public void startAll_execute() {
+	public void startAll_execute() throws DockerException {
 		LOGGER.info(className + ":startAll_execute() - DO NOTHING");
 	}
 
 	/**
 	 * Stop OCCI Action.
 	 */
-	public void stop(StopMethod method) {
+	public void stop(StopMethod method) throws DockerException {
 		ComputeStatus currentState = compute.getOcciComputeState();
 		LOGGER.info(className + ":stop(" + method + ") - current state is " + compute.getOcciComputeState());
 		
@@ -221,7 +223,7 @@ public class ComputeStateMachine<T extends Compute> {
 	/**
 	 * Restart OCCI Action.
 	 */
-	public void restart(RestartMethod method) {
+	public void restart(RestartMethod method) throws DockerException {
 		
 		ComputeStatus currentState = compute.getOcciComputeState();
 		LOGGER.info(className + ":restart(" + method + ") - current state is " + currentState);
@@ -255,7 +257,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the restart_execute method.
 	 */
-	public void restart_from_inactive_state(RestartMethod method) {
+	public void restart_from_inactive_state(RestartMethod method) throws DockerException {
 		restart_execute(method);
 	}
 
@@ -264,7 +266,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the restart_execute method.
 	 */
-	public void restart_from_active_state(RestartMethod method) {
+	public void restart_from_active_state(RestartMethod method) throws DockerException {
 		restart_execute(method);
 	}
 
@@ -273,21 +275,22 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the restart_execute method.
 	 */
-	public void restart_from_suspended_state(RestartMethod method) {
+	public void restart_from_suspended_state(RestartMethod method) throws DockerException {
 		restart_execute(method);
 	}
 
 	/**
 	 * This method is the default implementation of the restart action.
+	 * @throws DockerException 
 	 */
-	public void restart_execute(RestartMethod method) {
+	public void restart_execute(RestartMethod method) throws DockerException {
 		LOGGER.info(className + ":restart_execute(" + method + ") - DO NOTHING");
 	}
 
 	/**
 	 * Suspend OCCI Action.
 	 */
-	public void suspend(SuspendMethod method) {
+	public void suspend(SuspendMethod method) throws DockerException {
 		
 		ComputeStatus currentState = compute.getOcciComputeState();
 		LOGGER.info(className + ":suspend(" + method + ") - current state is " + currentState);

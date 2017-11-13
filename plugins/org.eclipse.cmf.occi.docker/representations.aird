@@ -5606,7 +5606,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_idcQQJ35EeeINtugSuSJIg" name="ports: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_idcQQJ35EeeINtugSuSJIg" name="ports: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.5"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.5"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_idcQQZ35EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5614,7 +5614,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DdtMMJ36EeeINtugSuSJIg" name="expose: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_DdtMMJ36EeeINtugSuSJIg" name="expose: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.6"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.6"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_DdtzQJ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5622,7 +5622,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_aTUSAJ36EeeINtugSuSJIg" name="volumes: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_aTUSAJ36EeeINtugSuSJIg" name="volumes: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.7"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.7"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_aTUSAZ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5630,7 +5630,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qREvMJ36EeeINtugSuSJIg" name="environment: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qREvMJ36EeeINtugSuSJIg" name="environment: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.8"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.8"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_qREvMZ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5638,7 +5638,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qREvMp36EeeINtugSuSJIg" name="envFile: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qREvMp36EeeINtugSuSJIg" name="envFile: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.9"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.9"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_qRFWQJ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5654,7 +5654,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qRFWQ536EeeINtugSuSJIg" name="dns: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_qRFWQ536EeeINtugSuSJIg" name="dns: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.11"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.11"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_qRFWRJ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5662,7 +5662,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_0-svgJ36EeeINtugSuSJIg" name="dnsSearch: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_0-svgJ36EeeINtugSuSJIg" name="dnsSearch: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.12"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.12"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_0-svgZ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5670,7 +5670,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_0-svgp36EeeINtugSuSJIg" name="capAdd: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_0-svgp36EeeINtugSuSJIg" name="capAdd: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.13"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.13"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_0-tWkJ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5678,7 +5678,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_-5x4kJ36EeeINtugSuSJIg" name="capDrop: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_-5x4kJ36EeeINtugSuSJIg" name="capDrop: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.14"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.14"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_-5yfoJ36EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5790,7 +5790,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_7JWB8J38EeeINtugSuSJIg" name="addHost: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_7JWB8J38EeeINtugSuSJIg" name="addHost: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.28"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.28"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_7JWpAJ38EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5814,7 +5814,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_cn-U4J39EeeINtugSuSJIg" name="securityOpt: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_cn-U4J39EeeINtugSuSJIg" name="securityOpt: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.31"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.31"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_cn-U4Z39EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5822,7 +5822,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_nae1MJ39EeeINtugSuSJIg" name="device: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_nae1MJ39EeeINtugSuSJIg" name="device: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.32"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.32"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_nafcQJ39EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">
@@ -5830,7 +5830,7 @@
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
       </ownedElements>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_nafcQZ39EeeINtugSuSJIg" name="lxcConf: ArrayOfString">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_nafcQZ39EeeINtugSuSJIg" name="lxcConf: String">
         <target xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.33"/>
         <semanticElements xmi:type="occi:Attribute" href="model/docker.occie#//@kinds[term='container']/@attributes.33"/>
         <ownedStyle xmi:type="diagram:Square" xmi:id="_nafcQp39EeeINtugSuSJIg" labelSize="10" labelAlignment="LEFT" labelPosition="node">

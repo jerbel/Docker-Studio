@@ -18,11 +18,16 @@ import java.util.Map;
 import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
 import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.google.common.collect.Multimap;
 
 /**
  * Connector implementation for the OCCI kind: - scheme:
@@ -41,6 +46,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	private ContainerObserver containerObserver = null;
 
 	private EventCallBack eventCallBack = new EventCallBack(this);
+	private Map<DockerClient, CreateContainerResponse> map = null;
+
+	protected static DockerClientManager dockerClientManager = null;
 
 	// Listener of the stats
 	// private StatsCallBack statsCallback = new StatsCallback(this);
@@ -204,6 +212,62 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 
 	public ContainerObserver getObserver() {
 		return this.containerObserver;
+	}
+
+	/**
+	 * Create the container within compute machine.
+	 * 
+	 * @param machine
+	 * @throws DockerException
+	 */
+	public void createContainer(Compute machine) throws DockerException {
+		if (dockerClientManager == null) {
+			dockerClientManager = new DockerClientManager(machine, eventCallBack);
+		}
+
+		// Download image
+		dockerClientManager.pullImage(machine, this.image);
+
+		// Create the container
+		dockerClientManager.createContainer(machine, this);
+
+	}
+
+	/**
+	 * 
+	 * @param machine
+	 * @param containerDependency
+	 * @return
+	 * @throws DockerException
+	 */
+	public Map<DockerClient, CreateContainerResponse> createContainer(Compute machine,
+			Multimap<String, String> containerDependency) throws DockerException {
+
+		// Set dockerClient
+		Map<DockerClient, CreateContainerResponse> result = new HashMap<>();
+		if (dockerClientManager == null) {
+			dockerClientManager = new DockerClientManager(machine, eventCallBack);
+		}
+
+		// Download image
+		dockerClientManager.pullImage(machine, this.image);
+
+		result = dockerClientManager.createContainer(machine, this, containerDependency);
+		this.map = new HashMap<DockerClient, CreateContainerResponse>(result);
+		return result;
+	}
+
+	/**
+	 * Remove container from compute machine.
+	 * 
+	 * @param machine
+	 *            a compute.
+	 */
+	public void removeContainer(Compute machine) throws DockerException {
+		if (dockerClientManager == null) {
+			dockerClientManager = new DockerClientManager(machine, eventCallBack);
+		}
+		dockerClientManager.removeContainer(machine, this.name);
 	}
 
 }

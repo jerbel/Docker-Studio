@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,6 +40,7 @@ import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerConfigurationHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
 import org.eclipse.cmf.occi.docker.connector.observer.StatsCallBack;
+import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -96,10 +98,16 @@ public class DockerClientManager {
 		this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
 	}
 
-	public DockerClientManager() {
-		
+	public DockerClientManager(Compute compute, EventCallBack event) throws DockerException {
+		this.compute = compute;
+		this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
+		this.dockerClient.eventsCmd().exec(event);
 	}
-	
+
+	public DockerClientManager() {
+
+	}
+
 	public DockerClient getDockerClient() {
 		return dockerClient;
 	}
@@ -180,7 +188,7 @@ public class DockerClientManager {
 	 * @return
 	 * @throws DockerException
 	 */
-	public CreateContainerResponse createContainer(Compute computeMachine, Container container,
+	public Map<DockerClient, CreateContainerResponse> createContainer(Compute computeMachine, Container container,
 			Multimap<String, String> containerDependency) throws DockerException {
 		preCheckDockerClient(computeMachine);
 		CreateContainerCmd createContainer = containerBuilder(container, containerDependency);
@@ -189,7 +197,10 @@ public class DockerClientManager {
 		container.setContainerid(createContainerResponse.getId());
 		LOGGER.info("Created container: {}", container.getContainerid());
 
-		return createContainerResponse;
+		Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
+		result.put(dockerClient, createContainerResponse);
+
+		return result;
 	}
 
 	/**
@@ -228,10 +239,13 @@ public class DockerClientManager {
 		}
 
 		// Add hostnames to /etc/hosts in the container.
-		ArrayOfString addHosts = container.getAddHost();
 
-		if (addHosts != null && !addHosts.getValues().isEmpty()) {
-			createContainer.withExtraHosts(addHosts.getValues());
+		// ArrayOfString addHosts = container.getAddHost();
+
+		if (container.getAddHost() != null && !container.getAddHost().trim().isEmpty()) {
+
+			createContainer.withExtraHosts(container.getAddHost().split(";"));
+			// createContainer.withExtraHosts(addHosts.getValues());
 		}
 
 		if (StringUtils.isNotBlank(container.getCpuSetCpus())) {
@@ -245,21 +259,46 @@ public class DockerClientManager {
 			createContainer.withPrivileged(container.isPrivileged());
 		}
 
-		if (container.getDns() != null && !container.getDns().getValues().isEmpty()) {
-			createContainer.withDns(container.getDns().getValues());
+		if (container.getDns() != null && !container.getDns().trim().isEmpty()) {
+			createContainer.withDns(container.getDns().split(";"));
 		}
 
-		if (container.getEnvironment() != null && !container.getEnvironment().getValues().isEmpty()) {
-			createContainer.withEnv(container.getEnvironment().getValues());
+		// if (container.getDns() != null && !container.getDns().getValues().isEmpty())
+		// {
+		// createContainer.withDns(container.getDns().getValues());
+		// }
+
+		if (container.getEnvironment() != null && !container.getEnvironment().trim().isEmpty()) {
+			createContainer.withEnv(container.getEnvironment().split(";"));
 		}
+
+		// if (container.getEnvironment() != null &&
+		// !container.getEnvironment().getValues().isEmpty()) {
+		// createContainer.withEnv(container.getEnvironment().getValues());
+		// }
+
 		// Define exposed port and port binding access.
-		ArrayOfString ports = container.getPorts();
-		if (ports != null && ports.getValues().isEmpty()) {
+
+		// ArrayOfString ports = container.getPorts();
+		List<String> ports = new ArrayList<>();
+		// Get the original tab.
+		String portsValues = container.getPorts();
+		if (portsValues != null && !portsValues.trim().isEmpty()) {
+			// example: 8080:80;4043:443 etc. ; is the separator for tab and : port
+			// separator.
+			String[] portsTab = container.getPorts().split(";");
+			// Build the ports list.
+			for (String port : portsTab) {
+				ports.add(port); // 8080:80..
+			}
+		}
+
+		if (ports != null && !ports.isEmpty()) {
 			LOGGER.info("Container ports : ");
 			List<ExposedPort> exposedPorts = new LinkedList<>();
 			List<PortBinding> portBindings = new LinkedList<>();
 
-			for (String port : ports.getValues()) {
+			for (String port : ports) {
 				LOGGER.info("port: " + port);
 				String[] lrports = port.split(":"); // ex: 2000:80
 				ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(lrports[0]));
@@ -300,14 +339,28 @@ public class DockerClientManager {
 		if (StringUtils.isNotBlank(container.getUser())) {
 			createContainer.withUser(container.getUser());
 		}
-		if (container.getVolumes() != null && !container.getVolumes().getValues().isEmpty()) {
+
+		String volumesStr = container.getVolumes();
+		if (volumesStr != null && !volumesStr.trim().isEmpty()) {
+			String[] volumes = volumesStr.split(";");
 			List<Volume> vs = new LinkedList<Volume>();
-			for (String volume : container.getVolumes().getValues()) {
-				Volume newVolume = new Volume(volume);
+			for (String volumeName : volumes) {
+				Volume newVolume = new Volume(volumeName);
 				vs.add(newVolume);
 			}
 			createContainer.withVolumes(vs);
 		}
+
+		// With ArraysOfString datatype.
+		// if (container.getVolumes() != null &&
+		// !container.getVolumes().getValues().isEmpty()) {
+		// List<Volume> vs = new LinkedList<Volume>();
+		// for (String volume : container.getVolumes().getValues()) {
+		// Volume newVolume = new Volume(volume);
+		// vs.add(newVolume);
+		// }
+		// createContainer.withVolumes(vs);
+		// }
 
 		if (container.getMemLimit() > 0) {
 			// TODO : Replace integer by Long in specification model occie.
@@ -319,10 +372,12 @@ public class DockerClientManager {
 			createContainer.withMemory(Long.valueOf(container.getMemorySwap()));
 		}
 
-		if (container.getLxcConf() != null && !container.getLxcConf().getValues().isEmpty()) {
+		String lxcConfStr = container.getLxcConf();
+		if (lxcConfStr != null && !lxcConfStr.trim().isEmpty()) {
 			List<LxcConf> lxcConfigs = new LinkedList<>();
 			// Example : lxc.aa_profile:unconfined etc.
-			for (String lxcConf : container.getLxcConf().getValues()) {
+			String[] lxcConfs = lxcConfStr.split(";");
+			for (String lxcConf : lxcConfs) {
 				String[] lxcKeyVal = lxcConf.split(":");
 				if (lxcConf.length() == 2) {
 					LxcConf lxcCon = new LxcConf(lxcKeyVal[0], lxcKeyVal[1]);
@@ -337,13 +392,40 @@ public class DockerClientManager {
 			}
 		}
 
+		// With ArraysOfString datatype.
+		// if (container.getLxcConf() != null &&
+		// !container.getLxcConf().getValues().isEmpty()) {
+		// List<LxcConf> lxcConfigs = new LinkedList<>();
+		// // Example : lxc.aa_profile:unconfined etc.
+		// for (String lxcConf : container.getLxcConf().getValues()) {
+		// String[] lxcKeyVal = lxcConf.split(":");
+		// if (lxcConf.length() == 2) {
+		// LxcConf lxcCon = new LxcConf(lxcKeyVal[0], lxcKeyVal[1]);
+		// lxcConfigs.add(lxcCon);
+		// } else {
+		// throw new DockerException(
+		// "Lxc conf format must be like this one --> lxc.aa_profile:unconfined -->
+		// key:value");
+		// }
+		// }
+		// if (!lxcConfigs.isEmpty()) {
+		// createContainer.withLxcConf(lxcConfigs);
+		// }
+		// }
+
 		if (StringUtils.isNotBlank(container.getDomainName())) {
 			createContainer.withDomainName(container.getDomainName());
 		}
 
-		if (container.getDnsSearch() != null && !container.getDnsSearch().getValues().isEmpty()) {
-			createContainer.withDnsSearch(container.getDnsSearch().getValues());
+		if (container.getDnsSearch() != null && !container.getDnsSearch().trim().isEmpty()) {
+			createContainer.withDnsSearch(container.getDnsSearch().split(";"));
 		}
+
+		// with ArraysOfString datatype.
+		// if (container.getDnsSearch() != null &&
+		// !container.getDnsSearch().getValues().isEmpty()) {
+		// createContainer.withDnsSearch(container.getDnsSearch().getValues());
+		// }
 
 		if (StringUtils.isNotBlank(container.getEntrypoint())) {
 			// TODO : Convert to ArrayOfString in model occie.
@@ -884,6 +966,7 @@ public class DockerClientManager {
 
 	/**
 	 * Check if a container name already exist on a compute.
+	 * 
 	 * @param containerName
 	 * @param compute
 	 * @return true if container name exist, false if not.

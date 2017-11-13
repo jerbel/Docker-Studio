@@ -31,11 +31,9 @@ import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorEnumerationLite
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorPackage;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorProperty;
 import org.eclipse.ocl.pivot.internal.library.ecore.EcoreExecutorType;
-import org.eclipse.ocl.pivot.internal.library.ecore.EcoreLibraryOppositeProperty;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorFragment;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorOperation;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorProperty;
-import org.eclipse.ocl.pivot.internal.library.executor.ExecutorPropertyWithImplementation;
 import org.eclipse.ocl.pivot.internal.library.executor.ExecutorStandardLibrary;
 import org.eclipse.ocl.pivot.oclstdlib.OCLstdlibTables;
 import org.eclipse.ocl.pivot.utilities.TypeUtil;
@@ -68,8 +66,6 @@ public class DockerTables
 	 */
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_occiware_org_s_occi_s_docker_s_ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://occiware.org/occi/docker/ecore", null, org.eclipse.cmf.occi.docker.DockerPackage.eINSTANCE);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.NsURIPackageId PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure_s_ecore = org.eclipse.ocl.pivot.ids.IdManager.getNsURIPackageId("http://schemas.ogf.org/occi/infrastructure/ecore", null, org.eclipse.cmf.occi.infrastructure.InfrastructurePackage.eINSTANCE);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_ArrayOfString = org.eclipse.cmf.occi.docker.DockerTables.PACKid_http_c_s_s_occiware_org_s_occi_s_docker_s_ecore.getClassId("ArrayOfString", 0);
-	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.ClassId CLSSid_Container = org.eclipse.cmf.occi.docker.DockerTables.PACKid_http_c_s_s_occiware_org_s_occi_s_docker_s_ecore.getClassId("Container", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.DataTypeId DATAid_Mac = org.eclipse.cmf.occi.docker.DockerTables.PACKid_http_c_s_s_schemas_ogf_org_s_occi_s_infrastructure_s_ecore.getDataTypeId("Mac", 0);
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.EnumerationId ENUMid_Mode = org.eclipse.cmf.occi.docker.DockerTables.PACKid_http_c_s_s_occiware_org_s_occi_s_docker_s_ecore.getEnumerationId("Mode");
 	public static final /*@NonInvalid*/ org.eclipse.ocl.pivot.ids.CollectionTypeId SEQ_PRIMid_String = org.eclipse.ocl.pivot.ids.TypeId.SEQUENCE.getSpecializedId(org.eclipse.ocl.pivot.ids.TypeId.STRING);
@@ -345,8 +341,8 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Mode__OclType = new ExecutorFragment(Types._Mode, OCLstdlibTables.Types._OclType);
 
 		private static final /*@NonNull*/ ExecutorFragment _Network__Entity = new ExecutorFragment(Types._Network, OCCITables.Types._Entity);
-		private static final /*@NonNull*/ ExecutorFragment _Network__Network = new ExecutorFragment(Types._Network, InfrastructureTables.Types._Network);
-		private static final /*@NonNull*/ ExecutorFragment _Network__Network_1 = new ExecutorFragment(Types._Network, DockerTables.Types._Network);
+		private static final /*@NonNull*/ ExecutorFragment _Network__Network = new ExecutorFragment(Types._Network, DockerTables.Types._Network);
+		private static final /*@NonNull*/ ExecutorFragment _Network__Network_1 = new ExecutorFragment(Types._Network, InfrastructureTables.Types._Network);
 		private static final /*@NonNull*/ ExecutorFragment _Network__OclAny = new ExecutorFragment(Types._Network, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Network__OclElement = new ExecutorFragment(Types._Network, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _Network__Resource = new ExecutorFragment(Types._Network, OCCITables.Types._Resource);
@@ -456,19 +452,6 @@ public class DockerTables
 		}
 
 		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__values = new EcoreExecutorProperty(DockerPackage.Literals.ARRAY_OF_STRING__VALUES, Types._ArrayOfString, 0);
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__addHost = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 1, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__ADD_HOST));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__capAdd = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 2, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__CAP_ADD));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__capDrop = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 3, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__CAP_DROP));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__device = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 4, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__DEVICE));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__dns = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 5, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__DNS));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__dnsSearch = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 6, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__DNS_SEARCH));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__envFile = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 7, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__ENV_FILE));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__environment = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 8, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__ENVIRONMENT));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__expose = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 9, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__EXPOSE));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__lxcConf = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 10, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__LXC_CONF));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__ports = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 11, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__PORTS));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__securityOpt = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 12, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__SECURITY_OPT));
-		public static final /*@NonNull*/ ExecutorProperty _ArrayOfString__Container__volumes = new ExecutorPropertyWithImplementation("Container", Types._ArrayOfString, 13, new EcoreLibraryOppositeProperty(DockerPackage.Literals.CONTAINER__VOLUMES));
 
 		public static final /*@NonNull*/ ExecutorProperty _Cluster__name = new EcoreExecutorProperty(DockerPackage.Literals.CLUSTER__NAME, Types._Cluster, 0);
 
@@ -1018,8 +1001,8 @@ public class DockerTables
 			Fragments._Network__OclElement /* 1 */,
 			Fragments._Network__Entity /* 2 */,
 			Fragments._Network__Resource /* 3 */,
-			Fragments._Network__Network /* 4 */,
-			Fragments._Network__Network_1 /* 5 */
+			Fragments._Network__Network_1 /* 4 */,
+			Fragments._Network__Network /* 5 */
 		};
 		private static final int /*@NonNull*/ [] __Network = { 1,1,1,1,1,1 };
 
@@ -2194,7 +2177,7 @@ public class DockerTables
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network_1 = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Entity = {
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
@@ -2205,7 +2188,7 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network_1 = {
 			InfrastructureTables.Operations._Network__down /* down() */,
 			InfrastructureTables.Operations._Network__down /* down() */,
 			InfrastructureTables.Operations._Network__up /* up() */,
@@ -3263,7 +3246,7 @@ public class DockerTables
 			Fragments._Machinevmwarevcloudair__Machinevmwarevcloudair.initProperties(_Machinevmwarevcloudair);
 			Fragments._Machinevmwarevsphere__Machinevmwarevsphere.initProperties(_Machinevmwarevsphere);
 			Fragments._Mode__Mode.initProperties(_Mode);
-			Fragments._Network__Network_1.initProperties(_Network);
+			Fragments._Network__Network.initProperties(_Network);
 			Fragments._Networklink__Networklink.initProperties(_Networklink);
 			Fragments._Volume__Volume.initProperties(_Volume);
 			Fragments._Volumesfrom__Volumesfrom.initProperties(_Volumesfrom);
