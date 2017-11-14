@@ -12,6 +12,7 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.eclipse.cmf.occi.docker.Network;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -24,6 +25,18 @@ public class NetworkConnector extends org.eclipse.cmf.occi.docker.impl.NetworkIm
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(NetworkConnector.class);
+	
+	// TODO : TO Implement.
+	
+	private NetworkStateMachine<Network> stateMachine = new NetworkStateMachine<Network>(this) {
+		/**
+		 * Start the Docker container.
+		 */
+		@Override
+		public void create_execute() {
+			LOGGER.info("EXECUTING Network create action.");
+		}
+	};
 
 	// Start of user code Networkconnector_constructor
 	/**
@@ -31,7 +44,6 @@ public class NetworkConnector extends org.eclipse.cmf.occi.docker.impl.NetworkIm
 	 */
 	NetworkConnector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -85,4 +97,5 @@ public class NetworkConnector extends org.eclipse.cmf.occi.docker.impl.NetworkIm
 	//
 	// Network actions.
 	//
+
 }

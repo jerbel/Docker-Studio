@@ -12,6 +12,11 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
+import org.eclipse.cmf.occi.infrastructure.StopMethod;
+import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,14 +30,42 @@ public class MachinevmwarefusionConnector extends org.eclipse.cmf.occi.docker.im
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(MachinevmwarefusionConnector.class);
-
+	private MachineObserver machineObserver = null;
+	
+	protected MachineManager manager = new MachineManager(this) {
+		
+		@Override
+		public String getDriverName() {
+			
+			return Provider.vmwarefusion.toString();
+		}
+		
+		@Override
+		public void appendDriverParameters(StringBuilder sb) {
+			if (getDiskSize() > 0) {
+				sb.append(" --vmwarefusion-disk-size ").append(getDiskSize());
+			}
+			if (getOcciComputeMemory() > 0.0F) {
+				sb.append(" --vmwarefusion-memory-size ").append(getOcciComputeMemory());
+			} else if (getOcciComputeMemory() == 0.0F) {
+				sb.append(" --vmwarefusion-memory-size ").append(1024.0);
+			}
+			if (getBoot2dockerURL() != null) {
+				sb.append(" --vmwarefusion-boot2docker-url ").append(getBoot2dockerURL());
+			}
+			if(isNoShare()){
+				sb.append(" --vmwarefusion-no-share ").append(isNoShare());
+			}
+			
+		}
+	};
+	
 	// Start of user code Machinevmwarefusionconnector_constructor
 	/**
 	 * Constructs a machinevmwarefusion connector.
 	 */
 	MachinevmwarefusionConnector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -46,7 +79,7 @@ public class MachinevmwarefusionConnector extends org.eclipse.cmf.occi.docker.im
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		start();
 	}
 	// End of user code
 
@@ -57,7 +90,12 @@ public class MachinevmwarefusionConnector extends org.eclipse.cmf.occi.docker.im
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.synchronize();
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
@@ -79,11 +117,63 @@ public class MachinevmwarefusionConnector extends org.eclipse.cmf.occi.docker.im
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.removeMachine(this);
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
+		} catch (DockerException ex) {
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
 	//
 	// Machinevmwarefusion actions.
 	//
+	@Override
+	public void startall() {
+		LOGGER.debug("Start all action call on " + this);
+		try {
+			manager.startAll();
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void start() {
+		try {
+			manager.start();
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void stop(StopMethod method) {
+		try {
+			manager.stop(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void suspend(SuspendMethod method) {
+		try {
+			manager.suspend(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
 }

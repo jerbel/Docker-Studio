@@ -18,6 +18,7 @@ import org.eclipse.cmf.occi.docker.connector.DockerClientManager;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
+import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.util.EContentAdapter;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -109,6 +110,26 @@ public class MachineObserver {
 		});
 
 		return compute;
+	}
+	
+	/**
+	 * Remove the observer from this compute machine.
+	 * @param machine
+	 * @throws DockerException
+	 */
+	public void removeListener(Compute machine) throws DockerException {
+		EContentAdapter eAdapterToRemove = null;
+		for (Adapter eAdapter : machine.eAdapters()) {
+
+			if (eAdapter instanceof EContentAdapter) {
+				eAdapterToRemove = (EContentAdapter) eAdapter;
+				break;
+			}
+
+		}
+		if (eAdapterToRemove != null) {
+			machine.eAdapters().remove(eAdapterToRemove);
+		}
 	}
 
 }

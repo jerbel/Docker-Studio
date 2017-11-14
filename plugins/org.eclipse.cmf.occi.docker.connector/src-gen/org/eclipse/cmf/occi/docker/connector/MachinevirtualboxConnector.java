@@ -12,6 +12,12 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
+import org.eclipse.cmf.occi.infrastructure.StopMethod;
+import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,14 +31,71 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(MachinevirtualboxConnector.class);
-
+	private MachineObserver machineObserver = null;
+	
+	protected MachineManager manager = new MachineManager(this) {
+		
+		@Override
+		public String getDriverName() {
+			
+			return Provider.virtualbox.toString();
+		}
+		
+		@Override
+		public void appendDriverParameters(StringBuilder sb) {
+			if (getDiskSize() > 0) {
+				sb.append(" --virtualbox-disk-size ").append(getDiskSize());
+			}
+			if (getOcciComputeMemory() > 0.0F) {
+				sb.append(" --virtualbox-memory ").append(getOcciComputeMemory().intValue());
+			} else if (getOcciComputeMemory() == 0.0F) {
+				sb.append(" --virtualbox-memory ").append(1024);
+			}
+			if (getOcciComputeCores() > 0) {
+				sb.append(" --virtualbox-cpu-count ").append(getOcciComputeCores());
+			} else if (getOcciComputeCores() == 0) {
+				sb.append(" --virtualbox-cpu-count ").append(-1);
+			}
+			if (!StringUtils.isEmpty(getBoot2dockerURL())) {
+				sb.append(" --virtualbox-boot2docker-url ").append(getBoot2dockerURL());
+			}else{
+				// TODO : Update version, use configuration file for this value, this must not be set on hard as this..
+				// Use boot2docker v1.11.2
+				sb.append(" --virtualbox-boot2docker-url ").append("https://github.com/boot2docker/boot2docker/releases/download/v1.11.2/boot2docker.iso");
+			}
+			if (isHostDNSResolver()) {
+				sb.append(" --virtualbox-host-dns-resolver ").append(isHostDNSResolver());
+			}
+			if (!StringUtils.isEmpty(getImportBoot2DockerVM())) {
+				sb.append(" --virtualbox-import-boot2docker-vm ").append(getImportBoot2DockerVM());
+			}
+			if (isHostDNSResolver()) {
+				sb.append(" --virtualbox-host-dns-resolver ").append(isHostDNSResolver());
+			}
+			if (!StringUtils.isEmpty(getHostOnlyNICType())) {
+				sb.append(" --virtualbox-hostonly-nictype ").append(getHostOnlyNICType());
+			}
+			if (isNoShare()) {
+				sb.append(" --virtualbox-no-share ").append(isNoShare());
+			}
+			if (isNoDNSProxy()) {
+				sb.append(" --virtualbox-no-dns-proxy ").append(isNoDNSProxy());
+			}
+			if (isNoVTXCheck()) {
+				sb.append(" --virtualbox-no-vtx-check ").append(isNoVTXCheck());
+			}
+			if (!StringUtils.isEmpty(getShareFolder())) {
+				sb.append(" --virtualbox-share-folder ").append(getShareFolder());
+			}
+			
+		}
+	};
 	// Start of user code Machinevirtualboxconnector_constructor
 	/**
 	 * Constructs a machinevirtualbox connector.
 	 */
 	MachinevirtualboxConnector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -46,7 +109,7 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		start();
 	}
 	// End of user code
 
@@ -57,7 +120,12 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.synchronize();
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
@@ -79,11 +147,63 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.removeMachine(this);
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
+		} catch (DockerException ex) {
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
 	//
 	// Machinevirtualbox actions.
 	//
+	@Override
+	public void startall() {
+		LOGGER.debug("Start all action call on " + this);
+		try {
+			manager.startAll();
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void start() {
+		try {
+			manager.start();
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void stop(StopMethod method) {
+		try {
+			manager.stop(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void suspend(SuspendMethod method) {
+		try {
+			manager.suspend(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
 }

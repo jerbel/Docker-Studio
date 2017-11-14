@@ -1086,6 +1086,15 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EOperation getMachine__Startall() {
+		return machineEClass.getEOperations().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getVolume() {
 		return volumeEClass;
 	}
@@ -2983,6 +2992,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(machineEClass, MACHINE__SWARM_ADDR);
 		createEAttribute(machineEClass, MACHINE__SWARM_EXPERIMENTAL);
 		createEAttribute(machineEClass, MACHINE__TLS_SAN);
+		createEOperation(machineEClass, MACHINE___STARTALL);
 
 		volumeEClass = createEClass(VOLUME);
 		createEAttribute(volumeEClass, VOLUME__DRIVER);
@@ -3360,6 +3370,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getMachine_SwarmAddr(), theOCCIPackage.getString(), "swarmAddr", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_SwarmExperimental(), theOCCIPackage.getString(), "swarmExperimental", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMachine_TlsSan(), theOCCIPackage.getString(), "tlsSan", null, 0, 1, Machine.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEOperation(getMachine__Startall(), null, "startall", 0, 1, IS_UNIQUE, IS_ORDERED);
 
 		initEClass(volumeEClass, Volume.class, "Volume", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getVolume_Driver(), theOCCIPackage.getString(), "driver", "local", 0, 1, Volume.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

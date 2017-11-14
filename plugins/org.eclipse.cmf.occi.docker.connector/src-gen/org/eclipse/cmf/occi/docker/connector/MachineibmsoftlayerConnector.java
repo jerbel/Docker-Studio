@@ -12,6 +12,12 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
+import org.eclipse.cmf.occi.infrastructure.StopMethod;
+import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,13 +32,74 @@ public class MachineibmsoftlayerConnector extends org.eclipse.cmf.occi.docker.im
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(MachineibmsoftlayerConnector.class);
 
+	private MachineObserver machineObserver = null;
+	
+	protected MachineManager manager = new MachineManager(this) {
+		
+		@Override
+		public String getDriverName() {
+			
+			return Provider.ibm.toString();
+		}
+		
+		@Override
+		public void appendDriverParameters(StringBuilder sb) {
+			if (StringUtils.isNotBlank(getUser())) {
+				sb.append(" --softlayer-user ").append(getUser());
+			}
+			if (StringUtils.isNotBlank(getDomain())) {
+				sb.append(" --softlayer-domain ").append(getDomain());
+			}
+			if (StringUtils.isNotBlank(getApiEndpoint())) {
+				sb.append(" --softlayer-api-endpoint ").append(getApiEndpoint());
+			}
+			if (StringUtils.isNotBlank(getApiKey())) {
+				sb.append(" --softlayer-api-key ").append(getApiKey());
+			}
+			if (getCpu() > 0) {
+				sb.append(" --softlayer-cpu ").append(getCpu());
+			}
+			if (getDiskSize() > 0) {
+				sb.append(" --softlayer-disk-size ").append(getDiskSize());
+			}
+			if (getOcciComputeMemory() > 0) {
+				sb.append(" --softlayer-memory ").append(getOcciComputeMemory());
+			}
+			if (StringUtils.isNotBlank(getOcciComputeHostname())) {
+				sb.append(" --softlayer-hostname ").append(getOcciComputeHostname());
+			}
+			if (StringUtils.isNotBlank(getImage())) {
+				sb.append(" --softlayer-image ").append(getImage());
+			}
+			if (StringUtils.isNotBlank(getPublicVlanId())) {
+				sb.append(" --softlayer-public-vlan-id ").append(getPublicVlanId());
+			}
+			if (StringUtils.isNotBlank(getPrivateVlanId())) {
+				sb.append(" --softlayer-private-vlan-id ").append(getPrivateVlanId());
+			}
+			if (StringUtils.isNotBlank(getRegion())) {
+				sb.append(" --softlayer-region ").append(getRegion());
+			}
+			if (isPrivateNetOnly()) {
+				sb.append(" --softlayer-private-net-only ").append(isPrivateNetOnly());
+			}
+			if (isLocalDisk()) {
+				sb.append(" --softlayer-local-disk ").append(isLocalDisk());
+			}
+			if (isPrivateNetOnly()) {
+				sb.append(" --softlayer-private-net-only ").append(isPrivateNetOnly());
+			}
+			
+		}
+	};
+	
+	
 	// Start of user code Machineibmsoftlayerconnector_constructor
 	/**
 	 * Constructs a machineibmsoftlayer connector.
 	 */
 	MachineibmsoftlayerConnector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -46,7 +113,7 @@ public class MachineibmsoftlayerConnector extends org.eclipse.cmf.occi.docker.im
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		start();
 	}
 	// End of user code
 
@@ -57,7 +124,12 @@ public class MachineibmsoftlayerConnector extends org.eclipse.cmf.occi.docker.im
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.synchronize();
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
@@ -79,11 +151,63 @@ public class MachineibmsoftlayerConnector extends org.eclipse.cmf.occi.docker.im
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.removeMachine(this);
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
+		} catch (DockerException ex) {
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
 	//
 	// Machineibmsoftlayer actions.
 	//
+	@Override
+	public void startall() {
+		LOGGER.debug("Start all action call on " + this);
+		try {
+			manager.startAll();
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void start() {
+		try {
+			manager.start();
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void stop(StopMethod method) {
+		try {
+			manager.stop(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void suspend(SuspendMethod method) {
+		try {
+			manager.suspend(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
 }

@@ -12,6 +12,7 @@
  */
 package org.eclipse.cmf.occi.docker.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import org.eclipse.cmf.occi.docker.DockerPackage;
 import org.eclipse.cmf.occi.docker.Machine;
 
@@ -19,6 +20,7 @@ import org.eclipse.cmf.occi.infrastructure.impl.ComputeImpl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -816,6 +818,15 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public void startall() {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!startall()
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -1037,6 +1048,21 @@ public class MachineImpl extends ComputeImpl implements Machine {
 				return TLS_SAN_EDEFAULT == null ? tlsSan != null : !TLS_SAN_EDEFAULT.equals(tlsSan);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case DockerPackage.MACHINE___STARTALL:
+				startall();
+				return null;
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 	/**

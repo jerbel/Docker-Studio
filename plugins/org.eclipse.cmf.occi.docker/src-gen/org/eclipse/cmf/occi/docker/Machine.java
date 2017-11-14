@@ -520,4 +520,15 @@ public interface Machine extends Compute {
 	 */
 	void setTlsSan(String value);
 
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Start all implies this machine AND all containers inside
+	 * <!-- end-model-doc -->
+	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!startall()'"
+	 * @generated
+	 */
+	void startall();
+
 } // Machine

@@ -2006,13 +2006,22 @@ public interface DockerPackage extends EPackage {
 	int MACHINE___SAVE__SAVEMETHOD_STRING = InfrastructurePackage.COMPUTE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINE___STARTALL = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
+
+	/**
 	 * The number of operations of the '<em>Machine</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 0;
+	int MACHINE_OPERATION_COUNT = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.eclipse.cmf.occi.docker.impl.VolumeImpl <em>Volume</em>}' class.
@@ -3080,6 +3089,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEGENERIC___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEGENERIC___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machinegeneric</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3612,6 +3630,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEAMAZONEC2___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEAMAZONEC2___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machineamazonec2</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4079,6 +4106,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINEDIGITALOCEAN___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEDIGITALOCEAN___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machinedigitalocean</em>' class.
@@ -4557,6 +4593,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINEGOOGLECOMPUTEENGINE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEGOOGLECOMPUTEENGINE___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machinegooglecomputeengine</em>' class.
@@ -5107,6 +5152,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINEIBMSOFTLAYER___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEIBMSOFTLAYER___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machineibmsoftlayer</em>' class.
@@ -5704,6 +5758,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEMICROSOFTAZURE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEMICROSOFTAZURE___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machinemicrosoftazure</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -6180,6 +6243,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINEMICROSOFTHYPERV___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEMICROSOFTHYPERV___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machinemicrosofthyperv</em>' class.
@@ -6840,6 +6912,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEOPENSTACK___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEOPENSTACK___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machineopenstack</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -7352,6 +7433,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINERACKSPACE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINERACKSPACE___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machinerackspace</em>' class.
@@ -7886,6 +7976,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEVIRTUALBOX___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEVIRTUALBOX___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machinevirtualbox</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -8353,6 +8452,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINEVMWAREFUSION___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEVMWAREFUSION___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machinevmwarefusion</em>' class.
@@ -8923,6 +9031,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEVMWAREVCLOUDAIR___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEVMWAREVCLOUDAIR___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machinevmwarevcloudair</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9464,6 +9581,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEVMWAREVSPHERE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEVMWAREVSPHERE___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machinevmwarevsphere</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -9987,6 +10113,15 @@ public interface DockerPackage extends EPackage {
 	int MACHINEEXOSCALE___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
 
 	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEEXOSCALE___STARTALL = MACHINE___STARTALL;
+
+	/**
 	 * The number of operations of the '<em>Machineexoscale</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -10508,6 +10643,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int MACHINEGRID5000___SAVE__SAVEMETHOD_STRING = MACHINE___SAVE__SAVEMETHOD_STRING;
+
+	/**
+	 * The operation id for the '<em>Startall</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MACHINEGRID5000___STARTALL = MACHINE___STARTALL;
 
 	/**
 	 * The number of operations of the '<em>Machinegrid5000</em>' class.
@@ -11741,6 +11885,16 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMachine_TlsSan();
+
+	/**
+	 * Returns the meta object for the '{@link org.eclipse.cmf.occi.docker.Machine#startall() <em>Startall</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Startall</em>' operation.
+	 * @see org.eclipse.cmf.occi.docker.Machine#startall()
+	 * @generated
+	 */
+	EOperation getMachine__Startall();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.cmf.occi.docker.Volume <em>Volume</em>}'.
@@ -14625,6 +14779,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MACHINE__TLS_SAN = eINSTANCE.getMachine_TlsSan();
+
+		/**
+		 * The meta object literal for the '<em><b>Startall</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation MACHINE___STARTALL = eINSTANCE.getMachine__Startall();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.cmf.occi.docker.impl.VolumeImpl <em>Volume</em>}' class.

@@ -12,8 +12,16 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
+import org.eclipse.cmf.occi.infrastructure.StopMethod;
+import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Connector implementation for the OCCI kind: - scheme:
@@ -25,14 +33,56 @@ public class MachinerackspaceConnector extends org.eclipse.cmf.occi.docker.impl.
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(MachinerackspaceConnector.class);
+	
+	private MachineObserver machineObserver = null;
+	
+	protected MachineManager manager = new MachineManager(this) {
+		
+		@Override
+		public String getDriverName() {
+			
+			return Provider.rackspace.toString();
+		}
+		
+		@Override
+		public void appendDriverParameters(StringBuilder sb) {
+			Preconditions.checkNotNull(getApiKey(), "apikey is null");
+			Preconditions.checkNotNull(getUsername(), "username is null");
+			Preconditions.checkNotNull(getRegion(), "region is null");
 
+			if (StringUtils.isNotBlank(getApiKey())) {
+				sb.append(" --rackspace-api-key ").append(getApiKey());
+			}
+			if (StringUtils.isNotBlank(getUsername())) {
+				sb.append(" --rackspace-username ").append(getUsername());
+			}
+			if (StringUtils.isNotBlank(getRegion())) {
+				sb.append(" --rackspace-region ").append(getRegion());
+			}
+			if (StringUtils.isNotBlank(getEndPointType())) {
+				sb.append(" --rackspace-endpoint-type ").append(getEndPointType());
+			}
+			if (StringUtils.isNotBlank(getSshUser())) {
+				sb.append(" --rackspace-ssh-user ").append(getSshUser());
+			}
+			if (getSshPort() > 0) {
+				sb.append(" --rackspace-ssh-port ").append(getSshPort());
+			}
+			if (StringUtils.isNotBlank(getFlavorId())) {
+				sb.append(" --rackspace-flavor-id ").append(getFlavorId());
+			}
+			if (!isDockerInstall()) {
+				sb.append(" --rackspace-docker-install ").append(isDockerInstall());
+			}
+		}
+	};
+	
 	// Start of user code Machinerackspaceconnector_constructor
 	/**
 	 * Constructs a machinerackspace connector.
 	 */
 	MachinerackspaceConnector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -46,7 +96,7 @@ public class MachinerackspaceConnector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		start();
 	}
 	// End of user code
 
@@ -57,7 +107,12 @@ public class MachinerackspaceConnector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.synchronize();
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
@@ -79,11 +134,63 @@ public class MachinerackspaceConnector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.removeMachine(this);
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
+		} catch (DockerException ex) {
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
 	//
 	// Machinerackspace actions.
 	//
+	@Override
+	public void startall() {
+		LOGGER.debug("Start all action call on " + this);
+		try {
+			manager.startAll();
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void start() {
+		try {
+			manager.start();
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void stop(StopMethod method) {
+		try {
+			manager.stop(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void suspend(SuspendMethod method) {
+		try {
+			manager.suspend(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
 }

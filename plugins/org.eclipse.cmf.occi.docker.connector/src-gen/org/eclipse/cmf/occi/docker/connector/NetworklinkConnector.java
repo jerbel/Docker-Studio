@@ -25,6 +25,8 @@ public class NetworklinkConnector extends org.eclipse.cmf.occi.docker.impl.Netwo
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(NetworklinkConnector.class);
 
+	// TODO : TO implement.
+	
 	// Start of user code Networklinkconnector_constructor
 	/**
 	 * Constructs a networklink connector.
@@ -85,4 +87,5 @@ public class NetworklinkConnector extends org.eclipse.cmf.occi.docker.impl.Netwo
 	//
 	// Networklink actions.
 	//
+	
 }

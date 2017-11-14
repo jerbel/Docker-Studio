@@ -838,6 +838,26 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 
 		// TODO: must be implemented
 	}
+	
+	/**
+	 * Remove a machine from provider.
+	 * @param machine
+	 * @throws DockerException
+	 */
+	public void removeMachine(Compute machine) throws DockerException {
+		String machineName = getMachineName(machine);
+		if (machineName == null) {
+			throw new DockerException("Undefined machine name, cannot remove it.");
+		}
+		try {
+			DockerMachineHelper.removeCmd(Runtime.getRuntime(), machineName);
+		} catch (DockerException ex) {
+			LOGGER.error("Unable to remove the machine : " + machineName + " error: " + ex.getMessage());
+			throw new DockerException(ex.getMessage(), ex);
+		}
+		
+	}
+	
 
 	/**
 	 * 

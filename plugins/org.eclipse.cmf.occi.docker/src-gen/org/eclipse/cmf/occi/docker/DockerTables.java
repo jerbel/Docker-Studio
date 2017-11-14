@@ -202,8 +202,8 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Contains__OclElement = new ExecutorFragment(Types._Contains, OCLstdlibTables.Types._OclElement);
 
 		private static final /*@NonNull*/ ExecutorFragment _Link__Entity = new ExecutorFragment(Types._Link, OCCITables.Types._Entity);
-		private static final /*@NonNull*/ ExecutorFragment _Link__Link = new ExecutorFragment(Types._Link, OCCITables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Link__Link_1 = new ExecutorFragment(Types._Link, DockerTables.Types._Link);
+		private static final /*@NonNull*/ ExecutorFragment _Link__Link = new ExecutorFragment(Types._Link, OCCITables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Link__OclAny = new ExecutorFragment(Types._Link, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Link__OclElement = new ExecutorFragment(Types._Link, OCLstdlibTables.Types._OclElement);
 
@@ -341,15 +341,15 @@ public class DockerTables
 		private static final /*@NonNull*/ ExecutorFragment _Mode__OclType = new ExecutorFragment(Types._Mode, OCLstdlibTables.Types._OclType);
 
 		private static final /*@NonNull*/ ExecutorFragment _Network__Entity = new ExecutorFragment(Types._Network, OCCITables.Types._Entity);
-		private static final /*@NonNull*/ ExecutorFragment _Network__Network = new ExecutorFragment(Types._Network, DockerTables.Types._Network);
-		private static final /*@NonNull*/ ExecutorFragment _Network__Network_1 = new ExecutorFragment(Types._Network, InfrastructureTables.Types._Network);
+		private static final /*@NonNull*/ ExecutorFragment _Network__Network = new ExecutorFragment(Types._Network, InfrastructureTables.Types._Network);
+		private static final /*@NonNull*/ ExecutorFragment _Network__Network_1 = new ExecutorFragment(Types._Network, DockerTables.Types._Network);
 		private static final /*@NonNull*/ ExecutorFragment _Network__OclAny = new ExecutorFragment(Types._Network, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Network__OclElement = new ExecutorFragment(Types._Network, OCLstdlibTables.Types._OclElement);
 		private static final /*@NonNull*/ ExecutorFragment _Network__Resource = new ExecutorFragment(Types._Network, OCCITables.Types._Resource);
 
 		private static final /*@NonNull*/ ExecutorFragment _Networklink__Entity = new ExecutorFragment(Types._Networklink, OCCITables.Types._Entity);
-		private static final /*@NonNull*/ ExecutorFragment _Networklink__Link = new ExecutorFragment(Types._Networklink, OCCITables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Networklink__Link_1 = new ExecutorFragment(Types._Networklink, DockerTables.Types._Link);
+		private static final /*@NonNull*/ ExecutorFragment _Networklink__Link = new ExecutorFragment(Types._Networklink, OCCITables.Types._Link);
 		private static final /*@NonNull*/ ExecutorFragment _Networklink__Networklink = new ExecutorFragment(Types._Networklink, DockerTables.Types._Networklink);
 		private static final /*@NonNull*/ ExecutorFragment _Networklink__OclAny = new ExecutorFragment(Types._Networklink, OCLstdlibTables.Types._OclAny);
 		private static final /*@NonNull*/ ExecutorFragment _Networklink__OclElement = new ExecutorFragment(Types._Networklink, OCLstdlibTables.Types._OclElement);
@@ -427,6 +427,9 @@ public class DockerTables
 			4, TemplateParameters.EMPTY_LIST, null);
 		public static final /*@NonNull*/ ExecutorOperation _Container__unpause = new ExecutorOperation("unpause", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Container,
 			5, TemplateParameters.EMPTY_LIST, null);
+
+		public static final /*@NonNull*/ ExecutorOperation _Machine__startall = new ExecutorOperation("startall", TypeUtil.EMPTY_PARAMETER_TYPES, Types._Machine,
+			0, TemplateParameters.EMPTY_LIST, null);
 
 		static {
 			Init.initEnd();
@@ -1001,8 +1004,8 @@ public class DockerTables
 			Fragments._Network__OclElement /* 1 */,
 			Fragments._Network__Entity /* 2 */,
 			Fragments._Network__Resource /* 3 */,
-			Fragments._Network__Network_1 /* 4 */,
-			Fragments._Network__Network /* 5 */
+			Fragments._Network__Network /* 4 */,
+			Fragments._Network__Network_1 /* 5 */
 		};
 		private static final int /*@NonNull*/ [] __Network = { 1,1,1,1,1,1 };
 
@@ -1312,7 +1315,9 @@ public class DockerTables
 			OCLstdlibTables.Operations._OclElement__oclModelTypes /* oclModelTypes() */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machine__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machine__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machine__Compute = {
 			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[?]) */,
 			InfrastructureTables.Operations._Compute__restart /* restart(RestartMethod[?]) */,
@@ -1386,7 +1391,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineamazonec2__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineamazonec2__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineamazonec2__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1438,7 +1445,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinedigitalocean__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinedigitalocean__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinedigitalocean__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1490,7 +1499,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineexoscale__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineexoscale__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineexoscale__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1542,7 +1553,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegeneric__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegeneric__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegeneric__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1594,7 +1607,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegooglecomputeengine__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegooglecomputeengine__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegooglecomputeengine__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1646,7 +1661,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegrid5000__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegrid5000__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinegrid5000__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1698,7 +1715,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineibmsoftlayer__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineibmsoftlayer__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineibmsoftlayer__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1750,7 +1769,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinemicrosoftazure__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinemicrosoftazure__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinemicrosoftazure__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1802,7 +1823,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinemicrosofthyperv__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinemicrosofthyperv__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinemicrosofthyperv__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1854,7 +1877,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineopenstack__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineopenstack__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machineopenstack__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1906,7 +1931,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinerackspace__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinerackspace__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinerackspace__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -1958,7 +1985,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevirtualbox__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevirtualbox__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevirtualbox__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -2010,7 +2039,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarefusion__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarefusion__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarefusion__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -2062,7 +2093,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarevcloudair__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarevcloudair__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarevcloudair__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -2114,7 +2147,9 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarevsphere__Machine = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarevsphere__Machine = {
+			DockerTables.Operations._Machine__startall /* startall() */
+		};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Machinevmwarevsphere__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -2177,7 +2212,7 @@ public class DockerTables
 			OCLstdlibTables.Operations._OclType__conformsTo /* conformsTo(OclType[?]) */
 		};
 
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network = {};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network_1 = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Entity = {
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
 			OCCITables.Operations._Entity__occiCreate /* occiCreate() */,
@@ -2188,7 +2223,7 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network_1 = {
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Network__Network = {
 			InfrastructureTables.Operations._Network__down /* down() */,
 			InfrastructureTables.Operations._Network__down /* down() */,
 			InfrastructureTables.Operations._Network__up /* up() */,
@@ -2233,13 +2268,13 @@ public class DockerTables
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */,
 			OCCITables.Operations._Entity__occiUpdate /* occiUpdate() */
 		};
+		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Networklink__Link_1 = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Networklink__Link = {
 			OCCITables.Operations._Link__LinkSourceInvariant /* LinkSourceInvariant(Kind[?],Kind[?]) */,
 			OCCITables.Operations._Link__LinkSourceInvariant /* LinkSourceInvariant(Kind[?],Kind[?]) */,
 			OCCITables.Operations._Link__LinkTargetInvariant /* LinkTargetInvariant(Kind[?],Kind[?]) */,
 			OCCITables.Operations._Link__LinkTargetInvariant /* LinkTargetInvariant(Kind[?],Kind[?]) */
 		};
-		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Networklink__Link_1 = {};
 		private static final /*@NonNull*/ ExecutorOperation /*@NonNull*/ [] _Networklink__OclAny = {
 			OCLstdlibTables.Operations._OclAny___lt__gt_ /* _'<>'(OclSelf[?]) */,
 			OCLstdlibTables.Operations._OclAny___eq_ /* _'='(OclSelf[?]) */,
@@ -2385,8 +2420,8 @@ public class DockerTables
 			Fragments._Contains__OclElement.initOperations(_Contains__OclElement);
 
 			Fragments._Link__Entity.initOperations(_Link__Entity);
-			Fragments._Link__Link.initOperations(_Link__Link);
 			Fragments._Link__Link_1.initOperations(_Link__Link_1);
+			Fragments._Link__Link.initOperations(_Link__Link);
 			Fragments._Link__OclAny.initOperations(_Link__OclAny);
 			Fragments._Link__OclElement.initOperations(_Link__OclElement);
 
@@ -2531,8 +2566,8 @@ public class DockerTables
 			Fragments._Network__Resource.initOperations(_Network__Resource);
 
 			Fragments._Networklink__Entity.initOperations(_Networklink__Entity);
-			Fragments._Networklink__Link.initOperations(_Networklink__Link);
 			Fragments._Networklink__Link_1.initOperations(_Networklink__Link_1);
+			Fragments._Networklink__Link.initOperations(_Networklink__Link);
 			Fragments._Networklink__Networklink.initOperations(_Networklink__Networklink);
 			Fragments._Networklink__OclAny.initOperations(_Networklink__OclAny);
 			Fragments._Networklink__OclElement.initOperations(_Networklink__OclElement);
@@ -3246,7 +3281,7 @@ public class DockerTables
 			Fragments._Machinevmwarevcloudair__Machinevmwarevcloudair.initProperties(_Machinevmwarevcloudair);
 			Fragments._Machinevmwarevsphere__Machinevmwarevsphere.initProperties(_Machinevmwarevsphere);
 			Fragments._Mode__Mode.initProperties(_Mode);
-			Fragments._Network__Network.initProperties(_Network);
+			Fragments._Network__Network_1.initProperties(_Network);
 			Fragments._Networklink__Networklink.initProperties(_Networklink);
 			Fragments._Volume__Volume.initProperties(_Volume);
 			Fragments._Volumesfrom__Volumesfrom.initProperties(_Volumesfrom);

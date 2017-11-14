@@ -12,6 +12,12 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
+import org.eclipse.cmf.occi.infrastructure.StopMethod;
+import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,13 +31,57 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(Machinegrid5000Connector.class);
 
+	private MachineObserver machineObserver = null;
+
+	protected MachineManager manager = new MachineManager(this) {
+		
+		@Override
+		public String getDriverName() {
+			return Provider.g5k.toString();
+		}
+		
+		@Override
+		public void appendDriverParameters(StringBuilder sb) {
+			
+			if (!StringUtils.isEmpty(getUsername())) {
+				sb.append(" --g5k-username ").append(getUsername());
+			}
+			if (!StringUtils.isEmpty(getPassword())) {
+				sb.append(" --g5k-password ").append(getPassword());
+			}
+			if (!StringUtils.isEmpty(getSite())) {
+				sb.append(" --g5k-site ").append(getSite());
+			}
+			if (!StringUtils.isEmpty(getWalltime())) {
+				sb.append(" --g5k-walltime ").append(getWalltime());
+			}
+			if (!StringUtils.isEmpty(getSshPrivateKey())) {
+				sb.append(" --g5k-ssh-private-key ").append(getSshPrivateKey());
+			}
+			if (!StringUtils.isEmpty(getSshPublicKey())) {
+				sb.append(" --g5k-ssh-public-key ").append(getSshPublicKey());
+			}
+			if (!StringUtils.isEmpty(image)) {
+				sb.append(" --g5k-image ").append(image);
+			}
+			if (!StringUtils.isEmpty(getResourceProperties())) {
+				sb.append(" --g5k-resource-properties ").append(getResourceProperties());
+			}
+			if (!StringUtils.isEmpty(getUseJobReservation())) {
+				sb.append(" --g5k-use-job-reservation ").append(getUseJobReservation());
+			}
+			if (!StringUtils.isEmpty(getHostToProvision())) {
+				sb.append(" --g5k-host-to-provision ").append(getHostToProvision());
+			}
+		}
+	};
+	
 	// Start of user code Machinegrid5000connector_constructor
 	/**
 	 * Constructs a machinegrid5000 connector.
 	 */
 	Machinegrid5000Connector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -45,7 +95,7 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		start();
 	}
 	// End of user code
 
@@ -56,7 +106,12 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.synchronize();
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
@@ -78,11 +133,63 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.removeMachine(this);
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
+		} catch (DockerException ex) {
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
 	//
 	// Machinegrid5000 actions.
 	//
+	@Override
+	public void startall() {
+		LOGGER.debug("Start all action call on " + this);
+		try {
+			manager.startAll();
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void start() {
+		try {
+			manager.start();
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void stop(StopMethod method) {
+		try {
+			manager.stop(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void suspend(SuspendMethod method) {
+		try {
+			manager.suspend(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
 }

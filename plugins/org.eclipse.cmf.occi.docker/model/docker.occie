@@ -240,6 +240,7 @@
     <attributes name="tlsSan" mutable="true">
       <type xsi:type="occi:StringType" href="http://schemas.ogf.org/occi/core#//@types.0"/>
     </attributes>
+    <actions name="startall" scheme="http://occiware.org/occi/docker/machine/action#" title="Start all implies this machine AND all containers inside"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <kinds name="Volume" scheme="http://occiware.org/occi/docker#" title="Volume Disk">

@@ -25,6 +25,8 @@ public class VolumeConnector extends org.eclipse.cmf.occi.docker.impl.VolumeImpl
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(VolumeConnector.class);
 
+	// TODO : TO implement.
+	
 	// Start of user code Volumeconnector_constructor
 	/**
 	 * Constructs a volume connector.

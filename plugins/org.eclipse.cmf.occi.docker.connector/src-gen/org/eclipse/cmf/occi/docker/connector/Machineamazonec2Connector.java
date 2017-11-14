@@ -12,8 +12,16 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
+import org.eclipse.cmf.occi.infrastructure.StopMethod;
+import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.google.common.base.Preconditions;
 
 /**
  * Connector implementation for the OCCI kind: - scheme:
@@ -24,6 +32,62 @@ public class Machineamazonec2Connector extends org.eclipse.cmf.occi.docker.impl.
 	 * Initialize the logger.
 	 */
 	private static Logger LOGGER = LoggerFactory.getLogger(Machineamazonec2Connector.class);
+	
+	private MachineObserver machineObserver = null;
+
+	protected MachineManager manager = new MachineManager(this) {
+
+		@Override
+		public String getDriverName() {
+			// TODO Auto-generated method stub
+			return Provider.amazonec2.toString();
+		}
+
+		@Override
+		public void appendDriverParameters(StringBuilder sb) {
+
+			Preconditions.checkNotNull(getAccessKey(), "access_key is null");
+			Preconditions.checkNotNull(getSecretKey(), "secret_key is null");
+			Preconditions.checkNotNull(getVpcId(), "vpc_id is null");
+
+			Preconditions.checkNotNull(zone, "zone is null");
+
+			if (StringUtils.isNotBlank(getAccessKey())) {
+				sb.append(" --amazonec2-access-key ").append(getAccessKey());
+			}
+			if (StringUtils.isNotBlank(getSecretKey())) {
+				sb.append(" --amazonec2-secret-key ").append(getSecretKey());
+			}
+			if (StringUtils.isNotBlank(getVpcId())) {
+				sb.append(" --amazonec2-vpc-id ").append(getVpcId());
+			}
+			if (StringUtils.isNotBlank(getZone())) {
+				sb.append(" --amazonec2-zone ").append(getZone());
+			}
+			if (StringUtils.isNotBlank(getAmi())) {
+				sb.append(" --amazonec2-ami ").append(getAmi());
+			}
+			if (StringUtils.isNotBlank(region)) {
+				sb.append(" --amazonec2-region ").append(getRegion());
+			}
+			if (StringUtils.isNotBlank(getInstanceType())) {
+				sb.append(" --amazonec2-instance-type ").append(getInstanceType());
+			}
+			if (getRootSize() > 0) {
+				sb.append(" --amazonec2-root-size ").append(getRootSize());
+			}
+			if (StringUtils.isNotBlank(getSubnetId())) {
+				sb.append(" --amazonec2-subnet-id ").append(getSubnetId());
+			}
+			if (StringUtils.isNotBlank(getSessionToken())) {
+				sb.append(" --amazonec2-session-token ").append(getSessionToken());
+			}
+			if (StringUtils.isNotBlank(getSecurityGroup())) {
+				sb.append(" --amazonec2-security-group ").append(getSecurityGroup());
+			}
+
+		}
+	};
 
 	// Start of user code Machineamazonec2connector_constructor
 	/**
@@ -31,7 +95,6 @@ public class Machineamazonec2Connector extends org.eclipse.cmf.occi.docker.impl.
 	 */
 	Machineamazonec2Connector() {
 		LOGGER.debug("Constructor called on " + this);
-		// TODO: Implement this constructor.
 	}
 	// End of user code
 	//
@@ -45,7 +108,7 @@ public class Machineamazonec2Connector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		start();
 	}
 	// End of user code
 
@@ -56,7 +119,12 @@ public class Machineamazonec2Connector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.synchronize();
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
 
@@ -67,7 +135,6 @@ public class Machineamazonec2Connector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
-		// TODO: Implement this callback or remove this method.
 	}
 	// End of user code
 
@@ -78,11 +145,67 @@ public class Machineamazonec2Connector extends org.eclipse.cmf.occi.docker.impl.
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		// TODO: Implement this callback or remove this method.
+		try {
+			manager.removeMachine(this);
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
+		} catch (DockerException ex) {
+			ex.printStackTrace();
+		}
 	}
 	// End of user code
+	
 
 	//
 	// Machineamazonec2 actions.
 	//
+	@Override
+	public void startall() {
+		LOGGER.debug("Start all action call on " + this);
+		try {
+			manager.startAll();
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+		
+	}
+
+	@Override
+	public void start() {
+		try {
+			manager.start();
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void stop(StopMethod method) {
+		try {
+			manager.stop(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+
+	@Override
+	public void suspend(SuspendMethod method) {
+		try {
+			manager.suspend(method);
+		} catch (DockerException ex) {
+			LOGGER.error(ex.getMessage());
+			ex.printStackTrace();
+		}
+	}
+	
+	
+	
 }

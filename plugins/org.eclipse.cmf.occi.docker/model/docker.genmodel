@@ -275,6 +275,9 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Machine/tlsSan"/>
       </genFeatures>
+      <genOperations>
+        <ecoreOperation href="docker.ecore#//Machine/startall"/>
+      </genOperations>
     </genClasses>
     <genClasses>
       <ecoreClass href="docker.ecore#//Volume"/>

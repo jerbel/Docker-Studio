@@ -1416,6 +1416,10 @@
               <styles xmi:type="notation:FontStyle" xmi:id="_r238MZ6mEeeINtugSuSJIg" fontName=".AppleSystemUIFont" fontHeight="10"/>
               <layoutConstraint xmi:type="notation:Location" xmi:id="_r238Mp6mEeeINtugSuSJIg"/>
             </children>
+            <children xmi:type="notation:Node" xmi:id="_YsYtUMkkEeemTdnQK4YTPQ" type="3010" element="_YoxYoMkkEeemTdnQK4YTPQ">
+              <styles xmi:type="notation:FontStyle" xmi:id="_YsYtUckkEeemTdnQK4YTPQ" fontName=".AppleSystemUIFont" fontHeight="10"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_YsYtUskkEeemTdnQK4YTPQ"/>
+            </children>
             <styles xmi:type="notation:SortingStyle" xmi:id="_42Uqop6lEeeINtugSuSJIg"/>
             <styles xmi:type="notation:FilteringStyle" xmi:id="_42Uqo56lEeeINtugSuSJIg"/>
           </children>
@@ -6346,6 +6350,14 @@
           <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']/@conditionnalStyles.2/@style"/>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAttribute']"/>
+      </ownedElements>
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_YoxYoMkkEeemTdnQK4YTPQ" name="startall()">
+        <target xmi:type="occi:Action" href="model/docker.occie#//@kinds[term='machine']/@actions.0"/>
+        <semanticElements xmi:type="occi:Action" href="model/docker.occie#//@kinds[term='machine']/@actions.0"/>
+        <ownedStyle xmi:type="diagram:Square" xmi:id="_YozN0MkkEeemTdnQK4YTPQ" labelSize="10" labelAlignment="LEFT" labelPosition="node">
+          <description xmi:type="style:SquareDescription" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']/@style"/>
+        </ownedStyle>
+        <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.cmf.occi.core.design/description/OCCIware.odesign#//@ownedViewpoints[name='OCCI%20Extension']/@ownedRepresentations[name='Extension%20diagram']/@defaultLayer/@containerMappings[name='KindContainer']/@subNodeMappings[name='KindAction']"/>
       </ownedElements>
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_AWxkUJ6mEeeINtugSuSJIg" sourceNode="_41MCMJ6lEeeINtugSuSJIg" targetNode="_b9rncJ3oEeeINtugSuSJIg">
