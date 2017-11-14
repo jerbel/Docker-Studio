@@ -235,74 +235,8 @@ public class ModelHandler {
 
 			// Retrieve the default factory singleton
 			Container modelContainer = DockerFactory.eINSTANCE.createContainer();
-			modelContainer.setId(c.getId());
-			modelContainer.setName(currentContainer.getName().replace("/", ""));
-			modelContainer.setImage(currentContainer.getImageId());
-			modelContainer.setCommand(
-					Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", ""));
-			modelContainer.setContainerid(currentContainer.getId());
-			String user = currentContainer.getConfig().getUser();
-			if (user != null && !user.trim().isEmpty()) {
-				modelContainer.setUser(user);
-			}
-
-			ExposedPort[] exposedPorts = currentContainer.getConfig().getExposedPorts();
-			NetworkSettings netSettings = currentContainer.getNetworkSettings();
-			final Ports ports = netSettings.getPorts();
-			// Prepare the model with complex data Array of String.
-			ArrayOfString modelPorts = DockerFactory.eINSTANCE.createArrayOfString();
-			List<String> portsToAdd = new LinkedList<>();
-			for (ExposedPort exposedPort : exposedPorts) {
-				String expoPort = exposedPort.toString().replace("[", "").replace("]", "");
-				String portFinal = expoPort;
-				if (ports != null && ports.getBindings() != null && !ports.getBindings().isEmpty()) {
-					final Map<ExposedPort, Ports.Binding[]> bindings = ports.getBindings();
-					// get binding and assign to port
-					Ports.Binding[] bindedPorts = bindings.get(exposedPort);
-					// Add exposed and binded port to model.
-					String bindedPort = "";
-					if (bindedPorts != null && bindedPorts.length > 0) {
-						for (Ports.Binding bind : bindedPorts) {
-							bindedPort = bind.getHostPortSpec().replace("[", "").replace("]", "");
-							portFinal = portFinal + ":" + bindedPort;
-						}
-					}
-
-				} else {
-					// No bindings.
-					// Get exposed ports only.
-				}
-				portsToAdd.add(portFinal);
-
-			}
-			modelPorts.getValues().addAll(portsToAdd);
+			updateContainerModel(modelContainer, currentContainer);
 			
-			String modelPortsStr = listToStringArrayWithSeparatorComma(modelPorts.getValues());
-			
-			modelContainer.setPorts(modelPortsStr);
-			modelContainer.setMacAddress(currentContainer.getConfig().getMacAddress());
-			modelContainer.setDomainName(currentContainer.getConfig().getDomainName());
-			modelContainer.setOcciComputeHostname(currentContainer.getConfig().getHostName());
-			modelContainer.setWorkingDir(currentContainer.getConfig().getWorkingDir());
-
-			ArrayOfString modelEnv = DockerFactory.eINSTANCE.createArrayOfString();
-
-			String[] dockerEnv = currentContainer.getConfig().getEnv();
-			if (dockerEnv != null && dockerEnv.length > 0) {
-				for (String dockEnv : dockerEnv) {
-					modelEnv.getValues().add(dockEnv.replace("[", "").replace("]", ""));
-				}
-			}
-			String dockerEnvStr = listToStringArrayWithSeparatorComma(modelEnv.getValues());
-			modelContainer.setEnvironment(dockerEnvStr);
-			modelContainer.setEntrypoint(Arrays.toString(currentContainer.getConfig().getEntrypoint()));
-			modelContainer.setTty(currentContainer.getConfig().getTty());
-			modelContainer.setStdinOpen(currentContainer.getConfig().getStdinOpen());
-			modelContainer.setPid(currentContainer.getProcessLabel());
-
-			if (currentContainer.getState().getRunning()) {
-				modelContainer.setOcciComputeState(ComputeStatus.get(0));
-			}
 			containerList.add(modelContainer);
 		}
 
@@ -310,43 +244,14 @@ public class ModelHandler {
 	}
 	
 	/**
-	 * From a list of String, result will be : myvalue1;myValue2;myValue3
-	 * @param myList
-	 * @return a flat string with separator ";".
-	 */
-	public String listToStringArrayWithSeparatorComma(final List<String> myList) {
-		if (myList == null) {
-			return null;
-		}
-		StringBuilder result = new StringBuilder();
-		String resultStr;
-		for (String currentVal : myList) {
-			result.append(currentVal);
-			result.append(";");
-		}
-		resultStr = result.toString();
-		if (resultStr.endsWith(";")) {
-			// Remove lastest comma.
-			resultStr.substring(0, resultStr.length() - 1);
-		}
-		return resultStr;
-	}
-	
-	
-	/**
 	 * 
-	 * @param machine
-	 * @param containerId
+	 * @param modelContainer
+	 * @param currentContainer
 	 * @return
 	 * @throws DockerException
 	 */
-	public Container buildContainer(Compute machine, String containerId) throws DockerException {
-		DockerClientManager instance = new DockerClientManager(machine);
-		InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
-		Container modelContainer = DockerFactory.eINSTANCE.createContainer();
-		
-		currentContainer.getId();
-
+	public Container updateContainerModel(Container modelContainer, InspectContainerResponse currentContainer) throws DockerException {
+		modelContainer.setId(currentContainer.getId());
 		modelContainer.setName(currentContainer.getName().replace("/", ""));
 		modelContainer.setImage(currentContainer.getImageId());
 		modelContainer.setCommand(
@@ -387,7 +292,9 @@ public class ModelHandler {
 
 		}
 		modelPorts.getValues().addAll(portsToAdd);
+		
 		String modelPortsStr = listToStringArrayWithSeparatorComma(modelPorts.getValues());
+		
 		modelContainer.setPorts(modelPortsStr);
 		modelContainer.setMacAddress(currentContainer.getConfig().getMacAddress());
 		modelContainer.setDomainName(currentContainer.getConfig().getDomainName());
@@ -410,8 +317,57 @@ public class ModelHandler {
 		modelContainer.setPid(currentContainer.getProcessLabel());
 
 		if (currentContainer.getState().getRunning()) {
-			modelContainer.setOcciComputeState(ComputeStatus.get(0));
+			modelContainer.setOcciComputeState(ComputeStatus.ACTIVE);
+		} 
+		if (currentContainer.getState().getPaused()) {
+			modelContainer.setOcciComputeState(ComputeStatus.SUSPENDED);
 		}
+		if (currentContainer.getState().getDead()) {
+			modelContainer.setOcciComputeState(ComputeStatus.INACTIVE);
+		}
+		
+		return modelContainer;
+	}
+	
+	/**
+	 * From a list of String, result will be : myvalue1;myValue2;myValue3
+	 * @param myList
+	 * @return a flat string with separator ";".
+	 */
+	public String listToStringArrayWithSeparatorComma(final List<String> myList) {
+		if (myList == null) {
+			return null;
+		}
+		StringBuilder result = new StringBuilder();
+		String resultStr;
+		for (String currentVal : myList) {
+			result.append(currentVal);
+			result.append(";");
+		}
+		resultStr = result.toString();
+		if (resultStr.endsWith(";")) {
+			// Remove lastest comma.
+			resultStr.substring(0, resultStr.length() - 1);
+		}
+		return resultStr;
+	}
+	
+	
+	/**
+	 * 
+	 * @param machine
+	 * @param containerId
+	 * @return
+	 * @throws DockerException
+	 */
+	public Container buildContainer(Compute machine, String containerId) throws DockerException {
+		DockerClientManager instance = new DockerClientManager(machine);
+		InspectContainerResponse currentContainer = instance.inspectContainer(machine, containerId);
+		Container modelContainer = DockerFactory.eINSTANCE.createContainer();
+		
+		currentContainer.getId();
+
+		updateContainerModel(modelContainer, currentContainer);
 		
 		return modelContainer;
 	}

@@ -191,7 +191,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method does nothing.
 	 */
-	public void stop_from_inactive_state(StopMethod method) {
+	public void stop_from_inactive_state(StopMethod method) throws DockerException {
 		LOGGER.info(className + ":stop_from_inactive_state() - DO NOTHING");
 	}
 
@@ -200,7 +200,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the stop_execute method.
 	 */
-	public void stop_from_active_state(StopMethod method) {
+	public void stop_from_active_state(StopMethod method) throws DockerException {
 		stop_execute(method);
 	}
 
@@ -209,14 +209,15 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the stop_execute method.
 	 */
-	public void stop_from_suspended_state(StopMethod method) {
+	public void stop_from_suspended_state(StopMethod method) throws DockerException {
 		stop_execute(method);
 	}
 
 	/**
 	 * This method is the default implementation of the stop action.
+	 * @throws DockerException 
 	 */
-	public void stop_execute(StopMethod method) {
+	public void stop_execute(StopMethod method) throws DockerException {
 		LOGGER.info(className + ":stop_execute(" + method + ") - DO NOTHING");
 	}
 
@@ -327,7 +328,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the suspend_execute method.
 	 */
-	public void suspend_from_inactive_state(SuspendMethod method) {
+	public void suspend_from_inactive_state(SuspendMethod method) throws DockerException {
 		suspend_execute(method);
 	}
 
@@ -336,7 +337,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 *
 	 * By default, this method calls the suspend_execute method.
 	 */
-	public void suspend_from_active_state(SuspendMethod method) {
+	public void suspend_from_active_state(SuspendMethod method) throws DockerException {
 		suspend_execute(method);
 	}
 
@@ -351,8 +352,9 @@ public class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method is the default implementation of the suspend action.
+	 * @throws DockerException 
 	 */
-	public void suspend_execute(SuspendMethod method) {
+	public void suspend_execute(SuspendMethod method) throws DockerException {
 		LOGGER.info(className + ":suspend_execute(" + method + ") - DO NOTHING");
 	}
 	

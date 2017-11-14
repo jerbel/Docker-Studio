@@ -84,9 +84,11 @@ public class EventCallBack extends EventsResultCallback {
 						final ModelHandler instanceMH = new ModelHandler();
 						Compute compute = ((ContainerConnector) resource).getCompute();
 						Container c = instanceMH.buildContainer(compute, containerId);
+						
 						// Attach listener to the new container created
 						ContainerObserver observer = new ContainerObserver();
 						observer.listener(c, compute);
+						((ContainerConnector)c).setContainerObserver(observer);
 						instanceMH.linkContainerToMachine(c, compute);
 						if (compute.eContainer() instanceof Configuration) {
 							((Configuration) compute.eContainer()).getResources().add((ContainerConnector) c);
@@ -101,6 +103,7 @@ public class EventCallBack extends EventsResultCallback {
 						ContainerObserver observer = ((ContainerConnector) container).getObserver();
 						if (observer != null) {
 							observer.removeListener(container);
+							((ContainerConnector)container).setContainerObserver(null);
 						}
 						instanceMH.removeContainerFromMachine(container, compute);
 						if (compute.eContainer() instanceof Configuration) {

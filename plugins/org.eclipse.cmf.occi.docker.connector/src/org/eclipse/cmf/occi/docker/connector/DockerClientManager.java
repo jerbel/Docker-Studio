@@ -41,6 +41,7 @@ import org.eclipse.cmf.occi.docker.connector.helpers.DockerConfigurationHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
 import org.eclipse.cmf.occi.docker.connector.observer.StatsCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
+import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -574,6 +575,41 @@ public class DockerClientManager {
 
 		return containerResponse;
 	}
+	
+	/**
+	 * Used when container id is unknown or must be refreshed via occiRetrieve().
+	 * @param computeMachine
+	 * @param container
+	 * @return
+	 * @throws DockerException
+	 */
+	public InspectContainerResponse inspectContainer(Compute computeMachine, final Container container) throws DockerException {
+		preCheckDockerClient(computeMachine);
+		if (container ==  null || container.getName() == null) {
+			throw new DockerException("Container model or container name is not set !");
+		}
+		// Search the containerId for this container.
+		List<com.github.dockerjava.api.model.Container> containers = listContainer(computeMachine);
+		String inspectName;
+		String containerId = null;
+		for (com.github.dockerjava.api.model.Container con : containers) {
+			if (con.getNames() != null && con.getNames().length > 0 && con.getNames()[0] != null) {
+				inspectName = con.getNames()[0];
+				if (inspectName.equalsIgnoreCase(container.getName())) {
+					containerId = con.getId();
+					break;
+				}
+			}
+		}
+		if (containerId == null) {
+			LOGGER.warn("No id defined for this container, cannot retrieve its informations.");
+		} else {
+			InspectContainerResponse containerResponse = this.inspectContainer(computeMachine, containerId);
+			return containerResponse;
+		}
+		
+		return null;
+	}
 
 	/**
 	 * 
@@ -678,6 +714,11 @@ public class DockerClientManager {
 		preCheckDockerClient(computeMachine);
 		// TODO : Check response !!!
 		dockerClient.removeContainerCmd(containerId).exec();
+	}
+	
+	public void killContainer(Compute computeMachine, String containerId) throws DockerException {
+		preCheckDockerClient(computeMachine);
+		dockerClient.killContainerCmd(containerId);
 	}
 
 	/**
@@ -993,6 +1034,19 @@ public class DockerClientManager {
 			}
 		}
 		return false;
+	}
+	/**
+	 * 
+	 * @param computeMachine
+	 * @param container
+	 * @throws DockerException
+	 */
+	public void retrieveAndUpdateContainerModel(final Compute computeMachine, Container container) throws DockerException {
+		InspectContainerResponse resp = this.inspectContainer(computeMachine, container);
+		if (resp != null) {
+			ModelHandler modelHandler = new ModelHandler();
+			modelHandler.updateContainerModel(container, resp);
+		}
 	}
 
 }
