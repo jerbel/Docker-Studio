@@ -4,8 +4,9 @@
     <ownedRepresentations xsi:type="description_1:DiagramDescription" name="DockerConfiguration Diagram" domainClass="Configuration">
       <metamodel href="http://schemas.ogf.org/occi/core/ecore#/"/>
       <metamodel href="file:/Users/cgourdin/workspaces/dockerv2/plugins/org.eclipse.cmf.occi.docker/model/docker.ecore#/"/>
+      <metamodel href="http://schemas.ogf.org/occi/infrastructure/ecore#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="Link" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:resources" domainClass="Link" useDomainElement="true">
+        <edgeMappings name="Link" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Link" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_blue']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:alias">
@@ -13,7 +14,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Volumesfrom" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="VolumesfromConnector" useDomainElement="true">
+        <edgeMappings name="Volumesfrom" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container'] //@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Volumesfrom" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
             <centerLabelStyleDescription>
@@ -21,7 +22,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Networklink" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Network']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="NetworklinkConnector" useDomainElement="true">
+        <edgeMappings name="Networklink" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" sourceMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" targetMapping="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Network']" targetFinderExpression="feature:target" sourceFinderExpression="feature:source" domainClass="docker.Networklink" useDomainElement="true">
           <style sizeComputationExpression="2">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='dark_green']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="feature:alias">
@@ -29,7 +30,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="MachineConnector">
+        <containerMappings name="Machine" preconditionExpression="[self.eInverse()->filter(docker::Contains)->select(target=self) -> isEmpty()/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Machine">
           <borderedNodeMappings name="DefineSwarmNode" preconditionExpression="[swarm and not swarmMaster and occiComputeState.toString().equalsIgnoreCase('active')/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="MachineConnector">
             <style xsi:type="style:DotDescription" labelExpression="" iconPath="/org.eclipse.cmf.occi.docker.design/images/cluster.gif" labelPosition="node">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -49,7 +50,7 @@
               <forbiddenSides>NORTH</forbiddenSides>
             </style>
           </borderedNodeMappings>
-          <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="ContainerConnector">
+          <subNodeMappings name="Container" deletionDescription="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.1/@ownedTools[name='unsetContainer']" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" doubleClickDescription="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='containerDoubleClick']" domainClass="docker.Container">
             <borderedNodeMappings name="DetailContainer" preconditionExpression="[occiComputeState.toString().equalsIgnoreCase('active') and self.monitored/]" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="var:self" domainClass="Container">
               <style xsi:type="style:GaugeCompositeStyleDescription" labelSize="6" labelExpression="" sizeComputationExpression="2" labelPosition="node" resizeKind="NSEW" alignment="HORIZONTAL">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -92,7 +93,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="Volume" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="VolumeConnector">
+          <subNodeMappings name="Volume" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="[links->filter(docker::Contains).target/]" domainClass="docker.Volume">
             <style xsi:type="style:WorkspaceImageDescription" showIcon="false" sizeComputationExpression="5" labelPosition="node" resizeKind="NSEW" workspacePath="/org.eclipse.cmf.occi.docker.design/images/Volume.svg">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -129,7 +130,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="Network" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="NetworkConnector">
+        <containerMappings name="Network" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Network">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelAlignment="LEFT" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_lignt_yellow']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -159,7 +160,7 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="Cluster" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="ClusterConnector">
+        <containerMappings name="Cluster" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Cluster">
           <style xsi:type="style:FlatContainerStyleDescription" arcHeight="50" borderSizeComputationExpression="1" borderLineStyle="dash" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/swarm.gif" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_lignt_yellow']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -186,7 +187,76 @@
               <firstModelOperations xsi:type="tool_1:SetValue" featureName="alias" valueExpression="var:arg0"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:PopupMenu" name="Docker Execute" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container) or oclIsKindOf(Configuration) or oclIsKindOf(Network)/]"/>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="Docker Execute" precondition="[oclIsKindOf(Machine) or oclIsKindOf(Container) or oclIsKindOf(Configuration) or oclIsKindOf(Network)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="StartAll" precondition="[oclIsKindOf(Compute) and not oclIsKindOf(Container)/]" icon="/org.eclipse.cmf.occi.docker.design/images/start.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:startAll"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Start" precondition="[oclIsKindOf(Compute)/]" icon="/org.eclipse.cmf.occi.docker.design/images/start.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:start"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Stop" precondition="[oclIsKindOf(Compute)/]" icon="/org.eclipse.cmf.occi.docker.design/images/stop.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stop"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Synchronize" precondition="[oclIsKindOf(Compute)/]" icon="/org.eclipse.cmf.occi.docker.design/images/refresh.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:synchronize"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Import" precondition="[oclIsKindOf(Configuration)/]" icon="/org.eclipse.cmf.occi.docker.design/images/import.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:importModel"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Restart" precondition="[oclIsKindOf(Compute)/]" icon="/org.eclipse.cmf.occi.docker.design/images/restart.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:restart"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create" precondition="[oclIsKindOf(Network)/]" icon="/org.eclipse.cmf.occi.docker.design/images/create.gif">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:create"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:PopupMenu" name="CRUD operations" precondition="[self.oclIsKindOf(Entity)/]">
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Create">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiCreate()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Retrieve">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiRetrieve()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Update">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiUpdate()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+            <menuItemDescription xsi:type="tool_1:OperationAction" name="Delete">
+              <view name="views"/>
+              <initialOperation>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiDelete()/]"/>
+              </initialOperation>
+            </menuItemDescription>
+          </ownedTools>
         </toolSections>
         <toolSections name="Configuration">
           <ownedTools xsi:type="tool:DeleteElementDescription" name="unsetContainer">
@@ -195,6 +265,198 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Cluster" icon="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Cluster.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="cluster" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Cluster']">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Cluster" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Docker Machine" icon="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/DockerMachine.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Generic" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Generic.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinegeneric" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Virtual Box" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinevirtualbox.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinevirtualbox" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="OpenStack" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machineopenstack.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machineopenstack" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft Azure" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinemicrosoftazure.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinemicrosoftazure" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware Fusion" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinevmwarefusion.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinevmwarefusion" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Rackspace" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinerackspace.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinerackspace" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware vSphere" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinevmwarevsphere.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinevmwarevsphere" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Google CE" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinegooglecomputeengine.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinegooglecomputeengine" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="IBM SoftLayer" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machineibmsoftlayer.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machineibmsoftlayer" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Amazon EC2" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machineamazonec2.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machineamazonec2" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Microsoft HyperV" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinemicrosofthyperv.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinemicrosofthyperv" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Digital Ocean" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinedigitalocean.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinedigitalocean" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Exoscale" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machineexoscale.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machineexoscale" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="VMware vCloud Air" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinevmwarevcloudair.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinevmwarevcloudair" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Grid 5000" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Machinegrid5000.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Machinegrid5000" referenceName="resources"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Container" icon="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/ContainerMenu.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Container" nodeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Container']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Container.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Container" referenceName="resources" variableName="containerInstance"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:containerInstance"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getCompute() = preTarget.getCompute()" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Link.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="docker.Link" referenceName="links">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Network" icon="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/NetworkMenu.gif">
+          <ownedTools xsi:type="tool:ContainerCreationDescription" name="Network" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Network']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Network.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Network" referenceName="resources" variableName="networkInstance"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="NetworkLink" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Networklink']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/NetworkLink.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Networklink" referenceName="links">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Volume" icon="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Volumeconfiguration.gif">
+          <ownedTools xsi:type="tool:NodeCreationDescription" name="Volume" nodeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Machine']/@subNodeMappings[name='Volume']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Volume.gif">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="feature:eContainer">
+                <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Volume" referenceName="resources" variableName="volumeInstance"/>
+                <subModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                  <subModelOperations xsi:type="tool_1:CreateInstance" typeName="Contains" referenceName="links" variableName="containsInstance">
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="source" valueExpression="var:container"/>
+                    <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:volumeInstance"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Volume From" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Volumesfrom']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Volumesfrom.gif">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Volumesfrom" referenceName="links">
+                <subModelOperations xsi:type="tool_1:SetValue" featureName="target" valueExpression="var:target"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
