@@ -67,4 +67,9 @@ Export-Package: org.eclipse.cmf.occi.docker.connector,
  org.eclipse.cmf.occi.docker.connector.helpers,
  org.eclipse.cmf.occi.docker.connector.observer,
  org.eclipse.cmf.occi.docker.connector.synchrone,
- org.eclipse.cmf.occi.docker.connector.utils
+ org.eclipse.cmf.occi.docker.connector.utils,
+ org.slf4j,
+ org.slf4j.event,
+ org.slf4j.helpers,
+ org.slf4j.impl,
+ org.slf4j.spi

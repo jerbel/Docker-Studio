@@ -13,6 +13,10 @@
 package org.eclipse.cmf.occi.docker.connector.helpers;
 
 import java.io.File;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,13 +45,17 @@ public class DockerMachineHelper {
 	 * @param compute
 	 * @return tcp endpoint.
 	 */
-	public static String getEndpoint(final Compute compute) throws DockerException {
+	public static URI getEndpoint(final Compute compute) throws DockerException {
 		String endpoint = null;
-		
+		URI uriEndpoint;
 		if (compute == null) {
 			// Considered local.
 			LOGGER.info("Use docker on local machine");
-			return "tcp://127.0.0.1";
+			try {
+				return new URI("tcp://127.0.0.1" + DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT); // TODO : Port must be in the machine resource generic connector.
+			} catch (URISyntaxException ex) {
+				throw new DockerException(ex.getMessage(), ex);
+			}
 		}
 		
 		if (compute instanceof Machine) {
@@ -55,12 +63,27 @@ public class DockerMachineHelper {
 			// Get url from docker-machine command output.
 			endpoint = executeUrlCommand(Runtime.getRuntime(), machine.getName());
 			LOGGER.warn("Endpoint : " + endpoint);
+			try {
+				uriEndpoint = new URI(endpoint);
+				// URL url = new URL(endpoint);
+				int port = uriEndpoint.getPort();
+				if (port == 0) {
+					LOGGER.warn("Setting port to default : " + DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT);
+					port = Integer.parseInt(DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT);
+					uriEndpoint = new URI(endpoint + ":" + port);
+				}
+				
+				System.out.println("port : " + port);
+			} catch (URISyntaxException ex) {
+				throw new DockerException(ex.getMessage(), ex);
+			}
+			
 		} else {
 			// TODO : include other extension providers like vmware instance, aws instance etc without pass by docker-machine for sample : else if (compute instanceof InstanceVMware) { instancevmware.getGuestIpv4Address();}
 			// Use infrastructure extension to find public ipaddress with networkinterface and mixin ipNetworkInterface.
 			throw new DockerException("Not a supported machine, will come in future !");
 		}
-		return endpoint;
+		return uriEndpoint;
 	}
 	
 	
@@ -73,6 +96,10 @@ public class DockerMachineHelper {
 	public static String executeUrlCommand(Runtime runtime, String machineName) throws DockerException {
 		String command = DockerMachineCommandFactory.createUrlCommand(machineName);
 		String result = ProcessManager.getOutputCommand(command, runtime);
+		if (result.contains("\n")) {
+			System.out.println("Remove illegal characters");
+			result = result.replaceAll("\n", "");
+		}
 		return result;
 	}
 	

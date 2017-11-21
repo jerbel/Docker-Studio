@@ -102,7 +102,9 @@ public class DockerModelHelper {
 		}
 		for (Resource r : this.configuration.getResources()) {
 			if (r instanceof Machine) {
-				if (((Machine)r).getName().equals(machineName)) {
+				String name = ((Machine)r).getName();
+				
+				if (name != null && name.equals(machineName)) {
 					return true;
 				}
 			}

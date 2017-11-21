@@ -543,9 +543,15 @@ public class DockerClientManager {
 	 * @throws DockerException
 	 */
 	public void preCheckDockerClient(Compute computeMachine) throws DockerException {
+		if  (this.dockerClient == null) {
+			// Build a new Docker client for this machine.
+			this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
+			this.compute = computeMachine;
+		}
+		
 		if (this.dockerClient == null) {
 			// Must never be thrown here.
-			throw new DockerException("No docker client found to execute createContainer.");
+			throw new DockerException("No docker client found !");
 		}
 		if (compute != null && compute instanceof Machine && computeMachine instanceof Machine
 				&& !(((Machine) compute).getName().equalsIgnoreCase(((Machine) computeMachine).getName()))) {
@@ -818,8 +824,13 @@ public class DockerClientManager {
 	public List<com.github.dockerjava.api.model.Container> listContainer(Compute computeMachine)
 			throws DockerException {
 		preCheckDockerClient(computeMachine);
-		List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd().withShowAll(true)
-				.exec();
+		List<com.github.dockerjava.api.model.Container> containers = null;
+		try {
+			containers = dockerClient.listContainersCmd().withShowAll(true).exec();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new DockerException(ex.getMessage(), ex);
+		}
 		if (containers == null) {
 			containers = new LinkedList<>();
 		}

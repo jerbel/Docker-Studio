@@ -90,42 +90,27 @@ public class DockerUtil {
 	   * Parse `docker-machine ls` host from the running environment.
 	   */
 	  public static Map<String, String> getHosts() throws DockerException {
-	    Runtime _runtime = Runtime.getRuntime();
-	    final String data = DockerMachineHelper.listHostCmd(_runtime);
+	    Runtime runtime = Runtime.getRuntime();
+	    final String data = DockerMachineHelper.listHostCmd(runtime);
 	    Map<String, String> hosts = new HashMap<String, String>();
-	    boolean _notEquals = (!Objects.equal(data, null));
-	    if (_notEquals) {
-	      String[] st = data.split("\\r?\\n");
-	      int _length = st.length;
-	      final String[] list = Arrays.<String>copyOfRange(st, 1, _length);
-	      for (final String line : list) {
-	        {
-	          String l = line;
-	          String _replaceAll = l.replaceAll("\\*", "");
-	          l = _replaceAll;
-	          final String[] lsCmd = l.split("\\s+");
-	          if (((lsCmd.length >= 3) && (lsCmd.length < 5))) {
-	            String _get = lsCmd[0];
-	            String _get_1 = lsCmd[2];
-	            hosts.put(_get, _get_1);
-	          } else {
-	            int _length_1 = lsCmd.length;
-	            boolean _greaterEqualsThan = (_length_1 >= 5);
-	            if (_greaterEqualsThan) {
-	              boolean _contains = ((List<String>)Conversions.doWrapArray(lsCmd)).contains("(master)");
-	              if (_contains) {
-	                String _get_2 = lsCmd[0];
-	                String _get_3 = lsCmd[3];
-	                hosts.put(_get_2, _get_3);
-	              } else {
-	                String _get_4 = lsCmd[0];
-	                String _get_5 = lsCmd[3];
-	                hosts.put(_get_4, _get_5);
-	              }
-	            }
-	          }
-	        }
-	      }
+	    
+	    if (data != null && !data.trim().isEmpty()) {
+	    		String[] datas = data.split("\\r?\\n");
+	    		int length = datas.length;
+	    		// Remove columns
+	    		String[] lines = Arrays.<String>copyOfRange(datas, 1, length);
+	    		String l;
+	    		for (final String line : lines) {
+	    			System.out.println(line);
+	    			l = line;
+	    			// l = l.replaceAll("\\*", "");
+	    			final String[] lsCmd = l.split("\\s+");
+	    			if (((lsCmd.length >= 3) && (lsCmd.length < 5))) {
+	    				hosts.put(lsCmd[0], lsCmd[2]);
+	    			} else if (lsCmd.length >= 5) {
+	    				hosts.put(lsCmd[0], lsCmd[3]);
+	    			}
+	    		}
 	    }
 	    return hosts;
 	  }
