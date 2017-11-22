@@ -378,6 +378,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		for (Link link : this.getRlinks()) {
 			if (link instanceof Contains && link.getSource() instanceof Machine) {
 				compute = (Compute) link.getSource();
+				System.out.println("Container is contained in a Machine : " + link.getSource().toString());
 				break;
 			}
 		}

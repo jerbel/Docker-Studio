@@ -400,7 +400,7 @@
               </firstModelOperations>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getCompute() = preTarget.getCompute()" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Link.gif">
+          <ownedTools xsi:type="tool:EdgeCreationDescription" name="Link" precondition="aql:preSource.getMachine() = preTarget.getMachine()" edgeMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@edgeMappings[name='Link']" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Link.gif">
             <sourceVariable name="source"/>
             <targetVariable name="target"/>
             <sourceViewVariable name="sourceView"/>
