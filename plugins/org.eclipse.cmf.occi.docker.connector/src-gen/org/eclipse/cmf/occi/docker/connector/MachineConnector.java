@@ -13,6 +13,7 @@
 package org.eclipse.cmf.occi.docker.connector;
 
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
 import org.eclipse.cmf.occi.infrastructure.RestartMethod;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
@@ -73,7 +74,7 @@ public class MachineConnector extends org.eclipse.cmf.occi.docker.impl.MachineIm
 			}
 			
 			@Override
-			public void appendDriverParameters(StringBuilder sb) {
+			public void appendDriverParameters(StringBuilder sb) throws ValueNotSetException {
 				sb = new StringBuilder();
 			}
 		};

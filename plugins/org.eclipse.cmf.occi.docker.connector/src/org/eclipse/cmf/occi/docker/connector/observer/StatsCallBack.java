@@ -66,7 +66,7 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 
 	@Override
 	public void onNext(Statistics stats) {
-		// LOGGER.info("Received stats #{} :: {} :: {}", statisticsList.size(),
+		// System.out.println("Received stats #{} :: {} :: {}", statisticsList.size(),
 		// this.container.containerid, stats)
 		// Interval in which the metrics are retrieved
 		try {
@@ -94,7 +94,7 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 		try {
 			if (networks != null) {
 				LinkedHashMap<String, Object> tmpnetworks = (LinkedHashMap<String, Object>) networks.get("eth0");
-				// LOGGER.info("Networks : {}", tmpnetworks)
+				// System.out.println("Networks : {}", tmpnetworks)
 				network_r = (Integer) tmpnetworks.get("rx_bytes");
 				network_t = (Integer) tmpnetworks.get("tx_bytes");
 				bandwitdh = network_r + network_t;
@@ -200,15 +200,15 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 
 							if (lookContainer.getCpuUsed() != cpu_us.intValue()) {
 								lookContainer.setCpuUsed(cpu_us.intValue());
-								// LOGGER.info("CPU USED <=====> {}", cpu_us.intValue)
+								// System.out.println("CPU USED <=====> {}", cpu_us.intValue)
 							}
 							if (lookContainer.getCpuMaxValue() != Integer.valueOf(cpu_max)) {
 								lookContainer.setCpuMaxValue(cpu_max);
-								// LOGGER.info("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
+								// System.out.println("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
 							}
 							if (lookContainer.getCpuPercent() != df.format(percent)) {
 								lookContainer.setCpuPercent(df.format(percent));
-								// LOGGER.info("CPU PERCENTAGE <=====> {}", percent)
+								// System.out.println("CPU PERCENTAGE <=====> {}", percent)
 							}
 
 							// Update the number of cores once

@@ -14,6 +14,7 @@ package org.eclipse.cmf.occi.docker.connector;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
@@ -45,7 +46,7 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 		}
 		
 		@Override
-		public void appendDriverParameters(StringBuilder sb) {
+		public void appendDriverParameters(StringBuilder sb) throws ValueNotSetException {
 			Preconditions.checkNotNull(getAuthUrl(), "authurl is null");
 			Preconditions.checkNotNull(getFlavorId(), "flavorid is null");
 			Preconditions.checkNotNull(getImageId(), "imageid is null");
@@ -194,9 +195,9 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 		LOGGER.debug("occiDelete() called on " + this);
 		try {
 			manager.removeMachine(this);
-			if (machineObserver != null) {
-				machineObserver.removeListener(this);
-			}
+//			if (machineObserver != null) {
+//				machineObserver.removeListener(this);
+//			}
 		} catch (DockerException ex) {
 			ex.printStackTrace();
 		}
@@ -222,10 +223,10 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 	public void start() {
 		try {
 			manager.start();
-			if (machineObserver == null) {
-				machineObserver = new MachineObserver();
-				machineObserver.listener(this);
-			}
+//			if (machineObserver == null) {
+//				machineObserver = new MachineObserver();
+//				machineObserver.listener(this);
+//			}
 		} catch (DockerException ex) {
 			LOGGER.error(ex.getMessage());
 			ex.printStackTrace();

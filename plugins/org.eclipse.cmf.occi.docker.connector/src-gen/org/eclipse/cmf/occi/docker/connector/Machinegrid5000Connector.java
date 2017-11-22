@@ -14,6 +14,7 @@ package org.eclipse.cmf.occi.docker.connector;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
@@ -41,7 +42,7 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 		}
 		
 		@Override
-		public void appendDriverParameters(StringBuilder sb) {
+		public void appendDriverParameters(StringBuilder sb) throws ValueNotSetException {
 			
 			if (!StringUtils.isEmpty(getUsername())) {
 				sb.append(" --g5k-username ").append(getUsername());
@@ -135,9 +136,9 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 		LOGGER.debug("occiDelete() called on " + this);
 		try {
 			manager.removeMachine(this);
-			if (machineObserver != null) {
-				machineObserver.removeListener(this);
-			}
+//			if (machineObserver != null) {
+//				machineObserver.removeListener(this);
+//			}
 		} catch (DockerException ex) {
 			ex.printStackTrace();
 		}
@@ -163,10 +164,10 @@ public class Machinegrid5000Connector extends org.eclipse.cmf.occi.docker.impl.M
 	public void start() {
 		try {
 			manager.start();
-			if (machineObserver == null) {
-				machineObserver = new MachineObserver();
-				machineObserver.listener(this);
-			}
+//			if (machineObserver == null) {
+//				machineObserver = new MachineObserver();
+//				machineObserver.listener(this);
+//			}
 		} catch (DockerException ex) {
 			LOGGER.error(ex.getMessage());
 			ex.printStackTrace();

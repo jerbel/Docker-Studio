@@ -49,20 +49,20 @@ public class ComputeStateMachine<T extends Compute> {
 		
 		ComputeStatus currentState = compute.getOcciComputeState();
 		
-		LOGGER.info(className + ":start() - current state is " + currentState);
+		System.out.println(className + ":start() - current state is " + currentState);
 		
 		switch (currentState) {
 		case INACTIVE:
-			LOGGER.info(className + ":start() - move from inactive to active state");
+			System.out.println(className + ":start() - move from inactive to active state");
 			start_from_inactive_state();
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case ACTIVE:
-			LOGGER.info(className + ":start() - already active state");
+			System.out.println(className + ":start() - already active state");
 			start_from_active_state();
 			break;
 		case SUSPENDED:
-			LOGGER.info(className + ":start() - move from suspended to active state");
+			System.out.println(className + ":start() - move from suspended to active state");
 			start_from_suspended_state();
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
@@ -70,7 +70,7 @@ public class ComputeStateMachine<T extends Compute> {
 			throw new RuntimeException("Must never happen!");
 		}
 		
-		LOGGER.info(className + ":start() - final state is " + compute.getOcciComputeState());
+		System.out.println(className + ":start() - final state is " + compute.getOcciComputeState());
 		
 		if (!compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) { 
 			throw new RuntimeException("Must never happen!");
@@ -82,27 +82,27 @@ public class ComputeStateMachine<T extends Compute> {
 	 */
 	public void startAll() throws DockerException {
 		ComputeStatus currentState = compute.getOcciComputeState();
-		LOGGER.info(className + ":startAll() - current state is " + currentState);
+		System.out.println(className + ":startAll() - current state is " + currentState);
 		
 		switch (currentState) {
 		case INACTIVE:
-			LOGGER.info(className + ":startAll() - move from inactive to active state");
+			System.out.println(className + ":startAll() - move from inactive to active state");
 			startAll_from_inactive_state();
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case ACTIVE:
-			LOGGER.info(className + ":startAll() - already active state");
+			System.out.println(className + ":startAll() - already active state");
 			start_from_active_state();
 			break;
 		case SUSPENDED:
-			LOGGER.info(className + ":startAll() - move from suspended to active state");
+			System.out.println(className + ":startAll() - move from suspended to active state");
 			start_from_suspended_state();
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
-		LOGGER.info(className + ":startAll() - final state is " + compute.getOcciComputeState());
+		System.out.println(className + ":startAll() - final state is " + compute.getOcciComputeState());
 		
 		if (!compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) { 
 			throw new RuntimeException("Must never happen!");
@@ -128,7 +128,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 * By default, this method does nothing.
 	 */
 	public void start_from_active_state() throws DockerException {
-		LOGGER.info(className + ":start_from_active_state() - DO NOTHING");
+		System.out.println(className + ":start_from_active_state() - DO NOTHING");
 		startAll_execute();
 	}
 
@@ -146,11 +146,11 @@ public class ComputeStateMachine<T extends Compute> {
 	 * @throws DockerException 
 	 */
 	public void start_execute() throws DockerException {
-		LOGGER.info(className + ":start_execute() - DO NOTHING");
+		System.out.println(className + ":start_execute() - DO NOTHING");
 	}
 
 	public void startAll_execute() throws DockerException {
-		LOGGER.info(className + ":startAll_execute() - DO NOTHING");
+		System.out.println(className + ":startAll_execute() - DO NOTHING");
 	}
 
 	/**
@@ -158,20 +158,20 @@ public class ComputeStateMachine<T extends Compute> {
 	 */
 	public void stop(StopMethod method) throws DockerException {
 		ComputeStatus currentState = compute.getOcciComputeState();
-		LOGGER.info(className + ":stop(" + method + ") - current state is " + compute.getOcciComputeState());
+		System.out.println(className + ":stop(" + method + ") - current state is " + compute.getOcciComputeState());
 		
 		switch (currentState) {
 		case INACTIVE:
-			LOGGER.info(className + ":stop() - already inactive state");
+			System.out.println(className + ":stop() - already inactive state");
 			stop_from_inactive_state(method);
 			break;
 		case ACTIVE:
-			LOGGER.info(className + ":stop() - move from active to inactive state");
+			System.out.println(className + ":stop() - move from active to inactive state");
 			stop_from_active_state(method);
 			compute.setOcciComputeState(ComputeStatus.INACTIVE);
 			break;
 		case SUSPENDED:
-			LOGGER.info(className + ":stop() - move from suspended to inactive state");
+			System.out.println(className + ":stop() - move from suspended to inactive state");
 			stop_from_suspended_state(method);
 			compute.setOcciComputeState(ComputeStatus.INACTIVE);
 			break;
@@ -179,7 +179,7 @@ public class ComputeStateMachine<T extends Compute> {
 			throw new RuntimeException("Must never happen!");
 		}
 		
-		LOGGER.info(className + ":stop() - final state is " + compute.getOcciComputeState());
+		System.out.println(className + ":stop() - final state is " + compute.getOcciComputeState());
 		if (!compute.getOcciComputeState().equals(ComputeStatus.INACTIVE)) {
 			throw new RuntimeException("Must never happen!");
 		}
@@ -192,7 +192,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 * By default, this method does nothing.
 	 */
 	public void stop_from_inactive_state(StopMethod method) throws DockerException {
-		LOGGER.info(className + ":stop_from_inactive_state() - DO NOTHING");
+		System.out.println(className + ":stop_from_inactive_state() - DO NOTHING");
 	}
 
 	/**
@@ -218,7 +218,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 * @throws DockerException 
 	 */
 	public void stop_execute(StopMethod method) throws DockerException {
-		LOGGER.info(className + ":stop_execute(" + method + ") - DO NOTHING");
+		System.out.println(className + ":stop_execute(" + method + ") - DO NOTHING");
 	}
 
 	/**
@@ -227,20 +227,20 @@ public class ComputeStateMachine<T extends Compute> {
 	public void restart(RestartMethod method) throws DockerException {
 		
 		ComputeStatus currentState = compute.getOcciComputeState();
-		LOGGER.info(className + ":restart(" + method + ") - current state is " + currentState);
+		System.out.println(className + ":restart(" + method + ") - current state is " + currentState);
 		switch (currentState) {
 		case INACTIVE:
-			LOGGER.info(className + ":restart(" + method + ')' + " - move from inactive to active state");
+			System.out.println(className + ":restart(" + method + ')' + " - move from inactive to active state");
 			restart_from_inactive_state(method);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case ACTIVE:
-			LOGGER.info(className + ":restart(" + method + ')' + " - move from active to active state");
+			System.out.println(className + ":restart(" + method + ')' + " - move from active to active state");
 			restart_from_active_state(method);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case SUSPENDED:
-			LOGGER.info(className + ":stop() - move from suspended to active state");
+			System.out.println(className + ":stop() - move from suspended to active state");
 			restart_from_suspended_state(method);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
@@ -248,7 +248,7 @@ public class ComputeStateMachine<T extends Compute> {
 			throw new RuntimeException("Must never happen!");
 		}
 		
-		LOGGER.info(className + ":restart(" + method + ')' + " - final state is " + compute.getOcciComputeState());
+		System.out.println(className + ":restart(" + method + ')' + " - final state is " + compute.getOcciComputeState());
 		if(!compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) 
 			throw new RuntimeException("Must never happen!");
 	}
@@ -285,7 +285,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 * @throws DockerException 
 	 */
 	public void restart_execute(RestartMethod method) throws DockerException {
-		LOGGER.info(className + ":restart_execute(" + method + ") - DO NOTHING");
+		System.out.println(className + ":restart_execute(" + method + ") - DO NOTHING");
 	}
 
 	/**
@@ -294,29 +294,29 @@ public class ComputeStateMachine<T extends Compute> {
 	public void suspend(SuspendMethod method) throws DockerException {
 		
 		ComputeStatus currentState = compute.getOcciComputeState();
-		LOGGER.info(className + ":suspend(" + method + ") - current state is " + currentState);
+		System.out.println(className + ":suspend(" + method + ") - current state is " + currentState);
 		
 		
 		switch (currentState) {
 		case INACTIVE:
-			LOGGER.info(className + ":suspend() - move from inactive to suspended state");
+			System.out.println(className + ":suspend() - move from inactive to suspended state");
 			suspend_from_inactive_state(method);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;
 		case ACTIVE:
-			LOGGER.info(className + ":suspend() - move from active to suspended state");
+			System.out.println(className + ":suspend() - move from active to suspended state");
 			suspend_from_active_state(method);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;
 		case SUSPENDED:
-			LOGGER.info(className + ":suspend() - already suspended state");
+			System.out.println(className + ":suspend() - already suspended state");
 			suspend_from_suspended_state(method);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
-		LOGGER.info(className + ":suspend() - final state is " + compute.getOcciComputeState());
+		System.out.println(className + ":suspend() - final state is " + compute.getOcciComputeState());
 		if (!compute.getOcciComputeState().equals(ComputeStatus.SUSPENDED)) { 
 			throw new RuntimeException("Must never happen!");
 		}
@@ -347,7 +347,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 * By default, this method does nothing.
 	 */
 	public void suspend_from_suspended_state(SuspendMethod method) {
-		LOGGER.info(className + ":suspend_from_suspended_state() - DO NOTHING");
+		System.out.println(className + ":suspend_from_suspended_state() - DO NOTHING");
 	}
 
 	/**
@@ -355,7 +355,7 @@ public class ComputeStateMachine<T extends Compute> {
 	 * @throws DockerException 
 	 */
 	public void suspend_execute(SuspendMethod method) throws DockerException {
-		LOGGER.info(className + ":suspend_execute(" + method + ") - DO NOTHING");
+		System.out.println(className + ":suspend_execute(" + method + ") - DO NOTHING");
 	}
 	
 	

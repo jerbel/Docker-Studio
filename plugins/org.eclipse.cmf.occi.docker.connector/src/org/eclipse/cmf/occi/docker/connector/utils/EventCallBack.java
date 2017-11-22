@@ -92,7 +92,7 @@ public class EventCallBack extends EventsResultCallback {
 						instanceMH.linkContainerToMachine(c, compute);
 						if (compute.eContainer() instanceof Configuration) {
 							((Configuration) compute.eContainer()).getResources().add((ContainerConnector) c);
-							LOGGER.info("Load new container model");
+							System.out.println("Load new container model");
 						}
 					}
 					if (state.equalsIgnoreCase("destroy")) {
@@ -109,7 +109,7 @@ public class EventCallBack extends EventsResultCallback {
 						if (compute.eContainer() instanceof Configuration) {
 							((Configuration) compute.eContainer()).getResources()
 									.remove((ContainerConnector) container);
-							LOGGER.info("Destroy a container");
+							System.out.println("Destroy a container");
 						}
 					}
 				} catch (DockerException ex) {
@@ -132,8 +132,7 @@ public class EventCallBack extends EventsResultCallback {
 
 	@Override
 	public void onNext(Event item) {
-		LOGGER.info("Received event #{}",
-				item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
+		System.out.println("Received event #" + item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
 
 		// Get the machine that contains this container.
 		Compute compute = this.container.getCompute();
@@ -152,19 +151,20 @@ public class EventCallBack extends EventsResultCallback {
 						// Update all the container status on this compute.
 						Container containerComp = (Container) link.getTarget();
 						// Check between event id and container id of this current container.
-
-						if (containerComp.getContainerid().equals(this.container.getContainerid())) {
+						
+						if (containerComp != null && this.container.getContainerid() != null 
+								&& containerComp.getContainerid().equals(this.container.getContainerid())) {
 							if (item.getStatus().equalsIgnoreCase("stop")) {
 								modifyResourceSet(containerComp, item.getStatus(), item.getId());
-								LOGGER.info("Apply stop notification to model.");
+								System.out.println("Apply stop notification to model.");
 							}
 							if (item.getStatus().equalsIgnoreCase("start")) {
 								modifyResourceSet(containerComp, item.getStatus(), this.container.getContainerid());
-								LOGGER.info("Apply start notification to model.");
+								System.out.println("Apply start notification to model.");
 							}
 							if (item.getStatus().equalsIgnoreCase("destroy")) {
 								modifyResourceSet(containerComp, item.getStatus(), this.container.getContainerid());
-								LOGGER.info("Apply destroy notification to model.");
+								System.out.println("Apply destroy notification to model.");
 							}
 
 						} else {
@@ -177,7 +177,7 @@ public class EventCallBack extends EventsResultCallback {
 										&& !dockerClient.containerIsInsideMachine(compute, this.container.getContainerid())) {
 									modifyResourceSet(contains.getTarget(), item.getStatus(),
 											this.container.getContainerid());
-									LOGGER.info("Apply create notification to model");
+									System.out.println("Apply create notification to model");
 								}
 							} catch (DockerException ex) {
 								LOGGER.error("Exception thrown : " + ex.getMessage());

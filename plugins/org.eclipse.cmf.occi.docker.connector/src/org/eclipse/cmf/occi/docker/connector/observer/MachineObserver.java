@@ -90,7 +90,7 @@ public class MachineObserver {
 							&& notification.getOldValue() instanceof Container) {
 						deletedElement = (Container) notification.getOldValue();
 						// Notify the deleted element in the model
-						LOGGER.info("Deleted model element with ID: {}", deletedElement.getContainerid());
+						System.out.println("Deleted model element with ID: " + deletedElement.getContainerid());
 
 						// Remove the container from the machine
 						DockerClientManager dockerClient = new DockerClientManager(compute);
@@ -103,8 +103,8 @@ public class MachineObserver {
 					LOGGER.error("Exception thrown : " + ex.getMessage());
 					ex.printStackTrace();
 				}
-				LOGGER.info("Old value : " + notification.getOldValue());
-				LOGGER.info("New value : " + notification.getNewValue());
+				System.out.println("Old value : " + notification.getOldValue());
+				System.out.println("New value : " + notification.getNewValue());
 			}
 
 		});

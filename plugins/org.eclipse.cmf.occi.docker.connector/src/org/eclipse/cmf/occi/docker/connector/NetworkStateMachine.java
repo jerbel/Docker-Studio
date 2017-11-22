@@ -42,20 +42,20 @@ public class NetworkStateMachine<T extends Network> {
 	
 	public void create() {
 		NetworkStatus networkState = network.getOcciNetworkState();
-		LOGGER.info(className + ":create() - current state is " + networkState);
+		System.out.println(className + ":create() - current state is " + networkState);
 		
 		switch (networkState) {
 		case INACTIVE:
-			LOGGER.info(className + ":create() - move from inactive to active state");
+			System.out.println(className + ":create() - move from inactive to active state");
 			create_from_inactive_state();
 			network.setOcciNetworkState(NetworkStatus.ACTIVE);
 			break;
 		case ACTIVE:
-			LOGGER.info(className + ":create() - already active state");
+			System.out.println(className + ":create() - already active state");
 			create_from_active_state();
 			break;
 		case ERROR:
-			LOGGER.info(className + ":create() - move from error to active state");
+			System.out.println(className + ":create() - move from error to active state");
 			create_from_error_state();
 			network.setOcciNetworkState(NetworkStatus.ACTIVE);
 			break;
@@ -63,7 +63,7 @@ public class NetworkStateMachine<T extends Network> {
 			throw new RuntimeException("Must never happen!");
 		}
 		networkState = network.getOcciNetworkState();
-		LOGGER.info(className + ":create() - final state is " + networkState);
+		System.out.println(className + ":create() - final state is " + networkState);
 		if (!networkState.equals(NetworkStatus.ACTIVE)) {
 			throw new RuntimeException("Must never happen!");
 		}
@@ -100,7 +100,7 @@ public class NetworkStateMachine<T extends Network> {
 	 * 
 	 */
 	public void create_execute() {
-		LOGGER.info(className + ":create_execute() - DO NOTHING");
+		System.out.println(className + ":create_execute() - DO NOTHING");
 	}
 	
 	

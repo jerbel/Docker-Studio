@@ -51,19 +51,16 @@ public class DockerUtil {
 	  
 	 private static Logger LOGGER = LoggerFactory.getLogger(DockerUtil.class);
 	  
-	  private static String DOCKER_MACHINE = "/usr/local/bin/docker-machine";
+	  private static String DOCKER_MACHINE_MACOS = "/usr/local/bin/docker-machine";
 	  
 	  /**
 	   * Run the good docker-machine according to the OS.
 	   */
 	  public static String getDockerMachineCmd() {
 	    String command = "docker-machine";
-	    String _oS = DockerUtil.getOS();
-	    boolean _equalsIgnoreCase = _oS.equalsIgnoreCase("osx");
-	    if (_equalsIgnoreCase) {
-	      command = DockerUtil.DOCKER_MACHINE;
-	      String _oS_1 = DockerUtil.getOS();
-	      DockerUtil.LOGGER.info("Machine OS={}", _oS_1);
+	    String os = DockerUtil.getOS();
+	    if (os != null && os.equalsIgnoreCase("osx")) {
+	    		command = DockerUtil.DOCKER_MACHINE_MACOS;
 	    }
 	    return command;
 	  }

@@ -176,7 +176,7 @@ public class DockerClientManager {
 
 		CreateContainerResponse createContainerResponse = createContainer.exec();
 		container.setContainerid(createContainerResponse.getId());
-		LOGGER.info("Created container: {}", container.getContainerid());
+		System.out.println("Created container:" + container.getContainerid());
 
 		return createContainerResponse;
 	}
@@ -196,7 +196,7 @@ public class DockerClientManager {
 
 		CreateContainerResponse createContainerResponse = createContainer.exec();
 		container.setContainerid(createContainerResponse.getId());
-		LOGGER.info("Created container: {}", container.getContainerid());
+		System.out.println("Created container: " + container.getContainerid());
 
 		Map<DockerClient, CreateContainerResponse> result = new LinkedHashMap<DockerClient, CreateContainerResponse>();
 		result.put(dockerClient, createContainerResponse);
@@ -295,12 +295,12 @@ public class DockerClientManager {
 		}
 
 		if (ports != null && !ports.isEmpty()) {
-			LOGGER.info("Container ports : ");
+			System.out.println("Container ports : ");
 			List<ExposedPort> exposedPorts = new LinkedList<>();
 			List<PortBinding> portBindings = new LinkedList<>();
 
 			for (String port : ports) {
-				LOGGER.info("port: " + port);
+				System.out.println("port: " + port);
 				String[] lrports = port.split(":"); // ex: 2000:80
 				ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(lrports[0]));
 				PortBinding portBinding = null;
@@ -363,12 +363,12 @@ public class DockerClientManager {
 		// createContainer.withVolumes(vs);
 		// }
 
-		if (container.getMemLimit() > 0) {
+		if (container.getMemLimit() != null && container.getMemLimit() > 0) {
 			// TODO : Replace integer by Long in specification model occie.
 			createContainer.withMemory(Long.valueOf(container.getMemLimit()));
 		}
 
-		if (container.getMemorySwap() > 0) {
+		if (container.getMemorySwap() != null && container.getMemorySwap() > 0) {
 			// TODO : Replace integer by Long in specification model occie.
 			createContainer.withMemory(Long.valueOf(container.getMemorySwap()));
 		}
@@ -473,7 +473,7 @@ public class DockerClientManager {
 			List<VolumesFrom> volumesFrom = new LinkedList<>();
 			for (Container c : containersWithVolumes) {
 				volumesFrom.add(new VolumesFrom(c.getName()));
-				LOGGER.info(c.getName());
+				System.out.println(c.getName());
 			}
 			createContainer.withVolumesFrom(volumesFrom);
 		}
@@ -741,7 +741,7 @@ public class DockerClientManager {
 
 		if (container.isMonitored()) { // Allow the monitoring of a container.
 			// Collect monitoring data
-			LOGGER.info("Starting metrics collection");
+			System.out.println("Starting metrics collection");
 
 			// Load new docker client to fix blocking thread problem
 			this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
@@ -851,9 +851,9 @@ public class DockerClientManager {
 		String containerImage = image;
 		if (!StringUtils.isNotBlank(containerImage)) {
 			containerImage = "busybox";
-			LOGGER.info("Use the default Docker Image: {}", containerImage);
+			System.out.println("Use the default Docker Image: " + containerImage);
 		}
-		LOGGER.info("Downloading image: ->" + containerImage);
+		System.out.println("Downloading image: ->" + containerImage);
 		// Download a pre-built image
 		try {
 			// If the given image tag doesn't contain a version number, add "latest" as tag
@@ -867,7 +867,7 @@ public class DockerClientManager {
 			LOGGER.error(e.getMessage());
 			throw new DockerException(e.getMessage(), e);
 		}
-		LOGGER.info("Download is finished");
+		System.out.println("Download is finished");
 		return this.dockerClient;
 	}
 
@@ -925,26 +925,26 @@ public class DockerClientManager {
 			// TODO : Support host key checking... with ssh connection.
 			config.put("StrictHostKeyChecking", "no");
 			jsc.addIdentity(privateKey);
-			LOGGER.info("Identity added ..");
+			System.out.println("Identity added ..");
 
 			String exCommand = "sudo sh -c " + "\"" + command + "\"";
-			LOGGER.info(exCommand);
+			System.out.println(exCommand);
 
 			// TODO : Support ssh connection on other ports than 22.
 			session = jsc.getSession(user, host, 22);
-			LOGGER.info("Session created ..");
+			System.out.println("Session created ..");
 			session.setConfig(config);
-			LOGGER.info("Session config ..");
+			System.out.println("Session config ..");
 
 			session.connect();
-			LOGGER.info("Session connected ..");
+			System.out.println("Session connected ..");
 
 			Channel channel = session.openChannel("exec");
 			((ChannelExec) channel).setCommand(exCommand);
 			((ChannelExec) channel).setErrStream(System.err);
 			channel.connect();
 		} catch (JSchException e) {
-			LOGGER.info(e.getMessage());
+			System.out.println(e.getMessage());
 
 		}
 		session.disconnect();
@@ -963,7 +963,7 @@ public class DockerClientManager {
 			String newLine = ip + " ssh-rsa " + key + "\n";
 			if (!hostAlreadyExist(newLine, knowHosts)) {
 				tmpwriter.append(newLine);
-				LOGGER.info(ip + " ssh-rsa " + key);
+				System.out.println(ip + " ssh-rsa " + key);
 
 				tmpwriter.flush();
 				tmpwriter.close();

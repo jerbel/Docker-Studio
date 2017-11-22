@@ -14,6 +14,7 @@ package org.eclipse.cmf.occi.docker.connector;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
@@ -46,7 +47,7 @@ private MachineObserver machineObserver = null;
 		}
 		
 		@Override
-		public void appendDriverParameters(StringBuilder sb) {
+		public void appendDriverParameters(StringBuilder sb) throws ValueNotSetException {
 			Preconditions.checkNotNull(getProject(), "project is null");
 			if (StringUtils.isNotBlank(getProject())) {
 				sb.append(" --google-project ").append(getProject());
@@ -123,9 +124,9 @@ private MachineObserver machineObserver = null;
 		LOGGER.debug("occiDelete() called on " + this);
 		try {
 			manager.removeMachine(this);
-			if (machineObserver != null) {
-				machineObserver.removeListener(this);
-			}
+//			if (machineObserver != null) {
+//				machineObserver.removeListener(this);
+//			}
 		} catch (DockerException ex) {
 			ex.printStackTrace();
 		}
@@ -152,10 +153,10 @@ private MachineObserver machineObserver = null;
 	public void start() {
 		try {
 			manager.start();
-			if (machineObserver == null) {
-				machineObserver = new MachineObserver();
-				machineObserver.listener(this);
-			}
+//			if (machineObserver == null) {
+//				machineObserver = new MachineObserver();
+//				machineObserver.listener(this);
+//			}
 		} catch (DockerException ex) {
 			LOGGER.error(ex.getMessage());
 			ex.printStackTrace();

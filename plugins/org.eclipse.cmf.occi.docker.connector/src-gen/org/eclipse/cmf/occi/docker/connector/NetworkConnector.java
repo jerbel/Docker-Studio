@@ -34,7 +34,7 @@ public class NetworkConnector extends org.eclipse.cmf.occi.docker.impl.NetworkIm
 		 */
 		@Override
 		public void create_execute() {
-			LOGGER.info("EXECUTING Network create action.");
+			System.out.println("EXECUTING Network create action.");
 		}
 	};
 

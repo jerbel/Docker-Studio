@@ -14,6 +14,7 @@ package org.eclipse.cmf.occi.docker.connector;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
@@ -42,7 +43,7 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 		}
 		
 		@Override
-		public void appendDriverParameters(StringBuilder sb) {
+		public void appendDriverParameters(StringBuilder sb) throws ValueNotSetException {
 			if (getDiskSize() > 0) {
 				sb.append(" --virtualbox-disk-size ").append(getDiskSize());
 			}
@@ -150,7 +151,7 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 		try {
 			manager.removeMachine(this);
 			if (machineObserver != null) {
-				machineObserver.removeListener(this);
+				 machineObserver.removeListener(this);
 			}
 		} catch (DockerException ex) {
 			ex.printStackTrace();

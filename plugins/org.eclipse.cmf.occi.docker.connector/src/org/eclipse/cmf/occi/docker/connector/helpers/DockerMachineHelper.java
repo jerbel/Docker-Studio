@@ -50,7 +50,7 @@ public class DockerMachineHelper {
 		URI uriEndpoint;
 		if (compute == null) {
 			// Considered local.
-			LOGGER.info("Use docker on local machine");
+			System.out.println("Use docker on local machine");
 			try {
 				return new URI("tcp://127.0.0.1" + DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT); // TODO : Port must be in the machine resource generic connector.
 			} catch (URISyntaxException ex) {

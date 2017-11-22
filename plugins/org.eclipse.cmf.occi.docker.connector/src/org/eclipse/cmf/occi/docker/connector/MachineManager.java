@@ -28,6 +28,7 @@ import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
 import org.eclipse.cmf.occi.docker.Networklink;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.ProcessManager;
 import org.eclipse.cmf.occi.docker.connector.utils.DockerUtil;
@@ -84,7 +85,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 	/**
 	 * Append specific Docker machine driver parameters.
 	 */
-	public abstract void appendDriverParameters(StringBuilder sb);
+	public abstract void appendDriverParameters(StringBuilder sb) throws ValueNotSetException;
 
 	/**
 	 * Start a Docker machine.
@@ -111,12 +112,16 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		// Create the machine command
 		command.append(dockerMachineCMD).append(getDriverName());
 		// Add the corresponding command
-		appendDriverParameters(command);
+		try {
+			appendDriverParameters(command);
+		} catch (ValueNotSetException ex) {
+			throw new DockerException(ex);
+		}
 		// Add Parameters to command
 		command.append(" ").append(parameter);
 		command.append(" ").append(machineName);
 
-		LOGGER.info("CMD : #{}", command.toString());
+		System.out.println("CMD : #" + command.toString());
 
 		// Get the existing machines
 		Map<String, String> hosts = DockerUtil.getHosts();
@@ -171,7 +176,11 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		String dockerMachineCMD = String.format("%s -D create --driver ", this.dockerMachineCmd);
 		command.append(dockerMachineCMD).append(getDriverName());
 		// Add the corresponding command
-		appendDriverParameters(command);
+		try {
+			appendDriverParameters(command);
+		} catch (ValueNotSetException ex) {
+			throw new DockerException(ex);
+		}
 		// Add Parameters to command
 		command.append(' ').append(parameter);
 		command.append(' ').append(machineName);
@@ -281,17 +290,17 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 									if (!containerIsDeployed(con.getName(), this.compute, listContainers)) {
 
 										// Create container
-										LOGGER.info("Creating the container: " + con.getName());
+										System.out.println("Creating the container: " + con.getName());
 										con.createContainer(this.compute);
-										LOGGER.info("The container is created");
+										System.out.println("The container is created");
 
 										// Start container
 										con.start();
 									} else { // The machine exists
 										// Start container
-										LOGGER.info("Trying to start container: " + con.getName());
+										System.out.println("Trying to start container: " + con.getName());
 										con.start();
-										LOGGER.info("Started ...");
+										System.out.println("Started ...");
 									}
 								}
 							}
@@ -310,9 +319,9 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 								con.start();
 							} else { // The container exists
 								// Start container
-								LOGGER.info("Trying to start container: " + con.getName());
+								System.out.println("Trying to start container: " + con.getName());
 								con.start();
-								LOGGER.info("Started ... ");
+								System.out.println("Started ... ");
 							}
 						}
 					}
@@ -341,9 +350,9 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 									} else {
 
 										// Start container
-										LOGGER.info("Trying to start container: " + con.getName());
+										System.out.println("Trying to start container: " + con.getName());
 										con.start();
-										LOGGER.info("Started ...");
+										System.out.println("Started ...");
 									}
 								}
 							}
@@ -359,13 +368,13 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 								con.createContainer(this.compute, this.containerDependency);
 
 								// Start container
-								LOGGER.info("Trying to start container: " + con.getName());
+								System.out.println("Trying to start container: " + con.getName());
 								con.start();
-								LOGGER.info("Started ... ");
+								System.out.println("Started ... ");
 							} else { // The container exists
 								// Start container
-								LOGGER.info("Trying to start container: " + con.getName());
-								LOGGER.info("Started ... ");
+								System.out.println("Trying to start container: " + con.getName());
+								System.out.println("Started ... ");
 								con.start();
 							}
 						}
@@ -378,7 +387,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		// Connect all container to network overlay
 		this.connectToNetwork(this.compute, networks);
 
-		LOGGER.info("EXECUTE COMMAND: " + command.toString());
+		System.out.println("EXECUTE COMMAND: " + command.toString());
 	}
 
 	/**
@@ -404,8 +413,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 						String networkId = dockerContainerManager.createNetwork(this.compute, tmpNetwork);
 						// Update the model networkId
 						tmpNetwork.setNetworkId(networkId);
-						LOGGER.info("Network name=#{} was created inside ---> machine #{}", tmpNetwork.getName(),
-								machineName);
+						System.out.println("Network name=#" + tmpNetwork.getName() + " was created inside ---> machine #" + machineName);
 						// TODO change this with Network StateMachine
 						// Change the Network State
 						tmpNetwork.setOcciNetworkState(NetworkStatus.ACTIVE);
@@ -469,9 +477,9 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 										this.compute, listContainers);
 								if (dc == null) {
 									// Create container
-									LOGGER.info("Creating the container: " + con.getName());
+									System.out.println("Creating the container: " + con.getName());
 									con.createContainer(this.compute);
-									LOGGER.info("The container is created");
+									System.out.println("The container is created");
 
 								} else if (con.getContainerid() != dc.getId()) {
 									con.setContainerid(dc.getId()); // update id else start cmd ill fail
@@ -613,13 +621,13 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 				}
 			}
 		}
-		LOGGER.info("------------------- GRAPH : " + graph);
+		System.out.println("------------------- GRAPH : " + graph);
 		try {
 			if (graph.deploymentOrder() != null) {
 				for (GraphNode<Container> c : graph.deploymentOrder()) {
 
 					containers.add(c.value);
-					LOGGER.info("--->" + c.value);
+					System.out.println("--->" + c.value);
 				}
 			}
 
@@ -635,7 +643,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		}
 
 		for (Container container : containers) {
-			LOGGER.info("Container : " + container.getName());
+			System.out.println("Container : " + container.getName());
 		}
 
 		return containers;
@@ -771,7 +779,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 
 		String machineName = getMachineName(compute);
 		// Execute the docker-machine stop command.
-		LOGGER.info("EXECUTE COMMAND: docker machine stop: " + machineName);
+		System.out.println("EXECUTE COMMAND: docker machine stop: " + machineName);
 
 		// Stop all Docker containers contained by this Docker machine.
 		if (method == StopMethod.GRACEFUL) {
@@ -818,7 +826,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		} else {
 			machineName = compute.getTitle();
 		}
-		LOGGER.info("EXECUTE COMMAND: docker machine restart " + machineName);
+		System.out.println("EXECUTE COMMAND: docker machine restart " + machineName);
 		stop_execute(StopMethod.GRACEFUL);
 		start_execute();
 	}
@@ -834,7 +842,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		} else {
 			machineName = compute.getTitle();
 		}
-		LOGGER.info("EXECUTE COMMAND: docker machine suspend " + machineName);
+		System.out.println("EXECUTE COMMAND: docker machine suspend " + machineName);
 
 		// TODO: must be implemented
 	}

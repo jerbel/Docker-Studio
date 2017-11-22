@@ -45,7 +45,7 @@ public class ContainerObserver {
 
 	public Container listener(Container container, Compute compute) throws DockerException {
 
-		LOGGER.info("Enable listener on {}", container.getContainerid() + " --< " + container.getName());
+		System.out.println("Enable listener on " + container.getContainerid() + " --< " + container.getName());
 		// Make a reference copy
 
 		cpContainer = EcoreUtil.copy(container);
@@ -80,7 +80,7 @@ public class ContainerObserver {
 
 						deletedElement = (Container) notification.getNotifier();
 						// Notify the deleted element in the model
-						LOGGER.info("Delete model element with ID: {}", deletedElement.getContainerid());
+						System.out.println("Delete model element with ID: " + deletedElement.getContainerid());
 						// Remove the container from the machine
 						DockerClientManager dockerManager = new DockerClientManager(compute);
 						dockerManager.removeContainer(compute, deletedElement.getContainerid());
@@ -142,8 +142,8 @@ public class ContainerObserver {
 
 						}
 
-						// LOGGER.info("Old value : " + notification.oldValue);
-						// LOGGER.info("New value : " + notification.newValue);
+						// System.out.println("Old value : " + notification.oldValue);
+						// System.out.println("New value : " + notification.newValue);
 
 					}
 				} catch (DockerException ex) {

@@ -95,70 +95,70 @@ public class ModelHandler {
 				Machinevirtualbox newvbox = (Machinevirtualbox) vbox;
 				// Set values
 				machineFactory_VBOX(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 
 			} else if (vbox instanceof Machineamazonec2) {
 				Machineamazonec2 newvbox = (Machineamazonec2) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 
 			} else if (vbox instanceof Machinedigitalocean) {
 				Machinedigitalocean newvbox = (Machinedigitalocean) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machinevmwarefusion) {
 				Machinevmwarefusion newvbox = (Machinevmwarefusion) vbox;
 
 				// Set values
 				machineFactory_Fusion(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 
 			} else if (vbox instanceof Machinegooglecomputeengine) {
 				Machinegooglecomputeengine newvbox = (Machinegooglecomputeengine) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machineibmsoftlayer) {
 				Machineibmsoftlayer newvbox = (Machineibmsoftlayer) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machinemicrosoftazure) {
 				Machinemicrosoftazure newvbox = (Machinemicrosoftazure) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machinemicrosofthyperv) {
 				Machinemicrosofthyperv newvbox = (Machinemicrosofthyperv) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machineopenstack) {
 				Machineopenstack newvbox = (Machineopenstack) vbox;
 
 				// Set values
 				machineFactory_OpenStack(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machinerackspace) {
 				Machinerackspace newvbox = (Machinerackspace) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			} else if (vbox instanceof Machinevmwarevsphere) {
 				Machinevmwarevsphere newvbox = (Machinevmwarevsphere) vbox;
 
 				// Set values
 				machineFactory(newvbox, node, state);
-				LOGGER.info("Model setting: " + newvbox);
+				System.out.println("Model setting: " + newvbox);
 			}
 			if (!machineExists) { // ignore the machine if it exists.
 				// Check machine state

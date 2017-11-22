@@ -135,7 +135,7 @@ public class Graph<T> {
 		List<GraphNode<T>> currentNodes = getLeafNodes();
 		List<GraphNode<T>> orphnanNodes = getOrphanNodes();
 		for (GraphNode<T> m : orphnanNodes) {
-			LOGGER.info("Orphans: " + m.value);
+			System.out.println("Orphans: " + m.value);
 		}
 		List<GraphNode<T>> newleafNodes = new ArrayList<>();
 		while (!currentNodes.isEmpty()) {

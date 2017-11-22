@@ -67,8 +67,8 @@ public class DockerModelHelper {
 		Map<String, String> hosts = DockerUtil.getHosts();
 		ModelHandler modelHandler = new ModelHandler();
 		
-		LOGGER.info("Importing model...");
-		LOGGER.info(hosts.toString());
+		System.out.println("Importing model...");
+		System.out.println(hosts.toString());
 		for (Map.Entry<String, String> entry : hosts.entrySet()) {
 			boolean machineExistInModeler = containMachine(entry.getKey());
 			if (!machineExistInModeler) {
@@ -82,7 +82,7 @@ public class DockerModelHelper {
 					}
 				}
 			} else {
-				LOGGER.info("Machine : " + entry.getKey() + " already exist in model");
+				System.out.println("Machine : " + entry.getKey() + " already exist in model");
 			}
 		}
 	}

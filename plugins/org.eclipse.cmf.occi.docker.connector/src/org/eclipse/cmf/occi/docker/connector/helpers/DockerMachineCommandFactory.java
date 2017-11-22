@@ -34,7 +34,7 @@ public class DockerMachineCommandFactory {
 		if (getOS().equalsIgnoreCase("osx")) {
 			command = DOCKER_MACHINE;
 		}
-		LOGGER.info("Machine OS={}", getOS());
+		System.out.println("Machine OS=" + getOS());
 		return command;
 	}
 	

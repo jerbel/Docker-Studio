@@ -66,19 +66,19 @@ public class CgroupHelper {
 
 		if (file.equalsIgnoreCase(memory_max_mem)) {
 			command = "echo '" + Integer.parseInt("" + Float.parseFloat(value)) + "' > " + FilePath;
-			LOGGER.info("EXECUTE COMMAND: {}", command);
+			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		} else if (file.equalsIgnoreCase(cpuset_cpus)) {
 			command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath;
-			LOGGER.info("EXECUTE COMMAND: {}", command);
+			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		} else if (file.equalsIgnoreCase(net_cls_classid)) {
 			command = "echo '" + Integer.parseInt("" + Float.parseFloat(value)) + "' > " + FilePath;
-			LOGGER.info("EXECUTE COMMAND: {}", command);
+			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		} else if (file.equalsIgnoreCase(memory_swap)) {
 			command = "echo '" + Integer.parseInt("" + Float.parseFloat(value)) + "' > " + FilePath;
-			LOGGER.info("EXECUTE COMMAND: {}", command);
+			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		}
 

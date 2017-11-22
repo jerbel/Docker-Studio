@@ -55,14 +55,14 @@ public class Elasticity {
 				cpuManager.setCPUValue(host, privateKey, container, "6");
 				update = true;
 				modifyResourceSet(container, 6); // Update the attribute
-				LOGGER.info("Elasticity action: 2 Cores was added!");
+				System.out.println("Elasticity action: 2 Cores was added!");
 			}
 			if (cpu_used < 90.0F && update) {
 				// Action
 				cpuManager.setCPUValue(host, privateKey, container, "1");
 				update = false;
 				modifyResourceSet(container, 1); // Update the attribute
-				LOGGER.info("Elasticity action: x Cores was removed!");
+				System.out.println("Elasticity action: x Cores was removed!");
 			}
 		} catch (ParseException ex) {
 			LOGGER.error("Parse error : " + ex.getMessage());

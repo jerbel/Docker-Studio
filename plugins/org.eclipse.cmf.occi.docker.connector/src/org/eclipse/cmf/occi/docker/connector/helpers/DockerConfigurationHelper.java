@@ -143,7 +143,7 @@ public class DockerConfigurationHelper {
 		}
 
 		URI endpoint = DockerMachineHelper.getEndpoint(compute);
-		LOGGER.info("Compute endpoint : " + endpoint);
+		System.out.println("Compute endpoint : " + endpoint);
 
 		String certPath = null;
 		certPath = DockerMachineHelper.getCertificatePath(compute);
@@ -158,7 +158,7 @@ public class DockerConfigurationHelper {
 			}
 		}
 		DefaultDockerClientConfig config;
-		LOGGER.info("Certificate path : " + certPath);
+		System.out.println("Certificate path : " + certPath);
 		
 		String dockerHost = endpoint.toString();
 		
