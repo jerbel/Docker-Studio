@@ -52,7 +52,8 @@ Bundle-ClassPath: .,
  lib/netty-transport-native-unix-common-4.1.11.Final.jar,
  lib/osgi-resource-locator-1.0.1.jar,
  lib/slf4j-api-1.7.21.jar,
- lib/slf4j-simple-1.7.25.jar
+ lib/slf4j-simple-1.7.25.jar,
+ lib/docker-java-3.0.14.jar
 Bundle-Vendor: OCCIware
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

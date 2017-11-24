@@ -55,7 +55,11 @@ public class ProcessManager {
 		} else {
 			throw new DockerException("Cannot initialize the output docker-machine, the OS is undefined : " + OS);
 		}
-
+		// For debug...
+		System.out.println("Command to exec: ");
+		for (String envTmp : env) {
+			System.out.println(envTmp);
+		}
 		try {
 			Process process = r.exec(env);
 			InputStreamReader input = new InputStreamReader(process.getInputStream());

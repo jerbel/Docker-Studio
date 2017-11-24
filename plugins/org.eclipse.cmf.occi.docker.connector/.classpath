@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
+	<classpathentry exported="true" kind="lib" path="lib/docker-java-3.0.14.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-api-1.7.21.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/slf4j-simple-1.7.25.jar"/>
@@ -9,7 +10,6 @@
 	<classpathentry exported="true" kind="lib" path="lib/commons-compress-1.12.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-io-2.5.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/commons-lang-2.6.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/docker-java-3.0.13.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/guava-19.0.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hk2-api-2.4.0-b34.jar"/>
 	<classpathentry exported="true" kind="lib" path="lib/hk2-locator-2.4.0-b34.jar"/>

@@ -252,15 +252,20 @@ public class ModelHandler {
 	 */
 	public Container updateContainerModel(Container modelContainer, InspectContainerResponse currentContainer)
 			throws DockerException {
-		modelContainer.setId(currentContainer.getId());
 		modelContainer.setName(currentContainer.getName().replace("/", ""));
 		String imageName = currentContainer.getConfig().getImage();
 		System.out.println("Image name : " + imageName);
 
 		modelContainer.setImage(imageName);
+		String[] commands = currentContainer.getConfig().getCmd();
 		
-		modelContainer
-				.setCommand(Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", ""));
+		String command = Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", "");
+		if (command != null && !command.trim().isEmpty()) {
+			System.out.println("Command found : " + command);
+			modelContainer.setCommand(
+					Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", ""));
+		}
+
 		modelContainer.setContainerid(currentContainer.getId());
 		String user = currentContainer.getConfig().getUser();
 		if (user != null && !user.trim().isEmpty()) {
@@ -318,7 +323,14 @@ public class ModelHandler {
 		}
 		String dockerEnvStr = listToStringArrayWithSeparatorComma(modelEnv.getValues());
 		modelContainer.setEnvironment(dockerEnvStr);
-		modelContainer.setEntrypoint(Arrays.toString(currentContainer.getConfig().getEntrypoint()));
+		String[] entryPoints = currentContainer.getConfig().getEntrypoint();
+		if (entryPoints != null && entryPoints.length > 0) {
+			String entryPoint = Arrays.toString(entryPoints).replace("[", "").replace("]", "");
+			if (!entryPoint.contains("null")) {
+				modelContainer.setEntrypoint(entryPoint);
+			}
+		}
+		
 		modelContainer.setTty(currentContainer.getConfig().getTty());
 		modelContainer.setStdinOpen(currentContainer.getConfig().getStdinOpen());
 		modelContainer.setPid(currentContainer.getProcessLabel());
@@ -355,7 +367,7 @@ public class ModelHandler {
 		resultStr = result.toString();
 		if (resultStr.endsWith(";")) {
 			// Remove lastest comma.
-			resultStr.substring(0, resultStr.length() - 1);
+			resultStr = resultStr.substring(0, resultStr.length() - 1);
 		}
 		return resultStr;
 	}

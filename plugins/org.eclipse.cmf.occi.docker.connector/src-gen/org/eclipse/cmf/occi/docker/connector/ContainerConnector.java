@@ -33,6 +33,7 @@ import org.slf4j.LoggerFactory;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerResponse;
+import com.github.dockerjava.api.exception.NotFoundException;
 import com.github.dockerjava.core.DockerClientConfig;
 import com.google.common.collect.Multimap;
 
@@ -70,10 +71,16 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					if (dockerClientManager == null) {
 						dockerClientManager = new DockerClientManager(machine, eventCallBack);
 					}
+					System.out.println("Command to execute : " + getCommand());
 					dockerClientManager.startContainer(machine, this.compute);
 				} catch (Exception e) {
-					createContainer(machine);
-					dockerClientManager.startContainer(machine, this.compute);
+					
+					if (e.getCause() instanceof NotFoundException) {
+						createContainer(machine);
+						dockerClientManager.startContainer(machine, this.compute);
+					} else {
+						throw new DockerException("Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
+					}
 				}
 			} else {
 				System.out.println("Host is suspended or inactive.");
@@ -171,12 +178,19 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		if (dockerClientManager == null) {
 			try {
 				dockerClientManager = new DockerClientManager(getCompute());
-				dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
+				// dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
 
 			} catch (DockerException ex) {
 				LOGGER.error("Exception thrown while building docker client with compute: " + getCompute() + " for container : " + this.getName());
 				ex.printStackTrace();
 			}
+		}
+		// Retrieve infos...
+		try {
+			dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
+		} catch (DockerException ex) {
+			LOGGER.error("Exception thrown while retrieving docker container on compute: " + getCompute() + " for container : " + this.getName());
+			ex.printStackTrace();
 		}
 	}
 	// End of user code

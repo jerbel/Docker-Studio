@@ -121,12 +121,13 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
-		try {
-			manager.synchronize();
-		} catch (DockerException ex) {
-			LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
-			ex.printStackTrace();
-		}
+		// TODO : Describe machine.... DO NOT use synchronize method here !!!
+		// try {
+		//	manager.synchronize();
+		//} catch (DockerException ex) {
+		//	LOGGER.error("Exception thrown while retrieving informations about this machine : " + this.getName());
+		//	ex.printStackTrace();
+		//}
 	}
 	// End of user code
 

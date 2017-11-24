@@ -224,8 +224,11 @@ public class DockerClientManager {
 
 		String command = container.getCommand(); // internal command to execute on creation.
 		if (command != null && !command.trim().isEmpty()) {
-			String[] commands = (StringUtils.deleteWhitespace(command)).split(",");
+			// String[] commands = (StringUtils.deleteWhitespace(command)).split(",");
+			
+			String[] commands = getCmdArray(command);
 			createContainer.withCmd(commands);
+			// createContainer.withCmd("/bin/sh", "-c", "httpd -p 8000 -h /www; tail -f /dev/null");
 		} else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
 			createContainer.withCmd("sleep", "9999");
 		}
@@ -302,6 +305,9 @@ public class DockerClientManager {
 			for (String port : ports) {
 				System.out.println("port: " + port);
 				String[] lrports = port.split(":"); // ex: 2000:80
+				if (lrports[0].contains("/tcp")) {
+					lrports[0] = lrports[0].replace("/tcp", "");
+				}
 				ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(lrports[0]));
 				PortBinding portBinding = null;
 				// Exposed port is set with lrPorts[0]
@@ -517,6 +523,20 @@ public class DockerClientManager {
 
 		return createContainer;
 	}
+	
+	public String[] getCmdArray(String command) { 
+        String[] cmdArray; 
+        if (command != null && !command.isEmpty()) { 
+            cmdArray = command.split(",");
+            // Scan for space before and space end...
+            for (int i = 0; i < cmdArray.length; i++) {
+            		cmdArray[i] = cmdArray[i].trim();
+            }
+            return cmdArray;
+        } 
+        
+        return new String[0]; 
+    }
 
 	/**
 	 * List target volumes resources from a container.
@@ -543,12 +563,12 @@ public class DockerClientManager {
 	 * @throws DockerException
 	 */
 	public void preCheckDockerClient(Compute computeMachine) throws DockerException {
-		if  (this.dockerClient == null) {
+		if (this.dockerClient == null) {
 			// Build a new Docker client for this machine.
 			this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
 			this.compute = computeMachine;
 		}
-		
+
 		if (this.dockerClient == null) {
 			// Must never be thrown here.
 			throw new DockerException("No docker client found !");
@@ -581,17 +601,19 @@ public class DockerClientManager {
 
 		return containerResponse;
 	}
-	
+
 	/**
 	 * Used when container id is unknown or must be refreshed via occiRetrieve().
+	 * 
 	 * @param computeMachine
 	 * @param container
 	 * @return
 	 * @throws DockerException
 	 */
-	public InspectContainerResponse inspectContainer(Compute computeMachine, final Container container) throws DockerException {
+	public InspectContainerResponse inspectContainer(Compute computeMachine, final Container container)
+			throws DockerException {
 		preCheckDockerClient(computeMachine);
-		if (container ==  null || container.getName() == null) {
+		if (container == null || container.getName() == null) {
 			throw new DockerException("Container model or container name is not set !");
 		}
 		// Search the containerId for this container.
@@ -601,6 +623,7 @@ public class DockerClientManager {
 		for (com.github.dockerjava.api.model.Container con : containers) {
 			if (con.getNames() != null && con.getNames().length > 0 && con.getNames()[0] != null) {
 				inspectName = con.getNames()[0];
+				inspectName = inspectName.replaceAll("/", "");
 				if (inspectName.equalsIgnoreCase(container.getName())) {
 					containerId = con.getId();
 					break;
@@ -613,7 +636,7 @@ public class DockerClientManager {
 			InspectContainerResponse containerResponse = this.inspectContainer(computeMachine, containerId);
 			return containerResponse;
 		}
-		
+
 		return null;
 	}
 
@@ -721,7 +744,7 @@ public class DockerClientManager {
 		// TODO : Check response !!!
 		dockerClient.removeContainerCmd(containerId).exec();
 	}
-	
+
 	public void killContainer(Compute computeMachine, String containerId) throws DockerException {
 		preCheckDockerClient(computeMachine);
 		dockerClient.killContainerCmd(containerId);
@@ -736,16 +759,20 @@ public class DockerClientManager {
 	 */
 	public void startContainer(Compute computeMachine, Container container) throws DockerException {
 		preCheckDockerClient(computeMachine);
+		try {
+			dockerClient.startContainerCmd(container.getContainerid()).exec();
 
-		dockerClient.startContainerCmd(container.getContainerid()).exec();
+			if (container.isMonitored()) { // Allow the monitoring of a container.
+				// Collect monitoring data
+				System.out.println("Starting metrics collection");
 
-		if (container.isMonitored()) { // Allow the monitoring of a container.
-			// Collect monitoring data
-			System.out.println("Starting metrics collection");
-
-			// Load new docker client to fix blocking thread problem
-			this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
-			dockerClient.statsCmd(container.getContainerid()).exec(new StatsCallBack(container));
+				// Load new docker client to fix blocking thread problem
+				this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
+				dockerClient.statsCmd(container.getContainerid()).exec(new StatsCallBack(container));
+			}
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			throw new DockerException(ex.getMessage(), ex);
 		}
 	}
 
@@ -1046,13 +1073,15 @@ public class DockerClientManager {
 		}
 		return false;
 	}
+
 	/**
 	 * 
 	 * @param computeMachine
 	 * @param container
 	 * @throws DockerException
 	 */
-	public void retrieveAndUpdateContainerModel(final Compute computeMachine, Container container) throws DockerException {
+	public void retrieveAndUpdateContainerModel(final Compute computeMachine, Container container)
+			throws DockerException {
 		InspectContainerResponse resp = this.inspectContainer(computeMachine, container);
 		if (resp != null) {
 			ModelHandler modelHandler = new ModelHandler();
