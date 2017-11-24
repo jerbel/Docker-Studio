@@ -258,6 +258,7 @@ public class ModelHandler {
 		System.out.println("Image name : " + imageName);
 
 		modelContainer.setImage(imageName);
+		
 		modelContainer
 				.setCommand(Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", ""));
 		modelContainer.setContainerid(currentContainer.getId());

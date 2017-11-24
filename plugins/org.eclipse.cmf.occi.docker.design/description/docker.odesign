@@ -264,7 +264,9 @@
             <elementView name="elementView"/>
             <containerView name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container"/>
+              <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
+                <subModelOperations xsi:type="tool_1:RemoveElement"/>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>

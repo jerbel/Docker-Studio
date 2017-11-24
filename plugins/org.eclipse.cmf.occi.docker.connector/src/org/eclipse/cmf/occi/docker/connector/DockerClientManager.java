@@ -325,7 +325,7 @@ public class DockerClientManager {
 		} else {
 			LOGGER.warn("No exposed nor binding ports defined for the container : " + container.getName());
 		}
-		if (StringUtils.isNotBlank(createContainer.getName())) {
+		if (StringUtils.isNotBlank(container.getName())) {
 			createContainer.withName(StringUtils.deleteWhitespace(container.getName()));
 		}
 		if (StringUtils.isNotBlank(container.getNet())) {

@@ -152,7 +152,7 @@ public class EventCallBack extends EventsResultCallback {
 						Container containerComp = (Container) link.getTarget();
 						// Check between event id and container id of this current container.
 						
-						if (containerComp != null && this.container.getContainerid() != null 
+						if (containerComp != null && containerComp.getContainerid() != null && this.container.getContainerid() != null 
 								&& containerComp.getContainerid().equals(this.container.getContainerid())) {
 							if (item.getStatus().equalsIgnoreCase("stop")) {
 								modifyResourceSet(containerComp, item.getStatus(), item.getId());
