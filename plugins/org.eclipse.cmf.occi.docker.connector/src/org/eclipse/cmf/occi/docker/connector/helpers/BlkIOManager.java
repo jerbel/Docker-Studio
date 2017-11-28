@@ -55,7 +55,8 @@ public class BlkIOManager {
 	 * @param value
 	 * @throws DockerException
 	 */
-	public void setWriteValue(String host, String privateKey, Container container, String value) throws DockerException {
+	public void setWriteValue(String host, String privateKey, Container container, String value)
+			throws DockerException {
 		if (host == null) {
 			throw new DockerException("Known host is not set");
 		}
@@ -65,15 +66,15 @@ public class BlkIOManager {
 		if (value == null) {
 			throw new DockerException("write value is not set");
 		}
-		
+
 		if (DockerUtil.isInteger(value)) {
 			if (value.equals("-1")) {
 				CgroupHelper.SetValue(host, privateKey, container, CgroupHelper.blkio_subsystem,
 						CgroupHelper.blkio_write, "");
-				
+
 			} else {
 				String newValue = "8:0 " + value;
-						CgroupHelper.SetValue(host, privateKey, container, CgroupHelper.blkio_subsystem,
+				CgroupHelper.SetValue(host, privateKey, container, CgroupHelper.blkio_subsystem,
 						CgroupHelper.blkio_write, newValue);
 			}
 		}

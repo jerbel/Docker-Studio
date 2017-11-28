@@ -19,7 +19,7 @@ import org.slf4j.LoggerFactory;
 
 public class NetworkManager {
 	private static Logger LOGGER = LoggerFactory.getLogger(NetworkManager.class);
-	
+
 	/**
 	 * 
 	 * @param host
@@ -28,8 +28,9 @@ public class NetworkManager {
 	 * @param value
 	 * @throws DockerException
 	 */
-	public void setNetworkValue(String host, String privateKey, Container container, String value) throws DockerException {
-		
+	public void setNetworkValue(String host, String privateKey, Container container, String value)
+			throws DockerException {
+
 		if (host == null) {
 			throw new DockerException("Known host is not set");
 		}
@@ -39,8 +40,8 @@ public class NetworkManager {
 		if (value == null) {
 			throw new DockerException("network value is not set");
 		}
-		
-		CgroupHelper.SetValue(host, privateKey, container, CgroupHelper.netcls_subsystem,
-			CgroupHelper.net_cls_classid, value);
+
+		CgroupHelper.SetValue(host, privateKey, container, CgroupHelper.netcls_subsystem, CgroupHelper.net_cls_classid,
+				value);
 	}
 }

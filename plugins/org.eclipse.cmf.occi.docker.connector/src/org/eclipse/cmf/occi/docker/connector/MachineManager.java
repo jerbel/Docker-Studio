@@ -23,6 +23,7 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.core.Link;
+import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
@@ -44,7 +45,6 @@ import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import org.eclipse.cmf.occi.docker.Container;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
@@ -403,7 +403,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 	 */
 	protected void createNetwork(Map<Container, Set<Networklink>> networks) throws DockerException {
 		if (!networks.isEmpty()) {
-			Set<String> createdNetworks = new HashSet();
+			Set<String> createdNetworks = new HashSet<>();
 			String machineName = getMachineName(compute);
 			for (Map.Entry<Container, Set<Networklink>> entry : networks.entrySet()) {
 				for (Networklink net : entry.getValue()) {
@@ -413,7 +413,8 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 						String networkId = dockerContainerManager.createNetwork(this.compute, tmpNetwork);
 						// Update the model networkId
 						tmpNetwork.setNetworkId(networkId);
-						System.out.println("Network name=#" + tmpNetwork.getName() + " was created inside ---> machine #" + machineName);
+						System.out.println("Network name=#" + tmpNetwork.getName()
+								+ " was created inside ---> machine #" + machineName);
 						// TODO change this with Network StateMachine
 						// Change the Network State
 						tmpNetwork.setOcciNetworkState(NetworkStatus.ACTIVE);
@@ -556,7 +557,7 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 			// containers #194
 			// .forEach[elt|(elt.target as ExecutableContainer).stop(StopMethod.GRACEFUL)]
 		}
-		
+
 	}
 
 	/**
@@ -816,7 +817,8 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 
 	/**
 	 * Restart a Docker machine.
-	 * @throws DockerException 
+	 * 
+	 * @throws DockerException
 	 */
 	@Override
 	public void restart_execute(RestartMethod method) throws DockerException {
@@ -846,9 +848,10 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 
 		// TODO: must be implemented
 	}
-	
+
 	/**
 	 * Remove a machine from provider.
+	 * 
 	 * @param machine
 	 * @throws DockerException
 	 */
@@ -863,9 +866,8 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 			LOGGER.error("Unable to remove the machine : " + machineName + " error: " + ex.getMessage());
 			throw new DockerException(ex.getMessage(), ex);
 		}
-		
+
 	}
-	
 
 	/**
 	 * 

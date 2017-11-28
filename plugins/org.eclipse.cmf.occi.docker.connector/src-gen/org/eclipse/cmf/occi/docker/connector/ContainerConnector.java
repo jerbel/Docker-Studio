@@ -27,14 +27,11 @@ import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.cmf.occi.infrastructure.RestartMethod;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
 import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
-import org.eclipse.emf.ecore.EObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.CreateContainerResponse;
-import com.github.dockerjava.api.exception.NotFoundException;
-import com.github.dockerjava.core.DockerClientConfig;
 import com.google.common.collect.Multimap;
 
 /**
@@ -93,13 +90,24 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		public void stop_execute(StopMethod method) throws DockerException {
 			System.out.println("EXECUTE container stop");
 			Compute machine = getCompute();
+			try {
 			if (machine.getOcciComputeState().equals(ComputeStatus.ACTIVE) && this.compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
+				
+				
 				if (dockerClientManager == null) {
 					dockerClientManager = new DockerClientManager(machine, eventCallBack);
 				}
-				dockerClientManager.stopContainer(machine, this.compute);
+				// Check if this container is already stopped before stopping.
+				ComputeStatus status = dockerClientManager.getCurrentContainerStatus(machine, this.compute);
+				if (status.equals(ComputeStatus.ACTIVE) || status.equals(ComputeStatus.SUSPENDED)) {
+					dockerClientManager.stopContainer(machine, this.compute);
+				}
 			} else {
 				System.out.println("Already stopped");
+			}
+			} catch (DockerException ex) {
+				ex.printStackTrace();
+				throw new RuntimeException(ex.getMessage(), ex.getCause());
 			}
 		}
 

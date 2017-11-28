@@ -46,7 +46,7 @@ public class EventCallBack extends EventsResultCallback {
 	private static Logger LOGGER = LoggerFactory.getLogger(EventCallBack.class);
 
 	protected DockerClientManager dockerClient = null;
-	
+
 	private ContainerConnector container;
 
 	public EventCallBack(ContainerConnector container) {
@@ -67,6 +67,8 @@ public class EventCallBack extends EventsResultCallback {
 			@Override
 			protected void doExecute() {
 				try {
+					// Containers status possible : created, restarting, running, removing, paused,
+					// exited, or dead
 					// these modifications require a write transaction in this editing domain
 					if (state.equalsIgnoreCase("stop")) {
 						LOGGER.warn("container stopped");
@@ -82,11 +84,11 @@ public class EventCallBack extends EventsResultCallback {
 						final ModelHandler instanceMH = new ModelHandler();
 						Compute compute = ((ContainerConnector) resource).getCompute();
 						Container c = instanceMH.buildContainer(compute, containerId);
-						
+
 						// Attach listener to the new container created
 						ContainerObserver observer = new ContainerObserver();
 						observer.listener(c, compute);
-						((ContainerConnector)c).setContainerObserver(observer);
+						((ContainerConnector) c).setContainerObserver(observer);
 						instanceMH.linkContainerToMachine(c, compute);
 						if (compute.eContainer() instanceof Configuration) {
 							((Configuration) compute.eContainer()).getResources().add((ContainerConnector) c);
@@ -101,7 +103,7 @@ public class EventCallBack extends EventsResultCallback {
 						ContainerObserver observer = ((ContainerConnector) container).getObserver();
 						if (observer != null) {
 							observer.removeListener(container);
-							((ContainerConnector)container).setContainerObserver(null);
+							((ContainerConnector) container).setContainerObserver(null);
 						}
 						instanceMH.removeContainerFromMachine(container, compute);
 						if (compute.eContainer() instanceof Configuration) {
@@ -130,7 +132,8 @@ public class EventCallBack extends EventsResultCallback {
 
 	@Override
 	public void onNext(Event item) {
-		System.out.println("Received event #" + item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
+		System.out.println(
+				"Received event #" + item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
 		if (item.getStatus() == null) {
 			return;
 		}
@@ -151,8 +154,9 @@ public class EventCallBack extends EventsResultCallback {
 						// Update all the container status on this compute.
 						Container containerComp = (Container) link.getTarget();
 						// Check between event id and container id of this current container.
-						
-						if (containerComp != null && containerComp.getContainerid() != null && this.container.getContainerid() != null 
+
+						if (containerComp != null && containerComp.getContainerid() != null
+								&& this.container.getContainerid() != null
 								&& containerComp.getContainerid().equals(this.container.getContainerid())) {
 							if (item.getStatus().equalsIgnoreCase("stop")) {
 								modifyResourceSet(containerComp, item.getStatus(), item.getId());
@@ -172,9 +176,9 @@ public class EventCallBack extends EventsResultCallback {
 								if (this.dockerClient == null) {
 									this.dockerClient = new DockerClientManager(compute);
 								}
-								
-								if (item.getStatus().equalsIgnoreCase("create")
-										&& !dockerClient.containerIsInsideMachine(compute, this.container.getContainerid())) {
+
+								if (item.getStatus().equalsIgnoreCase("create") && !dockerClient
+										.containerIsInsideMachine(compute, this.container.getContainerid())) {
 									modifyResourceSet(contains.getTarget(), item.getStatus(),
 											this.container.getContainerid());
 									System.out.println("Apply create notification to model");

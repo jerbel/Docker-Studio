@@ -159,9 +159,9 @@ public class DockerConfigurationHelper {
 		}
 		DefaultDockerClientConfig config;
 		System.out.println("Certificate path : " + certPath);
-		
+
 		String dockerHost = endpoint.toString();
-		
+
 		System.out.println("Docker host : " + dockerHost);
 		String dockerHome = DEFAULT_DOCKER_HOME;
 		System.out.println("Default Docker home : " + dockerHome);
@@ -174,7 +174,7 @@ public class DockerConfigurationHelper {
 		} else {
 			System.out.println("TLS mode off");
 		}
-		
+
 		if (localMachine) {
 			// Build generic default client.
 			config = DefaultDockerClientConfig.createDefaultConfigBuilder()
@@ -183,21 +183,18 @@ public class DockerConfigurationHelper {
 					.withDockerTlsVerify(false).withRegistryEmail(prop.getProperty(KEY_DOCKER_EMAIL))
 					.withRegistryUsername(prop.getProperty(KEY_DOCKER_USERNAME))
 					.withRegistryPassword(prop.getProperty(KEY_DOCKER_PASSWORD))
-					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome)
-					.build();
+					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome).build();
 
 		} else if (compute instanceof Machine) {
 			// Build docker client for this compute machine.
 			config = DefaultDockerClientConfig.createDefaultConfigBuilder().withDockerHost(dockerHost)
 					.withApiVersion(prop.getProperty(KEY_DOCKER_API_VERSION)).withDockerCertPath(certPath)
-					.withDockerTlsVerify(withTlsCheck)
-					.withDockerCertPath(prop.getProperty(KEY_DOCKER_CERT_PATH))
+					.withDockerTlsVerify(withTlsCheck).withDockerCertPath(prop.getProperty(KEY_DOCKER_CERT_PATH))
 					.withDockerConfig(prop.getProperty(KEY_DOCKER_CONFIG))
 					.withRegistryEmail(prop.getProperty(KEY_DOCKER_EMAIL))
 					.withRegistryUsername(prop.getProperty(KEY_DOCKER_USERNAME))
 					.withRegistryPassword(prop.getProperty(KEY_DOCKER_PASSWORD))
-					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome)
-					.build();
+					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome).build();
 
 		} else {
 			// Throw dockerException, it will be supported in the future.

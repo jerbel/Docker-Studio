@@ -12,23 +12,25 @@
  */
 package org.eclipse.cmf.occi.docker.connector.helpers;
 
-import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
- * This helper factory build docker-machine generic shell commands like >"docker-machine ls"
+ * This helper factory build docker-machine generic shell commands like
+ * >"docker-machine ls"
+ * 
  * @author cgourdin
  *
  */
 public class DockerMachineCommandFactory {
-	
+
 	private static Logger LOGGER = LoggerFactory.getLogger(DockerMachineCommandFactory.class);
-	
+
 	public static final String OS = System.getProperty("os.name").toLowerCase();
 	public static final String DOCKER_MACHINE = "/usr/local/bin/docker-machine";
-	
+
 	public static final String dockerMachineCmd = getDockerMachineCommand();
-	
+
 	public static String getDockerMachineCommand() {
 		String command = "docker-machine";
 		if (getOS().equalsIgnoreCase("osx")) {
@@ -37,7 +39,7 @@ public class DockerMachineCommandFactory {
 		System.out.println("Machine OS=" + getOS());
 		return command;
 	}
-	
+
 	// docker-machine command part.
 	public static String createInfoCommand(String machineName) {
 		String command = String.format("%s inspect %s", dockerMachineCmd, machineName);
@@ -78,7 +80,7 @@ public class DockerMachineCommandFactory {
 		String command = String.format("%s rm %s", dockerMachineCmd, machineName);
 		return command;
 	}
-	
+
 	public static String createUrlCommand(String machineName) {
 		String command = String.format("%s url %s", dockerMachineCmd, machineName);
 		return command;
@@ -93,7 +95,7 @@ public class DockerMachineCommandFactory {
 		String command = String.format("%s ls", dockerMachineCmd);
 		return command;
 	}
-	
+
 	public static String createRemoveStagingCommand(String machineName) {
 		String command = String.format("%s rm %s staging", dockerMachineCmd, machineName);
 		return command;
@@ -103,9 +105,9 @@ public class DockerMachineCommandFactory {
 		String command = String.format("%s activate %s staging", dockerMachineCmd, machineName);
 		return command;
 	}
-	
+
 	// OS local running part.
-	
+
 	public static boolean isWindows() {
 		return (OS.indexOf("win") >= 0);
 	}
@@ -115,7 +117,7 @@ public class DockerMachineCommandFactory {
 	}
 
 	public static boolean isUnix() {
-		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0 );
+		return (OS.indexOf("nix") >= 0 || OS.indexOf("nux") >= 0 || OS.indexOf("aix") > 0);
 	}
 
 	public static boolean isSolaris() {
@@ -123,7 +125,9 @@ public class DockerMachineCommandFactory {
 	}
 
 	/**
-	 * Get the current OS running on this compute (where designer / connector is executed).
+	 * Get the current OS running on this compute (where designer / connector is
+	 * executed).
+	 * 
 	 * @return
 	 */
 	public static String getOS() {
@@ -139,5 +143,5 @@ public class DockerMachineCommandFactory {
 			return "err";
 		}
 	}
-	
+
 }

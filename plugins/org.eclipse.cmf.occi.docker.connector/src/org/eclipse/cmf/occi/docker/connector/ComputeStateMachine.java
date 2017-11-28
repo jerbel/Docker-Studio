@@ -12,6 +12,7 @@
  */
 package org.eclipse.cmf.occi.docker.connector;
 
+import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
@@ -23,39 +24,43 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Compute state machine class.
+ * 
  * @author Christophe Gourdin
  *
  */
 public class ComputeStateMachine<T extends Compute> {
 	private static Logger LOGGER = LoggerFactory.getLogger(ComputeStateMachine.class);
-	
+
 	private String className = this.getClass().getName();
-	
+
 	/**
 	 * Reference to the Compute resource.
 	 */
 	protected T compute;
+
 	/**
 	 * Construct a compute state machine for a given Compute resource.
 	 */
 	public ComputeStateMachine(T c) {
 		compute = c;
 	}
-	
+
 	/**
 	 * Start OCCI Action.
 	 */
 	public void start() throws DockerException {
-		
+
 		ComputeStatus currentState = compute.getOcciComputeState();
-		
+
 		System.out.println(className + ":start() - current state is " + currentState);
-		
+
 		switch (currentState) {
 		case INACTIVE:
 			System.out.println(className + ":start() - move from inactive to active state");
 			start_from_inactive_state();
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
+
 			break;
 		case ACTIVE:
 			System.out.println(className + ":start() - already active state");
@@ -64,17 +69,14 @@ public class ComputeStateMachine<T extends Compute> {
 		case SUSPENDED:
 			System.out.println(className + ":start() - move from suspended to active state");
 			start_from_suspended_state();
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
-		
+
 		System.out.println(className + ":start() - final state is " + compute.getOcciComputeState());
-		
-		if (!compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) { 
-			throw new RuntimeException("Must never happen!");
-		}
 	}
 
 	/**
@@ -83,11 +85,12 @@ public class ComputeStateMachine<T extends Compute> {
 	public void startAll() throws DockerException {
 		ComputeStatus currentState = compute.getOcciComputeState();
 		System.out.println(className + ":startAll() - current state is " + currentState);
-		
+
 		switch (currentState) {
 		case INACTIVE:
 			System.out.println(className + ":startAll() - move from inactive to active state");
 			startAll_from_inactive_state();
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case ACTIVE:
@@ -97,20 +100,18 @@ public class ComputeStateMachine<T extends Compute> {
 		case SUSPENDED:
 			System.out.println(className + ":startAll() - move from suspended to active state");
 			start_from_suspended_state();
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
 		System.out.println(className + ":startAll() - final state is " + compute.getOcciComputeState());
-		
-		if (!compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) { 
-			throw new RuntimeException("Must never happen!");
-		}
 	}
 
 	/**
-	 * This method implements the transition from inactive state for the start action.
+	 * This method implements the transition from inactive state for the start
+	 * action.
 	 *
 	 * By default, this method calls the start_execute method.
 	 */
@@ -133,7 +134,8 @@ public class ComputeStateMachine<T extends Compute> {
 	}
 
 	/**
-	 * This method implements the transition from suspended state for the start action.
+	 * This method implements the transition from suspended state for the start
+	 * action.
 	 *
 	 * By default, this method calls the start_execute method.
 	 */
@@ -143,7 +145,8 @@ public class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method is the default implementation of the start action.
-	 * @throws DockerException 
+	 * 
+	 * @throws DockerException
 	 */
 	public void start_execute() throws DockerException {
 		System.out.println(className + ":start_execute() - DO NOTHING");
@@ -159,7 +162,7 @@ public class ComputeStateMachine<T extends Compute> {
 	public void stop(StopMethod method) throws DockerException {
 		ComputeStatus currentState = compute.getOcciComputeState();
 		System.out.println(className + ":stop(" + method + ") - current state is " + compute.getOcciComputeState());
-		
+
 		switch (currentState) {
 		case INACTIVE:
 			System.out.println(className + ":stop() - already inactive state");
@@ -168,26 +171,25 @@ public class ComputeStateMachine<T extends Compute> {
 		case ACTIVE:
 			System.out.println(className + ":stop() - move from active to inactive state");
 			stop_from_active_state(method);
+			// updateStatus(ComputeStatus.INACTIVE);
 			compute.setOcciComputeState(ComputeStatus.INACTIVE);
 			break;
 		case SUSPENDED:
 			System.out.println(className + ":stop() - move from suspended to inactive state");
 			stop_from_suspended_state(method);
+			// updateStatus(ComputeStatus.INACTIVE);
 			compute.setOcciComputeState(ComputeStatus.INACTIVE);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
-		
+
 		System.out.println(className + ":stop() - final state is " + compute.getOcciComputeState());
-		if (!compute.getOcciComputeState().equals(ComputeStatus.INACTIVE)) {
-			throw new RuntimeException("Must never happen!");
-		}
-		
 	}
 
 	/**
-	 * This method implements the transition from inactive state for the stop action.
+	 * This method implements the transition from inactive state for the stop
+	 * action.
 	 *
 	 * By default, this method does nothing.
 	 */
@@ -205,7 +207,8 @@ public class ComputeStateMachine<T extends Compute> {
 	}
 
 	/**
-	 * This method implements the transition from suspended state for the stop action.
+	 * This method implements the transition from suspended state for the stop
+	 * action.
 	 *
 	 * By default, this method calls the stop_execute method.
 	 */
@@ -215,7 +218,8 @@ public class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method is the default implementation of the stop action.
-	 * @throws DockerException 
+	 * 
+	 * @throws DockerException
 	 */
 	public void stop_execute(StopMethod method) throws DockerException {
 		System.out.println(className + ":stop_execute(" + method + ") - DO NOTHING");
@@ -225,36 +229,39 @@ public class ComputeStateMachine<T extends Compute> {
 	 * Restart OCCI Action.
 	 */
 	public void restart(RestartMethod method) throws DockerException {
-		
+
 		ComputeStatus currentState = compute.getOcciComputeState();
 		System.out.println(className + ":restart(" + method + ") - current state is " + currentState);
 		switch (currentState) {
 		case INACTIVE:
 			System.out.println(className + ":restart(" + method + ')' + " - move from inactive to active state");
 			restart_from_inactive_state(method);
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case ACTIVE:
 			System.out.println(className + ":restart(" + method + ')' + " - move from active to active state");
 			restart_from_active_state(method);
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		case SUSPENDED:
 			System.out.println(className + ":stop() - move from suspended to active state");
 			restart_from_suspended_state(method);
+			// updateStatus(ComputeStatus.ACTIVE);
 			compute.setOcciComputeState(ComputeStatus.ACTIVE);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
-		
-		System.out.println(className + ":restart(" + method + ')' + " - final state is " + compute.getOcciComputeState());
-		if(!compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) 
-			throw new RuntimeException("Must never happen!");
+
+		System.out
+				.println(className + ":restart(" + method + ')' + " - final state is " + compute.getOcciComputeState());
 	}
 
 	/**
-	 * This method implements the transition from inactive state for the restart action.
+	 * This method implements the transition from inactive state for the restart
+	 * action.
 	 *
 	 * By default, this method calls the restart_execute method.
 	 */
@@ -263,7 +270,8 @@ public class ComputeStateMachine<T extends Compute> {
 	}
 
 	/**
-	 * This method implements the transition from active state for the restart action.
+	 * This method implements the transition from active state for the restart
+	 * action.
 	 *
 	 * By default, this method calls the restart_execute method.
 	 */
@@ -272,7 +280,8 @@ public class ComputeStateMachine<T extends Compute> {
 	}
 
 	/**
-	 * This method implements the transition from suspended state for the restart action.
+	 * This method implements the transition from suspended state for the restart
+	 * action.
 	 *
 	 * By default, this method calls the restart_execute method.
 	 */
@@ -282,7 +291,8 @@ public class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method is the default implementation of the restart action.
-	 * @throws DockerException 
+	 * 
+	 * @throws DockerException
 	 */
 	public void restart_execute(RestartMethod method) throws DockerException {
 		System.out.println(className + ":restart_execute(" + method + ") - DO NOTHING");
@@ -292,39 +302,40 @@ public class ComputeStateMachine<T extends Compute> {
 	 * Suspend OCCI Action.
 	 */
 	public void suspend(SuspendMethod method) throws DockerException {
-		
+
 		ComputeStatus currentState = compute.getOcciComputeState();
 		System.out.println(className + ":suspend(" + method + ") - current state is " + currentState);
-		
-		
+
 		switch (currentState) {
 		case INACTIVE:
 			System.out.println(className + ":suspend() - move from inactive to suspended state");
 			suspend_from_inactive_state(method);
+			// updateStatus(ComputeStatus.SUSPENDED);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;
 		case ACTIVE:
 			System.out.println(className + ":suspend() - move from active to suspended state");
 			suspend_from_active_state(method);
-			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
+			// updateStatus(ComputeStatus.SUSPENDED);
+			if (!(compute instanceof Container)) {
+				compute.setOcciComputeState(ComputeStatus.SUSPENDED);
+			}
 			break;
 		case SUSPENDED:
 			System.out.println(className + ":suspend() - already suspended state");
 			suspend_from_suspended_state(method);
+			// updateStatus(ComputeStatus.SUSPENDED);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;
 		default:
 			throw new RuntimeException("Must never happen!");
 		}
 		System.out.println(className + ":suspend() - final state is " + compute.getOcciComputeState());
-		if (!compute.getOcciComputeState().equals(ComputeStatus.SUSPENDED)) { 
-			throw new RuntimeException("Must never happen!");
-		}
-		
 	}
 
 	/**
-	 * This method implements the transition from inactive state for the suspend action.
+	 * This method implements the transition from inactive state for the suspend
+	 * action.
 	 *
 	 * By default, this method calls the suspend_execute method.
 	 */
@@ -333,7 +344,8 @@ public class ComputeStateMachine<T extends Compute> {
 	}
 
 	/**
-	 * This method implements the transition from active state for the suspend action.
+	 * This method implements the transition from active state for the suspend
+	 * action.
 	 *
 	 * By default, this method calls the suspend_execute method.
 	 */
@@ -342,7 +354,8 @@ public class ComputeStateMachine<T extends Compute> {
 	}
 
 	/**
-	 * This method implements the transition from suspended state for the suspend action.
+	 * This method implements the transition from suspended state for the suspend
+	 * action.
 	 *
 	 * By default, this method does nothing.
 	 */
@@ -352,11 +365,48 @@ public class ComputeStateMachine<T extends Compute> {
 
 	/**
 	 * This method is the default implementation of the suspend action.
-	 * @throws DockerException 
+	 * 
+	 * @throws DockerException
 	 */
 	public void suspend_execute(SuspendMethod method) throws DockerException {
 		System.out.println(className + ":suspend_execute(" + method + ") - DO NOTHING");
 	}
-	
-	
+
+	// /**
+	// * Encapsulate in a transaction command computeStatus update.
+	// * @param computeStatus
+	// */
+	// public void updateStatus(final ComputeStatus computeStatus) {
+	//
+	// Runnable runnable = new Runnable() {
+	//
+	// @Override
+	// public void run() {
+	// TransactionalEditingDomain domain =
+	// TransactionUtil.getEditingDomain(compute.eResource().getResourceSet());
+	// Command cmd = new RecordingCommand(domain) {
+	//
+	// @Override
+	// protected void doExecute() {
+	// compute.setOcciComputeState(computeStatus);
+	// }
+	// };
+	// try {
+	// ((TransactionalCommandStack) domain.getCommandStack()).execute(cmd, null); //
+	// default options.
+	// } catch (RollbackException rbe) {
+	// LOGGER.error(rbe.getStatus().toString());
+	// rbe.printStackTrace();
+	// } catch (InterruptedException ex) {
+	// LOGGER.error(ex.getMessage());
+	// ex.printStackTrace();
+	// }
+	//
+	// }
+	// };
+	// Thread thread = new Thread(runnable);
+	// thread.start();
+	// System.out.println("Transaction status done !");
+	// }
+
 }

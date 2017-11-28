@@ -14,6 +14,7 @@ package org.eclipse.cmf.occi.docker.connector.exceptions;
 
 /**
  * Generic exception thrown when using docker client (or configuration failed).
+ * 
  * @author Christophe Gourdin
  *
  */

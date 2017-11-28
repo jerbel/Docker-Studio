@@ -20,7 +20,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.ArrayOfString;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
@@ -50,7 +49,6 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.command.InspectContainerResponse;
-import com.github.dockerjava.api.model.ContainerConfig;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.NetworkSettings;
@@ -258,7 +256,7 @@ public class ModelHandler {
 
 		modelContainer.setImage(imageName);
 		String[] commands = currentContainer.getConfig().getCmd();
-		
+
 		String command = Arrays.toString(currentContainer.getConfig().getCmd()).replace("[", "").replace("]", "");
 		if (command != null && !command.trim().isEmpty()) {
 			System.out.println("Command found : " + command);
@@ -330,7 +328,7 @@ public class ModelHandler {
 				modelContainer.setEntrypoint(entryPoint);
 			}
 		}
-		
+
 		modelContainer.setTty(currentContainer.getConfig().getTty());
 		modelContainer.setStdinOpen(currentContainer.getConfig().getStdinOpen());
 		modelContainer.setPid(currentContainer.getProcessLabel());

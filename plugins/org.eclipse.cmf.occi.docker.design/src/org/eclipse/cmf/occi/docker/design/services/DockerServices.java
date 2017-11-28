@@ -17,9 +17,11 @@ import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerModelHelper;
+import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.ecore.EObject;
 import java.lang.reflect.InvocationTargetException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.SubMonitor;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.dialogs.ProgressMonitorDialog;
 import org.eclipse.jface.operation.IRunnableWithProgress;
@@ -56,6 +58,7 @@ public class DockerServices {
 				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
 					DockerModelHelper dockerModelHelper = new DockerModelHelper(conf);
 					try {
+
 						dockerModelHelper.importModel();
 					} catch (DockerException ex) {
 						ex.printStackTrace();
@@ -160,61 +163,84 @@ public class DockerServices {
 				System.err.println("Not an entity !");
 				return;
 			}
+			
 			IRunnableWithProgress runnable = new IRunnableWithProgress() {
 				@Override
 				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-
-					if (occiCommand) {
-						switch (command) {
-						case "occiCreate":
-							entity.occiCreate();
-							break;
-						case "occiUpdate":
-							entity.occiUpdate();
-							break;
-						case "occiDelete":
-							entity.occiDelete();
-							break;
-						case "occiRetrieve":
-							entity.occiRetrieve();
-							break;
-						}
-					} else {
-						if (compute != null) {
-
+					if (!monitor.isCanceled()) {
+						monitor.beginTask("Operation in progress : " + command, Monitor.UNKNOWN);
+						Display display = Display.getCurrent();
+						boolean result = display.readAndDispatch();
+						System.out.println("result display read and dispatch : " + result);
+						SubMonitor subMonitor = SubMonitor.convert(monitor, 100);
+						// consume..
+						subMonitor.worked(10);
+						if (occiCommand) {
 							switch (command) {
-
-							case "start":
-								compute.start();
+							case "occiCreate":
+								entity.occiCreate();
 								break;
-							case "startall":
-								if (compute instanceof Machine) {
-									Machine machine = (Machine) compute;
-									machine.startall();
+							case "occiUpdate":
+								entity.occiUpdate();
+								break;
+							case "occiDelete":
+								boolean confirm = showConfirmDialog();
+								if (confirm) {
+									entity.occiDelete();
 								}
-
 								break;
-							case "stop":
-								compute.stop(StopMethod.GRACEFUL);
-								break;
-							case "synchronize":
-								compute.occiRetrieve();
-								break;
-							case "restart":
-								compute.restart(RestartMethod.GRACEFUL);
-							default:
-								System.err.println("command : " + command + " is not supported.");
+							case "occiRetrieve":
+								entity.occiRetrieve();
 								break;
 							}
+						} else {
+							if (compute != null) {
+
+								switch (command) {
+
+								case "start":
+									compute.start();
+									break;
+								case "startall":
+									if (compute instanceof Machine) {
+										Machine machine = (Machine) compute;
+										machine.startall();
+									}
+
+									break;
+								case "stop":
+									compute.stop(StopMethod.GRACEFUL);
+									break;
+								case "synchronize":
+									compute.occiRetrieve();
+									break;
+								case "restart":
+									compute.restart(RestartMethod.GRACEFUL);
+									break;
+								default:
+									System.err.println("command : " + command + " is not supported.");
+									break;
+								}
+							}
 						}
+						result = display.readAndDispatch();
+						System.out.println("result display read and dispatch : " + result);
+						subMonitor.worked(100);
+						monitor.done();
+					} else {
+						System.out.println("Operation : " + command + " cancelled.");
 					}
 
 				}
 			};
 
 			ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+			dialog.setOpenOnRun(true);
+
 			dialog.run(false, true, runnable);
-			MessageDialog.openInformation(shell, "Operation succeed", "Command " + command + " has been successfully executed !");
+			//  dialog.run(false, true, runnable);
+			// MessageDialog.openInformation(shell, "Operation succeed",
+			//		"Command " + command + " has been successfully executed !");
 		} catch (Throwable ex) {
 			ex.printStackTrace();
 			MessageDialog.openError(shell, "Error on command " + command,
@@ -260,6 +286,16 @@ public class DockerServices {
 			}
 		}
 		return kind;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean showConfirmDialog() {
+		boolean result = false;
+		Shell shell = getShell();
+		result = MessageDialog.openConfirm(shell, "Confirm", "Please confirm the action");
+		return result;
 	}
 
 }

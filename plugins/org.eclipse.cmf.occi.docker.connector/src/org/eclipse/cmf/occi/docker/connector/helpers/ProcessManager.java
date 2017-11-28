@@ -113,7 +113,7 @@ public class ProcessManager {
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new DockerException(e.getMessage(), e);
-			
+
 		}
 
 	}

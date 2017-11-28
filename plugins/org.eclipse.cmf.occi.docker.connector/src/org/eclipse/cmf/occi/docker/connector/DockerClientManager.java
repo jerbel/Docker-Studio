@@ -30,7 +30,6 @@ import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.core.Resource;
-import org.eclipse.cmf.occi.docker.ArrayOfString;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
@@ -43,6 +42,7 @@ import org.eclipse.cmf.occi.docker.connector.observer.StatsCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
 import org.eclipse.cmf.occi.infrastructure.Compute;
+import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -160,7 +160,7 @@ public class DockerClientManager {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * 
 	 * @param compute
@@ -253,10 +253,11 @@ public class DockerClientManager {
 		String command = container.getCommand(); // internal command to execute on creation.
 		if (command != null && !command.trim().isEmpty()) {
 			// String[] commands = (StringUtils.deleteWhitespace(command)).split(",");
-			
+
 			String[] commands = getCmdArray(command);
 			createContainer.withCmd(commands);
-			// createContainer.withCmd("/bin/sh", "-c", "httpd -p 8000 -h /www; tail -f /dev/null");
+			// createContainer.withCmd("/bin/sh", "-c", "httpd -p 8000 -h /www; tail -f
+			// /dev/null");
 		} else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
 			createContainer.withCmd("sleep", "9999");
 		}
@@ -551,20 +552,20 @@ public class DockerClientManager {
 
 		return createContainer;
 	}
-	
-	public String[] getCmdArray(String command) { 
-        String[] cmdArray; 
-        if (command != null && !command.isEmpty()) { 
-            cmdArray = command.split(",");
-            // Scan for space before and space end...
-            for (int i = 0; i < cmdArray.length; i++) {
-            		cmdArray[i] = cmdArray[i].trim();
-            }
-            return cmdArray;
-        } 
-        
-        return new String[0]; 
-    }
+
+	public String[] getCmdArray(String command) {
+		String[] cmdArray;
+		if (command != null && !command.isEmpty()) {
+			cmdArray = command.split(",");
+			// Scan for space before and space end...
+			for (int i = 0; i < cmdArray.length; i++) {
+				cmdArray[i] = cmdArray[i].trim();
+			}
+			return cmdArray;
+		}
+
+		return new String[0];
+	}
 
 	/**
 	 * List target volumes resources from a container.
@@ -1115,6 +1116,22 @@ public class DockerClientManager {
 			ModelHandler modelHandler = new ModelHandler();
 			modelHandler.updateContainerModel(container, resp);
 		}
+	}
+
+	public ComputeStatus getCurrentContainerStatus(final Compute computeMachine, final Container container)
+			throws DockerException {
+		InspectContainerResponse resp = this.inspectContainer(computeMachine, container);
+		ComputeStatus computeStatus = ComputeStatus.INACTIVE; // Default status.
+		if (resp != null) {
+			if (resp.getState().getRunning()) {
+				computeStatus = ComputeStatus.ACTIVE;
+			}
+			if (resp.getState().getPaused()) {
+				computeStatus = ComputeStatus.SUSPENDED;
+			}
+
+		}
+		return computeStatus;
 	}
 
 }

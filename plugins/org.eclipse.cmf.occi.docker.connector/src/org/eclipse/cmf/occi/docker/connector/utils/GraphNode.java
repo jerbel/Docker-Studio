@@ -19,57 +19,55 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class GraphNode<T> {
-	
+
 	public T value;
 	private List<GraphNode<T>> comingInNodes;
 	private List<GraphNode<T>> goingOutNodes;
-	
+
 	private static Logger LOGGER = LoggerFactory.getLogger(Graph.class);
-	
+
 	/*
-     * Adds an incoming node to the current node
-     * 
-     * @param node
-     *            The incoming node
-     */
+	 * Adds an incoming node to the current node
+	 * 
+	 * @param node The incoming node
+	 */
 	public void addComingInNode(GraphNode<T> node) {
 		if (comingInNodes == null) {
 			comingInNodes = new ArrayList<>();
 		}
 		comingInNodes.add(node);
 	}
-	
+
 	/*
-     * Adds an outgoing node from the current node
-     * 
-     * @param node
-     *            The outgoing node
-     */
+	 * Adds an outgoing node from the current node
+	 * 
+	 * @param node The outgoing node
+	 */
 	public void addGoingOutNode(GraphNode<T> node) {
 		if (goingOutNodes == null) {
 			goingOutNodes = new ArrayList<>();
 		}
 		goingOutNodes.add(node);
 	}
-	
+
 	/**
-     * Provides all the coming in nodes
-     * 
-     * @return The coming in nodes
-     */
+	 * Provides all the coming in nodes
+	 * 
+	 * @return The coming in nodes
+	 */
 	public List<GraphNode<T>> getComingInNodes() {
 		return comingInNodes;
 	}
 
 	/*
-     * Provides all the going out nodes
-     * 
-     * @return The going out nodes
-     */
+	 * Provides all the going out nodes
+	 * 
+	 * @return The going out nodes
+	 */
 	public List<GraphNode<T>> getGoingOutNodes() {
 		return goingOutNodes;
 	}
-	
+
 	/**
 	 * 
 	 * @return
@@ -110,5 +108,5 @@ public class GraphNode<T> {
 		}
 		return count;
 	}
-	
+
 }

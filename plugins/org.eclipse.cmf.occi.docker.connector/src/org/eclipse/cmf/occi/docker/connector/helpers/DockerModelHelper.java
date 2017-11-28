@@ -24,29 +24,32 @@ import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.utils.DockerUtil;
 import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
-import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * This class is for import and synchronize current model (used by occiRetrieve() as well for containers and machine, use for DockerServices with sirius.)
+ * This class is for import and synchronize current model (used by
+ * occiRetrieve() as well for containers and machine, use for DockerServices
+ * with sirius.)
+ * 
  * @author Christophe Gourdin
  *
  */
 public class DockerModelHelper {
-	
+
 	private Configuration configuration;
-	
+
 	private static Logger LOGGER = LoggerFactory.getLogger(DockerModelHelper.class);
-	
+
 	/**
 	 * Entity is used to retrieve current configuration object only.
+	 * 
 	 * @param entity
 	 */
 	public DockerModelHelper(Entity entity) {
 		this.configuration = OcciHelper.getConfiguration(entity);
 	}
-	
+
 	/**
 	 * 
 	 * @param configuration
@@ -54,19 +57,21 @@ public class DockerModelHelper {
 	public DockerModelHelper(Configuration configuration) {
 		this.configuration = configuration;
 	}
-	
+
 	public void setConfiguration(Configuration configuration) {
 		this.configuration = configuration;
 	}
-	
+
 	/**
-	 * Import the overall machine and container in current configuration model object.
+	 * Import the overall machine and container in current configuration model
+	 * object.
+	 * 
 	 * @throws DockerException
 	 */
 	public void importModel() throws DockerException {
 		Map<String, String> hosts = DockerUtil.getHosts();
 		ModelHandler modelHandler = new ModelHandler();
-		
+
 		System.out.println("Importing model...");
 		System.out.println(hosts.toString());
 		for (Map.Entry<String, String> entry : hosts.entrySet()) {
@@ -86,10 +91,7 @@ public class DockerModelHelper {
 			}
 		}
 	}
-	
-	
-	
-	
+
 	/**
 	 * 
 	 * @param machineName
@@ -102,8 +104,8 @@ public class DockerModelHelper {
 		}
 		for (Resource r : this.configuration.getResources()) {
 			if (r instanceof Machine) {
-				String name = ((Machine)r).getName();
-				
+				String name = ((Machine) r).getName();
+
 				if (name != null && name.equals(machineName)) {
 					return true;
 				}
@@ -111,7 +113,5 @@ public class DockerModelHelper {
 		}
 		return false;
 	}
-	
-	
-	
+
 }

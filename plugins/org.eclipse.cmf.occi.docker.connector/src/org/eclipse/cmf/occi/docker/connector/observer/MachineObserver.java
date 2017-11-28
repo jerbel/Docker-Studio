@@ -14,7 +14,6 @@ package org.eclipse.cmf.occi.docker.connector.observer;
 
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Machine;
-import org.eclipse.cmf.occi.docker.connector.DockerClientManager;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
@@ -85,24 +84,26 @@ public class MachineObserver {
 					// Throw an exception
 					throw new UnsupportedOperationException();
 				}
-				try {
-					if (notification.getEventType() == Notification.SET
-							&& notification.getOldValue() instanceof Container) {
-						deletedElement = (Container) notification.getOldValue();
-						// Notify the deleted element in the model
-						System.out.println("Deleted model element with ID: " + deletedElement.getContainerid());
+				// try {
+				if (notification.getEventType() == Notification.SET
+						&& notification.getOldValue() instanceof Container) {
+					deletedElement = (Container) notification.getOldValue();
+					// Notify the deleted element in the model
+					System.out.println("Deleted model element with ID: " + deletedElement.getContainerid());
+					// TODO : Remove contains...
+					// TODO : Remove container listener.
 
-						// Remove the container from the machine
-						DockerClientManager dockerClient = new DockerClientManager(compute);
+					// Remove the container from the machine
+					// DockerClientManager dockerClient = new DockerClientManager(compute);
 
-						if (dockerClient.containerNameExists(deletedElement.getName(), compute)) {
-							dockerClient.removeContainer(compute, deletedElement);
-						}
-					}
-				} catch (DockerException ex) {
-					LOGGER.error("Exception thrown : " + ex.getMessage());
-					ex.printStackTrace();
+					// if (dockerClient.containerNameExists(deletedElement.getName(), compute)) {
+					// dockerClient.removeContainer(compute, deletedElement);
+					// }
 				}
+				// } catch (DockerException ex) {
+				// LOGGER.error("Exception thrown : " + ex.getMessage());
+				// ex.printStackTrace();
+				// }
 				System.out.println("Old value : " + notification.getOldValue());
 				System.out.println("New value : " + notification.getNewValue());
 			}
@@ -111,9 +112,10 @@ public class MachineObserver {
 
 		return compute;
 	}
-	
+
 	/**
 	 * Remove the observer from this compute machine.
+	 * 
 	 * @param machine
 	 * @throws DockerException
 	 */

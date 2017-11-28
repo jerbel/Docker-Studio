@@ -24,11 +24,11 @@ public enum Provider {
 	ibm,
 
 	azure,
-	
+
 	exoscale,
-	
+
 	generic,
-	
+
 	g5k,
 
 	microsofthyperv;

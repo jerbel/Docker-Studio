@@ -13,10 +13,8 @@
 package org.eclipse.cmf.occi.docker.connector.helpers;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,11 +35,12 @@ import org.slf4j.LoggerFactory;
  *
  */
 public class DockerMachineHelper {
-	
+
 	private static Logger LOGGER = LoggerFactory.getLogger(DockerMachineHelper.class);
-	
+
 	/**
 	 * Return the address of the compute machine with format: tcp://192.168.1.1
+	 * 
 	 * @param compute
 	 * @return tcp endpoint.
 	 */
@@ -52,12 +51,18 @@ public class DockerMachineHelper {
 			// Considered local.
 			System.out.println("Use docker on local machine");
 			try {
-				return new URI("tcp://127.0.0.1" + DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT); // TODO : Port must be in the machine resource generic connector.
+				return new URI("tcp://127.0.0.1" + DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT); // TODO :
+																											// Port must
+																											// be in the
+																											// machine
+																											// resource
+																											// generic
+																											// connector.
 			} catch (URISyntaxException ex) {
 				throw new DockerException(ex.getMessage(), ex);
 			}
 		}
-		
+
 		if (compute instanceof Machine) {
 			Machine machine = (Machine) compute;
 			// Get url from docker-machine command output.
@@ -72,23 +77,26 @@ public class DockerMachineHelper {
 					port = Integer.parseInt(DockerConfigurationHelper.DEFAULT_DOCKER_API_TLS_PORT);
 					uriEndpoint = new URI(endpoint + ":" + port);
 				}
-				
+
 				System.out.println("port : " + port);
 			} catch (URISyntaxException ex) {
 				throw new DockerException(ex.getMessage(), ex);
 			}
-			
+
 		} else {
-			// TODO : include other extension providers like vmware instance, aws instance etc without pass by docker-machine for sample : else if (compute instanceof InstanceVMware) { instancevmware.getGuestIpv4Address();}
-			// Use infrastructure extension to find public ipaddress with networkinterface and mixin ipNetworkInterface.
+			// TODO : include other extension providers like vmware instance, aws instance
+			// etc without pass by docker-machine for sample : else if (compute instanceof
+			// InstanceVMware) { instancevmware.getGuestIpv4Address();}
+			// Use infrastructure extension to find public ipaddress with networkinterface
+			// and mixin ipNetworkInterface.
 			throw new DockerException("Not a supported machine, will come in future !");
 		}
 		return uriEndpoint;
 	}
-	
-	
+
 	/**
 	 * Get the endpoint from docker-machine command.
+	 * 
 	 * @param runtime
 	 * @param machineName
 	 * @return
@@ -102,7 +110,7 @@ public class DockerMachineHelper {
 		}
 		return result;
 	}
-	
+
 	/**
 	 * 
 	 * @param runtime
@@ -117,12 +125,13 @@ public class DockerMachineHelper {
 		ProcessManager.runCommand(command, runtime, true);
 		// Set machine state
 		compute.setOcciComputeState(ComputeStatus.ACTIVE);
-		
+
 		if (compute instanceof Machine) {
-			machineName = ((Machine)compute).getName();
+			machineName = ((Machine) compute).getName();
 			return setEnvCmd(runtime, machineName);
 		} else {
-			// TODO : use external multicloud extensions like vmware extension (if compute instanceof InstanceVMware) set environment on this compute....
+			// TODO : use external multicloud extensions like vmware extension (if compute
+			// instanceof InstanceVMware) set environment on this compute....
 			// No op.
 			return true;
 		}
@@ -134,8 +143,8 @@ public class DockerMachineHelper {
 	 * @return
 	 */
 	public static boolean listMachinesCmd(Runtime runtime) throws DockerException {
-		boolean result = false; 
-		if (DockerMachineCommandFactory.OS.equalsIgnoreCase("osx")){
+		boolean result = false;
+		if (DockerMachineCommandFactory.OS.equalsIgnoreCase("osx")) {
 			String command = DockerMachineCommandFactory.createLsCommand();
 			result = ProcessManager.runCommand(command, runtime, true);
 		} else {
@@ -164,11 +173,10 @@ public class DockerMachineHelper {
 	 * @throws DockerException
 	 */
 	public static String inspectHostCmd(Runtime runtime, String machine) throws DockerException {
-	    String command = DockerMachineCommandFactory.createInfoCommand(machine);
+		String command = DockerMachineCommandFactory.createInfoCommand(machine);
 		return ProcessManager.getOutputCommand(command, runtime);
 	}
 
-	
 	public static String listHostCmd(Runtime runtime) throws DockerException {
 		String command = DockerMachineCommandFactory.createLsCmd();
 		return ProcessManager.getOutputCommand(command, runtime);
@@ -178,7 +186,7 @@ public class DockerMachineHelper {
 		String command = DockerMachineCommandFactory.createEnvCmd(machineName);
 		return ProcessManager.runCommand(command, runtime, true);
 	}
-	
+
 	public static String getEnvCmd(Runtime runtime, String machineName) throws DockerException {
 		String command = DockerMachineCommandFactory.getEnvCmd(machineName);
 		return ProcessManager.getOutputCommand(command, runtime);
@@ -203,7 +211,7 @@ public class DockerMachineHelper {
 		String command = DockerMachineCommandFactory.createRemoveCommand(machineName);
 		return ProcessManager.runCommand(command, runtime, true);
 	}
-	
+
 	public static String ipCmd(Runtime runtime, String machineName) throws DockerException {
 		String command = DockerMachineCommandFactory.createUrlCommand(machineName);
 		String temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp://", "");
@@ -211,7 +219,7 @@ public class DockerMachineHelper {
 		String result = temp.substring(0, index);
 		return result;
 	}
-	
+
 	/**
 	 * 
 	 * @param machineName
@@ -223,7 +231,7 @@ public class DockerMachineHelper {
 		if (compute == null) {
 			machineName = "default";
 		} else if (compute instanceof Machine) {
-			machineName = ((Machine)compute).getName();
+			machineName = ((Machine) compute).getName();
 		} else {
 			machineName = compute.getTitle();
 		}
@@ -243,23 +251,28 @@ public class DockerMachineHelper {
 				}
 			}
 		}
-		String defaultMachineCertPath = System.getProperty("user.home") + File.separator + ".docker" + File.separator + "machine" + File.separator + "machines" + machineName; 
-		
+		String defaultMachineCertPath = System.getProperty("user.home") + File.separator + ".docker" + File.separator
+				+ "machine" + File.separator + "machines" + machineName;
+
 		if (new File(defaultMachineCertPath).canRead()) {
 			return defaultMachineCertPath; // else DockerException because null certPath
 		} else {
 			// Must never be here.
-			throw new DockerException("No machine certificate path could be found !, please set environnement variable with DOCKER_CERT_PATH");
-		}	
+			throw new DockerException(
+					"No machine certificate path could be found !, please set environnement variable with DOCKER_CERT_PATH");
+		}
 	}
-	
+
 	/**
 	 * List all the containers contains by this compute (on model only).
-	 * @param compute the compute where to list the containers.
+	 * 
+	 * @param compute
+	 *            the compute where to list the containers.
 	 * @return
 	 */
 	public static List<Container> listContainerModels(Compute compute) {
-		// TODO : To export to a specific model management class (to get mixins, get linked entities etc.).
+		// TODO : To export to a specific model management class (to get mixins, get
+		// linked entities etc.).
 		List<Container> containers = new ArrayList<>();
 		for (Link link : compute.getLinks()) {
 			if (link instanceof Contains && link.getTarget() instanceof Container) {
@@ -269,5 +282,5 @@ public class DockerMachineHelper {
 		}
 		return containers;
 	}
-	
+
 }
