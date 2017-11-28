@@ -235,25 +235,25 @@
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Create">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiCreate()/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:occiCreate"/>
               </initialOperation>
             </menuItemDescription>
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Retrieve">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiRetrieve()/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:occiRetrieve"/>
               </initialOperation>
             </menuItemDescription>
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Update">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiUpdate()/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:occiUpdate"/>
               </initialOperation>
             </menuItemDescription>
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Delete">
               <view name="views"/>
               <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="[self.oclAsType(Entity).occiDelete()/]"/>
+                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:occiDelete"/>
               </initialOperation>
             </menuItemDescription>
           </ownedTools>

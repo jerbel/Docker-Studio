@@ -26,11 +26,11 @@ import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.cmf.occi.core.Configuration;
+import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.docker.Network;
-
+import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.RestartMethod;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
-
 
 /**
  * 
@@ -43,57 +43,7 @@ public class DockerServices {
 	 * Popup menu Start action.
 	 */
 	public void start(final EObject eo) {
-		try {
-			final int kind = this.eobjectKind(eo);
-			Shell shell = this.getShell();
-			String machineName = null;
-			
-			if ((kind == 0)) {
-				
-				Machine machine = ((Machine) eo);
-				machineName = machine.getName();
-				if (machineName == null || machineName.trim().isEmpty()) {
-					MessageDialog.openInformation(shell, "Warning", "Machine name is required !");
-					return;
-				} else {
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
-						@Override
-						public void run(final IProgressMonitor monitor)
-								throws InvocationTargetException, InterruptedException {
-							Machine machine = ((Machine) eo);
-							machine.start();
-						}
-					};
-					
-					ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-					dialog.run(false, true, runnable);
-				}
-				
-			} else if ((kind == 1)) {
-					Container container = ((Container) eo);
-					machineName = container.getName();
-					
-					if (machineName == null || machineName.trim().isEmpty()) { 
-						MessageDialog.openInformation(shell, "Warning", "Container name is required !");
-						return;
-					} else {
-						IRunnableWithProgress runnable = new IRunnableWithProgress() {
-							@Override
-							public void run(final IProgressMonitor monitor)
-									throws InvocationTargetException, InterruptedException {
-								Container container = ((Container) eo);
-								container.start();
-							}
-						};
-						ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-						dialog.run(false, true, runnable);
-					}
-			} else {
-				MessageDialog.openInformation(shell, "Warning", "Unsupported compute !");
-			}
-		} catch (Throwable ex) {
-			ex.printStackTrace();
-		}
+		executeCommand(eo, "start", false);
 	}
 
 	/**
@@ -124,155 +74,160 @@ public class DockerServices {
 	 * Popum menu synchronize action.
 	 */
 	public void synchronize(final EObject eo) {
-		try {
-			IRunnableWithProgress runnable = new IRunnableWithProgress() {
-				@Override
-				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
-					if ((eo instanceof Machine)) {
-						Machine machine = ((Machine) eo);
-						machine.occiRetrieve();
-					}
-				}
-			};
-			Shell _shell = this.getShell();
-			ProgressMonitorDialog dialog = new ProgressMonitorDialog(_shell);
-			dialog.run(false, true, runnable);
-		} catch (Throwable ex) {
-			ex.printStackTrace();
-		}
+		executeCommand(eo, "synchronize", false);
 	}
 
 	/**
 	 * Popup menu StartAll action
 	 */
 	public void startAll(final EObject eo) {
-		try {
-			final int kind = this.eobjectKind(eo);
-			
-			if ((kind == 0)) {
-				Machine machine = ((Machine) eo);
-				String machineName = null;
-				machineName = machine.getName();
-				Shell shell = this.getShell();
-				if (machineName == null || machineName.trim().isEmpty()) {
-					MessageDialog.openInformation(shell, "Warning", "Machine name is required !");		
-				} else {
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
-						@Override
-						public void run(final IProgressMonitor monitor)
-								throws InvocationTargetException, InterruptedException {
-							Machine machine = ((Machine) eo);
-							machine.startall();
-						}
-					};
-					
-					ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-					dialog.run(false, true, runnable);
-				}
-			}
-		} catch (Throwable ex) {
-			ex.printStackTrace();
-		}
+		executeCommand(eo, "startall", false);
 	}
 
 	/**
 	 * Popup menu stop action.
 	 */
 	public void stop(final EObject eo) {
-		try {
-			final int kind = this.eobjectKind(eo);
-			String machineName = null;
-			Shell shell = this.getShell();
-			if ((kind == 0)) {
-				Machine machine = ((Machine) eo);
-				machineName = machine.getName();
-				if (machineName == null || machineName.trim().isEmpty()) {
-					MessageDialog.openInformation(shell, "Warning", "Machine name is required !");
-				} else {
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
-						@Override
-						public void run(final IProgressMonitor monitor)
-								throws InvocationTargetException, InterruptedException {
-							Machine machine = ((Machine) eo);
-							machine.stop(StopMethod.GRACEFUL);
-						}
-					};
-					ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-					dialog.run(false, true, runnable);
-				}
-			} else if ((kind == 1)) {
-					Container container = ((Container) eo);
-					machineName = container.getName();
-					if (machineName == null || machineName.trim().isEmpty()) {
-						MessageDialog.openInformation(shell, "Warning", "Container name is required !");
-					} else {
-						IRunnableWithProgress runnable = new IRunnableWithProgress() {
-							@Override
-							public void run(final IProgressMonitor monitor)
-									throws InvocationTargetException, InterruptedException {
-								Container container = ((Container) eo);
-								container.stop(StopMethod.GRACEFUL);
-							}
-						};
-						ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-						dialog.run(false, true, runnable);
-					}
-				}
-			
-		} catch (Throwable ex) {
-			ex.printStackTrace();
-		}
+		executeCommand(eo, "stop", false);
 	}
 
 	/**
 	 * Popup menu restart action.
 	 */
 	public void restart(final EObject eo) {
+		executeCommand(eo, "restart", false);
+	}
+
+	public void occiCreate(final EObject eo) {
+		executeCommand(eo, "occiCreate", true);
+	}
+
+	public void occiRetrieve(final EObject eo) {
+		executeCommand(eo, "occiRetrieve", true);
+	}
+
+	public void occiUpdate(final EObject eo) {
+		executeCommand(eo, "occiUpdate", true);
+	}
+
+	public void occiDelete(final EObject eo) {
+		executeCommand(eo, "occiDelete", true);
+	}
+
+	/**
+	 * Called by all basic command (not by import command).
+	 * 
+	 * @param eo
+	 * @param command
+	 * @param occiCommand
+	 */
+	private void executeCommand(final EObject eo, final String command, final boolean occiCommand) {
+		Shell shell = this.getShell();
 		try {
 			final int kind = this.eobjectKind(eo);
+
 			String machineName = null;
-			Shell shell = this.getShell();
-			if ((kind == 0)) {
+			final Compute compute;
+			final Entity entity;
+			if (command == null) {
+				MessageDialog.openInformation(shell, "Warning", "This command : " + command + " is not supported.");
+				return;
+			}
+
+			switch (kind) {
+			case 0:
 				Machine machine = ((Machine) eo);
 				machineName = machine.getName();
-				
 				if (machineName == null || machineName.trim().isEmpty()) {
-					MessageDialog.openInformation(shell, "Warning", "Machine name is required!");
-				} else {
-					IRunnableWithProgress runnable = new IRunnableWithProgress() {
-						@Override
-						public void run(final IProgressMonitor monitor)
-								throws InvocationTargetException, InterruptedException {
-							Machine machine = ((Machine) eo);
-							machine.restart(RestartMethod.GRACEFUL);
+					MessageDialog.openInformation(shell, "Warning", "Machine name is required !");
+					return;
+				}
+				compute = (Compute) eo;
+				break;
+			case 1:
+				Container container = ((Container) eo);
+				machineName = container.getName();
+				if (machineName == null || machineName.trim().isEmpty()) {
+					MessageDialog.openInformation(shell, "Warning", "Container name is required !");
+					return;
+				}
+				compute = (Container) eo;
+				break;
+			default:
+				if (!occiCommand) {
+					MessageDialog.openInformation(shell, "Warning", "Unsupported compute !");
+					return;
+				}
+				compute = null;
+				break;
+			}
+			if (eo instanceof Entity) {
+				entity = (Entity) eo;
+			} else {
+				System.err.println("Not an entity !");
+				return;
+			}
+			IRunnableWithProgress runnable = new IRunnableWithProgress() {
+				@Override
+				public void run(final IProgressMonitor monitor) throws InvocationTargetException, InterruptedException {
+
+					if (occiCommand) {
+						switch (command) {
+						case "occiCreate":
+							entity.occiCreate();
+							break;
+						case "occiUpdate":
+							entity.occiUpdate();
+							break;
+						case "occiDelete":
+							entity.occiDelete();
+							break;
+						case "occiRetrieve":
+							entity.occiRetrieve();
+							break;
 						}
-					};
-					
-					ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-					dialog.run(false, true, runnable);
-				}
-			} else 
-				if ((kind == 1)) {
-					Container container = ((Container) eo);
-					machineName = container.getName();
-					if (machineName == null || machineName.trim().isEmpty()) {
-						MessageDialog.openInformation(shell, "Warning", "Container name is required!");
 					} else {
-						IRunnableWithProgress runnable = new IRunnableWithProgress() {
-							@Override
-							public void run(final IProgressMonitor monitor)
-									throws InvocationTargetException, InterruptedException {
-								Container container = ((Container) eo);
-								container.restart(RestartMethod.GRACEFUL);
+						if (compute != null) {
+
+							switch (command) {
+
+							case "start":
+								compute.start();
+								break;
+							case "startall":
+								if (compute instanceof Machine) {
+									Machine machine = (Machine) compute;
+									machine.startall();
+								}
+
+								break;
+							case "stop":
+								compute.stop(StopMethod.GRACEFUL);
+								break;
+							case "synchronize":
+								compute.occiRetrieve();
+								break;
+							case "restart":
+								compute.restart(RestartMethod.GRACEFUL);
+							default:
+								System.err.println("command : " + command + " is not supported.");
+								break;
 							}
-						};
-						ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
-						dialog.run(false, true, runnable);
+						}
 					}
+
 				}
+			};
+
+			ProgressMonitorDialog dialog = new ProgressMonitorDialog(shell);
+			dialog.run(false, true, runnable);
+			MessageDialog.openInformation(shell, "Operation succeed", "Command " + command + " has been successfully executed !");
 		} catch (Throwable ex) {
 			ex.printStackTrace();
+			MessageDialog.openError(shell, "Error on command " + command,
+					ex.getCause().getClass().getName() + " --> " + ex.getCause().getMessage());
 		}
+
 	}
 
 	/**
@@ -294,7 +249,7 @@ public class DockerServices {
 	public Machine getMachine(final EObject eo) {
 		final int kind = this.eobjectKind(eo);
 		if ((kind == 1)) {
-			return (Machine)((ContainerConnector) eo).getCompute();
+			return (Machine) ((ContainerConnector) eo).getCompute();
 		}
 		return null;
 	}
@@ -314,5 +269,4 @@ public class DockerServices {
 		return kind;
 	}
 
-	
 }

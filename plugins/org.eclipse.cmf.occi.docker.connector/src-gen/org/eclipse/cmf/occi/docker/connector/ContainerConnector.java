@@ -72,15 +72,14 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 						dockerClientManager = new DockerClientManager(machine, eventCallBack);
 					}
 					System.out.println("Command to execute : " + getCommand());
+					// First check if container already exist.
+					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
+						// Create the container..
+						createContainer(machine);
+					}
 					dockerClientManager.startContainer(machine, this.compute);
 				} catch (Exception e) {
-					
-					if (e.getCause() instanceof NotFoundException) {
-						createContainer(machine);
-						dockerClientManager.startContainer(machine, this.compute);
-					} else {
-						throw new DockerException("Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
-					}
+					throw new DockerException("Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
 				}
 			} else {
 				System.out.println("Host is suspended or inactive.");

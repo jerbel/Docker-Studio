@@ -17,12 +17,10 @@ import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
-import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.docker.connector.DockerClientManager;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
-import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.emf.common.command.Command;
@@ -133,7 +131,9 @@ public class EventCallBack extends EventsResultCallback {
 	@Override
 	public void onNext(Event item) {
 		System.out.println("Received event #" + item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
-
+		if (item.getStatus() == null) {
+			return;
+		}
 		// Get the machine that contains this container.
 		Compute compute = this.container.getCompute();
 

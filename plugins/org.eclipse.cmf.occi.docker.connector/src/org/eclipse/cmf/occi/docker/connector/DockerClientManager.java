@@ -160,6 +160,34 @@ public class DockerClientManager {
 		}
 		return false;
 	}
+	
+	/**
+	 * 
+	 * @param compute
+	 * @param container
+	 * @return
+	 * @throws DockerException
+	 */
+	public boolean containerIsInsideMachine(Compute compute, final Container container) throws DockerException {
+
+		// Check if it exist on compute.
+		InspectContainerResponse containerResponse = inspectContainer(compute, container);
+		if (containerResponse == null) {
+			// Not found on real virtal machine.
+			return false;
+		}
+		String name = containerResponse.getName().replaceAll("/", "");
+
+		// On model level...
+		List<Container> listContainer = DockerMachineHelper.listContainerModels(compute);
+
+		for (Container ec : listContainer) {
+			if (ec.getName().equalsIgnoreCase(name)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	/**
 	 * 

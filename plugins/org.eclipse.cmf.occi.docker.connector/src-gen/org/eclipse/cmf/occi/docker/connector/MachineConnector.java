@@ -54,7 +54,6 @@ public class MachineConnector extends org.eclipse.cmf.occi.docker.impl.MachineIm
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
 		start();
-		// TODO: Implement this callback or remove this method.
 	}
 	// End of user code
 
