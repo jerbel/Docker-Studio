@@ -71,13 +71,6 @@ public class DockerServices {
 	}
 
 	/**
-	 * Popum menu synchronize action.
-	 */
-	public void synchronize(final EObject eo) {
-		executeCommand(eo, "synchronize", false);
-	}
-
-	/**
 	 * Popup menu StartAll action
 	 */
 	public void startAll(final EObject eo) {

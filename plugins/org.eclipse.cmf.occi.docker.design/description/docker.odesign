@@ -206,12 +206,6 @@
                 <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:stop"/>
               </initialOperation>
             </menuItemDescription>
-            <menuItemDescription xsi:type="tool_1:OperationAction" name="Synchronize" precondition="[oclIsKindOf(Compute)/]" icon="/org.eclipse.cmf.occi.docker.design/images/refresh.gif">
-              <view name="views"/>
-              <initialOperation>
-                <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="service:synchronize"/>
-              </initialOperation>
-            </menuItemDescription>
             <menuItemDescription xsi:type="tool_1:OperationAction" name="Import" precondition="[oclIsKindOf(Configuration)/]" icon="/org.eclipse.cmf.occi.docker.design/images/import.gif">
               <view name="views"/>
               <initialOperation>
