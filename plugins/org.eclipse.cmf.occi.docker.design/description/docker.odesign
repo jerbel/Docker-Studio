@@ -160,13 +160,6 @@
             </style>
           </conditionnalStyles>
         </containerMappings>
-        <containerMappings name="Cluster" labelDirectEdit="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@toolSections.0/@ownedTools[name='Edit']" semanticCandidatesExpression="feature:resources" domainClass="docker.Cluster">
-          <style xsi:type="style:FlatContainerStyleDescription" arcHeight="50" borderSizeComputationExpression="1" borderLineStyle="dash" iconPath="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/swarm.gif" roundedCorner="true" backgroundStyle="Liquid" foregroundColor="//@userColorsPalettes[name='custom_palette']/@entries[name='custom_lignt_yellow']">
-            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
-          </style>
-        </containerMappings>
         <toolSections name="Tools">
           <ownedTools xsi:type="tool:DirectEditLabel" name="Edit">
             <mask mask="{0}"/>
@@ -261,15 +254,6 @@
               <firstModelOperations xsi:type="tool_1:ChangeContext" browseExpression="var:container">
                 <subModelOperations xsi:type="tool_1:RemoveElement"/>
               </firstModelOperations>
-            </initialOperation>
-          </ownedTools>
-        </toolSections>
-        <toolSections name="Cluster" icon="/org.eclipse.cmf.occi.docker.edit/icons/full/obj16/Cluster.gif">
-          <ownedTools xsi:type="tool:ContainerCreationDescription" name="cluster" containerMappings="//@ownedViewpoints[name='DockerConfiguration']/@ownedRepresentations[name='DockerConfiguration%20Diagram']/@defaultLayer/@containerMappings[name='Cluster']">
-            <variable name="container"/>
-            <viewVariable name="containerView"/>
-            <initialOperation>
-              <firstModelOperations xsi:type="tool_1:CreateInstance" typeName="Cluster" referenceName="resources"/>
             </initialOperation>
           </ownedTools>
         </toolSections>
