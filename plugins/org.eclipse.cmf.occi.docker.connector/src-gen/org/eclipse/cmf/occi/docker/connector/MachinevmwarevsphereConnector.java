@@ -141,9 +141,9 @@ public class MachinevmwarevsphereConnector extends org.eclipse.cmf.occi.docker.i
 		LOGGER.debug("occiDelete() called on " + this);
 		try {
 			manager.removeMachine(this);
-//			if (machineObserver != null) {
-//				machineObserver.removeListener(this);
-//			}
+			if (machineObserver != null) {
+				machineObserver.removeListener(this);
+			}
 		} catch (DockerException ex) {
 			ex.printStackTrace();
 		}
@@ -169,10 +169,10 @@ public class MachinevmwarevsphereConnector extends org.eclipse.cmf.occi.docker.i
 	public void start() {
 		try {
 			manager.start();
-//			if (machineObserver == null) {
-//				machineObserver = new MachineObserver();
-//				machineObserver.listener(this);
-//			}
+			if (machineObserver == null) {
+				machineObserver = new MachineObserver();
+				machineObserver.listener(this);
+			}
 		} catch (DockerException ex) {
 			LOGGER.error(ex.getMessage());
 			ex.printStackTrace();

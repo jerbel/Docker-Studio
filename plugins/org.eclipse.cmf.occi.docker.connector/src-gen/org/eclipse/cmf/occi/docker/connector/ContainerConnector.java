@@ -21,6 +21,7 @@ import org.eclipse.cmf.occi.docker.DockerPackage;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
+import org.eclipse.cmf.occi.docker.connector.observer.StatsCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
@@ -51,6 +52,11 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	private ContainerObserver containerObserver = null;
 
 	private EventCallBack eventCallBack = new EventCallBack(this);
+	/**
+	 * Manage statistics from monitoring.
+	 */
+	private StatsCallBack statsCallBack = new StatsCallBack(this);
+	
 	private Map<DockerClient, CreateContainerResponse> map = null;
 
 	protected static DockerClientManager dockerClientManager = null;
@@ -74,7 +80,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 						// Create the container..
 						createContainer(machine);
 					}
-					dockerClientManager.startContainer(machine, this.compute);
+					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
 				} catch (Exception e) {
 					throw new DockerException("Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
 				}
@@ -223,9 +229,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		
 		try {
 			removeContainer(getCompute());
-//			if (containerObserver != null) {
-//				containerObserver.removeListener(this);
-//			}
+			if (containerObserver != null) {
+				containerObserver.removeListener(this);
+			}
 			
 		} catch (DockerException ex) {
 			LOGGER.error("Error thrown while deleting the container : " + ex.getMessage());
@@ -379,6 +385,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		if (containerid != null) {
 			try {
 				dockerClientManager.killContainer(getCompute(), getContainerid());
+				if (containerObserver != null) {
+					containerObserver.removeListener(this);
+				}
 			} catch (DockerException ex) {
 				LOGGER.error("Cant kill the container : " + getName() + " --> " + ex.getMessage());
 				ex.printStackTrace();
@@ -495,6 +504,14 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		contains.setSource(machine);
 		machine.getLinks().add(contains);
 		return machine;
+	}
+
+	public StatsCallBack getStatsCallBack() {
+		return statsCallBack;
+	}
+
+	public void setStatsCallBack(StatsCallBack statsCallBack) {
+		this.statsCallBack = statsCallBack;
 	}
 	
 

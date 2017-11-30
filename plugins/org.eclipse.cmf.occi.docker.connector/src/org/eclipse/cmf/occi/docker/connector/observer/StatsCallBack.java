@@ -12,6 +12,7 @@
  */
 package org.eclipse.cmf.occi.docker.connector.observer;
 
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -20,6 +21,7 @@ import java.util.Map;
 
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
+import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.emf.common.command.Command;
@@ -43,10 +45,6 @@ import com.github.dockerjava.core.async.ResultCallbackTemplate;
 public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statistics> {
 	private static Logger LOGGER = LoggerFactory.getLogger(StatsCallBack.class);
 
-	private List<Statistics> statisticsList = new LinkedList<>();
-
-	private String containerId;
-
 	private Container container;
 
 	private LimitedQueue<Float> cpuTotalUsageQueue = new LimitedQueue<Float>(2);
@@ -54,79 +52,100 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 	private LimitedQueue<Float> cpuSystemUsageQueue = new LimitedQueue<Float>(2);
 
 	private boolean updateMaxCpu = false;
+	
+	/**
+	 * Monitoring interval to get values between period.
+	 */
+	private Integer monitoringInterval = 2000;
 
-	public StatsCallBack(String containerId) {
-		this.containerId = containerId;
-	}
 
 	public StatsCallBack(Container container) {
 		this.container = container;
-		// this.containerId = container.getContainerid();
 	}
 
 	@Override
 	public void onNext(Statistics stats) {
-		// System.out.println("Received stats #{} :: {} :: {}", statisticsList.size(),
-		// this.container.containerid, stats)
+		
 		// Interval in which the metrics are retrieved
 		try {
-			Thread.sleep(this.container.getMonitoringInterval()); // Pause for x ms
+			if (this.container == null) {
+				System.err.println("The container is not set correctly on stats call back !!!");
+				return;
+			}
+			if (this.container.getMonitoringInterval() != null) {
+				monitoringInterval = this.container.getMonitoringInterval(); // Else default is 2000 ms.
+			}
+			Thread.sleep(monitoringInterval); // Pause for x ms
 		} catch (InterruptedException ex) {
 			// No op.
 		}
-		statisticsList.add(stats);
+		if (this.container.getOcciComputeState().equals(ComputeStatus.INACTIVE)) {
+			System.out.println("Container : " + container.getName() + " is inactive");
+			try {
+				this.close();
+				((ContainerConnector)container).setStatsCallBack(new StatsCallBack(container));
+				
+			} catch (IOException ex) {
+				ex.printStackTrace();
+				System.err.println("Exception thrown IOException : " + ex.getMessage());
+			}
+			return;
+		}
 		// Calculate the percentage of CPU used
 		Map<String, Object> cpu = stats.getCpuStats();
 
 		LinkedHashMap<String, Object> tmpcpu = (LinkedHashMap<String, Object>) cpu.get("cpu_usage");
-		Object cpu_used = tmpcpu.get("total_usage");
-		Object percpu_usage = tmpcpu.get("percpu_usage");
-		Object system_cpu_usage = cpu.get("system_cpu_usage");
-		Object percpu_usage_size = (List<Object>) percpu_usage;
+		Object cpuUsed = tmpcpu.get("total_usage");
+		Object percpuUsage = tmpcpu.get("percpu_usage");
+		Object systemCpuUsage = cpu.get("system_cpu_usage");
+		Object percpuUsageSize = (List<Object>) percpuUsage;
 		// Memory.
-		Integer mem_used = (Integer) stats.getMemoryStats().get("usage");
-		Long mem_limit = (Long) stats.getMemoryStats().get("limit");
+		Integer memUsed = (Integer) stats.getMemoryStats().get("usage");
+		System.out.println("mem used : " + memUsed);
+		
+		Object memLimitObj = stats.getMemoryStats().get("limit");
+		// Parse to long the memLimitObj
+		Long memLimit = Long.valueOf(memLimitObj.toString());
+		System.out.println("mem limit: " + memLimit);
+		
 		Map<String, Object> networks = stats.getNetworks();
-		Map<String, Object> network = stats.getNetwork();
-		Integer network_r = null;
-		Integer network_t = null;
+		// Map<String, Object> network = stats.getNetwork();
+		Integer networkR = null;
+		Integer networkT = null;
 		Integer bandwitdh = null;
 		try {
 			if (networks != null) {
 				LinkedHashMap<String, Object> tmpnetworks = (LinkedHashMap<String, Object>) networks.get("eth0");
 				// System.out.println("Networks : {}", tmpnetworks)
-				network_r = (Integer) tmpnetworks.get("rx_bytes");
-				network_t = (Integer) tmpnetworks.get("tx_bytes");
-				bandwitdh = network_r + network_t;
-
-			} else {
-				network_r = (Integer) network.get("rx_bytes");
-				network_t = (Integer) network.get("tx_bytes");
-				bandwitdh = network_r + network_t;
+				networkR = (Integer) tmpnetworks.get("rx_bytes");
+				networkT = (Integer) tmpnetworks.get("tx_bytes");
+				bandwitdh = networkR + networkT;
 			}
 
 		} catch (Exception e) {
-			network_r = 0;
-			network_t = 0;
+			e.printStackTrace();
+			networkR = 0;
+			networkT = 0;
 			bandwitdh = 0;
-			LOGGER.error(e.getMessage());
+			LOGGER.error("Networks bandwidth -> Exception thrown : " + e.getClass().getName() + " --> " + e.getMessage());
 		}
 
 		// Update the Queue
-		cpuTotalUsageQueue.add(Float.valueOf(cpu_used.toString()));
-		cpuSystemUsageQueue.add(Float.valueOf(system_cpu_usage.toString()));
+		cpuTotalUsageQueue.add(Float.valueOf(cpuUsed.toString()));
+		cpuSystemUsageQueue.add(Float.valueOf(systemCpuUsage.toString()));
 
 		if (cpuTotalUsageQueue.size() == 2 && cpuSystemUsageQueue.size() == 2) {
 			// Calculate the percentage
 			Float percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue,
-					((List<Statistics>) percpu_usage_size).size());
+					((List<Statistics>) percpuUsageSize).size());
 			// Update the monitoring metrics
 			try {
-				modifyResourceSet(this.container, cpu_used.toString(), percent, mem_used, mem_limit, bandwitdh,
-						((List<Statistics>) percpu_usage_size).size(), updateMaxCpu);
+				System.out.println("Container : " + this.container.getContainerid());
+				modifyResourceSet(this.container, cpuUsed.toString(), percent, memUsed, memLimit, bandwitdh,
+						((List<Statistics>) percpuUsageSize).size(), updateMaxCpu);
 				updateMaxCpu = true;
-			} catch (NullPointerException e) {
-				LOGGER.error(e.getMessage());
+			} catch (Exception e) {
+				LOGGER.error("Exception thrown : " + e.getClass().getName() + " --> " + e.getMessage());
 			}
 		}
 
@@ -136,93 +155,153 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 	 * Update resource model.
 	 * 
 	 * @param resource
-	 * @param cpu_used
+	 * @param cpuUsed
 	 * @param percent
-	 * @param mem_used
-	 * @param mem_limit
+	 * @param memUsed
+	 * @param memLimit
 	 * @param bandwitdh
 	 * @param cpuMax
 	 * @param updateMaxCpu
 	 */
-	public synchronized void modifyResourceSet(Resource resource, String cpu_used, Float percent, Integer mem_used,
-			Long mem_limit, Integer bandwitdh, Integer cpuMax, Boolean updateMaxCpu) {
-
-		// Creating an editing domain
+	public synchronized void modifyResourceSet(Resource resource, final String cpuUsed, final Float percent, final Integer memUsed,
+			final Long memLimit, final Integer bandwitdh, final Integer cpuMax, final Boolean updateMaxCpu) {
+		// For debug...
+		System.out.println("In modify resource set !");
+		if (cpuUsed == null) {
+			System.out.println("Cpu used is null");
+		}
+		if (percent == null) {
+			System.out.println("CPU percent is null");
+		}
+		if (memUsed == null) {
+			System.out.println("Mem used is null");
+		}
+		if (memLimit == null) {
+			System.out.println("Mem limit is null");
+		}
+		if (bandwitdh == null) {
+			System.out.println("Bandwidth is null");
+		}
+		if (cpuMax == null) {
+			System.out.println("CPU Max is null");
+		}
+		if (updateMaxCpu == null) {
+			System.out.println("update max CPU is null, it must be a boolean");
+		}
+		
+		// Get an editing domain
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource().getResourceSet());
 
 		Command cmd = new RecordingCommand(domain) {
 
 			@Override
 			protected void doExecute() {
-				// these modifications require a write transaction in this editing domain
-				DecimalFormat df = new DecimalFormat("#0.##");
-				int cpu_max = 0;
-				Float cpu_us = 0.0F;
-				Integer memLimitInt = Integer.parseInt("" + (mem_limit / 1024));
-				Integer memUsedInt = (mem_used / 1024);
-
-				Float mem_percent = Float.parseFloat("" + memUsedInt) / Float.parseFloat("" + memLimitInt);
+			
 				try {
+					// these modifications require a write transaction in this editing domain
+					DecimalFormat df = new DecimalFormat("#0.##");
+					int cpuMax = 0;
+					Float cpuUs = 0.0F;
+					Integer memLimitInt = Integer.parseInt("" + (memLimit / 1024));
+					Integer memUsedInt = (memUsed / 1024);
+
+					Float memPercent = Float.parseFloat("" + memUsedInt) / Float.parseFloat("" + memLimitInt);
 					Thread.sleep(100);
+					
 					// Modify the resource only if it is in active state
 					if (resource instanceof Container) {
-						Container lookContainer = (Container) resource;
+						Container container = (Container) resource;
 
 						if (((Compute) resource).getOcciComputeState() == ComputeStatus.ACTIVE) {
-
+							Integer memContainerUsed = container.getMemoryUsed();
+							Integer memContainerMaxValue = container.getMemoryMaxValue();
+							String memContainerMemoryPercent = container.getMemoryPercent();
+							String bandwidthContainerPercent = container.getBandwidthPercent();
+							Integer bandwdthContainerUsed = container.getBandwidthUsed();
+							Integer cpuContainerMaxValue = container.getCpuMaxValue();
+							Integer cpuContainerUsed = container.getCpuUsed();
+							String cpuContainerPercent = container.getCpuPercent();
+							
+							if (memContainerUsed == null) {
+								memContainerUsed = 0;
+							}
+							if (memContainerMemoryPercent == null) {
+								memContainerMemoryPercent = df.format(0.0F);
+							}
+							if (memContainerMaxValue == null) {
+								memContainerMaxValue = 0;
+							}
+							if (bandwdthContainerUsed == null) {
+								bandwdthContainerUsed = 0;
+							}
+							if (bandwidthContainerPercent == null) {
+								bandwidthContainerPercent = df.format(0.0F);
+							}
+							if (cpuContainerUsed == null) {
+								cpuContainerUsed = 0;
+							}
+							if (cpuContainerMaxValue == null) {
+								cpuContainerMaxValue = 0;
+							}
+							if (cpuContainerPercent == null) {
+								cpuContainerPercent = df.format(0.0F);
+							}
+							
 							// Update Attributes only if change occurs
-							if (lookContainer.getMemoryUsed() != memUsedInt) {
-								lookContainer.setMemoryUsed(memUsedInt);
+							if (memContainerUsed != memUsedInt) {
+								container.setMemoryUsed(memUsedInt);
 							}
-							if (lookContainer.getMemoryMaxValue() != memLimitInt) {
-								lookContainer.setMemoryMaxValue(memLimitInt);
+							if (memContainerMaxValue != memLimitInt) {
+								container.setMemoryMaxValue(memLimitInt);
 							}
-							if (lookContainer.getMemoryPercent() != df.format(mem_percent)) {
-								lookContainer.setMemoryPercent(df.format(mem_percent));
+							if (memContainerMemoryPercent != df.format(memPercent)) {
+								container.setMemoryPercent(df.format(memPercent));
 							}
-							if (lookContainer.getBandwidthUsed() != bandwitdh) {
-								lookContainer.setBandwidthUsed(bandwitdh);
+							if (bandwdthContainerUsed != bandwitdh) {
+								container.setBandwidthUsed(bandwitdh);
 							}
-							cpu_us = (Float.valueOf("" + cpu_used)) / 1000000F;
+							
+							cpuUs = (Float.valueOf("" + cpuUsed)) / 1000000F;
 
 							// To avoid NumberFormatException, the maximum value of Integer is 2^31-1 =
 							// 2147483647
-							if (cpu_us.intValue() > Integer.MAX_VALUE) {
-								cpu_us = cpu_us / 100000000F;
+							if (cpuUs.intValue() > Integer.MAX_VALUE) {
+								cpuUs = cpuUs / 100000000F;
 							}
 
-							cpu_max = getMaxValue(Long.parseLong("" + cpu_us.intValue()), percent);
+							cpuMax = getMaxValue(Long.parseLong("" + cpuUs.intValue()), percent);
 
-							if (cpu_max > Integer.MAX_VALUE) {
-								cpu_max = cpu_max / 100000000;
-								cpu_us = cpu_us / 100000000F;
+							if (cpuMax > Integer.MAX_VALUE) {
+								cpuMax = cpuMax / 100000000;
+								cpuUs = cpuUs / 100000000F;
 							}
 
-							if (lookContainer.getCpuUsed() != cpu_us.intValue()) {
-								lookContainer.setCpuUsed(cpu_us.intValue());
+							if (cpuContainerUsed != cpuUs.intValue()) {
+								container.setCpuUsed(cpuUs.intValue());
 								// System.out.println("CPU USED <=====> {}", cpu_us.intValue)
 							}
-							if (lookContainer.getCpuMaxValue() != Integer.valueOf(cpu_max)) {
-								lookContainer.setCpuMaxValue(cpu_max);
+							if (cpuContainerMaxValue != Integer.valueOf(cpuMax)) {
+								container.setCpuMaxValue(cpuMax);
 								// System.out.println("CPU MAX VALUE <=====> {}", Integer.valueOf(cpu_max))
 							}
-							if (lookContainer.getCpuPercent() != df.format(percent)) {
-								lookContainer.setCpuPercent(df.format(percent));
+							if (!cpuContainerPercent.equals(df.format(percent))) {
+								container.setCpuPercent(df.format(percent));
 								// System.out.println("CPU PERCENTAGE <=====> {}", percent)
 							}
 
 							// Update the number of cores once
 							if (!updateMaxCpu) {
-								lookContainer.setCoreMax(cpuMax);
+								container.setCoreMax(cpuMax);
 								// updateMaxCpu = true;
 							}
 						}
 					}
 				} catch (NumberFormatException e) {
+					e.printStackTrace();
+					System.err.println("NumberFormatException : " + e.getMessage());
 					LOGGER.error(e.getMessage());
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					// No op.
 				}
 			}
 		};
@@ -235,14 +314,6 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-
-	public String getContainerId() {
-		return this.containerId;
-	}
-
-	public List<Statistics> getStatisticsList() {
-		return this.statisticsList;
 	}
 
 	public Boolean compateTo(Statistics stats1, Statistics stats2) {
@@ -273,13 +344,13 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 	}
 
 	/**
-	 * 
-	 * @param cpu_used
+	 * Calculate the cpu max value.
+	 * @param cpuUsed
 	 * @param percent
-	 * @return
+	 * @return 
 	 */
-	public int getMaxValue(Long cpu_used, Float percent) {
-		Float value = (100F * cpu_used.floatValue()) / percent;
+	public int getMaxValue(Long cpuUsed, Float percent) {
+		Float value = (100F * cpuUsed.floatValue()) / percent;
 		int maxValue = value.intValue();
 		return maxValue;
 	}

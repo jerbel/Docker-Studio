@@ -297,5 +297,14 @@ public class DockerServices {
 		result = MessageDialog.openConfirm(shell, "Confirm", "Please confirm the action");
 		return result;
 	}
+	
+	public void removeContains(final EObject eo) {
+		System.out.println("In service method removeContains !");
+		if (eo instanceof Container) {
+			System.out.println("Removing contains for Container : " + ((Container)eo).getName());
+		} else {
+			System.out.println("Cant remove contains, this is not a container !");
+		}
+	}
 
 }

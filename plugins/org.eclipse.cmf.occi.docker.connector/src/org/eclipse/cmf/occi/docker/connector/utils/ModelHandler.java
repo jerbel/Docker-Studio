@@ -511,7 +511,7 @@ public class ModelHandler {
 	 * @param machine
 	 */
 	public void removeContainerFromMachine(Container container, Compute compute) {
-
+		System.out.println("ModelHandler: remove container from machine model: " + container.getId() + " --> Machine : " + compute.getId());
 		// Retrieve the default factory singleton
 		Contains contains = DockerFactory.eINSTANCE.createContains();
 

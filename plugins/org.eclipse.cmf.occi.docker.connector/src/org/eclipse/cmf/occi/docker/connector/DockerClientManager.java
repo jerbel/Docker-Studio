@@ -786,7 +786,7 @@ public class DockerClientManager {
 	 * @param container
 	 * @throws DockerException
 	 */
-	public void startContainer(Compute computeMachine, Container container) throws DockerException {
+	public void startContainer(Compute computeMachine, Container container, StatsCallBack statsCallBack) throws DockerException {
 		preCheckDockerClient(computeMachine);
 		try {
 			dockerClient.startContainerCmd(container.getContainerid()).exec();
@@ -797,7 +797,10 @@ public class DockerClientManager {
 
 				// Load new docker client to fix blocking thread problem
 				this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
-				dockerClient.statsCmd(container.getContainerid()).exec(new StatsCallBack(container));
+				if (statsCallBack != null) {
+					System.out.println("Launch docker stats command for container : " + container.getName());
+					dockerClient.statsCmd(container.getContainerid()).exec(statsCallBack);
+				} 
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -814,7 +817,19 @@ public class DockerClientManager {
 	 */
 	public void stopContainer(Compute computeMachine, Container container) throws DockerException {
 		preCheckDockerClient(computeMachine);
+		if (container.isMonitored()) {
+			System.out.println("Stopping monitoring container : " + container.getName());
+			// Stop the statscallbacks and recreate a new one.
+			try {
+				((ContainerConnector)container).getStatsCallBack().close();
+				((ContainerConnector)container).setStatsCallBack(new StatsCallBack(container));
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
+		}
+		System.out.println("Effectively stop the container : " + container.getName());
 		dockerClient.stopContainerCmd(container.getContainerid()).exec();
+		
 	}
 
 	/**

@@ -60,7 +60,10 @@ public class EventCallBack extends EventsResultCallback {
 	 * @param containerId
 	 */
 	public void modifyResourceSet(final Resource resource, final String state, final String containerId) {
-
+		if (state == null) {
+			System.out.println("Cant update container status, no state defined !");
+			return;
+		}
 		TransactionalEditingDomain domain = TransactionUtil.getEditingDomain(resource.eResource().getResourceSet());
 		Command cmd = new RecordingCommand(domain) {
 

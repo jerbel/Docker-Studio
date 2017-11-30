@@ -82,8 +82,8 @@ public class ContainerObserver {
 						// Notify the deleted element in the model
 						System.out.println("Delete model element with ID: " + deletedElement.getContainerid());
 						// Remove the container from the machine
-						DockerClientManager dockerManager = new DockerClientManager(compute);
-						dockerManager.removeContainer(compute, deletedElement.getContainerid());
+						// DockerClientManager dockerManager = new DockerClientManager(compute);
+						// dockerManager.removeContainer(compute, deletedElement.getContainerid());
 					}
 
 					if (notification.getNotifier() instanceof Container) {
@@ -131,6 +131,7 @@ public class ContainerObserver {
 								// memoryManager.setSwapValue(host, privateKey, newContainer,
 								// String.valueOf(newContainer.memory))
 							}
+							
 							// Bandwidth changes
 							if (cpContainer.getBandwidthUsed() != newContainer.getBandwidthUsed()) {
 								NetworkManager networkManager = new NetworkManager();
@@ -164,6 +165,7 @@ public class ContainerObserver {
 	 * @throws DockerException
 	 */
 	public void removeListener(Container container) throws DockerException {
+		System.out.println("Remove listener from container : " + container.getId() + " --> " + container.getName());
 		EContentAdapter eAdapterToRemove = null;
 		for (Adapter eAdapter : container.eAdapters()) {
 
@@ -175,6 +177,7 @@ public class ContainerObserver {
 		}
 		if (eAdapterToRemove != null) {
 			container.eAdapters().remove(eAdapterToRemove);
+			System.out.println("Listener from container : " + container.getId() + " --> " + container.getName() + " is removed !");
 		}
 	}
 

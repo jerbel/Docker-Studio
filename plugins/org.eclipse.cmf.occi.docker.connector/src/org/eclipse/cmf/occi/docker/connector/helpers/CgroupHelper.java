@@ -60,32 +60,63 @@ public class CgroupHelper {
 	 */
 	public static void SetValue(String host, String privateKey, Container container, String subsystem, String file,
 			String value) throws DockerException {
-		String FilePath = cGroupPath + subsystem + "/docker/" + container.getContainerid() + "/" + file;
+		if (subsystem == null) {
+			System.out.println("Cant set value in cgroup, the subsystem is null for container : " + container.getName());
+			return;
+		}
+		if (file == null) {
+			System.out.println("Cant set value in cgroup, the file is null for container : " + container.getName());
+			return;
+		}
+		if (value == null) {
+			System.out.println("Cant set value in cgroup, this value is null for container : " + container.getName());
+			return;
+		}
+		if (container.getContainerid() == null) {
+			System.out.println("Cant set value in cgroup, the container id is not set for container : " + container.getName());
+			return;
+		}
+		Float valueFlt = 0.0F;
+		Integer valueInt = 0;
+		try {
+			valueFlt = Float.parseFloat(value);
+		} catch (NumberFormatException ex) {
+			ex.printStackTrace();
+			throw new DockerException(ex.getClass().getName() + " --> " + ex.getMessage() + " : value is not a float");
+		}
+		// Convert it on integer value.
+		try {
+			valueInt = Math.round(valueFlt);
+		} catch (NumberFormatException ex) {
+			ex.printStackTrace();
+			throw new DockerException(ex.getClass().getName() + " --> " + ex.getMessage() + " : value is not an integer");
+		}
+		
+		String filePath = cGroupPath + subsystem + "/docker/" + container.getContainerid() + "/" + file;
 		String command = "";
+		
+		
+		System.out.println("CGroup FilePath : " + filePath);
+		
 		DockerClientManager dockerClientManager = new DockerClientManager();
 
 		if (file.equalsIgnoreCase(memory_max_mem)) {
-			command = "echo '" + Integer.parseInt("" + Float.parseFloat(value)) + "' > " + FilePath;
+			command = "echo '" + valueInt + "' > " + filePath;
 			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		} else if (file.equalsIgnoreCase(cpuset_cpus)) {
-			command = "echo '" + cpuSetGenerator(value, container) + "' > " + FilePath;
+			command = "echo '" + cpuSetGenerator(value, container) + "' > " + filePath;
 			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		} else if (file.equalsIgnoreCase(net_cls_classid)) {
-			command = "echo '" + Integer.parseInt("" + Float.parseFloat(value)) + "' > " + FilePath;
+			command = "echo '" + valueInt + "' > " + filePath;
 			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		} else if (file.equalsIgnoreCase(memory_swap)) {
-			command = "echo '" + Integer.parseInt("" + Float.parseFloat(value)) + "' > " + FilePath;
+			command = "echo '" + valueInt + "' > " + filePath;
 			System.out.println("EXECUTE COMMAND: " + command);
 			dockerClientManager.connect(host, privateKey, command);
 		}
-
-		// val String command = "echo '" + cpuSetGenerator(value, container) + "' > " +
-		// FilePath
-		// println("EXECUTE COMMAND: "+ command)
-		// dockerContainerManager.connect(host, privateKey, command)
 	}
 
 	/**
@@ -94,8 +125,22 @@ public class CgroupHelper {
 	 * @param container
 	 * @return
 	 */
-	public static String cpuSetGenerator(String nbCores, Container container) {
-		if (Integer.valueOf(nbCores) > 1 && Integer.valueOf(nbCores) <= container.getCoreMax()) {
+	public static String cpuSetGenerator(String nbCores, Container container) throws DockerException {
+		Integer nbCoresInt;
+		try {
+			nbCoresInt = Integer.parseInt(nbCores);
+		} catch (NumberFormatException ex) {
+			ex.printStackTrace();
+			throw new DockerException(ex.getClass().getName() + " --> " + ex.getMessage() + " : nbCores is not an integer");
+		}
+		
+		Integer coreMax = container.getCoreMax();
+		if (coreMax == null) {
+			System.err.println("Cant set cpu in cgroup for container : " + container.getName() + " because attribute coreMax is not set on container");
+			return "0";
+		}
+		
+		if (nbCoresInt > 1 && nbCoresInt <= container.getCoreMax()) {
 			String cpuSet = String.format("0-%s", nbCores);
 			return cpuSet;
 		}
