@@ -69,7 +69,7 @@ public class EventCallBack extends EventsResultCallback {
 
 			@Override
 			protected void doExecute() {
-				try {
+				// try {
 					// Containers status possible : created, restarting, running, removing, paused,
 					// exited, or dead
 					// these modifications require a write transaction in this editing domain
@@ -83,42 +83,45 @@ public class EventCallBack extends EventsResultCallback {
 					}
 					if (state.equalsIgnoreCase("create")) {
 						LOGGER.warn("container created");
-						// TODO : Attach observer to the Container object.
-						final ModelHandler instanceMH = new ModelHandler();
-						Compute compute = ((ContainerConnector) resource).getCompute();
-						Container c = instanceMH.buildContainer(compute, containerId);
+						
+						// final ModelHandler instanceMH = new ModelHandler();
+						// Compute compute = ((ContainerConnector) resource).getCompute();
+						// Container c = instanceMH.buildContainer(compute, containerId);
 
 						// Attach listener to the new container created
-						ContainerObserver observer = new ContainerObserver();
-						observer.listener(c, compute);
-						((ContainerConnector) c).setContainerObserver(observer);
-						instanceMH.linkContainerToMachine(c, compute);
-						if (compute.eContainer() instanceof Configuration) {
-							((Configuration) compute.eContainer()).getResources().add((ContainerConnector) c);
-							System.out.println("Load new container model");
-						}
+						// ContainerObserver observer = new ContainerObserver();
+						// observer.listener(c, compute);
+						// ((ContainerConnector) c).setContainerObserver(observer);
+						// instanceMH.linkContainerToMachine(c, compute);
+						// if (compute.eContainer() instanceof Configuration) {
+						//	((Configuration) compute.eContainer()).getResources().add((ContainerConnector) c);
+						//	System.out.println("Load new container model");
+						// }
 					}
 					if (state.equalsIgnoreCase("destroy")) {
 						LOGGER.warn("Container destroyed");
-						final ModelHandler instanceMH = new ModelHandler();
-						Container container = (Container) resource;
-						Compute compute = ((ContainerConnector) resource).getCompute();
-						ContainerObserver observer = ((ContainerConnector) container).getObserver();
-						if (observer != null) {
-							observer.removeListener(container);
-							((ContainerConnector) container).setContainerObserver(null);
-						}
-						instanceMH.removeContainerFromMachine(container, compute);
-						if (compute.eContainer() instanceof Configuration) {
-							((Configuration) compute.eContainer()).getResources()
-									.remove((ContainerConnector) container);
-							System.out.println("Destroy a container");
-						}
+						((Compute) resource).setOcciComputeState(ComputeStatus.INACTIVE);
+						// final ModelHandler instanceMH = new ModelHandler();
+						// Container container = (Container) resource;
+						// Compute compute = ((ContainerConnector) resource).getCompute();
+						// ContainerObserver observer = ((ContainerConnector) container).getObserver();
+						
+						// if (observer != null) {
+						//	observer.removeListener(container);
+						//	((ContainerConnector) container).setContainerObserver(null);
+						// }
+						
+						// instanceMH.removeContainerFromMachine(container, compute);
+						// if (compute.eContainer() instanceof Configuration) {
+						//	((Configuration) compute.eContainer()).getResources()
+						//			.remove((ContainerConnector) container);
+						//	System.out.println("Destroy a container");
+						// }
 					}
-				} catch (DockerException ex) {
-					LOGGER.error("Exception thrown : " + ex.getMessage());
-					ex.printStackTrace();
-				}
+				// } catch (DockerException ex) {
+				//	LOGGER.error("Exception thrown : " + ex.getMessage());
+				//	ex.printStackTrace();
+				// }
 			}
 		};
 		try {
@@ -170,7 +173,7 @@ public class EventCallBack extends EventsResultCallback {
 								System.out.println("Apply start notification to model.");
 							}
 							if (item.getStatus().equalsIgnoreCase("destroy")) {
-								modifyResourceSet(containerComp, item.getStatus(), this.container.getContainerid());
+								modifyResourceSet(containerComp, item.getStatus(), null);
 								System.out.println("Apply destroy notification to model.");
 							}
 

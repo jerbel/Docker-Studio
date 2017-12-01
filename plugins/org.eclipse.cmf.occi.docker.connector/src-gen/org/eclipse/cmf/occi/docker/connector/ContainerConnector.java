@@ -56,19 +56,21 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * Manage statistics from monitoring.
 	 */
 	private StatsCallBack statsCallBack = new StatsCallBack(this);
-	
+
 	private Map<DockerClient, CreateContainerResponse> map = null;
 
 	protected static DockerClientManager dockerClientManager = null;
-	
+
 	// This is a cache of containers current machine
 	protected static Map<String, Machine> listCurrentMachine = new HashMap<>();
-	
-	public ComputeStateMachine<org.eclipse.cmf.occi.docker.Container> stateMachine = new ComputeStateMachine<org.eclipse.cmf.occi.docker.Container>(this) {
+
+	public ComputeStateMachine<org.eclipse.cmf.occi.docker.Container> stateMachine = new ComputeStateMachine<org.eclipse.cmf.occi.docker.Container>(
+			this) {
 		@Override
 		public void start_execute() throws DockerException {
 			System.out.println("EXECUTE container start");
 			Compute machine = getCompute();
+
 			if (machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 				try {
 					if (dockerClientManager == null) {
@@ -82,13 +84,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					}
 					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
 				} catch (Exception e) {
-					throw new DockerException("Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
+					throw new DockerException(
+							"Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
 				}
 			} else {
 				System.out.println("Host is suspended or inactive.");
+				throw new DockerException("Host machine is suspended or is inactive");
 			}
 		}
-		
+
 		/**
 		 * Stop the Docker container.
 		 */
@@ -97,23 +101,23 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			System.out.println("EXECUTE container stop");
 			Compute machine = getCompute();
 			try {
-			if (machine.getOcciComputeState().equals(ComputeStatus.ACTIVE) && this.compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
-				
-				
-				if (dockerClientManager == null) {
-					dockerClientManager = new DockerClientManager(machine, eventCallBack);
+				if (machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)
+						&& this.compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
+
+					if (dockerClientManager == null) {
+						dockerClientManager = new DockerClientManager(machine, eventCallBack);
+					}
+					// Check if this container is already stopped before stopping.
+					ComputeStatus status = dockerClientManager.getCurrentContainerStatus(machine, this.compute);
+					if (status.equals(ComputeStatus.ACTIVE) || status.equals(ComputeStatus.SUSPENDED)) {
+						dockerClientManager.stopContainer(machine, this.compute);
+					}
+				} else {
+					System.out.println("Already stopped");
 				}
-				// Check if this container is already stopped before stopping.
-				ComputeStatus status = dockerClientManager.getCurrentContainerStatus(machine, this.compute);
-				if (status.equals(ComputeStatus.ACTIVE) || status.equals(ComputeStatus.SUSPENDED)) {
-					dockerClientManager.stopContainer(machine, this.compute);
-				}
-			} else {
-				System.out.println("Already stopped");
-			}
 			} catch (DockerException ex) {
 				ex.printStackTrace();
-				throw new RuntimeException(ex.getMessage(), ex.getCause());
+				throw new DockerException(ex.getMessage(), ex.getCause());
 			}
 		}
 
@@ -130,21 +134,14 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		/**
 		 * Suspend the Docker container.
 		 */
-		 @Override
-		 public void suspend_execute(SuspendMethod method) throws DockerException {
+		@Override
+		public void suspend_execute(SuspendMethod method) throws DockerException {
 			System.out.println("EXECUTE container suspend");
 			stateMachine.suspend(method);
-			
-		}
-		
-	};
-	
-	
-	
-			
 
-	// Listener of the stats
-	// private StatsCallBack statsCallback = new StatsCallback(this);
+		}
+
+	};
 
 	// Start of user code Containerconnector_constructor
 	/**
@@ -167,13 +164,18 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void occiCreate() {
 		LOGGER.debug("occiCreate() called on " + this);
 		LOGGER.debug("Action create() called on " + this);
+		
 		try {
+			Compute machine = getCompute();
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
 			this.createContainer(getCompute());
 			containerObserver = new ContainerObserver();
 			// Ensure that observer is not set.
 			containerObserver.removeListener(this);
 			containerObserver.listener(this, getCompute());
-			
+
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while creating a container : " + this.getName());
 			ex.printStackTrace();
@@ -188,13 +190,17 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiRetrieve() {
 		LOGGER.debug("occiRetrieve() called on " + this);
+		if (!checkHostMachineStarted()) {
+			throw new RuntimeException("Host machine is not started !");
+		}
 		if (dockerClientManager == null) {
 			try {
 				dockerClientManager = new DockerClientManager(getCompute());
 				// dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
 
 			} catch (DockerException ex) {
-				LOGGER.error("Exception thrown while building docker client with compute: " + getCompute() + " for container : " + this.getName());
+				LOGGER.error("Exception thrown while building docker client with compute: " + getCompute()
+						+ " for container : " + this.getName());
 				ex.printStackTrace();
 			}
 		}
@@ -202,7 +208,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		try {
 			dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
 		} catch (DockerException ex) {
-			LOGGER.error("Exception thrown while retrieving docker container on compute: " + getCompute() + " for container : " + this.getName());
+			LOGGER.error("Exception thrown while retrieving docker container on compute: " + getCompute()
+					+ " for container : " + this.getName());
 			ex.printStackTrace();
 		}
 	}
@@ -215,6 +222,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiUpdate() {
 		LOGGER.debug("occiUpdate() called on " + this);
+		if (!checkHostMachineStarted()) {
+			throw new RuntimeException("Host machine is not started !");
+		}
 		// TODO: Implement this callback or remove this method.
 	}
 	// End of user code
@@ -226,13 +236,16 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiDelete() {
 		LOGGER.debug("occiDelete() called on " + this);
-		
+		Compute machine = getCompute();
+		if (!checkHostMachineStarted()) {
+			machine.start();
+		}
 		try {
 			removeContainer(getCompute());
 			if (containerObserver != null) {
 				containerObserver.removeListener(this);
 			}
-			
+
 		} catch (DockerException ex) {
 			LOGGER.error("Error thrown while deleting the container : " + ex.getMessage());
 			ex.printStackTrace();
@@ -240,60 +253,73 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	}
 	// End of user code
 
-	
 	@Override
 	public void start() {
-		
+
 		try {
-			stateMachine.start();
 			Compute machine = getCompute();
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
+			stateMachine.start();
 			
-			if (containerObserver == null) {
+			if (containerObserver == null && machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 				// Add listener here
 				containerObserver = new ContainerObserver();
 				// Ensure that observer is not set.
 				containerObserver.removeListener(this);
 				containerObserver.listener(this, machine);
 			}
-			
+
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while starting container : " + ex.getMessage());
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
 		}
 	}
-	
+
 	@Override
 	public void stop(StopMethod method) {
 		try {
+			Compute machine = getCompute();
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
 			stateMachine.stop(method);
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while stopping container : " + ex.getMessage());
 			ex.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void restart(RestartMethod method) {
 		try {
+			Compute machine = getCompute();
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
 			stateMachine.restart(method);
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while restarting container : " + ex.getMessage());
 			ex.printStackTrace();
 		}
 	}
-	
+
 	@Override
 	public void suspend(SuspendMethod method) {
 		try {
+			Compute machine = getCompute();
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
 			stateMachine.suspend(method);
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while suspending container : " + ex.getMessage());
 			ex.printStackTrace();
 		}
 	}
-	
-	
+
 	//
 	// Container actions.
 	//
@@ -306,15 +332,19 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void create() {
 		LOGGER.debug("Action create() called on " + this);
 		try {
+			Compute machine = getCompute();
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
 			this.createContainer(getCompute());
 			// Ensure that observer is not set.
 			containerObserver.removeListener(this);
-			containerObserver.listener(this, getCompute());
+			containerObserver.listener(this, machine);
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while creating a container : " + this.getName());
 			ex.printStackTrace();
 		}
-		
+
 		// TODO: Implement how to create this container.
 	}
 	// End of user code
@@ -327,6 +357,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void stop() {
 		LOGGER.debug("Action stop() called on " + this);
+		Compute machine = getCompute();
+		if (!checkHostMachineStarted()) {
+			machine.start();
+		}
 		stop(StopMethod.GRACEFUL);
 	}
 	// End of user code
@@ -352,7 +386,6 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void pause() {
 		LOGGER.debug("Action pause() called on " + this);
 		suspend(SuspendMethod.SUSPEND);
-		// TODO: Implement how to pause this container.
 	}
 	// End of user code
 
@@ -376,9 +409,14 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void kill(final String signal) {
 		LOGGER.debug("Action kill(" + "signal=" + signal + ") called on " + this);
+		Compute machine = getCompute();
+		if (!checkHostMachineStarted()) {
+			machine.start();
+		}
 		if (dockerClientManager == null) {
 			dockerClientManager = new DockerClientManager();
 		}
+		
 		if (containerid == null) {
 			occiRetrieve();
 		}
@@ -396,7 +434,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			System.out.println("The container : " + getName() + " doesnt exist.");
 		}
 	}
-	
+
 	// End of user code
 
 	/**
@@ -474,6 +512,12 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		if (dockerClientManager == null) {
 			dockerClientManager = new DockerClientManager(machine, eventCallBack);
 		}
+		// Inspect the container to get container id and state.
+		occiRetrieve();
+		if (this.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
+			stop(); // Stop the container before deleting it.
+		}
+
 		if (this.getContainerid() != null) {
 			dockerClientManager.removeContainer(machine, this.getContainerid());
 			if (containerObserver != null) {
@@ -481,10 +525,11 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			}
 			this.containerObserver = null;
 		} else {
-			LOGGER.warn("Container : + " + this.getName() + " + is already removed.");		
+			LOGGER.warn("Container : + " + this.getName() + " + is already removed.");
 		}
-		
+
 	}
+
 	/**
 	 * 
 	 * @param observer
@@ -492,7 +537,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void setContainerObserver(ContainerObserver observer) {
 		this.containerObserver = observer;
 	}
-	
+
 	/**
 	 * 
 	 * @param machine
@@ -513,6 +558,18 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void setStatsCallBack(StatsCallBack statsCallBack) {
 		this.statsCallBack = statsCallBack;
 	}
-	
+
+	/**
+	 * Check if the compute machine is activated.
+	 * 
+	 * @return true if host machine is activated else false.
+	 */
+	public boolean checkHostMachineStarted() {
+		if (getCompute().getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 }

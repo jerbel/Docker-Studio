@@ -13,6 +13,7 @@
 package org.eclipse.cmf.occi.docker.design.services;
 
 import org.eclipse.cmf.occi.docker.Container;
+import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
@@ -29,6 +30,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.cmf.occi.core.Configuration;
 import org.eclipse.cmf.occi.core.Entity;
+import org.eclipse.cmf.occi.core.Link;
 import org.eclipse.cmf.occi.docker.Network;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.RestartMethod;
@@ -298,10 +300,31 @@ public class DockerServices {
 		return result;
 	}
 	
+	/**
+	 * Remove contains is called by design to remove hidden link between a Machine and a container, this method is called before removing container model.
+	 * @param eo
+	 */
 	public void removeContains(final EObject eo) {
 		System.out.println("In service method removeContains !");
 		if (eo instanceof Container) {
-			System.out.println("Removing contains for Container : " + ((Container)eo).getName());
+			Container container = (Container)eo;
+			String name = ((Container)eo).getName();
+			System.out.println("Removing contains for Container : " + name);
+			Compute machine = ((ContainerConnector)container).getCompute();
+			Link linkToRemove = null;
+			for (Link link : machine.getLinks()) {
+				if (link.getTarget() != null && link.getTarget().equals(container) && link instanceof Contains) {
+					System.out.println("Remove contains :" + link.getId());
+					linkToRemove = link;
+					break;
+				}
+			}
+			if (linkToRemove != null) {
+				machine.getLinks().remove(linkToRemove);
+			} else {
+				System.err.println("Contains for container : " + name + " doesnt exist !");
+			}
+			
 		} else {
 			System.out.println("Cant remove contains, this is not a container !");
 		}
