@@ -1,0 +1,57 @@
+# Don't use the Travis Container-Based Infrastructure
+sudo: true
+
+language: java
+
+matrix:
+  fast_finish: true
+  include:
+  - os: linux
+    jdk: oraclejdk8
+    env: DISPLAY=:99.0
+
+cache:
+  directories:
+  - $HOME/.m2
+
+script:
+- sh travis/build.sh
+
+# Actions to perform after the build.
+after_success:
+- sh travis/tag_current_release.sh
+
+before_deploy:
+# Delete the current release version
+- curl -X DELETE -uocciware:$BINTRAY_API_KEY https://api.bintray.com/packages/occiware/Docker-Studio/update-site/versions/current-release
+
+deploy:
+  - provider: releases
+    api_key:
+    - secure: "rFlzIusMili6ecMTYezX5Pz4NiHDPn0oxCgVgxshb6ThbLZbZlJXhmZL2EVft+1U+SRaU+fQWwKHA34o8MqowRb6yhpFsaoKUp/Ctuyf7J0glVRQuSkvm0Qj+5oHHE2Cvwto+zcchQA9N5gLTUF/3WVFcI/LjnYOWBUvtPcyfmGXQXgz1I63EUyTrgwzye7ystSKdOnLYBXwbkSEPyi8JRgwKCqHrb6+h+S4obt/xSwp31YbqXwiMy+N/5tMRXhFE3mwvDuBp7eqQrHYSybD8OtF6P9DTB4GRP0jaahUCOAgLFvhVyZBVymn+c3FM7p84wGD76pafkwkNYum8VVpQRvkUkSlN9UOG9HYJuo/0LVQqg/bC36eFtwtqfhqlFu4Yhq59hauVaobdIGAvim+4kJCZ+g2CPgHLGVw86Dtj7BFP9VwGYPuXELTDNud21v7YAdzM/gXTujRYyqYUAdCgTS9wY4tArk3p6ukkjZ0wc+IpkB9tBFZjpVAopMAWw8d+pkcPo3rEbwvoT6iunnrrwvQ4+7zQCw0joW4E2sLnDOjYS/UvbWLgboV07Wn2/Ki/ZgrLdSTKetpJdmET7+yR9HTMYC4rZ/SPZ9XRs3QDAz7Nb7YsaDuz6Kjs1cXQpQKRr+sVXeZ7lKtblO2m9fV3hel7vM9ardHmNDuBgPKaws="
+    file:
+      - "repositories/org.eclipse.cmf.occi.docker.product/target/products/org.eclipse.cmf.occi.docker.product-linux.gtk.x86_64.zip"
+      - "repositories/org.eclipse.cmf.occi.docker.product/target/products/org.eclipse.cmf.occi.docker.product-macosx.cocoa.x86_64.zip"
+      - "repositories/org.eclipse.cmf.occi.docker.product/target/products/org.eclipse.cmf.occi.docker.product-win32.win32.x86_64.zip"
+    skip_cleanup: true
+    overwrite: true
+    on:
+      branch : master
+      repo: occiware/Docker-Studio
+  - provider: bintray
+    file: "travis/bintray.json"
+    user: "occiware"
+    key:
+    - secure: secure: "rgXO1aZKAs0YACtTWvR+EiX2b9t9QpyC0+HCnyl2pBwFgFG5r4xjS92rYfo+wUKK+xIwwfJtplbYmWfgiRhvI3+1K7eoC0L987guIxBshbck4ERyCd2pRFEBIeM3uPXrhRYZexRs1P3ai+i3x71iHiKU4ZIgX9zJi823ryjVraLTiHR3kGaScqKXgIaQ2wqo88iEXlA2TohuqPRyC9j7KKI7DFBYogN8vFHENOF5Y9/dYESE5wC+zIXDYm268Qi9ci8dnytHiunxD1bU1LUowvGSZd107vBZ9lPzKZzeu0eayoCLnqYGw9zQnAQx+n37A0rFKySMr9+qmnRVeXg1etOck1/C5G+fLxqsrO6xLNJdrhlp/yt/NI5dtI4ttMK/sgrsimIw525OXFYbI1LrsOBFOCHBCgR6tIG1iS5Pjm6H3DpoeaWoOakHOZdY3y7h14cgYmRqwmpukFSmYg9Csc3QKjrXBg09fnVExF2sn88jqTwbwSFrSufUCs6f9GbDqM0w1q/vQQXmIO9VVCQHl3zme2ZO0QRHKUOlyR0yHn1YEn+EijQxPQlsnj7lTEywUkX7PENQe7CRBQZeQFMz5eNPuRxeNehAekORAjbMIAeiMj/BO2z/JoPfwrekvmJbmpLr7nXe2IQlL5g4bgWmLsdukyqVqrbng4RF4jMUJiY="
+    # passphrase: "Optional. In case a passphrase is configured on Bintray and GPG signing is used"
+    # dry-run: "Optional. If true, skips sending requests to Bintray. Useful for testing your configuration"
+    
+after_deploy:
+- sh travis/deploy-maven-artifacts.sh
+
+env:
+  global:
+  - secure: "UpteOs03mUmBbgpIRDf52RsIOr/facpedbVKUcjLtAqYKo//RZGgKwL062j7OmsZafQXYSfp14+h8/kWf7Y386Z/uJU6JERCkYQzBL5WexhFGnaB5GvdVMTtP4kxY/9RaXJRphXXXij9hGBT6hz0WflUU59hPLDXIx+cb9EzRf2hF8w/Wd99NzAG5PWqmHxzVIOkAqoXztTOINXajepeFRnyZ4qfWGYUI+ehClGyTLG7UczOgQMbTBIDRlV+QI0CHbBEHOKkKnV7UC3bENSXisioeVJcPLOo2uu8wBs1nP9o0/z7BIX1/Asrw7viIlm6rzkek8mzhnPN+uoFBm4OkzF37WdVJ3MxNNMhJIcJNyKud+jOpiNXLu2ySRHlwFWa+Qq8/7uKOu6lIwCXAmMmV1Pa2H6Bbr5bF/9WC/uD9rIF3FGEGAEEwkoK09IK+w3TbNWps9tUMJYbV4Kv0zzzj9izCHCGgT5LHZ2lxNRMEpqRr3FO6CBfjOMIO//SyDAYlxawUH/bcGNi9xd7q827nU8mBzJK06wbUnAV0ZRPiuZhwHYbVJRFWlQInOOsFPrj9NzjHCnbb+yV6TA44IKVfukuqWh3lCx4yBes4XR1+46qR857LRke9M5ynqJPm6HjdBSdYbo+0Cg95Usa5pnVMXbEUJB9xxjgmvJFxpnrDCo="
+  - secure: "UpteOs03mUmBbgpIRDf52RsIOr/facpedbVKUcjLtAqYKo//RZGgKwL062j7OmsZafQXYSfp14+h8/kWf7Y386Z/uJU6JERCkYQzBL5WexhFGnaB5GvdVMTtP4kxY/9RaXJRphXXXij9hGBT6hz0WflUU59hPLDXIx+cb9EzRf2hF8w/Wd99NzAG5PWqmHxzVIOkAqoXztTOINXajepeFRnyZ4qfWGYUI+ehClGyTLG7UczOgQMbTBIDRlV+QI0CHbBEHOKkKnV7UC3bENSXisioeVJcPLOo2uu8wBs1nP9o0/z7BIX1/Asrw7viIlm6rzkek8mzhnPN+uoFBm4OkzF37WdVJ3MxNNMhJIcJNyKud+jOpiNXLu2ySRHlwFWa+Qq8/7uKOu6lIwCXAmMmV1Pa2H6Bbr5bF/9WC/uD9rIF3FGEGAEEwkoK09IK+w3TbNWps9tUMJYbV4Kv0zzzj9izCHCGgT5LHZ2lxNRMEpqRr3FO6CBfjOMIO//SyDAYlxawUH/bcGNi9xd7q827nU8mBzJK06wbUnAV0ZRPiuZhwHYbVJRFWlQInOOsFPrj9NzjHCnbb+yV6TA44IKVfukuqWh3lCx4yBes4XR1+46qR857LRke9M5ynqJPm6HjdBSdYbo+0Cg95Usa5pnVMXbEUJB9xxjgmvJFxpnrDCo="
+  - secure: "UNE5tEFlYFAkjLt38jFh46qegq2ISeZlxBbQsuzIgqKeKPVo2fQulvnI2rBRdAHwf+56SwcCl474Bb2i465p3HWPSz52+vNgjLLyziga8ELmGZuiSSfT7ivhP+1SkMfUeoyipkhlUyFTXg/C4i6lFxFLzc3ccE9ZRIDtbwPNJ3eQkK5WGDQML5oYOjlQWm42zKgz3nTay9TOf22fj5ktat2T+EIDE9WOAQ73a4js1D6SY5f6dCXul7+FI4nBPDyYvavdP8J/bhYGHKxtr76k6sAiQ0bIr0DHZrBOHMAavRg0y1t2HpSbxcxXwnoSy9HtMAemngsv48uV6MAhYA4lf8/Cd3pecLo/UBvYDrd0xLOkaZ9sRQ5P/+1Y/IvPtNfl3NrR7CET4Y3RIgORrDFWpUXs+kzQwFp84T/OvnovdE3qKZ2fljVflS6mL6UOh6Raqa3k04UBZhehLEgaya6LJfexpB04lLVbVe3/TJYIwwg27KxrX8HMZMbILxXe19HFaqJdZ+4Qh/403LS1pqAXRTx/vhDeMzOGAgtNvM3IUrnw1gswkCr0ILoNwaIDwxjvAD0H6U9UYFqoFHp0auCqn3bj5t4yGRKJBFHzF3riLTN0eS8PSE4sOs9cxTfYrYd1JAQ6x+6VWwyKaQ16NAt4QbDhWXQ9pCoG5e5KkV7W46Q="
+  - secure: "E2jVuaNg1jARlMeWbme6DOFbqv/Vqm+/UOG6G92NHGutuKPhmxlIbQ1TT/qewZ0OqegsZU2yoCCJfKKdhWM/vO/ejc4KKz8trrEhEGs7BMi//9oItjg7y/re5DsZ8eHRr977bIe/puZcleG9ph8Ah5v9cDU7MGo903G67nROjGmtEKa9XJansCRBl+HaMZO7O0rBkYeOAltNQ/el7WzrmrnPhYyFXcqkdO9xaoWJ6qTzgIODLKYf7yRMrekktf60GrlCfSteIuGy0BurZZ/iow+TGT4MbSM3G+tIrunYftJb95tySccXLU6vUWwvGg2156KIkPwAbnXtEhGKFCXraxZUXbWIZnt8H8+yHoZAAWzcf0i2hVrN4F9b06GRJVojc1dGFUyMPpKcwM7Cn4gZ/nhL0ZJY3fgYV7xNpzX9W7pEWnsAGjuvjHu5/1iLB83+T/8c+mvbtc2QKNseYEv2nfzQ5usOjMHY2HjRFsCOwxJSK38MIO2a21GXkJJ0qUJ65fQAFIvvedFnzi4grYbvM6DjNG5ZwOZMjjbpyzgJsO+2TNpR4uocQqsvvAAFJ509zQXy5FwCikE0SsKIve4xwtiwlwMI8TbFgOO77Ec4SgkiU77LpYAsjOvXvHm0Y9PJ4dNiU2JHJBrVkUst3aYSCdMpX5vhO1w0qyRChGRy+HE="
