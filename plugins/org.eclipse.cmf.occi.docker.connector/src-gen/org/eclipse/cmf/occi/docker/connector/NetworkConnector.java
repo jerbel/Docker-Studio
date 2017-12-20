@@ -44,6 +44,7 @@ public class NetworkConnector extends org.eclipse.cmf.occi.docker.impl.NetworkIm
 	 */
 	NetworkConnector() {
 		LOGGER.debug("Constructor called on " + this);
+		
 	}
 	// End of user code
 	//
