@@ -19,6 +19,7 @@ import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
 import org.eclipse.cmf.occi.core.OCCIPackage;
+import org.eclipse.cmf.occi.docker.DockerFactory;
 import org.eclipse.cmf.occi.docker.DockerPackage;
 import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 import org.eclipse.emf.common.util.BasicMonitor;
@@ -26,6 +27,8 @@ import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 /**
  * Entry point of the 'Generate' generation module.
@@ -338,13 +341,42 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
+        // The following doesnt work same message as described below.
+        resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI,
+				OCCIPackage.eINSTANCE);
+		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI,
+				InfrastructurePackage.eINSTANCE);
+		 resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI,
+		 		DockerPackage.eINSTANCE);
         
-        /*
+        // Other try with acceleo forum comments in forums, the following doesnt work...
+        // Message : !MESSAGE The generation failed to generate any file because there are no model elements that matches at least the type of the first parameter of one of your main templates. 
+        // The problem may be caused by a problem with the registration of your metamodel, please see the method named "registerPackages" in the Java launcher of your generator. It could also come from a missing [comment @main/] 
+        	//	in the template used as the entry point of the generation. 
+        if (!isInWorkspace(OCCIPackage.class)) {
+            // The normal package registration if your metamodel is in a plugin.
+            resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI, OCCIPackage.eINSTANCE);
+        }
+        if (!isInWorkspace(InfrastructurePackage.class)) {
+            // The normal package registration if your metamodel is in a plugin.
+            resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
+        }
+        if (!isInWorkspace(InfrastructurePackage.class)) {
+            // The normal package registration if your metamodel is in a plugin.
+            resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
+        }
+        if (!isInWorkspace(DockerPackage.class)) {
+            // The normal package registration if your metamodel is in a plugin.
+            resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI, DockerPackage.eINSTANCE);
+        }
+        // EcoreUtil.resolveAll(resourceSet);
+        
+		/*
          * If you want to change the content of this method, do NOT forget to change the "@generated"
          * tag in the Javadoc of this method to "@generated NOT". Without this new tag, any compilation
          * of the Acceleo module with the main template that has caused the creation of this class will
@@ -382,7 +414,7 @@ public class Generate extends AbstractAcceleoGenerator {
      * 
      * @param resourceSet
      *            The resource set which registry has to be updated.
-     * @generated
+     * @generated NOT
      */
     @Override
     public void registerResourceFactories(ResourceSet resourceSet) {
@@ -402,7 +434,7 @@ public class Generate extends AbstractAcceleoGenerator {
          *  
          * To learn more about the registration of Resource Factories, have a look at the Acceleo documentation (Help -> Help Contents). 
          */ 
-        
+        // Try but not working too : resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("docker", new XMIResourceFactoryImpl());
         // resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put(UMLResource.FILE_EXTENSION, UMLResource.Factory.INSTANCE);
     }
     
