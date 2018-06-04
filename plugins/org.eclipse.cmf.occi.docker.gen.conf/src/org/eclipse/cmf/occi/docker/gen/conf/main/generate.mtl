@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module generate('http://occiware.org/occi/docker/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://schemas.ogf.org/occi/core/ecore')]
+[module generate('http://www.eclipse.org/emf/2002/Ecore', 'http://schemas.ogf.org/occi/core/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://occiware.org/occi/docker/ecore')]
 [import org::eclipse::cmf::occi::docker::gen::conf::files::genCompose /]
 [import org::eclipse::cmf::occi::docker::gen::conf::files::genSH /]
 [template public generateElement(configuration : Configuration)]

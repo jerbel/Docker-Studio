@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module genSH('http://occiware.org/occi/docker/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore', 'http://schemas.ogf.org/occi/core/ecore')]
+[module genSH('http://occiware.org/occi/docker/ecore', 'http://www.eclipse.org/emf/2002/Ecore', 'http://schemas.ogf.org/occi/core/ecore', 'http://schemas.ogf.org/occi/infrastructure/ecore')]
 
 [template public generateSH(configuration : Configuration)]
 [file ('docker/' + configurationFileName(configuration) + '.sh', false, 'UTF-8')]
@@ -8,31 +8,31 @@
 # Generated at [getNow()/] from [getFilePath(configuration)/] by org.occiware.clouddesigner.occi.docker.gen.conf
 #
 
-[for (machine : Machine | configuration.resources->filter(Machine))]
+[for (machine : docker::Machine | configuration.resources->filter(docker::Machine))]
 [machine.genMachine()/]
 [/for]
 [/file]
 [/template]
 
-[template public genMachine (machine : Machine) ]
+[template public genMachine (machine : docker::Machine) ]
 # Create the Docker [eClass().name/] named [name/]
-docker-machine create [genDriverConfig()/] [name/]
+docker-machine create [machine.genDriverConfig()/] [name/]
 
 eval "$(docker-machine env [name/])"
 
 [getOrderedContainers().genContainer()/]
 [/template]
 
-[template public genDriverConfig (machine : Machine) post (trim())]
+[template public genDriverConfig (machine : docker::Machine) post (trim())]
 [/template]
 
-[template public genDriverConfig (machine : Machinevirtualbox) post (trim())]
+[template public genDriverConfig (machine :docker::Machinevirtualbox) post (trim())]
  --driver=virtualbox[if (not occiComputeMemory.oclIsUndefined() and occiComputeMemory <> 0)] --virtualbox-memory [toInteger(occiComputeMemory)/][/if][if (not diskSize.oclIsUndefined() and diskSize <> null)] --virtualbox-disk-size [diskSize/][/if]
 [/template]
 
 [comment TODO: Add genDriverConfig for each Machine_* /]
 
-[template public genContainer (container : Container) ]
+[template public genContainer (container : docker::Container) ]
 # Create the Docker Container named [name/]
 [comment TODO: Add other parameters of the docker create command. /]
 docker create --name [name/][if publishAll] -P[/if][if (not volumes.oclIsUndefined())] -v [volumes.trim()/][/if][if (not ports.oclIsUndefined())] -p [ports.trim()/][/if][genLinkConfig()/][if (not image.oclIsUndefined())] [image.trim()/][/if][if (not command.oclIsUndefined())] [command.trim()/][/if]
@@ -43,9 +43,9 @@ docker start [name/]
 
 [/template]
 
-[template public genLinkConfig (container : Container) post (trim())]
-[for (link : Link | links->filter(docker::Link))]
-[let name : String = link.target.oclAsType(Container).name]
+[template public genLinkConfig (container : docker::Container) post (trim())]
+[for (link : docker::Link | links->filter(docker::Link))]
+[let name : String = link.target.oclAsType(docker::Container).name]
   --link [name/]:[if link.alias <> null][link.alias/][else][name/][/if]
 [/let]
 [/for]

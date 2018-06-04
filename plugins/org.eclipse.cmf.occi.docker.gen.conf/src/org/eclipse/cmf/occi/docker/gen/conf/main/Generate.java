@@ -18,17 +18,11 @@ import java.util.List;
 import org.eclipse.acceleo.engine.event.IAcceleoTextGenerationListener;
 import org.eclipse.acceleo.engine.generation.strategy.IAcceleoGenerationStrategy;
 import org.eclipse.acceleo.engine.service.AbstractAcceleoGenerator;
-import org.eclipse.cmf.occi.core.OCCIPackage;
-import org.eclipse.cmf.occi.docker.DockerFactory;
-import org.eclipse.cmf.occi.docker.DockerPackage;
-import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 import org.eclipse.emf.common.util.BasicMonitor;
 import org.eclipse.emf.common.util.Monitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.util.EcoreUtil;
-import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
 /**
  * Entry point of the 'Generate' generation module.
@@ -346,33 +340,33 @@ public class Generate extends AbstractAcceleoGenerator {
     @Override
     public void registerPackages(ResourceSet resourceSet) {
         super.registerPackages(resourceSet);
-        // The following doesnt work same message as described below.
-        resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI,
-				OCCIPackage.eINSTANCE);
-		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI,
-				InfrastructurePackage.eINSTANCE);
-		 resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI,
-		 		DockerPackage.eINSTANCE);
+        if (!isInWorkspace(org.eclipse.emf.ecore.EcorePackage.class)) {
+            resourceSet.getPackageRegistry().put(org.eclipse.emf.ecore.EcorePackage.eINSTANCE.getNsURI(), org.eclipse.emf.ecore.EcorePackage.eINSTANCE);
+        }
+//        // The following doesnt work same message as described below.
+//        resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI,
+//				OCCIPackage.eINSTANCE);
+//		resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI,
+//				InfrastructurePackage.eINSTANCE);
+//		 resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI,
+//		 		DockerPackage.eINSTANCE);
         
         // Other try with acceleo forum comments in forums, the following doesnt work...
         // Message : !MESSAGE The generation failed to generate any file because there are no model elements that matches at least the type of the first parameter of one of your main templates. 
         // The problem may be caused by a problem with the registration of your metamodel, please see the method named "registerPackages" in the Java launcher of your generator. It could also come from a missing [comment @main/] 
         	//	in the template used as the entry point of the generation. 
-        if (!isInWorkspace(OCCIPackage.class)) {
+        if (!isInWorkspace(org.eclipse.cmf.occi.core.OCCIPackage.class)) {
             // The normal package registration if your metamodel is in a plugin.
-            resourceSet.getPackageRegistry().put(OCCIPackage.eNS_URI, OCCIPackage.eINSTANCE);
+            resourceSet.getPackageRegistry().put(org.eclipse.cmf.occi.core.OCCIPackage.eNS_URI, org.eclipse.cmf.occi.core.OCCIPackage.eINSTANCE);
         }
-        if (!isInWorkspace(InfrastructurePackage.class)) {
+        if (!isInWorkspace(org.eclipse.cmf.occi.infrastructure.InfrastructurePackage.class)) {
             // The normal package registration if your metamodel is in a plugin.
-            resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
+            resourceSet.getPackageRegistry().put(org.eclipse.cmf.occi.infrastructure.InfrastructurePackage.eNS_URI, org.eclipse.cmf.occi.infrastructure.InfrastructurePackage.eINSTANCE);
         }
-        if (!isInWorkspace(InfrastructurePackage.class)) {
+       
+        if (!isInWorkspace(org.eclipse.cmf.occi.docker.DockerPackage.class)) {
             // The normal package registration if your metamodel is in a plugin.
-            resourceSet.getPackageRegistry().put(InfrastructurePackage.eNS_URI, InfrastructurePackage.eINSTANCE);
-        }
-        if (!isInWorkspace(DockerPackage.class)) {
-            // The normal package registration if your metamodel is in a plugin.
-            resourceSet.getPackageRegistry().put(DockerPackage.eNS_URI, DockerPackage.eINSTANCE);
+            resourceSet.getPackageRegistry().put(org.eclipse.cmf.occi.docker.DockerPackage.eNS_URI, org.eclipse.cmf.occi.docker.DockerPackage.eINSTANCE);
         }
         // EcoreUtil.resolveAll(resourceSet);
         
