@@ -3,318 +3,316 @@
   <import href="http://schemas.ogf.org/occi/core#/"/>
   <import href="http://schemas.ogf.org/occi/infrastructure#/"/>
   <kinds name="Container" scheme="http://occiware.org/occi/docker#" title="Container Resource">
-    <attributes name="name" type="//@types.2"/>
-    <attributes name="containerid" type="//@types.2"/>
-    <attributes name="image" type="//@types.2"/>
-    <attributes name="build" type="//@types.2"/>
-    <attributes name="command" default="" type="//@types.2"/>
-    <attributes name="ports" type="//@types.2"/>
-    <attributes name="expose" type="//@types.2"/>
-    <attributes name="volumes" type="//@types.2"/>
-    <attributes name="environment" type="//@types.2"/>
-    <attributes name="envFile" type="//@types.2"/>
-    <attributes name="net" type="//@types.2"/>
-    <attributes name="dns" type="//@types.2"/>
-    <attributes name="dnsSearch" type="//@types.2"/>
-    <attributes name="capAdd" type="//@types.2"/>
-    <attributes name="capDrop" type="//@types.2"/>
-    <attributes name="workingDir" type="//@types.2"/>
-    <attributes name="entrypoint" type="//@types.2"/>
-    <attributes name="user" type="//@types.2"/>
-    <attributes name="domainName" type="//@types.2"/>
-    <attributes name="memLimit" type="//@types.4"/>
-    <attributes name="memorySwap" type="//@types.4"/>
-    <attributes name="privileged" default="false" type="//@types.3"/>
-    <attributes name="restart" default="" type="//@types.2"/>
-    <attributes name="stdinOpen" default="false" type="//@types.3"/>
-    <attributes name="interactive" default="false" type="//@types.3"/>
-    <attributes name="cpuShares" default="0" type="//@types.4"/>
-    <attributes name="pid" type="//@types.2"/>
-    <attributes name="ipc" type="//@types.2"/>
-    <attributes name="addHost" type="//@types.2"/>
-    <attributes name="macAddress" type="//@types.2"/>
-    <attributes name="rm" type="//@types.3"/>
-    <attributes name="securityOpt" type="//@types.2"/>
-    <attributes name="device" type="//@types.2"/>
-    <attributes name="lxcConf" type="//@types.2"/>
-    <attributes name="publishAll" default="false" type="//@types.3"/>
-    <attributes name="readOnly" default="false" type="//@types.3"/>
-    <attributes name="monitored" default="false" type="//@types.3"/>
-    <attributes name="cpuUsed" type="//@types.4"/>
-    <attributes name="memoryUsed" type="//@types.4"/>
-    <attributes name="cpuPercent" default="0" type="//@types.2"/>
-    <attributes name="memoryPercent" default="0" type="//@types.2"/>
-    <attributes name="diskUsed" type="//@types.4"/>
-    <attributes name="diskPercent" type="//@types.2"/>
-    <attributes name="bandwidthUsed" type="//@types.4"/>
-    <attributes name="bandwidthPercent" type="//@types.2"/>
-    <attributes name="monitoringInterval" type="//@types.4"/>
-    <attributes name="cpuMaxValue" type="//@types.4"/>
-    <attributes name="memoryMaxValue" type="//@types.4"/>
-    <attributes name="coreMax" default="1" type="//@types.4"/>
-    <attributes name="cpuSetCpus" description="CPUs in which to allow execution (0-3, 0,1)" type="//@types.2"/>
-    <attributes name="cpuSetMems" description="Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems." type="//@types.2"/>
-    <attributes name="tty" default="false" type="//@types.3"/>
+    <attributes name="name" mutable="true" type="//@types.2"/>
+    <attributes name="containerid" mutable="true" type="//@types.2"/>
+    <attributes name="image" mutable="true" type="//@types.2"/>
+    <attributes name="build" mutable="true" type="//@types.2"/>
+    <attributes name="command" mutable="true" default="" type="//@types.2"/>
+    <attributes name="ports" mutable="true" type="//@types.2"/>
+    <attributes name="expose" mutable="true" type="//@types.2"/>
+    <attributes name="volumes" mutable="true" type="//@types.2"/>
+    <attributes name="environment" mutable="true" type="//@types.2"/>
+    <attributes name="envFile" mutable="true" type="//@types.2"/>
+    <attributes name="net" mutable="true" type="//@types.2"/>
+    <attributes name="dns" mutable="true" type="//@types.2"/>
+    <attributes name="dnsSearch" mutable="true" type="//@types.2"/>
+    <attributes name="capAdd" mutable="true" type="//@types.2"/>
+    <attributes name="capDrop" mutable="true" type="//@types.2"/>
+    <attributes name="workingDir" mutable="true" type="//@types.2"/>
+    <attributes name="entrypoint" mutable="true" type="//@types.2"/>
+    <attributes name="user" mutable="true" type="//@types.2"/>
+    <attributes name="domainName" mutable="true" type="//@types.2"/>
+    <attributes name="memLimit" mutable="true" type="//@types.4"/>
+    <attributes name="memorySwap" mutable="true" type="//@types.4"/>
+    <attributes name="privileged" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="restart" mutable="true" default="" type="//@types.2"/>
+    <attributes name="stdinOpen" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="interactive" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="cpuShares" mutable="true" default="0" type="//@types.4"/>
+    <attributes name="pid" mutable="true" type="//@types.2"/>
+    <attributes name="ipc" mutable="true" type="//@types.2"/>
+    <attributes name="addHost" mutable="true" type="//@types.2"/>
+    <attributes name="macAddress" mutable="true" type="//@types.2"/>
+    <attributes name="rm" mutable="true" type="//@types.3"/>
+    <attributes name="securityOpt" mutable="true" type="//@types.2"/>
+    <attributes name="device" mutable="true" type="//@types.2"/>
+    <attributes name="lxcConf" mutable="true" type="//@types.2"/>
+    <attributes name="publishAll" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="readOnly" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="monitored" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="cpuUsed" mutable="true" type="//@types.4"/>
+    <attributes name="memoryUsed" mutable="true" type="//@types.4"/>
+    <attributes name="cpuPercent" mutable="true" default="0" type="//@types.2"/>
+    <attributes name="memoryPercent" mutable="true" default="0" type="//@types.2"/>
+    <attributes name="diskUsed" mutable="true" type="//@types.4"/>
+    <attributes name="diskPercent" mutable="true" type="//@types.2"/>
+    <attributes name="bandwidthUsed" mutable="true" type="//@types.4"/>
+    <attributes name="bandwidthPercent" mutable="true" type="//@types.2"/>
+    <attributes name="monitoringInterval" mutable="true" type="//@types.4"/>
+    <attributes name="cpuMaxValue" mutable="true" type="//@types.4"/>
+    <attributes name="memoryMaxValue" mutable="true" type="//@types.4"/>
+    <attributes name="coreMax" mutable="true" default="1" type="//@types.4"/>
+    <attributes name="cpuSetCpus" mutable="true" description="CPUs in which to allow execution (0-3, 0,1)" type="//@types.2"/>
+    <attributes name="cpuSetMems" mutable="true" description="Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems." type="//@types.2"/>
+    <attributes name="tty" mutable="true" default="false" type="//@types.3"/>
     <actions name="create" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="stop" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="run" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="pause" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="unpause" scheme="http://occiware.org/occi/docker/container/action#"/>
-    <actions name="kill" scheme="http://occiware.org/occi/docker/container/action#">
-      <attributes name="signal" default="KILL" type="//@types.2"/>
-    </actions>
+    <actions name="kill" scheme="http://occiware.org/occi/docker/container/action#"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <kinds name="Link" scheme="http://occiware.org/occi/docker#" title="Link between containers">
-    <attributes name="alias" type="//@types.2"/>
+    <attributes name="alias" mutable="true" type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="NetworkLink" scheme="http://occiware.org/occi/docker#" parent="//@kinds[term='link']"/>
   <kinds name="VolumesFrom" scheme="http://occiware.org/occi/docker#" title="VolumsFrom">
-    <attributes name="mode" default="readWrite" type="//@types.1"/>
+    <attributes name="mode" mutable="true" default="readWrite" type="//@types.1"/>
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Contains" scheme="http://occiware.org/occi/docker#">
     <parent href="http://schemas.ogf.org/occi/core#//@kinds[term='link']"/>
   </kinds>
   <kinds name="Machine" scheme="http://occiware.org/occi/docker#" title="Machine Resource">
-    <attributes name="name" type="//@types.2"/>
-    <attributes name="engineInstallURL" type="//@types.2"/>
-    <attributes name="engineOpt" type="//@types.2"/>
-    <attributes name="engineInsecureRegistry" type="//@types.2"/>
-    <attributes name="engineRegistryMirror" type="//@types.2"/>
-    <attributes name="engineLabel" type="//@types.2"/>
-    <attributes name="engineStorageDriver" type="//@types.2"/>
-    <attributes name="engineEnv" type="//@types.2"/>
-    <attributes name="swarm" type="//@types.3"/>
-    <attributes name="swarmImage" type="//@types.2"/>
-    <attributes name="swarmMaster" type="//@types.3"/>
-    <attributes name="swarmDiscovery" type="//@types.2"/>
-    <attributes name="swarmStrategy" type="//@types.2"/>
-    <attributes name="swarmOpt" type="//@types.2"/>
-    <attributes name="swarmHost" type="//@types.2"/>
-    <attributes name="swarmAddr" type="//@types.2"/>
-    <attributes name="swarmExperimental" type="//@types.2"/>
-    <attributes name="tlsSan" type="//@types.2"/>
+    <attributes name="name" mutable="true" type="//@types.2"/>
+    <attributes name="engineInstallURL" mutable="true" type="//@types.2"/>
+    <attributes name="engineOpt" mutable="true" type="//@types.2"/>
+    <attributes name="engineInsecureRegistry" mutable="true" type="//@types.2"/>
+    <attributes name="engineRegistryMirror" mutable="true" type="//@types.2"/>
+    <attributes name="engineLabel" mutable="true" type="//@types.2"/>
+    <attributes name="engineStorageDriver" mutable="true" type="//@types.2"/>
+    <attributes name="engineEnv" mutable="true" type="//@types.2"/>
+    <attributes name="swarm" mutable="true" type="//@types.3"/>
+    <attributes name="swarmImage" mutable="true" type="//@types.2"/>
+    <attributes name="swarmMaster" mutable="true" type="//@types.3"/>
+    <attributes name="swarmDiscovery" mutable="true" type="//@types.2"/>
+    <attributes name="swarmStrategy" mutable="true" type="//@types.2"/>
+    <attributes name="swarmOpt" mutable="true" type="//@types.2"/>
+    <attributes name="swarmHost" mutable="true" type="//@types.2"/>
+    <attributes name="swarmAddr" mutable="true" type="//@types.2"/>
+    <attributes name="swarmExperimental" mutable="true" type="//@types.2"/>
+    <attributes name="tlsSan" mutable="true" type="//@types.2"/>
     <actions name="startall" scheme="http://occiware.org/occi/docker/machine/action#" title="Start all implies this machine AND all containers inside"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <kinds name="Volume" scheme="http://occiware.org/occi/docker#" title="Volume Disk">
-    <attributes name="driver" default="local" type="//@types.2"/>
-    <attributes name="labels" default="" type="//@types.2"/>
-    <attributes name="options" default="" type="//@types.2"/>
-    <attributes name="source" type="//@types.2"/>
-    <attributes name="destination" type="//@types.2"/>
-    <attributes name="mode" default="" type="//@types.2"/>
-    <attributes name="rw" type="//@types.2"/>
-    <attributes name="propagation" type="//@types.2"/>
-    <attributes name="name" type="//@types.2"/>
+    <attributes name="driver" mutable="true" default="local" type="//@types.2"/>
+    <attributes name="labels" mutable="true" default="" type="//@types.2"/>
+    <attributes name="options" mutable="true" default="" type="//@types.2"/>
+    <attributes name="source" mutable="true" type="//@types.2"/>
+    <attributes name="destination" mutable="true" type="//@types.2"/>
+    <attributes name="mode" mutable="true" default="" type="//@types.2"/>
+    <attributes name="rw" mutable="true" type="//@types.2"/>
+    <attributes name="propagation" mutable="true" type="//@types.2"/>
+    <attributes name="name" mutable="true" type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='storage']"/>
   </kinds>
   <kinds name="Network" scheme="http://occiware.org/occi/docker#" title="Network resource">
-    <attributes name="networkId" type="//@types.2"/>
-    <attributes name="name" type="//@types.2"/>
-    <attributes name="auxAddress" type="//@types.2"/>
-    <attributes name="driver" type="//@types.2"/>
-    <attributes name="gateway" type="//@types.2"/>
-    <attributes name="internal" type="//@types.3"/>
-    <attributes name="ipRange" type="//@types.2"/>
-    <attributes name="ipamDriver" type="//@types.2"/>
-    <attributes name="ipamOpt" type="//@types.2"/>
-    <attributes name="ipv6" type="//@types.3"/>
-    <attributes name="opt" type="//@types.2"/>
-    <attributes name="subnet" type="//@types.2"/>
+    <attributes name="networkId" mutable="true" type="//@types.2"/>
+    <attributes name="name" mutable="true" type="//@types.2"/>
+    <attributes name="auxAddress" mutable="true" type="//@types.2"/>
+    <attributes name="driver" mutable="true" type="//@types.2"/>
+    <attributes name="gateway" mutable="true" type="//@types.2"/>
+    <attributes name="internal" mutable="true" type="//@types.3"/>
+    <attributes name="ipRange" mutable="true" type="//@types.2"/>
+    <attributes name="ipamDriver" mutable="true" type="//@types.2"/>
+    <attributes name="ipamOpt" mutable="true" type="//@types.2"/>
+    <attributes name="ipv6" mutable="true" type="//@types.3"/>
+    <attributes name="opt" mutable="true" type="//@types.2"/>
+    <attributes name="subnet" mutable="true" type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='network']"/>
   </kinds>
   <kinds name="MachineGeneric" scheme="http://occiware.org/occi/docker#" title="Create machines using an existing VM/Host with SSH" parent="//@kinds[term='machine']">
-    <attributes name="enginePort" type="//@types.4"/>
-    <attributes name="ipAddress" type="//@types.2"/>
-    <attributes name="sshKey" type="//@types.2"/>
-    <attributes name="sshUser" type="//@types.2"/>
-    <attributes name="sshPort" default="22" type="//@types.4"/>
+    <attributes name="enginePort" mutable="true" type="//@types.4"/>
+    <attributes name="ipAddress" mutable="true" type="//@types.2"/>
+    <attributes name="sshKey" mutable="true" type="//@types.2"/>
+    <attributes name="sshUser" mutable="true" type="//@types.2"/>
+    <attributes name="sshPort" mutable="true" default="22" type="//@types.4"/>
   </kinds>
   <kinds name="MachineAmazonEC2" scheme="http://occiware.org/occi/docker#" parent="//@kinds[term='machine']">
-    <attributes name="accessKey" type="//@types.2"/>
-    <attributes name="ami" default="ami-4ae27e22" type="//@types.2"/>
-    <attributes name="instanceType" default="t2.micro" type="//@types.2"/>
-    <attributes name="region" default="us-east-1" type="//@types.2"/>
-    <attributes name="rootSize" default="16" type="//@types.4"/>
-    <attributes name="secretKey" type="//@types.2"/>
-    <attributes name="securityGroup" default="docker-machine" type="//@types.2"/>
-    <attributes name="sessionToken" type="//@types.2"/>
-    <attributes name="subnetId" type="//@types.2"/>
-    <attributes name="vpcId" type="//@types.2"/>
-    <attributes name="zone" default="a" type="//@types.2"/>
+    <attributes name="accessKey" mutable="true" type="//@types.2"/>
+    <attributes name="ami" mutable="true" default="ami-4ae27e22" type="//@types.2"/>
+    <attributes name="instanceType" mutable="true" default="t2.micro" type="//@types.2"/>
+    <attributes name="region" mutable="true" default="us-east-1" type="//@types.2"/>
+    <attributes name="rootSize" mutable="true" default="16" type="//@types.4"/>
+    <attributes name="secretKey" mutable="true" type="//@types.2"/>
+    <attributes name="securityGroup" mutable="true" default="docker-machine" type="//@types.2"/>
+    <attributes name="sessionToken" mutable="true" type="//@types.2"/>
+    <attributes name="subnetId" mutable="true" type="//@types.2"/>
+    <attributes name="vpcId" mutable="true" type="//@types.2"/>
+    <attributes name="zone" mutable="true" default="a" type="//@types.2"/>
   </kinds>
   <kinds name="MachineDigitalOcean" scheme="http://occiware.org/occi/docker#" title="Machine on Digital Ocean" parent="//@kinds[term='machine']">
-    <attributes name="accessToken" type="//@types.2"/>
-    <attributes name="image" default="docker" type="//@types.2"/>
-    <attributes name="region" default="nyc3" type="//@types.2"/>
-    <attributes name="size" default="512mb" type="//@types.2"/>
+    <attributes name="accessToken" mutable="true" type="//@types.2"/>
+    <attributes name="image" mutable="true" default="docker" type="//@types.2"/>
+    <attributes name="region" mutable="true" default="nyc3" type="//@types.2"/>
+    <attributes name="size" mutable="true" default="512mb" type="//@types.2"/>
   </kinds>
   <kinds name="MachineGoogleComputeEngine" scheme="http://occiware.org/occi/docker#" title="Machine on Google Compute Engine" parent="//@kinds[term='machine']">
-    <attributes name="zone" default="us-central1-a" type="//@types.2"/>
-    <attributes name="machineType" default="f1-micro" type="//@types.2"/>
-    <attributes name="username" default="docker-user" type="//@types.2"/>
-    <attributes name="instanceName" default="docker-machine" type="//@types.2"/>
-    <attributes name="project" type="//@types.2"/>
+    <attributes name="zone" mutable="true" default="us-central1-a" type="//@types.2"/>
+    <attributes name="machineType" mutable="true" default="f1-micro" type="//@types.2"/>
+    <attributes name="username" mutable="true" default="docker-user" type="//@types.2"/>
+    <attributes name="instanceName" mutable="true" default="docker-machine" type="//@types.2"/>
+    <attributes name="project" mutable="true" type="//@types.2"/>
   </kinds>
   <kinds name="MachineIBMSoftLayer" scheme="http://occiware.org/occi/docker#" title="Machine on IBM SoftLayer" parent="//@kinds[term='machine']">
-    <attributes name="apiEndpoint" default="api.softlayer.com/rest/v3" type="//@types.2"/>
-    <attributes name="user" type="//@types.2"/>
-    <attributes name="apiKey" type="//@types.2"/>
-    <attributes name="cpu" type="//@types.4"/>
-    <attributes name="diskSize" type="//@types.4"/>
-    <attributes name="domain" type="//@types.2"/>
-    <attributes name="hourlyBilling" default="false" type="//@types.3"/>
-    <attributes name="image" default="UBUNTU_LATEST" type="//@types.2"/>
-    <attributes name="localDisk" default="false" type="//@types.3"/>
-    <attributes name="privateNetOnly" type="//@types.3"/>
-    <attributes name="region" type="//@types.2"/>
-    <attributes name="publicVlanId" default="0" type="//@types.2"/>
-    <attributes name="privateVlanId" default="0" type="//@types.2"/>
+    <attributes name="apiEndpoint" mutable="true" default="api.softlayer.com/rest/v3" type="//@types.2"/>
+    <attributes name="user" mutable="true" type="//@types.2"/>
+    <attributes name="apiKey" mutable="true" type="//@types.2"/>
+    <attributes name="cpu" mutable="true" type="//@types.4"/>
+    <attributes name="diskSize" mutable="true" type="//@types.4"/>
+    <attributes name="domain" mutable="true" type="//@types.2"/>
+    <attributes name="hourlyBilling" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="image" mutable="true" default="UBUNTU_LATEST" type="//@types.2"/>
+    <attributes name="localDisk" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="privateNetOnly" mutable="true" type="//@types.3"/>
+    <attributes name="region" mutable="true" type="//@types.2"/>
+    <attributes name="publicVlanId" mutable="true" default="0" type="//@types.2"/>
+    <attributes name="privateVlanId" mutable="true" default="0" type="//@types.2"/>
   </kinds>
   <kinds name="MachineMicrosoftAzure" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Azure" parent="//@kinds[term='machine']">
-    <attributes name="subscriptionId" type="//@types.2"/>
-    <attributes name="subscriptionCert" type="//@types.2"/>
-    <attributes name="environment" default="AzurePublicCloud" type="//@types.2"/>
-    <attributes name="machineLocation" type="//@types.2"/>
-    <attributes name="resourceGroup" default="docker-machine" type="//@types.2"/>
-    <attributes name="size" type="//@types.2"/>
-    <attributes name="sshUser" type="//@types.2"/>
-    <attributes name="vnet" default="" type="//@types.2"/>
-    <attributes name="subnet" default="" type="//@types.2"/>
-    <attributes name="subnetPrefix" default="192.168.0.0/16" type="//@types.2"/>
-    <attributes name="availabilitySet" default="docker-machine" type="//@types.2"/>
-    <attributes name="openPort" type="//@types.4"/>
-    <attributes name="privateIpAddress" type="//@types.2"/>
-    <attributes name="noPublicIp" type="//@types.2"/>
-    <attributes name="staticPublicIp" type="//@types.2"/>
-    <attributes name="dockerPort" default="2376" type="//@types.2"/>
-    <attributes name="usePrivateIp" type="//@types.2"/>
-    <attributes name="image" type="//@types.2"/>
+    <attributes name="subscriptionId" mutable="true" type="//@types.2"/>
+    <attributes name="subscriptionCert" mutable="true" type="//@types.2"/>
+    <attributes name="environment" mutable="true" default="AzurePublicCloud" type="//@types.2"/>
+    <attributes name="machineLocation" mutable="true" type="//@types.2"/>
+    <attributes name="resourceGroup" mutable="true" default="docker-machine" type="//@types.2"/>
+    <attributes name="size" mutable="true" type="//@types.2"/>
+    <attributes name="sshUser" mutable="true" type="//@types.2"/>
+    <attributes name="vnet" mutable="true" default="" type="//@types.2"/>
+    <attributes name="subnet" mutable="true" default="" type="//@types.2"/>
+    <attributes name="subnetPrefix" mutable="true" default="192.168.0.0/16" type="//@types.2"/>
+    <attributes name="availabilitySet" mutable="true" default="docker-machine" type="//@types.2"/>
+    <attributes name="openPort" mutable="true" type="//@types.4"/>
+    <attributes name="privateIpAddress" mutable="true" type="//@types.2"/>
+    <attributes name="noPublicIp" mutable="true" type="//@types.2"/>
+    <attributes name="staticPublicIp" mutable="true" type="//@types.2"/>
+    <attributes name="dockerPort" mutable="true" default="2376" type="//@types.2"/>
+    <attributes name="usePrivateIp" mutable="true" type="//@types.2"/>
+    <attributes name="image" mutable="true" type="//@types.2"/>
   </kinds>
   <kinds name="MachineMicrosoftHyperV" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Hyper-V" parent="//@kinds[term='machine']">
-    <attributes name="virtualSwitch" type="//@types.2"/>
-    <attributes name="boot2dockerURL" type="//@types.2"/>
-    <attributes name="diskSize" default="20000" type="//@types.4"/>
-    <attributes name="staticMacAddress" type="//@types.2"/>
-    <attributes name="vlanId" type="//@types.2"/>
+    <attributes name="virtualSwitch" mutable="true" type="//@types.2"/>
+    <attributes name="boot2dockerURL" mutable="true" type="//@types.2"/>
+    <attributes name="diskSize" mutable="true" default="20000" type="//@types.4"/>
+    <attributes name="staticMacAddress" mutable="true" type="//@types.2"/>
+    <attributes name="vlanId" mutable="true" type="//@types.2"/>
   </kinds>
   <kinds name="MachineOpenStack" scheme="http://occiware.org/occi/docker#" title="Machine on OpenStack" parent="//@kinds[term='machine']">
-    <attributes name="flavorId" type="//@types.2"/>
-    <attributes name="flavorName" type="//@types.2"/>
-    <attributes name="imageId" type="//@types.2"/>
-    <attributes name="imageName" type="//@types.2"/>
-    <attributes name="authUrl" type="//@types.2"/>
-    <attributes name="username" type="//@types.2"/>
-    <attributes name="password" type="//@types.2"/>
-    <attributes name="tenantName" type="//@types.2"/>
-    <attributes name="tenantId" type="//@types.2"/>
-    <attributes name="region" type="//@types.2"/>
-    <attributes name="endpointType" default="publicURL" type="//@types.2"/>
-    <attributes name="netId" type="//@types.2"/>
-    <attributes name="netName" type="//@types.2"/>
-    <attributes name="secGroups" type="//@types.2"/>
-    <attributes name="floatingIpPool" type="//@types.2"/>
-    <attributes name="activeTimeOut" default="200" type="//@types.4"/>
-    <attributes name="availabilityZone" type="//@types.2"/>
-    <attributes name="domainId" type="//@types.2"/>
-    <attributes name="domainName" type="//@types.2"/>
-    <attributes name="insecure" default="false" type="//@types.3"/>
-    <attributes name="ipVersion" default="4" type="//@types.4"/>
-    <attributes name="keypairName" type="//@types.2"/>
-    <attributes name="privateKeyFile" type="//@types.2"/>
-    <attributes name="sshPort" default="22" type="//@types.4"/>
-    <attributes name="sshUser" default="root" type="//@types.2"/>
+    <attributes name="flavorId" mutable="true" type="//@types.2"/>
+    <attributes name="flavorName" mutable="true" type="//@types.2"/>
+    <attributes name="imageId" mutable="true" type="//@types.2"/>
+    <attributes name="imageName" mutable="true" type="//@types.2"/>
+    <attributes name="authUrl" mutable="true" type="//@types.2"/>
+    <attributes name="username" mutable="true" type="//@types.2"/>
+    <attributes name="password" mutable="true" type="//@types.2"/>
+    <attributes name="tenantName" mutable="true" type="//@types.2"/>
+    <attributes name="tenantId" mutable="true" type="//@types.2"/>
+    <attributes name="region" mutable="true" type="//@types.2"/>
+    <attributes name="endpointType" mutable="true" default="publicURL" type="//@types.2"/>
+    <attributes name="netId" mutable="true" type="//@types.2"/>
+    <attributes name="netName" mutable="true" type="//@types.2"/>
+    <attributes name="secGroups" mutable="true" type="//@types.2"/>
+    <attributes name="floatingIpPool" mutable="true" type="//@types.2"/>
+    <attributes name="activeTimeOut" mutable="true" default="200" type="//@types.4"/>
+    <attributes name="availabilityZone" mutable="true" type="//@types.2"/>
+    <attributes name="domainId" mutable="true" type="//@types.2"/>
+    <attributes name="domainName" mutable="true" type="//@types.2"/>
+    <attributes name="insecure" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="ipVersion" mutable="true" default="4" type="//@types.4"/>
+    <attributes name="keypairName" mutable="true" type="//@types.2"/>
+    <attributes name="privateKeyFile" mutable="true" type="//@types.2"/>
+    <attributes name="sshPort" mutable="true" default="22" type="//@types.4"/>
+    <attributes name="sshUser" mutable="true" default="root" type="//@types.2"/>
   </kinds>
   <kinds name="MachineRackspace" scheme="http://occiware.org/occi/docker#" title="Machine on Rackspace cloud" parent="//@kinds[term='machine']">
-    <attributes name="username" type="//@types.2"/>
-    <attributes name="apiKey" type="//@types.2"/>
-    <attributes name="region" type="//@types.2"/>
-    <attributes name="endPointType" default="publicURL" type="//@types.2"/>
-    <attributes name="imageId" default="59a3fadd-93e7-4674-886a-64883e17115f" type="//@types.2"/>
-    <attributes name="flavorId" default="general1-1" type="//@types.2"/>
-    <attributes name="sshUser" default="root" type="//@types.2"/>
-    <attributes name="sshPort" default="22" type="//@types.4"/>
-    <attributes name="dockerInstall" default="true" type="//@types.3"/>
+    <attributes name="username" mutable="true" type="//@types.2"/>
+    <attributes name="apiKey" mutable="true" type="//@types.2"/>
+    <attributes name="region" mutable="true" type="//@types.2"/>
+    <attributes name="endPointType" mutable="true" default="publicURL" type="//@types.2"/>
+    <attributes name="imageId" mutable="true" default="59a3fadd-93e7-4674-886a-64883e17115f" type="//@types.2"/>
+    <attributes name="flavorId" mutable="true" default="general1-1" type="//@types.2"/>
+    <attributes name="sshUser" mutable="true" default="root" type="//@types.2"/>
+    <attributes name="sshPort" mutable="true" default="22" type="//@types.4"/>
+    <attributes name="dockerInstall" mutable="true" default="true" type="//@types.3"/>
   </kinds>
   <kinds name="MachineVirtualBox" scheme="http://occiware.org/occi/docker#" title="Machine on VirtualBox" parent="//@kinds[term='machine']">
-    <attributes name="boot2dockerURL" type="//@types.2"/>
-    <attributes name="diskSize" default="20000" type="//@types.4"/>
-    <attributes name="hostDNSResolver" default="false" type="//@types.3"/>
-    <attributes name="importBoot2DockerVM" default="" type="//@types.2"/>
-    <attributes name="hostOnlyCIDR" default="192.168.99.1/24" type="//@types.2"/>
-    <attributes name="hostOnlyNICType" default="82540EM" type="//@types.2"/>
-    <attributes name="hostOnlyNICPromisc" default="deny" type="//@types.2"/>
-    <attributes name="noShare" default="false" type="//@types.3"/>
-    <attributes name="noDNSProxy" default="false" type="//@types.3"/>
-    <attributes name="noVTXCheck" default="false" type="//@types.3"/>
-    <attributes name="shareFolder" default="" type="//@types.2"/>
+    <attributes name="boot2dockerURL" mutable="true" type="//@types.2"/>
+    <attributes name="diskSize" mutable="true" default="20000" type="//@types.4"/>
+    <attributes name="hostDNSResolver" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="importBoot2DockerVM" mutable="true" default="" type="//@types.2"/>
+    <attributes name="hostOnlyCIDR" mutable="true" default="192.168.99.1/24" type="//@types.2"/>
+    <attributes name="hostOnlyNICType" mutable="true" default="82540EM" type="//@types.2"/>
+    <attributes name="hostOnlyNICPromisc" mutable="true" default="deny" type="//@types.2"/>
+    <attributes name="noShare" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="noDNSProxy" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="noVTXCheck" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="shareFolder" mutable="true" default="" type="//@types.2"/>
   </kinds>
   <kinds name="MachineVMwareFusion" scheme="http://occiware.org/occi/docker#" title="Machine on VMware Fusion" parent="//@kinds[term='machine']">
-    <attributes name="boot2dockerURL" type="//@types.2"/>
-    <attributes name="diskSize" default="20000" type="//@types.4"/>
-    <attributes name="memorySize" default="1024" type="//@types.4"/>
-    <attributes name="noShare" default="false" type="//@types.3"/>
+    <attributes name="boot2dockerURL" mutable="true" type="//@types.2"/>
+    <attributes name="diskSize" mutable="true" default="20000" type="//@types.4"/>
+    <attributes name="memorySize" mutable="true" default="1024" type="//@types.4"/>
+    <attributes name="noShare" mutable="true" default="false" type="//@types.3"/>
   </kinds>
   <kinds name="MachineVMwareVCloudAir" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vCloud Air" parent="//@kinds[term='machine']">
-    <attributes name="username" type="//@types.2"/>
-    <attributes name="password" type="//@types.2"/>
-    <attributes name="catalog" default="Public Catalog" type="//@types.2"/>
-    <attributes name="catalogItem" default="Ubuntu Server 12.04 LTS (amd64 20140927)" type="//@types.2"/>
-    <attributes name="computeId" type="//@types.2"/>
-    <attributes name="cpuCount" default="1" type="//@types.4"/>
-    <attributes name="dockerPort" default="2376" type="//@types.4"/>
-    <attributes name="edgegateway" default="&amp;lt;vdcid>" type="//@types.2"/>
-    <attributes name="memorySize" default="2048" type="//@types.4"/>
-    <attributes name="vappName" default="&amp;lt;autogenerated>" type="//@types.2"/>
-    <attributes name="orgvdcnetwork" default="&amp;lt;vdcid>-default-routed" type="//@types.2"/>
-    <attributes name="provision" default="true" type="//@types.3"/>
-    <attributes name="publicIp" type="//@types.2"/>
-    <attributes name="sshPort" default="22" type="//@types.4"/>
-    <attributes name="vdcId" type="//@types.2"/>
+    <attributes name="username" mutable="true" type="//@types.2"/>
+    <attributes name="password" mutable="true" type="//@types.2"/>
+    <attributes name="catalog" mutable="true" default="Public Catalog" type="//@types.2"/>
+    <attributes name="catalogItem" mutable="true" default="Ubuntu Server 12.04 LTS (amd64 20140927)" type="//@types.2"/>
+    <attributes name="computeId" mutable="true" type="//@types.2"/>
+    <attributes name="cpuCount" mutable="true" default="1" type="//@types.4"/>
+    <attributes name="dockerPort" mutable="true" default="2376" type="//@types.4"/>
+    <attributes name="edgegateway" mutable="true" default="&amp;lt;vdcid>" type="//@types.2"/>
+    <attributes name="memorySize" mutable="true" default="2048" type="//@types.4"/>
+    <attributes name="vappName" mutable="true" default="&amp;lt;autogenerated>" type="//@types.2"/>
+    <attributes name="orgvdcnetwork" mutable="true" default="&amp;lt;vdcid>-default-routed" type="//@types.2"/>
+    <attributes name="provision" mutable="true" default="true" type="//@types.3"/>
+    <attributes name="publicIp" mutable="true" type="//@types.2"/>
+    <attributes name="sshPort" mutable="true" default="22" type="//@types.4"/>
+    <attributes name="vdcId" mutable="true" type="//@types.2"/>
   </kinds>
   <kinds name="MachineVMwareVSphere" scheme="http://occiware.org/occi/docker#" title="Machine on VMware vSphere" parent="//@kinds[term='machine']">
-    <attributes name="username" type="//@types.2"/>
-    <attributes name="password" type="//@types.2"/>
-    <attributes name="boot2dockerURL" type="//@types.2"/>
-    <attributes name="computeIp" type="//@types.2"/>
-    <attributes name="cpuCount" default="2" type="//@types.4"/>
-    <attributes name="datacenter" type="//@types.2"/>
-    <attributes name="datastore" type="//@types.2"/>
-    <attributes name="diskSize" default="20000" type="//@types.4"/>
-    <attributes name="memorySize" default="2048" type="//@types.4"/>
-    <attributes name="network" type="//@types.2"/>
-    <attributes name="pool" type="//@types.2"/>
-    <attributes name="vcenter" type="//@types.2"/>
+    <attributes name="username" mutable="true" type="//@types.2"/>
+    <attributes name="password" mutable="true" type="//@types.2"/>
+    <attributes name="boot2dockerURL" mutable="true" type="//@types.2"/>
+    <attributes name="computeIp" mutable="true" type="//@types.2"/>
+    <attributes name="cpuCount" mutable="true" default="2" type="//@types.4"/>
+    <attributes name="datacenter" mutable="true" type="//@types.2"/>
+    <attributes name="datastore" mutable="true" type="//@types.2"/>
+    <attributes name="diskSize" mutable="true" default="20000" type="//@types.4"/>
+    <attributes name="memorySize" mutable="true" default="2048" type="//@types.4"/>
+    <attributes name="network" mutable="true" type="//@types.2"/>
+    <attributes name="pool" mutable="true" type="//@types.2"/>
+    <attributes name="vcenter" mutable="true" type="//@types.2"/>
   </kinds>
   <kinds name="MachineExoscale" scheme="http://occiware.org/occi/docker#" title="Machine Exoscale" parent="//@kinds[term='machine']">
-    <attributes name="url" default="https://api.exoscale.ch/compute" type="//@types.2"/>
-    <attributes name="apiKey" type="//@types.2"/>
-    <attributes name="apiSecretKey" type="//@types.2"/>
-    <attributes name="instanceProfile" default="small" type="//@types.2"/>
-    <attributes name="image" default="ubuntu-16.04" type="//@types.2"/>
-    <attributes name="securityGroup" type="//@types.2"/>
-    <attributes name="availabilityZone" type="//@types.2"/>
-    <attributes name="sshUser" default="ubuntu" type="//@types.2"/>
-    <attributes name="userData" type="//@types.2"/>
-    <attributes name="affinityGroup" default="docker-machine" type="//@types.2"/>
+    <attributes name="url" mutable="true" default="https://api.exoscale.ch/compute" type="//@types.2"/>
+    <attributes name="apiKey" mutable="true" type="//@types.2"/>
+    <attributes name="apiSecretKey" mutable="true" type="//@types.2"/>
+    <attributes name="instanceProfile" mutable="true" default="small" type="//@types.2"/>
+    <attributes name="image" mutable="true" default="ubuntu-16.04" type="//@types.2"/>
+    <attributes name="securityGroup" mutable="true" type="//@types.2"/>
+    <attributes name="availabilityZone" mutable="true" type="//@types.2"/>
+    <attributes name="sshUser" mutable="true" default="ubuntu" type="//@types.2"/>
+    <attributes name="userData" mutable="true" type="//@types.2"/>
+    <attributes name="affinityGroup" mutable="true" default="docker-machine" type="//@types.2"/>
   </kinds>
   <kinds name="MachineGrid5000" scheme="http://occiware.org/occi/docker#" title="Grid5000" parent="//@kinds[term='machine']">
-    <attributes name="username" type="//@types.2"/>
-    <attributes name="password" type="//@types.2"/>
-    <attributes name="site" type="//@types.2"/>
-    <attributes name="walltime" type="//@types.2"/>
-    <attributes name="sshPrivateKey" type="//@types.2"/>
-    <attributes name="sshPublicKey" type="//@types.2"/>
-    <attributes name="image" type="//@types.2"/>
-    <attributes name="resourceProperties" type="//@types.2"/>
-    <attributes name="useJobReservation" type="//@types.2"/>
-    <attributes name="hostToProvision" type="//@types.2"/>
+    <attributes name="username" mutable="true" type="//@types.2"/>
+    <attributes name="password" mutable="true" type="//@types.2"/>
+    <attributes name="site" mutable="true" type="//@types.2"/>
+    <attributes name="walltime" mutable="true" type="//@types.2"/>
+    <attributes name="sshPrivateKey" mutable="true" type="//@types.2"/>
+    <attributes name="sshPublicKey" mutable="true" type="//@types.2"/>
+    <attributes name="image" mutable="true" type="//@types.2"/>
+    <attributes name="resourceProperties" mutable="true" type="//@types.2"/>
+    <attributes name="useJobReservation" mutable="true" type="//@types.2"/>
+    <attributes name="hostToProvision" mutable="true" type="//@types.2"/>
   </kinds>
   <kinds name="Cluster" scheme="http://occiware.org/occi/docker#" title="Docker cluster">
-    <attributes name="name" type="//@types.2"/>
+    <attributes name="name" mutable="true" type="//@types.2"/>
     <parent href="http://schemas.ogf.org/occi/infrastructure#//@kinds[term='compute']"/>
   </kinds>
   <types xsi:type="occi:ArrayType" name="ArrayOfString" type="//@types.2"/>
