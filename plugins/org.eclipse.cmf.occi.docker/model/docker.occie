@@ -195,7 +195,7 @@
   <kinds name="MachineMicrosoftHyperV" scheme="http://occiware.org/occi/docker#" title="Machine on Microsoft Hyper-V" parent="//@kinds[term='machine']">
     <attributes name="virtualSwitch" mutable="true" type="//@types.2"/>
     <attributes name="boot2dockerURL" mutable="true" type="//@types.2"/>
-    <attributes name="diskSize" mutable="true" default="20000" type="//@types.4"/>
+    <attributes name="diskSize" mutable="true" default="" type="//@types.4"/>
     <attributes name="staticMacAddress" mutable="true" type="//@types.2"/>
     <attributes name="vlanId" mutable="true" type="//@types.2"/>
   </kinds>
@@ -322,5 +322,5 @@
   </types>
   <types xsi:type="occi:StringType" name="String"/>
   <types xsi:type="occi:BooleanType" name="Bool"/>
-  <types xsi:type="occi:NumericType" name="Int"/>
+  <types xsi:type="occi:NumericType" name="Int" type="Integer"/>
 </occi:Extension>
