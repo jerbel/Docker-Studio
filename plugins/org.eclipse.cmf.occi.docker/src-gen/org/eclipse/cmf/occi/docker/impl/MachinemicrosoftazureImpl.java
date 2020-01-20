@@ -436,6 +436,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubscriptionId() {
 		return subscriptionId;
 	}
@@ -445,6 +446,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubscriptionId(String newSubscriptionId) {
 		String oldSubscriptionId = subscriptionId;
 		subscriptionId = newSubscriptionId;
@@ -457,6 +459,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubscriptionCert() {
 		return subscriptionCert;
 	}
@@ -466,6 +469,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubscriptionCert(String newSubscriptionCert) {
 		String oldSubscriptionCert = subscriptionCert;
 		subscriptionCert = newSubscriptionCert;
@@ -478,6 +482,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEnvironment() {
 		return environment;
 	}
@@ -487,6 +492,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnvironment(String newEnvironment) {
 		String oldEnvironment = environment;
 		environment = newEnvironment;
@@ -499,6 +505,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMachineLocation() {
 		return machineLocation;
 	}
@@ -508,6 +515,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMachineLocation(String newMachineLocation) {
 		String oldMachineLocation = machineLocation;
 		machineLocation = newMachineLocation;
@@ -520,6 +528,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getResourceGroup() {
 		return resourceGroup;
 	}
@@ -529,6 +538,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setResourceGroup(String newResourceGroup) {
 		String oldResourceGroup = resourceGroup;
 		resourceGroup = newResourceGroup;
@@ -541,6 +551,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSize() {
 		return size;
 	}
@@ -550,6 +561,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(String newSize) {
 		String oldSize = size;
 		size = newSize;
@@ -562,6 +574,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshUser() {
 		return sshUser;
 	}
@@ -571,6 +584,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshUser(String newSshUser) {
 		String oldSshUser = sshUser;
 		sshUser = newSshUser;
@@ -583,6 +597,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVnet() {
 		return vnet;
 	}
@@ -592,6 +607,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVnet(String newVnet) {
 		String oldVnet = vnet;
 		vnet = newVnet;
@@ -604,6 +620,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubnet() {
 		return subnet;
 	}
@@ -613,6 +630,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubnet(String newSubnet) {
 		String oldSubnet = subnet;
 		subnet = newSubnet;
@@ -625,6 +643,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubnetPrefix() {
 		return subnetPrefix;
 	}
@@ -634,6 +653,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubnetPrefix(String newSubnetPrefix) {
 		String oldSubnetPrefix = subnetPrefix;
 		subnetPrefix = newSubnetPrefix;
@@ -646,6 +666,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAvailabilitySet() {
 		return availabilitySet;
 	}
@@ -655,6 +676,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAvailabilitySet(String newAvailabilitySet) {
 		String oldAvailabilitySet = availabilitySet;
 		availabilitySet = newAvailabilitySet;
@@ -667,6 +689,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getOpenPort() {
 		return openPort;
 	}
@@ -676,6 +699,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOpenPort(Integer newOpenPort) {
 		Integer oldOpenPort = openPort;
 		openPort = newOpenPort;
@@ -688,6 +712,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPrivateIpAddress() {
 		return privateIpAddress;
 	}
@@ -697,6 +722,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPrivateIpAddress(String newPrivateIpAddress) {
 		String oldPrivateIpAddress = privateIpAddress;
 		privateIpAddress = newPrivateIpAddress;
@@ -709,6 +735,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNoPublicIp() {
 		return noPublicIp;
 	}
@@ -718,6 +745,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNoPublicIp(String newNoPublicIp) {
 		String oldNoPublicIp = noPublicIp;
 		noPublicIp = newNoPublicIp;
@@ -730,6 +758,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getStaticPublicIp() {
 		return staticPublicIp;
 	}
@@ -739,6 +768,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStaticPublicIp(String newStaticPublicIp) {
 		String oldStaticPublicIp = staticPublicIp;
 		staticPublicIp = newStaticPublicIp;
@@ -751,6 +781,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDockerPort() {
 		return dockerPort;
 	}
@@ -760,6 +791,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDockerPort(String newDockerPort) {
 		String oldDockerPort = dockerPort;
 		dockerPort = newDockerPort;
@@ -772,6 +804,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsePrivateIp() {
 		return usePrivateIp;
 	}
@@ -781,6 +814,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsePrivateIp(String newUsePrivateIp) {
 		String oldUsePrivateIp = usePrivateIp;
 		usePrivateIp = newUsePrivateIp;
@@ -793,6 +827,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImage() {
 		return image;
 	}
@@ -802,6 +837,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImage(String newImage) {
 		String oldImage = image;
 		image = newImage;
@@ -1046,7 +1082,7 @@ public class MachinemicrosoftazureImpl extends MachineImpl implements Machinemic
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (subscriptionId: ");
 		result.append(subscriptionId);
 		result.append(", subscriptionCert: ");

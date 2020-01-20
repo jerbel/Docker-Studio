@@ -48,8 +48,7 @@ public interface Machinegeneric extends Machine {
 	 * @return the value of the '<em>Engine Port</em>' attribute.
 	 * @see #setEnginePort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegeneric_EnginePort()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegeneric!enginePort'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getEnginePort();
@@ -74,8 +73,7 @@ public interface Machinegeneric extends Machine {
 	 * @return the value of the '<em>Ip Address</em>' attribute.
 	 * @see #setIpAddress(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegeneric_IpAddress()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegeneric!ipAddress'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getIpAddress();
@@ -100,8 +98,7 @@ public interface Machinegeneric extends Machine {
 	 * @return the value of the '<em>Ssh Key</em>' attribute.
 	 * @see #setSshKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegeneric_SshKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegeneric!sshKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshKey();
@@ -126,8 +123,7 @@ public interface Machinegeneric extends Machine {
 	 * @return the value of the '<em>Ssh User</em>' attribute.
 	 * @see #setSshUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegeneric_SshUser()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegeneric!sshUser'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshUser();
@@ -153,8 +149,7 @@ public interface Machinegeneric extends Machine {
 	 * @return the value of the '<em>Ssh Port</em>' attribute.
 	 * @see #setSshPort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegeneric_SshPort()
-	 * @model default="22" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegeneric!sshPort'"
+	 * @model default="22" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getSshPort();

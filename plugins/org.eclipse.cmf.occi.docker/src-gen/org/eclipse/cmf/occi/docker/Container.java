@@ -48,22 +48,22 @@ import org.eclipse.cmf.occi.infrastructure.Compute;
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getDomainName <em>Domain Name</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getMemLimit <em>Mem Limit</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getMemorySwap <em>Memory Swap</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isPrivileged <em>Privileged</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getPrivileged <em>Privileged</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getRestart <em>Restart</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isStdinOpen <em>Stdin Open</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isInteractive <em>Interactive</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getStdinOpen <em>Stdin Open</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getInteractive <em>Interactive</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuShares <em>Cpu Shares</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getPid <em>Pid</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getIpc <em>Ipc</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getAddHost <em>Add Host</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getMacAddress <em>Mac Address</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isRm <em>Rm</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getRm <em>Rm</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getSecurityOpt <em>Security Opt</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getDevice <em>Device</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getLxcConf <em>Lxc Conf</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isPublishAll <em>Publish All</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isReadOnly <em>Read Only</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isMonitored <em>Monitored</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuUsed <em>Cpu Used</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getMemoryUsed <em>Memory Used</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuPercent <em>Cpu Percent</em>}</li>
@@ -78,7 +78,7 @@ import org.eclipse.cmf.occi.infrastructure.Compute;
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Container#isTty <em>Tty</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}</li>
  * </ul>
  *
  * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer()
@@ -96,8 +96,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Name()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!name'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getName();
@@ -122,8 +121,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Containerid</em>' attribute.
 	 * @see #setContainerid(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Containerid()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!containerid'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getContainerid();
@@ -148,8 +146,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Image()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!image'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImage();
@@ -174,8 +171,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Build</em>' attribute.
 	 * @see #setBuild(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Build()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!build'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getBuild();
@@ -200,8 +196,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Command</em>' attribute.
 	 * @see #setCommand(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Command()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!command'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCommand();
@@ -226,8 +221,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Ports</em>' attribute.
 	 * @see #setPorts(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Ports()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!ports'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPorts();
@@ -252,8 +246,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Expose</em>' attribute.
 	 * @see #setExpose(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Expose()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!expose'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getExpose();
@@ -278,8 +271,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Volumes</em>' attribute.
 	 * @see #setVolumes(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Volumes()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!volumes'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVolumes();
@@ -304,8 +296,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Environment</em>' attribute.
 	 * @see #setEnvironment(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Environment()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!environment'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEnvironment();
@@ -330,8 +321,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Env File</em>' attribute.
 	 * @see #setEnvFile(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_EnvFile()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!envFile'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEnvFile();
@@ -356,8 +346,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Net</em>' attribute.
 	 * @see #setNet(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Net()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!net'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getNet();
@@ -382,8 +371,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Dns</em>' attribute.
 	 * @see #setDns(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Dns()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!dns'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDns();
@@ -408,8 +396,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Dns Search</em>' attribute.
 	 * @see #setDnsSearch(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_DnsSearch()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!dnsSearch'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDnsSearch();
@@ -434,8 +421,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cap Add</em>' attribute.
 	 * @see #setCapAdd(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CapAdd()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!capAdd'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCapAdd();
@@ -460,8 +446,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cap Drop</em>' attribute.
 	 * @see #setCapDrop(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CapDrop()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!capDrop'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCapDrop();
@@ -486,8 +471,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Working Dir</em>' attribute.
 	 * @see #setWorkingDir(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_WorkingDir()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!workingDir'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getWorkingDir();
@@ -512,8 +496,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Entrypoint</em>' attribute.
 	 * @see #setEntrypoint(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Entrypoint()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!entrypoint'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEntrypoint();
@@ -538,8 +521,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_User()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!user'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUser();
@@ -564,8 +546,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Domain Name</em>' attribute.
 	 * @see #setDomainName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_DomainName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!domainName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDomainName();
@@ -590,8 +571,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Mem Limit</em>' attribute.
 	 * @see #setMemLimit(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemLimit()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!memLimit'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemLimit();
@@ -616,8 +596,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Memory Swap</em>' attribute.
 	 * @see #setMemorySwap(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemorySwap()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!memorySwap'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemorySwap();
@@ -641,23 +620,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Privileged</em>' attribute.
-	 * @see #setPrivileged(boolean)
+	 * @see #setPrivileged(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Privileged()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!privileged'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isPrivileged();
+	Boolean getPrivileged();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isPrivileged <em>Privileged</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getPrivileged <em>Privileged</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Privileged</em>' attribute.
-	 * @see #isPrivileged()
+	 * @see #getPrivileged()
 	 * @generated
 	 */
-	void setPrivileged(boolean value);
+	void setPrivileged(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Restart</b></em>' attribute.
@@ -669,8 +647,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Restart</em>' attribute.
 	 * @see #setRestart(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Restart()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!restart'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRestart();
@@ -694,23 +671,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Stdin Open</em>' attribute.
-	 * @see #setStdinOpen(boolean)
+	 * @see #setStdinOpen(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_StdinOpen()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!stdinOpen'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isStdinOpen();
+	Boolean getStdinOpen();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isStdinOpen <em>Stdin Open</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getStdinOpen <em>Stdin Open</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Stdin Open</em>' attribute.
-	 * @see #isStdinOpen()
+	 * @see #getStdinOpen()
 	 * @generated
 	 */
-	void setStdinOpen(boolean value);
+	void setStdinOpen(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Interactive</b></em>' attribute.
@@ -721,23 +697,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Interactive</em>' attribute.
-	 * @see #setInteractive(boolean)
+	 * @see #setInteractive(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Interactive()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!interactive'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isInteractive();
+	Boolean getInteractive();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isInteractive <em>Interactive</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getInteractive <em>Interactive</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Interactive</em>' attribute.
-	 * @see #isInteractive()
+	 * @see #getInteractive()
 	 * @generated
 	 */
-	void setInteractive(boolean value);
+	void setInteractive(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Cpu Shares</b></em>' attribute.
@@ -750,8 +725,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpu Shares</em>' attribute.
 	 * @see #setCpuShares(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuShares()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuShares'"
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCpuShares();
@@ -776,8 +750,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Pid</em>' attribute.
 	 * @see #setPid(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Pid()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!pid'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPid();
@@ -802,8 +775,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Ipc</em>' attribute.
 	 * @see #setIpc(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Ipc()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!ipc'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getIpc();
@@ -828,8 +800,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Add Host</em>' attribute.
 	 * @see #setAddHost(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_AddHost()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!addHost'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAddHost();
@@ -854,8 +825,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Mac Address</em>' attribute.
 	 * @see #setMacAddress(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MacAddress()
-	 * @model dataType="org.eclipse.cmf.occi.infrastructure.Mac"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!macAddress'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getMacAddress();
@@ -878,23 +848,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Rm</em>' attribute.
-	 * @see #setRm(boolean)
+	 * @see #setRm(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Rm()
-	 * @model dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!rm'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isRm();
+	Boolean getRm();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isRm <em>Rm</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getRm <em>Rm</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Rm</em>' attribute.
-	 * @see #isRm()
+	 * @see #getRm()
 	 * @generated
 	 */
-	void setRm(boolean value);
+	void setRm(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Security Opt</b></em>' attribute.
@@ -906,8 +875,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Security Opt</em>' attribute.
 	 * @see #setSecurityOpt(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_SecurityOpt()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!securityOpt'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSecurityOpt();
@@ -932,8 +900,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Device</em>' attribute.
 	 * @see #setDevice(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Device()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!device'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDevice();
@@ -958,8 +925,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Lxc Conf</em>' attribute.
 	 * @see #setLxcConf(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_LxcConf()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!lxcConf'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getLxcConf();
@@ -983,23 +949,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Publish All</em>' attribute.
-	 * @see #setPublishAll(boolean)
+	 * @see #setPublishAll(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_PublishAll()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!publishAll'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isPublishAll();
+	Boolean getPublishAll();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isPublishAll <em>Publish All</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Publish All</em>' attribute.
-	 * @see #isPublishAll()
+	 * @see #getPublishAll()
 	 * @generated
 	 */
-	void setPublishAll(boolean value);
+	void setPublishAll(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Read Only</b></em>' attribute.
@@ -1010,23 +975,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Read Only</em>' attribute.
-	 * @see #setReadOnly(boolean)
+	 * @see #setReadOnly(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_ReadOnly()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!readOnly'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isReadOnly();
+	Boolean getReadOnly();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isReadOnly <em>Read Only</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Read Only</em>' attribute.
-	 * @see #isReadOnly()
+	 * @see #getReadOnly()
 	 * @generated
 	 */
-	void setReadOnly(boolean value);
+	void setReadOnly(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Monitored</b></em>' attribute.
@@ -1037,23 +1001,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Monitored</em>' attribute.
-	 * @see #setMonitored(boolean)
+	 * @see #setMonitored(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Monitored()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!monitored'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isMonitored();
+	Boolean getMonitored();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isMonitored <em>Monitored</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Monitored</em>' attribute.
-	 * @see #isMonitored()
+	 * @see #getMonitored()
 	 * @generated
 	 */
-	void setMonitored(boolean value);
+	void setMonitored(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Cpu Used</b></em>' attribute.
@@ -1065,8 +1028,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpu Used</em>' attribute.
 	 * @see #setCpuUsed(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuUsed()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuUsed'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCpuUsed();
@@ -1091,8 +1053,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Memory Used</em>' attribute.
 	 * @see #setMemoryUsed(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemoryUsed()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!memoryUsed'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemoryUsed();
@@ -1118,8 +1079,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpu Percent</em>' attribute.
 	 * @see #setCpuPercent(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuPercent()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuPercent'"
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCpuPercent();
@@ -1145,8 +1105,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Memory Percent</em>' attribute.
 	 * @see #setMemoryPercent(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemoryPercent()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!memoryPercent'"
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getMemoryPercent();
@@ -1171,8 +1130,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Disk Used</em>' attribute.
 	 * @see #setDiskUsed(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_DiskUsed()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!diskUsed'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDiskUsed();
@@ -1197,8 +1155,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Disk Percent</em>' attribute.
 	 * @see #setDiskPercent(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_DiskPercent()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!diskPercent'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDiskPercent();
@@ -1223,8 +1180,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Bandwidth Used</em>' attribute.
 	 * @see #setBandwidthUsed(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_BandwidthUsed()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!bandwidthUsed'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getBandwidthUsed();
@@ -1249,8 +1205,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Bandwidth Percent</em>' attribute.
 	 * @see #setBandwidthPercent(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_BandwidthPercent()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!bandwidthPercent'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getBandwidthPercent();
@@ -1275,8 +1230,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Monitoring Interval</em>' attribute.
 	 * @see #setMonitoringInterval(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MonitoringInterval()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!monitoringInterval'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMonitoringInterval();
@@ -1301,8 +1255,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpu Max Value</em>' attribute.
 	 * @see #setCpuMaxValue(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuMaxValue()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuMaxValue'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCpuMaxValue();
@@ -1327,8 +1280,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Memory Max Value</em>' attribute.
 	 * @see #setMemoryMaxValue(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemoryMaxValue()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!memoryMaxValue'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemoryMaxValue();
@@ -1354,8 +1306,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Core Max</em>' attribute.
 	 * @see #setCoreMax(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CoreMax()
-	 * @model default="1" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!coreMax'"
+	 * @model default="1" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCoreMax();
@@ -1380,8 +1331,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpu Set Cpus</em>' attribute.
 	 * @see #setCpuSetCpus(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetCpus()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuSetCpus'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCpuSetCpus();
@@ -1406,8 +1356,7 @@ public interface Container extends Compute {
 	 * @return the value of the '<em>Cpu Set Mems</em>' attribute.
 	 * @see #setCpuSetMems(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetMems()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!cpuSetMems'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCpuSetMems();
@@ -1431,23 +1380,22 @@ public interface Container extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Tty</em>' attribute.
-	 * @see #setTty(boolean)
+	 * @see #setTty(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Tty()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!tty'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isTty();
+	Boolean getTty();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#isTty <em>Tty</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Tty</em>' attribute.
-	 * @see #isTty()
+	 * @see #getTty()
 	 * @generated
 	 */
-	void setTty(boolean value);
+	void setTty(Boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1455,7 +1403,7 @@ public interface Container extends Compute {
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!create()'"
+	 * @model
 	 * @generated
 	 */
 	void create();
@@ -1466,7 +1414,7 @@ public interface Container extends Compute {
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!stop()'"
+	 * @model
 	 * @generated
 	 */
 	void stop();
@@ -1477,7 +1425,7 @@ public interface Container extends Compute {
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!run()'"
+	 * @model
 	 * @generated
 	 */
 	void run();
@@ -1488,7 +1436,7 @@ public interface Container extends Compute {
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!pause()'"
+	 * @model
 	 * @generated
 	 */
 	void pause();
@@ -1499,7 +1447,7 @@ public interface Container extends Compute {
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!unpause()'"
+	 * @model
 	 * @generated
 	 */
 	void unpause();
@@ -1509,12 +1457,10 @@ public interface Container extends Compute {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
-	 * @param signal 
 	 * <!-- end-model-doc -->
-	 * @model signalDataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!kill(String)'"
+	 * @model
 	 * @generated
 	 */
-	void kill(String signal);
+	void kill();
 
 } // Container

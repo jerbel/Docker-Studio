@@ -35,9 +35,9 @@ import org.eclipse.cmf.occi.infrastructure.Compute;
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getEngineLabel <em>Engine Label</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getEngineStorageDriver <em>Engine Storage Driver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getEngineEnv <em>Engine Env</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machine#isSwarm <em>Swarm</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getSwarm <em>Swarm</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getSwarmImage <em>Swarm Image</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machine#isSwarmMaster <em>Swarm Master</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getSwarmMaster <em>Swarm Master</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getSwarmDiscovery <em>Swarm Discovery</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getSwarmStrategy <em>Swarm Strategy</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machine#getSwarmOpt <em>Swarm Opt</em>}</li>
@@ -62,8 +62,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_Name()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!name'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getName();
@@ -88,8 +87,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Install URL</em>' attribute.
 	 * @see #setEngineInstallURL(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineInstallURL()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineInstallURL'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineInstallURL();
@@ -114,8 +112,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Opt</em>' attribute.
 	 * @see #setEngineOpt(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineOpt()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineOpt'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineOpt();
@@ -140,8 +137,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Insecure Registry</em>' attribute.
 	 * @see #setEngineInsecureRegistry(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineInsecureRegistry()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineInsecureRegistry'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineInsecureRegistry();
@@ -166,8 +162,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Registry Mirror</em>' attribute.
 	 * @see #setEngineRegistryMirror(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineRegistryMirror()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineRegistryMirror'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineRegistryMirror();
@@ -192,8 +187,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Label</em>' attribute.
 	 * @see #setEngineLabel(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineLabel()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineLabel'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineLabel();
@@ -218,8 +212,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Storage Driver</em>' attribute.
 	 * @see #setEngineStorageDriver(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineStorageDriver()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineStorageDriver'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineStorageDriver();
@@ -244,8 +237,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Engine Env</em>' attribute.
 	 * @see #setEngineEnv(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_EngineEnv()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!engineEnv'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEngineEnv();
@@ -268,23 +260,22 @@ public interface Machine extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Swarm</em>' attribute.
-	 * @see #setSwarm(boolean)
+	 * @see #setSwarm(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_Swarm()
-	 * @model dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarm'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isSwarm();
+	Boolean getSwarm();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machine#isSwarm <em>Swarm</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machine#getSwarm <em>Swarm</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Swarm</em>' attribute.
-	 * @see #isSwarm()
+	 * @see #getSwarm()
 	 * @generated
 	 */
-	void setSwarm(boolean value);
+	void setSwarm(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Swarm Image</b></em>' attribute.
@@ -296,8 +287,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Image</em>' attribute.
 	 * @see #setSwarmImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmImage()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmImage'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmImage();
@@ -320,23 +310,22 @@ public interface Machine extends Compute {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Swarm Master</em>' attribute.
-	 * @see #setSwarmMaster(boolean)
+	 * @see #setSwarmMaster(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmMaster()
-	 * @model dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmMaster'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isSwarmMaster();
+	Boolean getSwarmMaster();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machine#isSwarmMaster <em>Swarm Master</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machine#getSwarmMaster <em>Swarm Master</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Swarm Master</em>' attribute.
-	 * @see #isSwarmMaster()
+	 * @see #getSwarmMaster()
 	 * @generated
 	 */
-	void setSwarmMaster(boolean value);
+	void setSwarmMaster(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Swarm Discovery</b></em>' attribute.
@@ -348,8 +337,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Discovery</em>' attribute.
 	 * @see #setSwarmDiscovery(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmDiscovery()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmDiscovery'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmDiscovery();
@@ -374,8 +362,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Strategy</em>' attribute.
 	 * @see #setSwarmStrategy(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmStrategy()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmStrategy'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmStrategy();
@@ -400,8 +387,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Opt</em>' attribute.
 	 * @see #setSwarmOpt(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmOpt()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmOpt'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmOpt();
@@ -426,8 +412,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Host</em>' attribute.
 	 * @see #setSwarmHost(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmHost()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmHost'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmHost();
@@ -452,8 +437,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Addr</em>' attribute.
 	 * @see #setSwarmAddr(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmAddr()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmAddr'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmAddr();
@@ -478,8 +462,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Swarm Experimental</em>' attribute.
 	 * @see #setSwarmExperimental(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_SwarmExperimental()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!swarmExperimental'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSwarmExperimental();
@@ -504,8 +487,7 @@ public interface Machine extends Compute {
 	 * @return the value of the '<em>Tls San</em>' attribute.
 	 * @see #setTlsSan(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachine_TlsSan()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!tlsSan'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getTlsSan();
@@ -526,7 +508,7 @@ public interface Machine extends Compute {
 	 * <!-- begin-model-doc -->
 	 * Start all implies this machine AND all containers inside
 	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/emf/2002/GenModel body='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!startall()'"
+	 * @model
 	 * @generated
 	 */
 	void startall();

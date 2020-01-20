@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getMemorySize <em>Memory Size</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getVappName <em>Vapp Name</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getOrgvdcnetwork <em>Orgvdcnetwork</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#isProvision <em>Provision</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getProvision <em>Provision</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getPublicIp <em>Public Ip</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getSshPort <em>Ssh Port</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarevcloudairImpl#getVdcId <em>Vdc Id</em>}</li>
@@ -177,7 +177,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer DOCKER_PORT_EDEFAULT = new Integer(2376);
+	protected static final Integer DOCKER_PORT_EDEFAULT = new Integer(2376); // TODO The default value literal "2376" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getDockerPort() <em>Docker Port</em>}' attribute.
@@ -217,7 +217,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer MEMORY_SIZE_EDEFAULT = new Integer(2048);
+	protected static final Integer MEMORY_SIZE_EDEFAULT = new Integer(2048); // TODO The default value literal "2048" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getMemorySize() <em>Memory Size</em>}' attribute.
@@ -270,24 +270,24 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	protected String orgvdcnetwork = ORGVDCNETWORK_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isProvision() <em>Provision</em>}' attribute.
+	 * The default value of the '{@link #getProvision() <em>Provision</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isProvision()
+	 * @see #getProvision()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean PROVISION_EDEFAULT = true;
+	protected static final Boolean PROVISION_EDEFAULT = Boolean.TRUE;
 
 	/**
-	 * The cached value of the '{@link #isProvision() <em>Provision</em>}' attribute.
+	 * The cached value of the '{@link #getProvision() <em>Provision</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isProvision()
+	 * @see #getProvision()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean provision = PROVISION_EDEFAULT;
+	protected Boolean provision = PROVISION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPublicIp() <em>Public Ip</em>}' attribute.
@@ -373,6 +373,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -382,6 +383,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsername(String newUsername) {
 		String oldUsername = username;
 		username = newUsername;
@@ -394,6 +396,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -403,6 +406,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPassword(String newPassword) {
 		String oldPassword = password;
 		password = newPassword;
@@ -415,6 +419,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCatalog() {
 		return catalog;
 	}
@@ -424,6 +429,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCatalog(String newCatalog) {
 		String oldCatalog = catalog;
 		catalog = newCatalog;
@@ -436,6 +442,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCatalogItem() {
 		return catalogItem;
 	}
@@ -445,6 +452,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCatalogItem(String newCatalogItem) {
 		String oldCatalogItem = catalogItem;
 		catalogItem = newCatalogItem;
@@ -457,6 +465,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getComputeId() {
 		return computeId;
 	}
@@ -466,6 +475,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComputeId(String newComputeId) {
 		String oldComputeId = computeId;
 		computeId = newComputeId;
@@ -478,6 +488,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCpuCount() {
 		return cpuCount;
 	}
@@ -487,6 +498,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuCount(Integer newCpuCount) {
 		Integer oldCpuCount = cpuCount;
 		cpuCount = newCpuCount;
@@ -499,6 +511,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDockerPort() {
 		return dockerPort;
 	}
@@ -508,6 +521,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDockerPort(Integer newDockerPort) {
 		Integer oldDockerPort = dockerPort;
 		dockerPort = newDockerPort;
@@ -520,6 +534,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEdgegateway() {
 		return edgegateway;
 	}
@@ -529,6 +544,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEdgegateway(String newEdgegateway) {
 		String oldEdgegateway = edgegateway;
 		edgegateway = newEdgegateway;
@@ -541,6 +557,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemorySize() {
 		return memorySize;
 	}
@@ -550,6 +567,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemorySize(Integer newMemorySize) {
 		Integer oldMemorySize = memorySize;
 		memorySize = newMemorySize;
@@ -562,6 +580,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVappName() {
 		return vappName;
 	}
@@ -571,6 +590,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVappName(String newVappName) {
 		String oldVappName = vappName;
 		vappName = newVappName;
@@ -583,6 +603,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOrgvdcnetwork() {
 		return orgvdcnetwork;
 	}
@@ -592,6 +613,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOrgvdcnetwork(String newOrgvdcnetwork) {
 		String oldOrgvdcnetwork = orgvdcnetwork;
 		orgvdcnetwork = newOrgvdcnetwork;
@@ -604,7 +626,8 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isProvision() {
+	@Override
+	public Boolean getProvision() {
 		return provision;
 	}
 
@@ -613,8 +636,9 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProvision(boolean newProvision) {
-		boolean oldProvision = provision;
+	@Override
+	public void setProvision(Boolean newProvision) {
+		Boolean oldProvision = provision;
 		provision = newProvision;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEVMWAREVCLOUDAIR__PROVISION, oldProvision, provision));
@@ -625,6 +649,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPublicIp() {
 		return publicIp;
 	}
@@ -634,6 +659,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPublicIp(String newPublicIp) {
 		String oldPublicIp = publicIp;
 		publicIp = newPublicIp;
@@ -646,6 +672,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getSshPort() {
 		return sshPort;
 	}
@@ -655,6 +682,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshPort(Integer newSshPort) {
 		Integer oldSshPort = sshPort;
 		sshPort = newSshPort;
@@ -667,6 +695,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVdcId() {
 		return vdcId;
 	}
@@ -676,6 +705,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVdcId(String newVdcId) {
 		String oldVdcId = vdcId;
 		vdcId = newVdcId;
@@ -714,7 +744,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__ORGVDCNETWORK:
 				return getOrgvdcnetwork();
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__PROVISION:
-				return isProvision();
+				return getProvision();
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__PUBLIC_IP:
 				return getPublicIp();
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__SSH_PORT:
@@ -870,7 +900,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__ORGVDCNETWORK:
 				return ORGVDCNETWORK_EDEFAULT == null ? orgvdcnetwork != null : !ORGVDCNETWORK_EDEFAULT.equals(orgvdcnetwork);
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__PROVISION:
-				return provision != PROVISION_EDEFAULT;
+				return PROVISION_EDEFAULT == null ? provision != null : !PROVISION_EDEFAULT.equals(provision);
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__PUBLIC_IP:
 				return PUBLIC_IP_EDEFAULT == null ? publicIp != null : !PUBLIC_IP_EDEFAULT.equals(publicIp);
 			case DockerPackage.MACHINEVMWAREVCLOUDAIR__SSH_PORT:
@@ -890,7 +920,7 @@ public class MachinevmwarevcloudairImpl extends MachineImpl implements Machinevm
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (username: ");
 		result.append(username);
 		result.append(", password: ");

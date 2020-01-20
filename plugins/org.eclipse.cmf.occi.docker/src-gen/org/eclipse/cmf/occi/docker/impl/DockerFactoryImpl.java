@@ -107,6 +107,12 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 		switch (eDataType.getClassifierID()) {
 			case DockerPackage.MODE:
 				return createModeFromString(eDataType, initialValue);
+			case DockerPackage.STRING:
+				return createStringFromString(eDataType, initialValue);
+			case DockerPackage.BOOL:
+				return createBoolFromString(eDataType, initialValue);
+			case DockerPackage.INT:
+				return createIntFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -122,6 +128,12 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 		switch (eDataType.getClassifierID()) {
 			case DockerPackage.MODE:
 				return convertModeToString(eDataType, instanceValue);
+			case DockerPackage.STRING:
+				return convertStringToString(eDataType, instanceValue);
+			case DockerPackage.BOOL:
+				return convertBoolToString(eDataType, instanceValue);
+			case DockerPackage.INT:
+				return convertIntToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -132,6 +144,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArrayOfString createArrayOfString() {
 		ArrayOfStringImpl arrayOfString = new ArrayOfStringImpl();
 		return arrayOfString;
@@ -142,6 +155,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public org.eclipse.cmf.occi.docker.Container createContainer() {
 		ContainerImpl container = new ContainerImpl();
 		return container;
@@ -152,6 +166,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Link createLink() {
 		LinkImpl link = new LinkImpl();
 		return link;
@@ -162,6 +177,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Networklink createNetworklink() {
 		NetworklinkImpl networklink = new NetworklinkImpl();
 		return networklink;
@@ -172,6 +188,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Volumesfrom createVolumesfrom() {
 		VolumesfromImpl volumesfrom = new VolumesfromImpl();
 		return volumesfrom;
@@ -182,6 +199,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Contains createContains() {
 		ContainsImpl contains = new ContainsImpl();
 		return contains;
@@ -192,6 +210,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machine createMachine() {
 		MachineImpl machine = new MachineImpl();
 		return machine;
@@ -202,6 +221,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Volume createVolume() {
 		VolumeImpl volume = new VolumeImpl();
 		return volume;
@@ -212,6 +232,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Network createNetwork() {
 		NetworkImpl network = new NetworkImpl();
 		return network;
@@ -222,6 +243,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinegeneric createMachinegeneric() {
 		MachinegenericImpl machinegeneric = new MachinegenericImpl();
 		return machinegeneric;
@@ -232,6 +254,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machineamazonec2 createMachineamazonec2() {
 		Machineamazonec2Impl machineamazonec2 = new Machineamazonec2Impl();
 		return machineamazonec2;
@@ -242,6 +265,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinedigitalocean createMachinedigitalocean() {
 		MachinedigitaloceanImpl machinedigitalocean = new MachinedigitaloceanImpl();
 		return machinedigitalocean;
@@ -252,6 +276,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinegooglecomputeengine createMachinegooglecomputeengine() {
 		MachinegooglecomputeengineImpl machinegooglecomputeengine = new MachinegooglecomputeengineImpl();
 		return machinegooglecomputeengine;
@@ -262,6 +287,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machineibmsoftlayer createMachineibmsoftlayer() {
 		MachineibmsoftlayerImpl machineibmsoftlayer = new MachineibmsoftlayerImpl();
 		return machineibmsoftlayer;
@@ -272,6 +298,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinemicrosoftazure createMachinemicrosoftazure() {
 		MachinemicrosoftazureImpl machinemicrosoftazure = new MachinemicrosoftazureImpl();
 		return machinemicrosoftazure;
@@ -282,6 +309,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinemicrosofthyperv createMachinemicrosofthyperv() {
 		MachinemicrosofthypervImpl machinemicrosofthyperv = new MachinemicrosofthypervImpl();
 		return machinemicrosofthyperv;
@@ -292,6 +320,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machineopenstack createMachineopenstack() {
 		MachineopenstackImpl machineopenstack = new MachineopenstackImpl();
 		return machineopenstack;
@@ -302,6 +331,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinerackspace createMachinerackspace() {
 		MachinerackspaceImpl machinerackspace = new MachinerackspaceImpl();
 		return machinerackspace;
@@ -312,6 +342,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinevirtualbox createMachinevirtualbox() {
 		MachinevirtualboxImpl machinevirtualbox = new MachinevirtualboxImpl();
 		return machinevirtualbox;
@@ -322,6 +353,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinevmwarefusion createMachinevmwarefusion() {
 		MachinevmwarefusionImpl machinevmwarefusion = new MachinevmwarefusionImpl();
 		return machinevmwarefusion;
@@ -332,6 +364,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinevmwarevcloudair createMachinevmwarevcloudair() {
 		MachinevmwarevcloudairImpl machinevmwarevcloudair = new MachinevmwarevcloudairImpl();
 		return machinevmwarevcloudair;
@@ -342,6 +375,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinevmwarevsphere createMachinevmwarevsphere() {
 		MachinevmwarevsphereImpl machinevmwarevsphere = new MachinevmwarevsphereImpl();
 		return machinevmwarevsphere;
@@ -352,6 +386,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machineexoscale createMachineexoscale() {
 		MachineexoscaleImpl machineexoscale = new MachineexoscaleImpl();
 		return machineexoscale;
@@ -362,6 +397,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Machinegrid5000 createMachinegrid5000() {
 		Machinegrid5000Impl machinegrid5000 = new Machinegrid5000Impl();
 		return machinegrid5000;
@@ -372,6 +408,7 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Cluster createCluster() {
 		ClusterImpl cluster = new ClusterImpl();
 		return cluster;
@@ -402,6 +439,61 @@ public class DockerFactoryImpl extends EFactoryImpl implements DockerFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String createStringFromString(EDataType eDataType, String initialValue) {
+		return (String)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertStringToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Boolean createBoolFromString(EDataType eDataType, String initialValue) {
+		return (Boolean)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertBoolToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Integer createIntFromString(EDataType eDataType, String initialValue) {
+		return (Integer)super.createFromString(eDataType, initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertIntToString(EDataType eDataType, Object instanceValue) {
+		return super.convertToString(eDataType, instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DockerPackage getDockerPackage() {
 		return (DockerPackage)getEPackage();
 	}

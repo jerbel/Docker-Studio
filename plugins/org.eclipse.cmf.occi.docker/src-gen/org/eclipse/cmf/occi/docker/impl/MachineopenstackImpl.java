@@ -48,7 +48,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getAvailabilityZone <em>Availability Zone</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getDomainId <em>Domain Id</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getDomainName <em>Domain Name</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#isInsecure <em>Insecure</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getInsecure <em>Insecure</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getIpVersion <em>Ip Version</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getKeypairName <em>Keypair Name</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineopenstackImpl#getPrivateKeyFile <em>Private Key File</em>}</li>
@@ -367,7 +367,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer ACTIVE_TIME_OUT_EDEFAULT = new Integer(200);
+	protected static final Integer ACTIVE_TIME_OUT_EDEFAULT = new Integer(200); // TODO The default value literal "200" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getActiveTimeOut() <em>Active Time Out</em>}' attribute.
@@ -440,24 +440,24 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	protected String domainName = DOMAIN_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isInsecure() <em>Insecure</em>}' attribute.
+	 * The default value of the '{@link #getInsecure() <em>Insecure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isInsecure()
+	 * @see #getInsecure()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INSECURE_EDEFAULT = false;
+	protected static final Boolean INSECURE_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isInsecure() <em>Insecure</em>}' attribute.
+	 * The cached value of the '{@link #getInsecure() <em>Insecure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isInsecure()
+	 * @see #getInsecure()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean insecure = INSECURE_EDEFAULT;
+	protected Boolean insecure = INSECURE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getIpVersion() <em>Ip Version</em>}' attribute.
@@ -583,6 +583,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFlavorId() {
 		return flavorId;
 	}
@@ -592,6 +593,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFlavorId(String newFlavorId) {
 		String oldFlavorId = flavorId;
 		flavorId = newFlavorId;
@@ -604,6 +606,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFlavorName() {
 		return flavorName;
 	}
@@ -613,6 +616,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFlavorName(String newFlavorName) {
 		String oldFlavorName = flavorName;
 		flavorName = newFlavorName;
@@ -625,6 +629,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImageId() {
 		return imageId;
 	}
@@ -634,6 +639,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImageId(String newImageId) {
 		String oldImageId = imageId;
 		imageId = newImageId;
@@ -646,6 +652,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImageName() {
 		return imageName;
 	}
@@ -655,6 +662,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImageName(String newImageName) {
 		String oldImageName = imageName;
 		imageName = newImageName;
@@ -667,6 +675,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAuthUrl() {
 		return authUrl;
 	}
@@ -676,6 +685,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAuthUrl(String newAuthUrl) {
 		String oldAuthUrl = authUrl;
 		authUrl = newAuthUrl;
@@ -688,6 +698,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -697,6 +708,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsername(String newUsername) {
 		String oldUsername = username;
 		username = newUsername;
@@ -709,6 +721,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -718,6 +731,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPassword(String newPassword) {
 		String oldPassword = password;
 		password = newPassword;
@@ -730,6 +744,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTenantName() {
 		return tenantName;
 	}
@@ -739,6 +754,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTenantName(String newTenantName) {
 		String oldTenantName = tenantName;
 		tenantName = newTenantName;
@@ -751,6 +767,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTenantId() {
 		return tenantId;
 	}
@@ -760,6 +777,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTenantId(String newTenantId) {
 		String oldTenantId = tenantId;
 		tenantId = newTenantId;
@@ -772,6 +790,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRegion() {
 		return region;
 	}
@@ -781,6 +800,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRegion(String newRegion) {
 		String oldRegion = region;
 		region = newRegion;
@@ -793,6 +813,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEndpointType() {
 		return endpointType;
 	}
@@ -802,6 +823,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEndpointType(String newEndpointType) {
 		String oldEndpointType = endpointType;
 		endpointType = newEndpointType;
@@ -814,6 +836,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNetId() {
 		return netId;
 	}
@@ -823,6 +846,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNetId(String newNetId) {
 		String oldNetId = netId;
 		netId = newNetId;
@@ -835,6 +859,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNetName() {
 		return netName;
 	}
@@ -844,6 +869,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNetName(String newNetName) {
 		String oldNetName = netName;
 		netName = newNetName;
@@ -856,6 +882,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSecGroups() {
 		return secGroups;
 	}
@@ -865,6 +892,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSecGroups(String newSecGroups) {
 		String oldSecGroups = secGroups;
 		secGroups = newSecGroups;
@@ -877,6 +905,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFloatingIpPool() {
 		return floatingIpPool;
 	}
@@ -886,6 +915,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFloatingIpPool(String newFloatingIpPool) {
 		String oldFloatingIpPool = floatingIpPool;
 		floatingIpPool = newFloatingIpPool;
@@ -898,6 +928,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getActiveTimeOut() {
 		return activeTimeOut;
 	}
@@ -907,6 +938,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setActiveTimeOut(Integer newActiveTimeOut) {
 		Integer oldActiveTimeOut = activeTimeOut;
 		activeTimeOut = newActiveTimeOut;
@@ -919,6 +951,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAvailabilityZone() {
 		return availabilityZone;
 	}
@@ -928,6 +961,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAvailabilityZone(String newAvailabilityZone) {
 		String oldAvailabilityZone = availabilityZone;
 		availabilityZone = newAvailabilityZone;
@@ -940,6 +974,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDomainId() {
 		return domainId;
 	}
@@ -949,6 +984,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDomainId(String newDomainId) {
 		String oldDomainId = domainId;
 		domainId = newDomainId;
@@ -961,6 +997,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDomainName() {
 		return domainName;
 	}
@@ -970,6 +1007,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDomainName(String newDomainName) {
 		String oldDomainName = domainName;
 		domainName = newDomainName;
@@ -982,7 +1020,8 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isInsecure() {
+	@Override
+	public Boolean getInsecure() {
 		return insecure;
 	}
 
@@ -991,8 +1030,9 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInsecure(boolean newInsecure) {
-		boolean oldInsecure = insecure;
+	@Override
+	public void setInsecure(Boolean newInsecure) {
+		Boolean oldInsecure = insecure;
 		insecure = newInsecure;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEOPENSTACK__INSECURE, oldInsecure, insecure));
@@ -1003,6 +1043,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getIpVersion() {
 		return ipVersion;
 	}
@@ -1012,6 +1053,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIpVersion(Integer newIpVersion) {
 		Integer oldIpVersion = ipVersion;
 		ipVersion = newIpVersion;
@@ -1024,6 +1066,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getKeypairName() {
 		return keypairName;
 	}
@@ -1033,6 +1076,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKeypairName(String newKeypairName) {
 		String oldKeypairName = keypairName;
 		keypairName = newKeypairName;
@@ -1045,6 +1089,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPrivateKeyFile() {
 		return privateKeyFile;
 	}
@@ -1054,6 +1099,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPrivateKeyFile(String newPrivateKeyFile) {
 		String oldPrivateKeyFile = privateKeyFile;
 		privateKeyFile = newPrivateKeyFile;
@@ -1066,6 +1112,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getSshPort() {
 		return sshPort;
 	}
@@ -1075,6 +1122,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshPort(Integer newSshPort) {
 		Integer oldSshPort = sshPort;
 		sshPort = newSshPort;
@@ -1087,6 +1135,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshUser() {
 		return sshUser;
 	}
@@ -1096,6 +1145,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshUser(String newSshUser) {
 		String oldSshUser = sshUser;
 		sshUser = newSshUser;
@@ -1150,7 +1200,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 			case DockerPackage.MACHINEOPENSTACK__DOMAIN_NAME:
 				return getDomainName();
 			case DockerPackage.MACHINEOPENSTACK__INSECURE:
-				return isInsecure();
+				return getInsecure();
 			case DockerPackage.MACHINEOPENSTACK__IP_VERSION:
 				return getIpVersion();
 			case DockerPackage.MACHINEOPENSTACK__KEYPAIR_NAME:
@@ -1386,7 +1436,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 			case DockerPackage.MACHINEOPENSTACK__DOMAIN_NAME:
 				return DOMAIN_NAME_EDEFAULT == null ? domainName != null : !DOMAIN_NAME_EDEFAULT.equals(domainName);
 			case DockerPackage.MACHINEOPENSTACK__INSECURE:
-				return insecure != INSECURE_EDEFAULT;
+				return INSECURE_EDEFAULT == null ? insecure != null : !INSECURE_EDEFAULT.equals(insecure);
 			case DockerPackage.MACHINEOPENSTACK__IP_VERSION:
 				return IP_VERSION_EDEFAULT == null ? ipVersion != null : !IP_VERSION_EDEFAULT.equals(ipVersion);
 			case DockerPackage.MACHINEOPENSTACK__KEYPAIR_NAME:
@@ -1410,7 +1460,7 @@ public class MachineopenstackImpl extends MachineImpl implements Machineopenstac
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (flavorId: ");
 		result.append(flavorId);
 		result.append(", flavorName: ");

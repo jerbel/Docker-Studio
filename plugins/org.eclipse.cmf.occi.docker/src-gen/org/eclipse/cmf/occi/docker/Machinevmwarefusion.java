@@ -29,7 +29,7 @@ package org.eclipse.cmf.occi.docker;
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#getBoot2dockerURL <em>Boot2docker URL</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#getDiskSize <em>Disk Size</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#getMemorySize <em>Memory Size</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#isNoShare <em>No Share</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#getNoShare <em>No Share</em>}</li>
  * </ul>
  *
  * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarefusion()
@@ -47,8 +47,7 @@ public interface Machinevmwarefusion extends Machine {
 	 * @return the value of the '<em>Boot2docker URL</em>' attribute.
 	 * @see #setBoot2dockerURL(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarefusion_Boot2dockerURL()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarefusion!boot2dockerURL'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getBoot2dockerURL();
@@ -74,8 +73,7 @@ public interface Machinevmwarefusion extends Machine {
 	 * @return the value of the '<em>Disk Size</em>' attribute.
 	 * @see #setDiskSize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarefusion_DiskSize()
-	 * @model default="20000" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarefusion!diskSize'"
+	 * @model default="20000" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDiskSize();
@@ -101,8 +99,7 @@ public interface Machinevmwarefusion extends Machine {
 	 * @return the value of the '<em>Memory Size</em>' attribute.
 	 * @see #setMemorySize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarefusion_MemorySize()
-	 * @model default="1024" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarefusion!memorySize'"
+	 * @model default="1024" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemorySize();
@@ -126,22 +123,21 @@ public interface Machinevmwarefusion extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Share</em>' attribute.
-	 * @see #setNoShare(boolean)
+	 * @see #setNoShare(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarefusion_NoShare()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarefusion!noShare'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isNoShare();
+	Boolean getNoShare();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#isNoShare <em>No Share</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#getNoShare <em>No Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>No Share</em>' attribute.
-	 * @see #isNoShare()
+	 * @see #getNoShare()
 	 * @generated
 	 */
-	void setNoShare(boolean value);
+	void setNoShare(Boolean value);
 
 } // Machinevmwarefusion

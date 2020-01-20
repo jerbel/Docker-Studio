@@ -13,6 +13,7 @@
 package org.eclipse.cmf.occi.docker.impl;
 
 import java.lang.reflect.InvocationTargetException;
+
 import org.eclipse.cmf.occi.docker.DockerPackage;
 import org.eclipse.cmf.occi.docker.Machine;
 
@@ -21,6 +22,7 @@ import org.eclipse.cmf.occi.infrastructure.impl.ComputeImpl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
@@ -41,9 +43,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getEngineLabel <em>Engine Label</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getEngineStorageDriver <em>Engine Storage Driver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getEngineEnv <em>Engine Env</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#isSwarm <em>Swarm</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getSwarm <em>Swarm</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getSwarmImage <em>Swarm Image</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#isSwarmMaster <em>Swarm Master</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getSwarmMaster <em>Swarm Master</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getSwarmDiscovery <em>Swarm Discovery</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getSwarmStrategy <em>Swarm Strategy</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineImpl#getSwarmOpt <em>Swarm Opt</em>}</li>
@@ -217,24 +219,24 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	protected String engineEnv = ENGINE_ENV_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isSwarm() <em>Swarm</em>}' attribute.
+	 * The default value of the '{@link #getSwarm() <em>Swarm</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSwarm()
+	 * @see #getSwarm()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SWARM_EDEFAULT = false;
+	protected static final Boolean SWARM_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isSwarm() <em>Swarm</em>}' attribute.
+	 * The cached value of the '{@link #getSwarm() <em>Swarm</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSwarm()
+	 * @see #getSwarm()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean swarm = SWARM_EDEFAULT;
+	protected Boolean swarm = SWARM_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSwarmImage() <em>Swarm Image</em>}' attribute.
@@ -257,24 +259,24 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	protected String swarmImage = SWARM_IMAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isSwarmMaster() <em>Swarm Master</em>}' attribute.
+	 * The default value of the '{@link #getSwarmMaster() <em>Swarm Master</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSwarmMaster()
+	 * @see #getSwarmMaster()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean SWARM_MASTER_EDEFAULT = false;
+	protected static final Boolean SWARM_MASTER_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isSwarmMaster() <em>Swarm Master</em>}' attribute.
+	 * The cached value of the '{@link #getSwarmMaster() <em>Swarm Master</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isSwarmMaster()
+	 * @see #getSwarmMaster()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean swarmMaster = SWARM_MASTER_EDEFAULT;
+	protected Boolean swarmMaster = SWARM_MASTER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSwarmDiscovery() <em>Swarm Discovery</em>}' attribute.
@@ -440,6 +442,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -449,6 +452,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -461,6 +465,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineInstallURL() {
 		return engineInstallURL;
 	}
@@ -470,6 +475,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineInstallURL(String newEngineInstallURL) {
 		String oldEngineInstallURL = engineInstallURL;
 		engineInstallURL = newEngineInstallURL;
@@ -482,6 +488,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineOpt() {
 		return engineOpt;
 	}
@@ -491,6 +498,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineOpt(String newEngineOpt) {
 		String oldEngineOpt = engineOpt;
 		engineOpt = newEngineOpt;
@@ -503,6 +511,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineInsecureRegistry() {
 		return engineInsecureRegistry;
 	}
@@ -512,6 +521,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineInsecureRegistry(String newEngineInsecureRegistry) {
 		String oldEngineInsecureRegistry = engineInsecureRegistry;
 		engineInsecureRegistry = newEngineInsecureRegistry;
@@ -524,6 +534,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineRegistryMirror() {
 		return engineRegistryMirror;
 	}
@@ -533,6 +544,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineRegistryMirror(String newEngineRegistryMirror) {
 		String oldEngineRegistryMirror = engineRegistryMirror;
 		engineRegistryMirror = newEngineRegistryMirror;
@@ -545,6 +557,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineLabel() {
 		return engineLabel;
 	}
@@ -554,6 +567,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineLabel(String newEngineLabel) {
 		String oldEngineLabel = engineLabel;
 		engineLabel = newEngineLabel;
@@ -566,6 +580,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineStorageDriver() {
 		return engineStorageDriver;
 	}
@@ -575,6 +590,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineStorageDriver(String newEngineStorageDriver) {
 		String oldEngineStorageDriver = engineStorageDriver;
 		engineStorageDriver = newEngineStorageDriver;
@@ -587,6 +603,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEngineEnv() {
 		return engineEnv;
 	}
@@ -596,6 +613,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEngineEnv(String newEngineEnv) {
 		String oldEngineEnv = engineEnv;
 		engineEnv = newEngineEnv;
@@ -608,7 +626,8 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSwarm() {
+	@Override
+	public Boolean getSwarm() {
 		return swarm;
 	}
 
@@ -617,8 +636,9 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSwarm(boolean newSwarm) {
-		boolean oldSwarm = swarm;
+	@Override
+	public void setSwarm(Boolean newSwarm) {
+		Boolean oldSwarm = swarm;
 		swarm = newSwarm;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE__SWARM, oldSwarm, swarm));
@@ -629,6 +649,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmImage() {
 		return swarmImage;
 	}
@@ -638,6 +659,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmImage(String newSwarmImage) {
 		String oldSwarmImage = swarmImage;
 		swarmImage = newSwarmImage;
@@ -650,7 +672,8 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isSwarmMaster() {
+	@Override
+	public Boolean getSwarmMaster() {
 		return swarmMaster;
 	}
 
@@ -659,8 +682,9 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setSwarmMaster(boolean newSwarmMaster) {
-		boolean oldSwarmMaster = swarmMaster;
+	@Override
+	public void setSwarmMaster(Boolean newSwarmMaster) {
+		Boolean oldSwarmMaster = swarmMaster;
 		swarmMaster = newSwarmMaster;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINE__SWARM_MASTER, oldSwarmMaster, swarmMaster));
@@ -671,6 +695,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmDiscovery() {
 		return swarmDiscovery;
 	}
@@ -680,6 +705,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmDiscovery(String newSwarmDiscovery) {
 		String oldSwarmDiscovery = swarmDiscovery;
 		swarmDiscovery = newSwarmDiscovery;
@@ -692,6 +718,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmStrategy() {
 		return swarmStrategy;
 	}
@@ -701,6 +728,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmStrategy(String newSwarmStrategy) {
 		String oldSwarmStrategy = swarmStrategy;
 		swarmStrategy = newSwarmStrategy;
@@ -713,6 +741,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmOpt() {
 		return swarmOpt;
 	}
@@ -722,6 +751,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmOpt(String newSwarmOpt) {
 		String oldSwarmOpt = swarmOpt;
 		swarmOpt = newSwarmOpt;
@@ -734,6 +764,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmHost() {
 		return swarmHost;
 	}
@@ -743,6 +774,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmHost(String newSwarmHost) {
 		String oldSwarmHost = swarmHost;
 		swarmHost = newSwarmHost;
@@ -755,6 +787,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmAddr() {
 		return swarmAddr;
 	}
@@ -764,6 +797,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmAddr(String newSwarmAddr) {
 		String oldSwarmAddr = swarmAddr;
 		swarmAddr = newSwarmAddr;
@@ -776,6 +810,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSwarmExperimental() {
 		return swarmExperimental;
 	}
@@ -785,6 +820,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSwarmExperimental(String newSwarmExperimental) {
 		String oldSwarmExperimental = swarmExperimental;
 		swarmExperimental = newSwarmExperimental;
@@ -797,6 +833,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getTlsSan() {
 		return tlsSan;
 	}
@@ -806,6 +843,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setTlsSan(String newTlsSan) {
 		String oldTlsSan = tlsSan;
 		tlsSan = newTlsSan;
@@ -818,6 +856,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void startall() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!startall()
 	}
@@ -847,11 +886,11 @@ public class MachineImpl extends ComputeImpl implements Machine {
 			case DockerPackage.MACHINE__ENGINE_ENV:
 				return getEngineEnv();
 			case DockerPackage.MACHINE__SWARM:
-				return isSwarm();
+				return getSwarm();
 			case DockerPackage.MACHINE__SWARM_IMAGE:
 				return getSwarmImage();
 			case DockerPackage.MACHINE__SWARM_MASTER:
-				return isSwarmMaster();
+				return getSwarmMaster();
 			case DockerPackage.MACHINE__SWARM_DISCOVERY:
 				return getSwarmDiscovery();
 			case DockerPackage.MACHINE__SWARM_STRATEGY:
@@ -1027,11 +1066,11 @@ public class MachineImpl extends ComputeImpl implements Machine {
 			case DockerPackage.MACHINE__ENGINE_ENV:
 				return ENGINE_ENV_EDEFAULT == null ? engineEnv != null : !ENGINE_ENV_EDEFAULT.equals(engineEnv);
 			case DockerPackage.MACHINE__SWARM:
-				return swarm != SWARM_EDEFAULT;
+				return SWARM_EDEFAULT == null ? swarm != null : !SWARM_EDEFAULT.equals(swarm);
 			case DockerPackage.MACHINE__SWARM_IMAGE:
 				return SWARM_IMAGE_EDEFAULT == null ? swarmImage != null : !SWARM_IMAGE_EDEFAULT.equals(swarmImage);
 			case DockerPackage.MACHINE__SWARM_MASTER:
-				return swarmMaster != SWARM_MASTER_EDEFAULT;
+				return SWARM_MASTER_EDEFAULT == null ? swarmMaster != null : !SWARM_MASTER_EDEFAULT.equals(swarmMaster);
 			case DockerPackage.MACHINE__SWARM_DISCOVERY:
 				return SWARM_DISCOVERY_EDEFAULT == null ? swarmDiscovery != null : !SWARM_DISCOVERY_EDEFAULT.equals(swarmDiscovery);
 			case DockerPackage.MACHINE__SWARM_STRATEGY:
@@ -1074,7 +1113,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", engineInstallURL: ");

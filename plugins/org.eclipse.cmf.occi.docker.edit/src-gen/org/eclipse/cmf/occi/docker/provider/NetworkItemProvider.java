@@ -203,7 +203,7 @@ public class NetworkItemProvider extends org.eclipse.cmf.occi.infrastructure.pro
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -291,7 +291,7 @@ public class NetworkItemProvider extends org.eclipse.cmf.occi.infrastructure.pro
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}

@@ -48,8 +48,7 @@ public interface Machinemicrosofthyperv extends Machine {
 	 * @return the value of the '<em>Virtual Switch</em>' attribute.
 	 * @see #setVirtualSwitch(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosofthyperv_VirtualSwitch()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosofthyperv!virtualSwitch'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVirtualSwitch();
@@ -74,8 +73,7 @@ public interface Machinemicrosofthyperv extends Machine {
 	 * @return the value of the '<em>Boot2docker URL</em>' attribute.
 	 * @see #setBoot2dockerURL(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosofthyperv_Boot2dockerURL()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosofthyperv!boot2dockerURL'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getBoot2dockerURL();
@@ -92,7 +90,6 @@ public interface Machinemicrosofthyperv extends Machine {
 
 	/**
 	 * Returns the value of the '<em><b>Disk Size</b></em>' attribute.
-	 * The default value is <code>"20000"</code>.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -101,8 +98,7 @@ public interface Machinemicrosofthyperv extends Machine {
 	 * @return the value of the '<em>Disk Size</em>' attribute.
 	 * @see #setDiskSize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosofthyperv_DiskSize()
-	 * @model default="20000" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosofthyperv!diskSize'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDiskSize();
@@ -127,8 +123,7 @@ public interface Machinemicrosofthyperv extends Machine {
 	 * @return the value of the '<em>Static Mac Address</em>' attribute.
 	 * @see #setStaticMacAddress(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosofthyperv_StaticMacAddress()
-	 * @model dataType="org.eclipse.cmf.occi.infrastructure.Mac"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosofthyperv!staticMacAddress'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getStaticMacAddress();
@@ -153,8 +148,7 @@ public interface Machinemicrosofthyperv extends Machine {
 	 * @return the value of the '<em>Vlan Id</em>' attribute.
 	 * @see #setVlanId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosofthyperv_VlanId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosofthyperv!vlanId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVlanId();

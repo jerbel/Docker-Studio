@@ -61,8 +61,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Subscription Id</em>' attribute.
 	 * @see #setSubscriptionId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_SubscriptionId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!subscriptionId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSubscriptionId();
@@ -87,8 +86,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Subscription Cert</em>' attribute.
 	 * @see #setSubscriptionCert(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_SubscriptionCert()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!subscriptionCert'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSubscriptionCert();
@@ -114,8 +112,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Environment</em>' attribute.
 	 * @see #setEnvironment(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_Environment()
-	 * @model default="AzurePublicCloud" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!environment'"
+	 * @model default="AzurePublicCloud" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEnvironment();
@@ -140,8 +137,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Machine Location</em>' attribute.
 	 * @see #setMachineLocation(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_MachineLocation()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!machineLocation'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getMachineLocation();
@@ -167,8 +163,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Resource Group</em>' attribute.
 	 * @see #setResourceGroup(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_ResourceGroup()
-	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!resourceGroup'"
+	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getResourceGroup();
@@ -193,8 +188,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_Size()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!size'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSize();
@@ -219,8 +213,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Ssh User</em>' attribute.
 	 * @see #setSshUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_SshUser()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!sshUser'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshUser();
@@ -245,8 +238,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Vnet</em>' attribute.
 	 * @see #setVnet(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_Vnet()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!vnet'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVnet();
@@ -271,8 +263,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Subnet</em>' attribute.
 	 * @see #setSubnet(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_Subnet()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!subnet'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSubnet();
@@ -298,8 +289,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Subnet Prefix</em>' attribute.
 	 * @see #setSubnetPrefix(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_SubnetPrefix()
-	 * @model default="192.168.0.0/16" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!subnetPrefix'"
+	 * @model default="192.168.0.0/16" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSubnetPrefix();
@@ -325,8 +315,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Availability Set</em>' attribute.
 	 * @see #setAvailabilitySet(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_AvailabilitySet()
-	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!availabilitySet'"
+	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAvailabilitySet();
@@ -351,8 +340,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Open Port</em>' attribute.
 	 * @see #setOpenPort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_OpenPort()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!openPort'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getOpenPort();
@@ -377,8 +365,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Private Ip Address</em>' attribute.
 	 * @see #setPrivateIpAddress(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_PrivateIpAddress()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!privateIpAddress'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPrivateIpAddress();
@@ -403,8 +390,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>No Public Ip</em>' attribute.
 	 * @see #setNoPublicIp(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_NoPublicIp()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!noPublicIp'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getNoPublicIp();
@@ -429,8 +415,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Static Public Ip</em>' attribute.
 	 * @see #setStaticPublicIp(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_StaticPublicIp()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!staticPublicIp'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getStaticPublicIp();
@@ -456,8 +441,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Docker Port</em>' attribute.
 	 * @see #setDockerPort(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_DockerPort()
-	 * @model default="2376" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!dockerPort'"
+	 * @model default="2376" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDockerPort();
@@ -482,8 +466,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Use Private Ip</em>' attribute.
 	 * @see #setUsePrivateIp(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_UsePrivateIp()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!usePrivateIp'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsePrivateIp();
@@ -508,8 +491,7 @@ public interface Machinemicrosoftazure extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinemicrosoftazure_Image()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinemicrosoftazure!image'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImage();

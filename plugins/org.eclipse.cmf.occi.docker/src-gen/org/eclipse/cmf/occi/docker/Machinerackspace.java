@@ -34,7 +34,7 @@ package org.eclipse.cmf.occi.docker;
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinerackspace#getFlavorId <em>Flavor Id</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinerackspace#getSshUser <em>Ssh User</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinerackspace#getSshPort <em>Ssh Port</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinerackspace#isDockerInstall <em>Docker Install</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinerackspace#getDockerInstall <em>Docker Install</em>}</li>
  * </ul>
  *
  * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace()
@@ -52,8 +52,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_Username()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!username'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsername();
@@ -78,8 +77,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Api Key</em>' attribute.
 	 * @see #setApiKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_ApiKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!apiKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getApiKey();
@@ -104,8 +102,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_Region()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!region'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRegion();
@@ -131,8 +128,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>End Point Type</em>' attribute.
 	 * @see #setEndPointType(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_EndPointType()
-	 * @model default="publicURL" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!endPointType'"
+	 * @model default="publicURL" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEndPointType();
@@ -158,8 +154,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Image Id</em>' attribute.
 	 * @see #setImageId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_ImageId()
-	 * @model default="59a3fadd-93e7-4674-886a-64883e17115f" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!imageId'"
+	 * @model default="59a3fadd-93e7-4674-886a-64883e17115f" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImageId();
@@ -185,8 +180,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Flavor Id</em>' attribute.
 	 * @see #setFlavorId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_FlavorId()
-	 * @model default="general1-1" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!flavorId'"
+	 * @model default="general1-1" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getFlavorId();
@@ -212,8 +206,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Ssh User</em>' attribute.
 	 * @see #setSshUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_SshUser()
-	 * @model default="root" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!sshUser'"
+	 * @model default="root" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshUser();
@@ -239,8 +232,7 @@ public interface Machinerackspace extends Machine {
 	 * @return the value of the '<em>Ssh Port</em>' attribute.
 	 * @see #setSshPort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_SshPort()
-	 * @model default="22" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!sshPort'"
+	 * @model default="22" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getSshPort();
@@ -264,22 +256,21 @@ public interface Machinerackspace extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Docker Install</em>' attribute.
-	 * @see #setDockerInstall(boolean)
+	 * @see #setDockerInstall(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinerackspace_DockerInstall()
-	 * @model default="true" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinerackspace!dockerInstall'"
+	 * @model default="true" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isDockerInstall();
+	Boolean getDockerInstall();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinerackspace#isDockerInstall <em>Docker Install</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinerackspace#getDockerInstall <em>Docker Install</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Docker Install</em>' attribute.
-	 * @see #isDockerInstall()
+	 * @see #getDockerInstall()
 	 * @generated
 	 */
-	void setDockerInstall(boolean value);
+	void setDockerInstall(Boolean value);
 
 } // Machinerackspace

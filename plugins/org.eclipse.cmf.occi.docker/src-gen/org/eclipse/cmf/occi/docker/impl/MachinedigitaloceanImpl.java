@@ -142,6 +142,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAccessToken() {
 		return accessToken;
 	}
@@ -151,6 +152,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessToken(String newAccessToken) {
 		String oldAccessToken = accessToken;
 		accessToken = newAccessToken;
@@ -163,6 +165,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImage() {
 		return image;
 	}
@@ -172,6 +175,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImage(String newImage) {
 		String oldImage = image;
 		image = newImage;
@@ -184,6 +188,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRegion() {
 		return region;
 	}
@@ -193,6 +198,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRegion(String newRegion) {
 		String oldRegion = region;
 		region = newRegion;
@@ -205,6 +211,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSize() {
 		return size;
 	}
@@ -214,6 +221,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSize(String newSize) {
 		String oldSize = size;
 		size = newSize;
@@ -318,7 +326,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (accessToken: ");
 		result.append(accessToken);
 		result.append(", image: ");

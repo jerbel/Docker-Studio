@@ -54,8 +54,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Access Key</em>' attribute.
 	 * @see #setAccessKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_AccessKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!accessKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAccessKey();
@@ -81,8 +80,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Ami</em>' attribute.
 	 * @see #setAmi(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_Ami()
-	 * @model default="ami-4ae27e22" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!ami'"
+	 * @model default="ami-4ae27e22" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAmi();
@@ -108,8 +106,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Instance Type</em>' attribute.
 	 * @see #setInstanceType(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_InstanceType()
-	 * @model default="t2.micro" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!instanceType'"
+	 * @model default="t2.micro" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getInstanceType();
@@ -135,8 +132,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_Region()
-	 * @model default="us-east-1" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!region'"
+	 * @model default="us-east-1" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRegion();
@@ -162,8 +158,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Root Size</em>' attribute.
 	 * @see #setRootSize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_RootSize()
-	 * @model default="16" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!rootSize'"
+	 * @model default="16" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getRootSize();
@@ -188,8 +183,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Secret Key</em>' attribute.
 	 * @see #setSecretKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_SecretKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!secretKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSecretKey();
@@ -215,8 +209,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Security Group</em>' attribute.
 	 * @see #setSecurityGroup(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_SecurityGroup()
-	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!securityGroup'"
+	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSecurityGroup();
@@ -241,8 +234,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Session Token</em>' attribute.
 	 * @see #setSessionToken(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_SessionToken()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!sessionToken'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSessionToken();
@@ -267,8 +259,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Subnet Id</em>' attribute.
 	 * @see #setSubnetId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_SubnetId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!subnetId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSubnetId();
@@ -293,8 +284,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Vpc Id</em>' attribute.
 	 * @see #setVpcId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_VpcId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!vpcId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVpcId();
@@ -320,8 +310,7 @@ public interface Machineamazonec2 extends Machine {
 	 * @return the value of the '<em>Zone</em>' attribute.
 	 * @see #setZone(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineamazonec2_Zone()
-	 * @model default="a" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineamazonec2!zone'"
+	 * @model default="a" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getZone();

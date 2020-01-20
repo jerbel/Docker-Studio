@@ -53,8 +53,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_Username()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!username'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsername();
@@ -79,8 +78,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_Password()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!password'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPassword();
@@ -105,8 +103,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Site</em>' attribute.
 	 * @see #setSite(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_Site()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!site'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSite();
@@ -131,8 +128,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Walltime</em>' attribute.
 	 * @see #setWalltime(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_Walltime()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!walltime'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getWalltime();
@@ -157,8 +153,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Ssh Private Key</em>' attribute.
 	 * @see #setSshPrivateKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_SshPrivateKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!sshPrivateKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshPrivateKey();
@@ -183,8 +178,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Ssh Public Key</em>' attribute.
 	 * @see #setSshPublicKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_SshPublicKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!sshPublicKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshPublicKey();
@@ -209,8 +203,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_Image()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!image'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImage();
@@ -235,8 +228,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Resource Properties</em>' attribute.
 	 * @see #setResourceProperties(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_ResourceProperties()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!resourceProperties'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getResourceProperties();
@@ -261,8 +253,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Use Job Reservation</em>' attribute.
 	 * @see #setUseJobReservation(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_UseJobReservation()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!useJobReservation'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUseJobReservation();
@@ -287,8 +278,7 @@ public interface Machinegrid5000 extends Machine {
 	 * @return the value of the '<em>Host To Provision</em>' attribute.
 	 * @see #setHostToProvision(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegrid5000_HostToProvision()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegrid5000!hostToProvision'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getHostToProvision();

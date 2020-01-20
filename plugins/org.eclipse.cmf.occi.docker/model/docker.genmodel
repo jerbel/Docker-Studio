@@ -15,6 +15,15 @@
         <ecoreEnumLiteral href="docker.ecore#//Mode/read"/>
       </genEnumLiterals>
     </genEnums>
+    <genDataTypes>
+      <ecoreDataType href="docker.ecore#//String"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="docker.ecore#//Bool"/>
+    </genDataTypes>
+    <genDataTypes>
+      <ecoreDataType href="docker.ecore#//Int"/>
+    </genDataTypes>
     <genClasses>
       <ecoreClass href="docker.ecore#//ArrayOfString"/>
       <genFeatures createChild="false">
@@ -196,9 +205,6 @@
       </genOperations>
       <genOperations>
         <ecoreOperation href="docker.ecore#//Container/kill"/>
-        <genParameters>
-          <ecoreParameter href="docker.ecore#//Container/kill/signal"/>
-        </genParameters>
       </genOperations>
     </genClasses>
     <genClasses>

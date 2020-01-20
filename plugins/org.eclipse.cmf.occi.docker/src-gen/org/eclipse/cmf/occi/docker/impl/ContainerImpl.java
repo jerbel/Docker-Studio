@@ -14,18 +14,15 @@ package org.eclipse.cmf.occi.docker.impl;
 
 import java.lang.reflect.InvocationTargetException;
 
-import org.eclipse.cmf.occi.docker.ArrayOfString;
 import org.eclipse.cmf.occi.docker.DockerPackage;
 
 import org.eclipse.cmf.occi.infrastructure.impl.ComputeImpl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -58,22 +55,22 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getDomainName <em>Domain Name</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getMemLimit <em>Mem Limit</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getMemorySwap <em>Memory Swap</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isPrivileged <em>Privileged</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getPrivileged <em>Privileged</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getRestart <em>Restart</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isStdinOpen <em>Stdin Open</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isInteractive <em>Interactive</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getStdinOpen <em>Stdin Open</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getInteractive <em>Interactive</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuShares <em>Cpu Shares</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getPid <em>Pid</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getIpc <em>Ipc</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getAddHost <em>Add Host</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getMacAddress <em>Mac Address</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isRm <em>Rm</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getRm <em>Rm</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getSecurityOpt <em>Security Opt</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getDevice <em>Device</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getLxcConf <em>Lxc Conf</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isPublishAll <em>Publish All</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isReadOnly <em>Read Only</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isMonitored <em>Monitored</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getPublishAll <em>Publish All</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getReadOnly <em>Read Only</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getMonitored <em>Monitored</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuUsed <em>Cpu Used</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getMemoryUsed <em>Memory Used</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuPercent <em>Cpu Percent</em>}</li>
@@ -88,7 +85,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCoreMax <em>Core Max</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuSetCpus <em>Cpu Set Cpus</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getCpuSetMems <em>Cpu Set Mems</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#isTty <em>Tty</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.ContainerImpl#getTty <em>Tty</em>}</li>
  * </ul>
  *
  * @generated
@@ -515,24 +512,24 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected Integer memorySwap = MEMORY_SWAP_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isPrivileged() <em>Privileged</em>}' attribute.
+	 * The default value of the '{@link #getPrivileged() <em>Privileged</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPrivileged()
+	 * @see #getPrivileged()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean PRIVILEGED_EDEFAULT = false;
+	protected static final Boolean PRIVILEGED_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isPrivileged() <em>Privileged</em>}' attribute.
+	 * The cached value of the '{@link #getPrivileged() <em>Privileged</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPrivileged()
+	 * @see #getPrivileged()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean privileged = PRIVILEGED_EDEFAULT;
+	protected Boolean privileged = PRIVILEGED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getRestart() <em>Restart</em>}' attribute.
@@ -555,44 +552,44 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String restart = RESTART_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isStdinOpen() <em>Stdin Open</em>}' attribute.
+	 * The default value of the '{@link #getStdinOpen() <em>Stdin Open</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isStdinOpen()
+	 * @see #getStdinOpen()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean STDIN_OPEN_EDEFAULT = false;
+	protected static final Boolean STDIN_OPEN_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isStdinOpen() <em>Stdin Open</em>}' attribute.
+	 * The cached value of the '{@link #getStdinOpen() <em>Stdin Open</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isStdinOpen()
+	 * @see #getStdinOpen()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean stdinOpen = STDIN_OPEN_EDEFAULT;
+	protected Boolean stdinOpen = STDIN_OPEN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isInteractive() <em>Interactive</em>}' attribute.
+	 * The default value of the '{@link #getInteractive() <em>Interactive</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isInteractive()
+	 * @see #getInteractive()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INTERACTIVE_EDEFAULT = false;
+	protected static final Boolean INTERACTIVE_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isInteractive() <em>Interactive</em>}' attribute.
+	 * The cached value of the '{@link #getInteractive() <em>Interactive</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isInteractive()
+	 * @see #getInteractive()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean interactive = INTERACTIVE_EDEFAULT;
+	protected Boolean interactive = INTERACTIVE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCpuShares() <em>Cpu Shares</em>}' attribute.
@@ -695,24 +692,24 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String macAddress = MAC_ADDRESS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isRm() <em>Rm</em>}' attribute.
+	 * The default value of the '{@link #getRm() <em>Rm</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRm()
+	 * @see #getRm()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean RM_EDEFAULT = false;
+	protected static final Boolean RM_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isRm() <em>Rm</em>}' attribute.
+	 * The cached value of the '{@link #getRm() <em>Rm</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isRm()
+	 * @see #getRm()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean rm = RM_EDEFAULT;
+	protected Boolean rm = RM_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getSecurityOpt() <em>Security Opt</em>}' attribute.
@@ -775,64 +772,64 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String lxcConf = LXC_CONF_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isPublishAll() <em>Publish All</em>}' attribute.
+	 * The default value of the '{@link #getPublishAll() <em>Publish All</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPublishAll()
+	 * @see #getPublishAll()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean PUBLISH_ALL_EDEFAULT = false;
+	protected static final Boolean PUBLISH_ALL_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isPublishAll() <em>Publish All</em>}' attribute.
+	 * The cached value of the '{@link #getPublishAll() <em>Publish All</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPublishAll()
+	 * @see #getPublishAll()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean publishAll = PUBLISH_ALL_EDEFAULT;
+	protected Boolean publishAll = PUBLISH_ALL_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
+	 * The default value of the '{@link #getReadOnly() <em>Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isReadOnly()
+	 * @see #getReadOnly()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean READ_ONLY_EDEFAULT = false;
+	protected static final Boolean READ_ONLY_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isReadOnly() <em>Read Only</em>}' attribute.
+	 * The cached value of the '{@link #getReadOnly() <em>Read Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isReadOnly()
+	 * @see #getReadOnly()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean readOnly = READ_ONLY_EDEFAULT;
+	protected Boolean readOnly = READ_ONLY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
+	 * The default value of the '{@link #getMonitored() <em>Monitored</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMonitored()
+	 * @see #getMonitored()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean MONITORED_EDEFAULT = false;
+	protected static final Boolean MONITORED_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isMonitored() <em>Monitored</em>}' attribute.
+	 * The cached value of the '{@link #getMonitored() <em>Monitored</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isMonitored()
+	 * @see #getMonitored()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean monitored = MONITORED_EDEFAULT;
+	protected Boolean monitored = MONITORED_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCpuUsed() <em>Cpu Used</em>}' attribute.
@@ -1115,24 +1112,24 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	protected String cpuSetMems = CPU_SET_MEMS_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isTty() <em>Tty</em>}' attribute.
+	 * The default value of the '{@link #getTty() <em>Tty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isTty()
+	 * @see #getTty()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean TTY_EDEFAULT = false;
+	protected static final Boolean TTY_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isTty() <em>Tty</em>}' attribute.
+	 * The cached value of the '{@link #getTty() <em>Tty</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isTty()
+	 * @see #getTty()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean tty = TTY_EDEFAULT;
+	protected Boolean tty = TTY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1158,6 +1155,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -1167,6 +1165,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -1179,6 +1178,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getContainerid() {
 		return containerid;
 	}
@@ -1188,6 +1188,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContainerid(String newContainerid) {
 		String oldContainerid = containerid;
 		containerid = newContainerid;
@@ -1200,6 +1201,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImage() {
 		return image;
 	}
@@ -1209,6 +1211,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImage(String newImage) {
 		String oldImage = image;
 		image = newImage;
@@ -1221,6 +1224,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBuild() {
 		return build;
 	}
@@ -1230,6 +1234,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBuild(String newBuild) {
 		String oldBuild = build;
 		build = newBuild;
@@ -1242,6 +1247,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCommand() {
 		return command;
 	}
@@ -1251,6 +1257,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCommand(String newCommand) {
 		String oldCommand = command;
 		command = newCommand;
@@ -1263,6 +1270,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPorts() {
 		return ports;
 	}
@@ -1272,6 +1280,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPorts(String newPorts) {
 		String oldPorts = ports;
 		ports = newPorts;
@@ -1284,6 +1293,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getExpose() {
 		return expose;
 	}
@@ -1293,6 +1303,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExpose(String newExpose) {
 		String oldExpose = expose;
 		expose = newExpose;
@@ -1305,6 +1316,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVolumes() {
 		return volumes;
 	}
@@ -1314,6 +1326,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVolumes(String newVolumes) {
 		String oldVolumes = volumes;
 		volumes = newVolumes;
@@ -1326,6 +1339,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEnvironment() {
 		return environment;
 	}
@@ -1335,6 +1349,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnvironment(String newEnvironment) {
 		String oldEnvironment = environment;
 		environment = newEnvironment;
@@ -1347,6 +1362,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEnvFile() {
 		return envFile;
 	}
@@ -1356,6 +1372,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnvFile(String newEnvFile) {
 		String oldEnvFile = envFile;
 		envFile = newEnvFile;
@@ -1368,6 +1385,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNet() {
 		return net;
 	}
@@ -1377,6 +1395,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNet(String newNet) {
 		String oldNet = net;
 		net = newNet;
@@ -1389,6 +1408,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDns() {
 		return dns;
 	}
@@ -1398,6 +1418,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDns(String newDns) {
 		String oldDns = dns;
 		dns = newDns;
@@ -1410,6 +1431,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDnsSearch() {
 		return dnsSearch;
 	}
@@ -1419,6 +1441,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDnsSearch(String newDnsSearch) {
 		String oldDnsSearch = dnsSearch;
 		dnsSearch = newDnsSearch;
@@ -1431,6 +1454,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCapAdd() {
 		return capAdd;
 	}
@@ -1440,6 +1464,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCapAdd(String newCapAdd) {
 		String oldCapAdd = capAdd;
 		capAdd = newCapAdd;
@@ -1452,6 +1477,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCapDrop() {
 		return capDrop;
 	}
@@ -1461,6 +1487,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCapDrop(String newCapDrop) {
 		String oldCapDrop = capDrop;
 		capDrop = newCapDrop;
@@ -1473,6 +1500,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getWorkingDir() {
 		return workingDir;
 	}
@@ -1482,6 +1510,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWorkingDir(String newWorkingDir) {
 		String oldWorkingDir = workingDir;
 		workingDir = newWorkingDir;
@@ -1494,6 +1523,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEntrypoint() {
 		return entrypoint;
 	}
@@ -1503,6 +1533,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEntrypoint(String newEntrypoint) {
 		String oldEntrypoint = entrypoint;
 		entrypoint = newEntrypoint;
@@ -1515,6 +1546,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUser() {
 		return user;
 	}
@@ -1524,6 +1556,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUser(String newUser) {
 		String oldUser = user;
 		user = newUser;
@@ -1536,6 +1569,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDomainName() {
 		return domainName;
 	}
@@ -1545,6 +1579,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDomainName(String newDomainName) {
 		String oldDomainName = domainName;
 		domainName = newDomainName;
@@ -1557,6 +1592,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemLimit() {
 		return memLimit;
 	}
@@ -1566,6 +1602,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemLimit(Integer newMemLimit) {
 		Integer oldMemLimit = memLimit;
 		memLimit = newMemLimit;
@@ -1578,6 +1615,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemorySwap() {
 		return memorySwap;
 	}
@@ -1587,6 +1625,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemorySwap(Integer newMemorySwap) {
 		Integer oldMemorySwap = memorySwap;
 		memorySwap = newMemorySwap;
@@ -1599,7 +1638,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPrivileged() {
+	@Override
+	public Boolean getPrivileged() {
 		return privileged;
 	}
 
@@ -1608,8 +1648,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPrivileged(boolean newPrivileged) {
-		boolean oldPrivileged = privileged;
+	@Override
+	public void setPrivileged(Boolean newPrivileged) {
+		Boolean oldPrivileged = privileged;
 		privileged = newPrivileged;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__PRIVILEGED, oldPrivileged, privileged));
@@ -1620,6 +1661,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRestart() {
 		return restart;
 	}
@@ -1629,6 +1671,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRestart(String newRestart) {
 		String oldRestart = restart;
 		restart = newRestart;
@@ -1641,7 +1684,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isStdinOpen() {
+	@Override
+	public Boolean getStdinOpen() {
 		return stdinOpen;
 	}
 
@@ -1650,8 +1694,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStdinOpen(boolean newStdinOpen) {
-		boolean oldStdinOpen = stdinOpen;
+	@Override
+	public void setStdinOpen(Boolean newStdinOpen) {
+		Boolean oldStdinOpen = stdinOpen;
 		stdinOpen = newStdinOpen;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__STDIN_OPEN, oldStdinOpen, stdinOpen));
@@ -1662,7 +1707,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isInteractive() {
+	@Override
+	public Boolean getInteractive() {
 		return interactive;
 	}
 
@@ -1671,8 +1717,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInteractive(boolean newInteractive) {
-		boolean oldInteractive = interactive;
+	@Override
+	public void setInteractive(Boolean newInteractive) {
+		Boolean oldInteractive = interactive;
 		interactive = newInteractive;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__INTERACTIVE, oldInteractive, interactive));
@@ -1683,6 +1730,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCpuShares() {
 		return cpuShares;
 	}
@@ -1692,6 +1740,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuShares(Integer newCpuShares) {
 		Integer oldCpuShares = cpuShares;
 		cpuShares = newCpuShares;
@@ -1704,6 +1753,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPid() {
 		return pid;
 	}
@@ -1713,6 +1763,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPid(String newPid) {
 		String oldPid = pid;
 		pid = newPid;
@@ -1725,6 +1776,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIpc() {
 		return ipc;
 	}
@@ -1734,6 +1786,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIpc(String newIpc) {
 		String oldIpc = ipc;
 		ipc = newIpc;
@@ -1746,6 +1799,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAddHost() {
 		return addHost;
 	}
@@ -1755,6 +1809,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAddHost(String newAddHost) {
 		String oldAddHost = addHost;
 		addHost = newAddHost;
@@ -1767,6 +1822,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMacAddress() {
 		return macAddress;
 	}
@@ -1776,6 +1832,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMacAddress(String newMacAddress) {
 		String oldMacAddress = macAddress;
 		macAddress = newMacAddress;
@@ -1788,7 +1845,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isRm() {
+	@Override
+	public Boolean getRm() {
 		return rm;
 	}
 
@@ -1797,8 +1855,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRm(boolean newRm) {
-		boolean oldRm = rm;
+	@Override
+	public void setRm(Boolean newRm) {
+		Boolean oldRm = rm;
 		rm = newRm;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__RM, oldRm, rm));
@@ -1809,6 +1868,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSecurityOpt() {
 		return securityOpt;
 	}
@@ -1818,6 +1878,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSecurityOpt(String newSecurityOpt) {
 		String oldSecurityOpt = securityOpt;
 		securityOpt = newSecurityOpt;
@@ -1830,6 +1891,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDevice() {
 		return device;
 	}
@@ -1839,6 +1901,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDevice(String newDevice) {
 		String oldDevice = device;
 		device = newDevice;
@@ -1851,6 +1914,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLxcConf() {
 		return lxcConf;
 	}
@@ -1860,6 +1924,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLxcConf(String newLxcConf) {
 		String oldLxcConf = lxcConf;
 		lxcConf = newLxcConf;
@@ -1872,7 +1937,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPublishAll() {
+	@Override
+	public Boolean getPublishAll() {
 		return publishAll;
 	}
 
@@ -1881,8 +1947,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPublishAll(boolean newPublishAll) {
-		boolean oldPublishAll = publishAll;
+	@Override
+	public void setPublishAll(Boolean newPublishAll) {
+		Boolean oldPublishAll = publishAll;
 		publishAll = newPublishAll;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__PUBLISH_ALL, oldPublishAll, publishAll));
@@ -1893,7 +1960,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isReadOnly() {
+	@Override
+	public Boolean getReadOnly() {
 		return readOnly;
 	}
 
@@ -1902,8 +1970,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setReadOnly(boolean newReadOnly) {
-		boolean oldReadOnly = readOnly;
+	@Override
+	public void setReadOnly(Boolean newReadOnly) {
+		Boolean oldReadOnly = readOnly;
 		readOnly = newReadOnly;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__READ_ONLY, oldReadOnly, readOnly));
@@ -1914,7 +1983,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isMonitored() {
+	@Override
+	public Boolean getMonitored() {
 		return monitored;
 	}
 
@@ -1923,8 +1993,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMonitored(boolean newMonitored) {
-		boolean oldMonitored = monitored;
+	@Override
+	public void setMonitored(Boolean newMonitored) {
+		Boolean oldMonitored = monitored;
 		monitored = newMonitored;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__MONITORED, oldMonitored, monitored));
@@ -1935,6 +2006,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCpuUsed() {
 		return cpuUsed;
 	}
@@ -1944,6 +2016,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuUsed(Integer newCpuUsed) {
 		Integer oldCpuUsed = cpuUsed;
 		cpuUsed = newCpuUsed;
@@ -1956,6 +2029,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemoryUsed() {
 		return memoryUsed;
 	}
@@ -1965,6 +2039,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemoryUsed(Integer newMemoryUsed) {
 		Integer oldMemoryUsed = memoryUsed;
 		memoryUsed = newMemoryUsed;
@@ -1977,6 +2052,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCpuPercent() {
 		return cpuPercent;
 	}
@@ -1986,6 +2062,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuPercent(String newCpuPercent) {
 		String oldCpuPercent = cpuPercent;
 		cpuPercent = newCpuPercent;
@@ -1998,6 +2075,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMemoryPercent() {
 		return memoryPercent;
 	}
@@ -2007,6 +2085,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemoryPercent(String newMemoryPercent) {
 		String oldMemoryPercent = memoryPercent;
 		memoryPercent = newMemoryPercent;
@@ -2019,6 +2098,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDiskUsed() {
 		return diskUsed;
 	}
@@ -2028,6 +2108,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskUsed(Integer newDiskUsed) {
 		Integer oldDiskUsed = diskUsed;
 		diskUsed = newDiskUsed;
@@ -2040,6 +2121,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDiskPercent() {
 		return diskPercent;
 	}
@@ -2049,6 +2131,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskPercent(String newDiskPercent) {
 		String oldDiskPercent = diskPercent;
 		diskPercent = newDiskPercent;
@@ -2061,6 +2144,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getBandwidthUsed() {
 		return bandwidthUsed;
 	}
@@ -2070,6 +2154,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBandwidthUsed(Integer newBandwidthUsed) {
 		Integer oldBandwidthUsed = bandwidthUsed;
 		bandwidthUsed = newBandwidthUsed;
@@ -2082,6 +2167,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBandwidthPercent() {
 		return bandwidthPercent;
 	}
@@ -2091,6 +2177,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBandwidthPercent(String newBandwidthPercent) {
 		String oldBandwidthPercent = bandwidthPercent;
 		bandwidthPercent = newBandwidthPercent;
@@ -2103,6 +2190,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMonitoringInterval() {
 		return monitoringInterval;
 	}
@@ -2112,6 +2200,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMonitoringInterval(Integer newMonitoringInterval) {
 		Integer oldMonitoringInterval = monitoringInterval;
 		monitoringInterval = newMonitoringInterval;
@@ -2124,6 +2213,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCpuMaxValue() {
 		return cpuMaxValue;
 	}
@@ -2133,6 +2223,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuMaxValue(Integer newCpuMaxValue) {
 		Integer oldCpuMaxValue = cpuMaxValue;
 		cpuMaxValue = newCpuMaxValue;
@@ -2145,6 +2236,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemoryMaxValue() {
 		return memoryMaxValue;
 	}
@@ -2154,6 +2246,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemoryMaxValue(Integer newMemoryMaxValue) {
 		Integer oldMemoryMaxValue = memoryMaxValue;
 		memoryMaxValue = newMemoryMaxValue;
@@ -2166,6 +2259,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCoreMax() {
 		return coreMax;
 	}
@@ -2175,6 +2269,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCoreMax(Integer newCoreMax) {
 		Integer oldCoreMax = coreMax;
 		coreMax = newCoreMax;
@@ -2187,6 +2282,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCpuSetCpus() {
 		return cpuSetCpus;
 	}
@@ -2196,6 +2292,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuSetCpus(String newCpuSetCpus) {
 		String oldCpuSetCpus = cpuSetCpus;
 		cpuSetCpus = newCpuSetCpus;
@@ -2208,6 +2305,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getCpuSetMems() {
 		return cpuSetMems;
 	}
@@ -2217,6 +2315,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuSetMems(String newCpuSetMems) {
 		String oldCpuSetMems = cpuSetMems;
 		cpuSetMems = newCpuSetMems;
@@ -2229,7 +2328,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isTty() {
+	@Override
+	public Boolean getTty() {
 		return tty;
 	}
 
@@ -2238,8 +2338,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setTty(boolean newTty) {
-		boolean oldTty = tty;
+	@Override
+	public void setTty(Boolean newTty) {
+		Boolean oldTty = tty;
 		tty = newTty;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.CONTAINER__TTY, oldTty, tty));
@@ -2250,6 +2351,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void create() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!create()
 	}
@@ -2259,6 +2361,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void stop() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!stop()
 	}
@@ -2268,6 +2371,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void run() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!run()
 	}
@@ -2277,6 +2381,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void pause() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!pause()
 	}
@@ -2286,6 +2391,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void unpause() {
 		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!unpause()
 	}
@@ -2295,8 +2401,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void kill(final String signal) {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!kill(String)
+	@Override
+	public void kill() {
+		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Container!kill()
 	}
 
 	/**
@@ -2350,13 +2457,13 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__MEMORY_SWAP:
 				return getMemorySwap();
 			case DockerPackage.CONTAINER__PRIVILEGED:
-				return isPrivileged();
+				return getPrivileged();
 			case DockerPackage.CONTAINER__RESTART:
 				return getRestart();
 			case DockerPackage.CONTAINER__STDIN_OPEN:
-				return isStdinOpen();
+				return getStdinOpen();
 			case DockerPackage.CONTAINER__INTERACTIVE:
-				return isInteractive();
+				return getInteractive();
 			case DockerPackage.CONTAINER__CPU_SHARES:
 				return getCpuShares();
 			case DockerPackage.CONTAINER__PID:
@@ -2368,7 +2475,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__MAC_ADDRESS:
 				return getMacAddress();
 			case DockerPackage.CONTAINER__RM:
-				return isRm();
+				return getRm();
 			case DockerPackage.CONTAINER__SECURITY_OPT:
 				return getSecurityOpt();
 			case DockerPackage.CONTAINER__DEVICE:
@@ -2376,11 +2483,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__LXC_CONF:
 				return getLxcConf();
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
-				return isPublishAll();
+				return getPublishAll();
 			case DockerPackage.CONTAINER__READ_ONLY:
-				return isReadOnly();
+				return getReadOnly();
 			case DockerPackage.CONTAINER__MONITORED:
-				return isMonitored();
+				return getMonitored();
 			case DockerPackage.CONTAINER__CPU_USED:
 				return getCpuUsed();
 			case DockerPackage.CONTAINER__MEMORY_USED:
@@ -2410,7 +2517,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				return getCpuSetMems();
 			case DockerPackage.CONTAINER__TTY:
-				return isTty();
+				return getTty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2802,13 +2909,13 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__MEMORY_SWAP:
 				return MEMORY_SWAP_EDEFAULT == null ? memorySwap != null : !MEMORY_SWAP_EDEFAULT.equals(memorySwap);
 			case DockerPackage.CONTAINER__PRIVILEGED:
-				return privileged != PRIVILEGED_EDEFAULT;
+				return PRIVILEGED_EDEFAULT == null ? privileged != null : !PRIVILEGED_EDEFAULT.equals(privileged);
 			case DockerPackage.CONTAINER__RESTART:
 				return RESTART_EDEFAULT == null ? restart != null : !RESTART_EDEFAULT.equals(restart);
 			case DockerPackage.CONTAINER__STDIN_OPEN:
-				return stdinOpen != STDIN_OPEN_EDEFAULT;
+				return STDIN_OPEN_EDEFAULT == null ? stdinOpen != null : !STDIN_OPEN_EDEFAULT.equals(stdinOpen);
 			case DockerPackage.CONTAINER__INTERACTIVE:
-				return interactive != INTERACTIVE_EDEFAULT;
+				return INTERACTIVE_EDEFAULT == null ? interactive != null : !INTERACTIVE_EDEFAULT.equals(interactive);
 			case DockerPackage.CONTAINER__CPU_SHARES:
 				return CPU_SHARES_EDEFAULT == null ? cpuShares != null : !CPU_SHARES_EDEFAULT.equals(cpuShares);
 			case DockerPackage.CONTAINER__PID:
@@ -2820,7 +2927,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__MAC_ADDRESS:
 				return MAC_ADDRESS_EDEFAULT == null ? macAddress != null : !MAC_ADDRESS_EDEFAULT.equals(macAddress);
 			case DockerPackage.CONTAINER__RM:
-				return rm != RM_EDEFAULT;
+				return RM_EDEFAULT == null ? rm != null : !RM_EDEFAULT.equals(rm);
 			case DockerPackage.CONTAINER__SECURITY_OPT:
 				return SECURITY_OPT_EDEFAULT == null ? securityOpt != null : !SECURITY_OPT_EDEFAULT.equals(securityOpt);
 			case DockerPackage.CONTAINER__DEVICE:
@@ -2828,11 +2935,11 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__LXC_CONF:
 				return LXC_CONF_EDEFAULT == null ? lxcConf != null : !LXC_CONF_EDEFAULT.equals(lxcConf);
 			case DockerPackage.CONTAINER__PUBLISH_ALL:
-				return publishAll != PUBLISH_ALL_EDEFAULT;
+				return PUBLISH_ALL_EDEFAULT == null ? publishAll != null : !PUBLISH_ALL_EDEFAULT.equals(publishAll);
 			case DockerPackage.CONTAINER__READ_ONLY:
-				return readOnly != READ_ONLY_EDEFAULT;
+				return READ_ONLY_EDEFAULT == null ? readOnly != null : !READ_ONLY_EDEFAULT.equals(readOnly);
 			case DockerPackage.CONTAINER__MONITORED:
-				return monitored != MONITORED_EDEFAULT;
+				return MONITORED_EDEFAULT == null ? monitored != null : !MONITORED_EDEFAULT.equals(monitored);
 			case DockerPackage.CONTAINER__CPU_USED:
 				return CPU_USED_EDEFAULT == null ? cpuUsed != null : !CPU_USED_EDEFAULT.equals(cpuUsed);
 			case DockerPackage.CONTAINER__MEMORY_USED:
@@ -2862,7 +2969,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__CPU_SET_MEMS:
 				return CPU_SET_MEMS_EDEFAULT == null ? cpuSetMems != null : !CPU_SET_MEMS_EDEFAULT.equals(cpuSetMems);
 			case DockerPackage.CONTAINER__TTY:
-				return tty != TTY_EDEFAULT;
+				return TTY_EDEFAULT == null ? tty != null : !TTY_EDEFAULT.equals(tty);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -2890,8 +2997,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER___UNPAUSE:
 				unpause();
 				return null;
-			case DockerPackage.CONTAINER___KILL__STRING:
-				kill((String)arguments.get(0));
+			case DockerPackage.CONTAINER___KILL:
+				kill();
 				return null;
 		}
 		return super.eInvoke(operationID, arguments);
@@ -2906,7 +3013,7 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", containerid: ");

@@ -35,10 +35,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getCpu <em>Cpu</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getDiskSize <em>Disk Size</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getDomain <em>Domain</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#isHourlyBilling <em>Hourly Billing</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getHourlyBilling <em>Hourly Billing</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getImage <em>Image</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#isLocalDisk <em>Local Disk</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#isPrivateNetOnly <em>Private Net Only</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getLocalDisk <em>Local Disk</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getPrivateNetOnly <em>Private Net Only</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getRegion <em>Region</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getPublicVlanId <em>Public Vlan Id</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachineibmsoftlayerImpl#getPrivateVlanId <em>Private Vlan Id</em>}</li>
@@ -168,24 +168,24 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	protected String domain = DOMAIN_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isHourlyBilling() <em>Hourly Billing</em>}' attribute.
+	 * The default value of the '{@link #getHourlyBilling() <em>Hourly Billing</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isHourlyBilling()
+	 * @see #getHourlyBilling()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean HOURLY_BILLING_EDEFAULT = false;
+	protected static final Boolean HOURLY_BILLING_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isHourlyBilling() <em>Hourly Billing</em>}' attribute.
+	 * The cached value of the '{@link #getHourlyBilling() <em>Hourly Billing</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isHourlyBilling()
+	 * @see #getHourlyBilling()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean hourlyBilling = HOURLY_BILLING_EDEFAULT;
+	protected Boolean hourlyBilling = HOURLY_BILLING_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getImage() <em>Image</em>}' attribute.
@@ -208,44 +208,44 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	protected String image = IMAGE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isLocalDisk() <em>Local Disk</em>}' attribute.
+	 * The default value of the '{@link #getLocalDisk() <em>Local Disk</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isLocalDisk()
+	 * @see #getLocalDisk()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean LOCAL_DISK_EDEFAULT = false;
+	protected static final Boolean LOCAL_DISK_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isLocalDisk() <em>Local Disk</em>}' attribute.
+	 * The cached value of the '{@link #getLocalDisk() <em>Local Disk</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isLocalDisk()
+	 * @see #getLocalDisk()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean localDisk = LOCAL_DISK_EDEFAULT;
+	protected Boolean localDisk = LOCAL_DISK_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isPrivateNetOnly() <em>Private Net Only</em>}' attribute.
+	 * The default value of the '{@link #getPrivateNetOnly() <em>Private Net Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPrivateNetOnly()
+	 * @see #getPrivateNetOnly()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean PRIVATE_NET_ONLY_EDEFAULT = false;
+	protected static final Boolean PRIVATE_NET_ONLY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isPrivateNetOnly() <em>Private Net Only</em>}' attribute.
+	 * The cached value of the '{@link #getPrivateNetOnly() <em>Private Net Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isPrivateNetOnly()
+	 * @see #getPrivateNetOnly()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean privateNetOnly = PRIVATE_NET_ONLY_EDEFAULT;
+	protected Boolean privateNetOnly = PRIVATE_NET_ONLY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getRegion() <em>Region</em>}' attribute.
@@ -331,6 +331,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getApiEndpoint() {
 		return apiEndpoint;
 	}
@@ -340,6 +341,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiEndpoint(String newApiEndpoint) {
 		String oldApiEndpoint = apiEndpoint;
 		apiEndpoint = newApiEndpoint;
@@ -352,6 +354,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUser() {
 		return user;
 	}
@@ -361,6 +364,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUser(String newUser) {
 		String oldUser = user;
 		user = newUser;
@@ -373,6 +377,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getApiKey() {
 		return apiKey;
 	}
@@ -382,6 +387,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiKey(String newApiKey) {
 		String oldApiKey = apiKey;
 		apiKey = newApiKey;
@@ -394,6 +400,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCpu() {
 		return cpu;
 	}
@@ -403,6 +410,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpu(Integer newCpu) {
 		Integer oldCpu = cpu;
 		cpu = newCpu;
@@ -415,6 +423,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDiskSize() {
 		return diskSize;
 	}
@@ -424,6 +433,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskSize(Integer newDiskSize) {
 		Integer oldDiskSize = diskSize;
 		diskSize = newDiskSize;
@@ -436,6 +446,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDomain() {
 		return domain;
 	}
@@ -445,6 +456,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDomain(String newDomain) {
 		String oldDomain = domain;
 		domain = newDomain;
@@ -457,7 +469,8 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isHourlyBilling() {
+	@Override
+	public Boolean getHourlyBilling() {
 		return hourlyBilling;
 	}
 
@@ -466,8 +479,9 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHourlyBilling(boolean newHourlyBilling) {
-		boolean oldHourlyBilling = hourlyBilling;
+	@Override
+	public void setHourlyBilling(Boolean newHourlyBilling) {
+		Boolean oldHourlyBilling = hourlyBilling;
 		hourlyBilling = newHourlyBilling;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEIBMSOFTLAYER__HOURLY_BILLING, oldHourlyBilling, hourlyBilling));
@@ -478,6 +492,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImage() {
 		return image;
 	}
@@ -487,6 +502,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImage(String newImage) {
 		String oldImage = image;
 		image = newImage;
@@ -499,7 +515,8 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isLocalDisk() {
+	@Override
+	public Boolean getLocalDisk() {
 		return localDisk;
 	}
 
@@ -508,8 +525,9 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setLocalDisk(boolean newLocalDisk) {
-		boolean oldLocalDisk = localDisk;
+	@Override
+	public void setLocalDisk(Boolean newLocalDisk) {
+		Boolean oldLocalDisk = localDisk;
 		localDisk = newLocalDisk;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEIBMSOFTLAYER__LOCAL_DISK, oldLocalDisk, localDisk));
@@ -520,7 +538,8 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isPrivateNetOnly() {
+	@Override
+	public Boolean getPrivateNetOnly() {
 		return privateNetOnly;
 	}
 
@@ -529,8 +548,9 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPrivateNetOnly(boolean newPrivateNetOnly) {
-		boolean oldPrivateNetOnly = privateNetOnly;
+	@Override
+	public void setPrivateNetOnly(Boolean newPrivateNetOnly) {
+		Boolean oldPrivateNetOnly = privateNetOnly;
 		privateNetOnly = newPrivateNetOnly;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEIBMSOFTLAYER__PRIVATE_NET_ONLY, oldPrivateNetOnly, privateNetOnly));
@@ -541,6 +561,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRegion() {
 		return region;
 	}
@@ -550,6 +571,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRegion(String newRegion) {
 		String oldRegion = region;
 		region = newRegion;
@@ -562,6 +584,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPublicVlanId() {
 		return publicVlanId;
 	}
@@ -571,6 +594,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPublicVlanId(String newPublicVlanId) {
 		String oldPublicVlanId = publicVlanId;
 		publicVlanId = newPublicVlanId;
@@ -583,6 +607,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPrivateVlanId() {
 		return privateVlanId;
 	}
@@ -592,6 +617,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPrivateVlanId(String newPrivateVlanId) {
 		String oldPrivateVlanId = privateVlanId;
 		privateVlanId = newPrivateVlanId;
@@ -620,13 +646,13 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 			case DockerPackage.MACHINEIBMSOFTLAYER__DOMAIN:
 				return getDomain();
 			case DockerPackage.MACHINEIBMSOFTLAYER__HOURLY_BILLING:
-				return isHourlyBilling();
+				return getHourlyBilling();
 			case DockerPackage.MACHINEIBMSOFTLAYER__IMAGE:
 				return getImage();
 			case DockerPackage.MACHINEIBMSOFTLAYER__LOCAL_DISK:
-				return isLocalDisk();
+				return getLocalDisk();
 			case DockerPackage.MACHINEIBMSOFTLAYER__PRIVATE_NET_ONLY:
-				return isPrivateNetOnly();
+				return getPrivateNetOnly();
 			case DockerPackage.MACHINEIBMSOFTLAYER__REGION:
 				return getRegion();
 			case DockerPackage.MACHINEIBMSOFTLAYER__PUBLIC_VLAN_ID:
@@ -760,13 +786,13 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 			case DockerPackage.MACHINEIBMSOFTLAYER__DOMAIN:
 				return DOMAIN_EDEFAULT == null ? domain != null : !DOMAIN_EDEFAULT.equals(domain);
 			case DockerPackage.MACHINEIBMSOFTLAYER__HOURLY_BILLING:
-				return hourlyBilling != HOURLY_BILLING_EDEFAULT;
+				return HOURLY_BILLING_EDEFAULT == null ? hourlyBilling != null : !HOURLY_BILLING_EDEFAULT.equals(hourlyBilling);
 			case DockerPackage.MACHINEIBMSOFTLAYER__IMAGE:
 				return IMAGE_EDEFAULT == null ? image != null : !IMAGE_EDEFAULT.equals(image);
 			case DockerPackage.MACHINEIBMSOFTLAYER__LOCAL_DISK:
-				return localDisk != LOCAL_DISK_EDEFAULT;
+				return LOCAL_DISK_EDEFAULT == null ? localDisk != null : !LOCAL_DISK_EDEFAULT.equals(localDisk);
 			case DockerPackage.MACHINEIBMSOFTLAYER__PRIVATE_NET_ONLY:
-				return privateNetOnly != PRIVATE_NET_ONLY_EDEFAULT;
+				return PRIVATE_NET_ONLY_EDEFAULT == null ? privateNetOnly != null : !PRIVATE_NET_ONLY_EDEFAULT.equals(privateNetOnly);
 			case DockerPackage.MACHINEIBMSOFTLAYER__REGION:
 				return REGION_EDEFAULT == null ? region != null : !REGION_EDEFAULT.equals(region);
 			case DockerPackage.MACHINEIBMSOFTLAYER__PUBLIC_VLAN_ID:
@@ -786,7 +812,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (apiEndpoint: ");
 		result.append(apiEndpoint);
 		result.append(", user: ");

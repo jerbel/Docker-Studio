@@ -49,7 +49,6 @@ public interface Volumesfrom extends Link {
 	 * @see #setMode(Mode)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolumesfrom_Mode()
 	 * @model default="readWrite"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volumesfrom!mode'"
 	 * @generated
 	 */
 	Mode getMode();

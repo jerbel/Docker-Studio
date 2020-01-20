@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarefusionImpl#getBoot2dockerURL <em>Boot2docker URL</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarefusionImpl#getDiskSize <em>Disk Size</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarefusionImpl#getMemorySize <em>Memory Size</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarefusionImpl#isNoShare <em>No Share</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevmwarefusionImpl#getNoShare <em>No Share</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,7 +66,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000);
+	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000); // TODO The default value literal "20000" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getDiskSize() <em>Disk Size</em>}' attribute.
@@ -86,7 +86,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer MEMORY_SIZE_EDEFAULT = new Integer(1024);
+	protected static final Integer MEMORY_SIZE_EDEFAULT = new Integer(1024); // TODO The default value literal "1024" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getMemorySize() <em>Memory Size</em>}' attribute.
@@ -99,24 +99,24 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	protected Integer memorySize = MEMORY_SIZE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isNoShare() <em>No Share</em>}' attribute.
+	 * The default value of the '{@link #getNoShare() <em>No Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoShare()
+	 * @see #getNoShare()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean NO_SHARE_EDEFAULT = false;
+	protected static final Boolean NO_SHARE_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isNoShare() <em>No Share</em>}' attribute.
+	 * The cached value of the '{@link #getNoShare() <em>No Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoShare()
+	 * @see #getNoShare()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean noShare = NO_SHARE_EDEFAULT;
+	protected Boolean noShare = NO_SHARE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -142,6 +142,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBoot2dockerURL() {
 		return boot2dockerURL;
 	}
@@ -151,6 +152,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBoot2dockerURL(String newBoot2dockerURL) {
 		String oldBoot2dockerURL = boot2dockerURL;
 		boot2dockerURL = newBoot2dockerURL;
@@ -163,6 +165,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDiskSize() {
 		return diskSize;
 	}
@@ -172,6 +175,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskSize(Integer newDiskSize) {
 		Integer oldDiskSize = diskSize;
 		diskSize = newDiskSize;
@@ -184,6 +188,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemorySize() {
 		return memorySize;
 	}
@@ -193,6 +198,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemorySize(Integer newMemorySize) {
 		Integer oldMemorySize = memorySize;
 		memorySize = newMemorySize;
@@ -205,7 +211,8 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isNoShare() {
+	@Override
+	public Boolean getNoShare() {
 		return noShare;
 	}
 
@@ -214,8 +221,9 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNoShare(boolean newNoShare) {
-		boolean oldNoShare = noShare;
+	@Override
+	public void setNoShare(Boolean newNoShare) {
+		Boolean oldNoShare = noShare;
 		noShare = newNoShare;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEVMWAREFUSION__NO_SHARE, oldNoShare, noShare));
@@ -236,7 +244,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 			case DockerPackage.MACHINEVMWAREFUSION__MEMORY_SIZE:
 				return getMemorySize();
 			case DockerPackage.MACHINEVMWAREFUSION__NO_SHARE:
-				return isNoShare();
+				return getNoShare();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -304,7 +312,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 			case DockerPackage.MACHINEVMWAREFUSION__MEMORY_SIZE:
 				return MEMORY_SIZE_EDEFAULT == null ? memorySize != null : !MEMORY_SIZE_EDEFAULT.equals(memorySize);
 			case DockerPackage.MACHINEVMWAREFUSION__NO_SHARE:
-				return noShare != NO_SHARE_EDEFAULT;
+				return NO_SHARE_EDEFAULT == null ? noShare != null : !NO_SHARE_EDEFAULT.equals(noShare);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -318,7 +326,7 @@ public class MachinevmwarefusionImpl extends MachineImpl implements Machinevmwar
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (boot2dockerURL: ");
 		result.append(boot2dockerURL);
 		result.append(", diskSize: ");

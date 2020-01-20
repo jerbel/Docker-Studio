@@ -249,6 +249,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDriver() {
 		return driver;
 	}
@@ -258,6 +259,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDriver(String newDriver) {
 		String oldDriver = driver;
 		driver = newDriver;
@@ -270,6 +272,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLabels() {
 		return labels;
 	}
@@ -279,6 +282,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setLabels(String newLabels) {
 		String oldLabels = labels;
 		labels = newLabels;
@@ -291,6 +295,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOptions() {
 		return options;
 	}
@@ -300,6 +305,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOptions(String newOptions) {
 		String oldOptions = options;
 		options = newOptions;
@@ -312,6 +318,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSource() {
 		return source;
 	}
@@ -321,6 +328,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSource(String newSource) {
 		String oldSource = source;
 		source = newSource;
@@ -333,6 +341,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDestination() {
 		return destination;
 	}
@@ -342,6 +351,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDestination(String newDestination) {
 		String oldDestination = destination;
 		destination = newDestination;
@@ -354,6 +364,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMode() {
 		return mode;
 	}
@@ -363,6 +374,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMode(String newMode) {
 		String oldMode = mode;
 		mode = newMode;
@@ -375,6 +387,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRw() {
 		return rw;
 	}
@@ -384,6 +397,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRw(String newRw) {
 		String oldRw = rw;
 		rw = newRw;
@@ -396,6 +410,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPropagation() {
 		return propagation;
 	}
@@ -405,6 +420,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPropagation(String newPropagation) {
 		String oldPropagation = propagation;
 		propagation = newPropagation;
@@ -417,6 +433,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -426,6 +443,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -580,7 +598,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (driver: ");
 		result.append(driver);
 		result.append(", labels: ");

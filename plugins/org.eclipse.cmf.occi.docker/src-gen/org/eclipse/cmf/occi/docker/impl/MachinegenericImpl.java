@@ -163,6 +163,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getEnginePort() {
 		return enginePort;
 	}
@@ -172,6 +173,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEnginePort(Integer newEnginePort) {
 		Integer oldEnginePort = enginePort;
 		enginePort = newEnginePort;
@@ -184,6 +186,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIpAddress() {
 		return ipAddress;
 	}
@@ -193,6 +196,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIpAddress(String newIpAddress) {
 		String oldIpAddress = ipAddress;
 		ipAddress = newIpAddress;
@@ -205,6 +209,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshKey() {
 		return sshKey;
 	}
@@ -214,6 +219,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshKey(String newSshKey) {
 		String oldSshKey = sshKey;
 		sshKey = newSshKey;
@@ -226,6 +232,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshUser() {
 		return sshUser;
 	}
@@ -235,6 +242,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshUser(String newSshUser) {
 		String oldSshUser = sshUser;
 		sshUser = newSshUser;
@@ -247,6 +255,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getSshPort() {
 		return sshPort;
 	}
@@ -256,6 +265,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshPort(Integer newSshPort) {
 		Integer oldSshPort = sshPort;
 		sshPort = newSshPort;
@@ -370,7 +380,7 @@ public class MachinegenericImpl extends MachineImpl implements Machinegeneric {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (enginePort: ");
 		result.append(enginePort);
 		result.append(", ipAddress: ");

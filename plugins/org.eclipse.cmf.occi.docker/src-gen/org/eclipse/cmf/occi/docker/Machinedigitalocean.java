@@ -47,8 +47,7 @@ public interface Machinedigitalocean extends Machine {
 	 * @return the value of the '<em>Access Token</em>' attribute.
 	 * @see #setAccessToken(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinedigitalocean_AccessToken()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinedigitalocean!accessToken'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAccessToken();
@@ -74,8 +73,7 @@ public interface Machinedigitalocean extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinedigitalocean_Image()
-	 * @model default="docker" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinedigitalocean!image'"
+	 * @model default="docker" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImage();
@@ -101,8 +99,7 @@ public interface Machinedigitalocean extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinedigitalocean_Region()
-	 * @model default="nyc3" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinedigitalocean!region'"
+	 * @model default="nyc3" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRegion();
@@ -128,8 +125,7 @@ public interface Machinedigitalocean extends Machine {
 	 * @return the value of the '<em>Size</em>' attribute.
 	 * @see #setSize(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinedigitalocean_Size()
-	 * @model default="512mb" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinedigitalocean!size'"
+	 * @model default="512mb" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSize();

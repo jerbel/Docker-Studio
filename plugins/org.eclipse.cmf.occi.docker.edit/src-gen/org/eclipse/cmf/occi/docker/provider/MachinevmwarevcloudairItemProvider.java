@@ -333,7 +333,7 @@ public class MachinevmwarevcloudairItemProvider extends MachineItemProvider {
 				 true,
 				 false,
 				 false,
-				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
 				 null,
 				 null));
 	}

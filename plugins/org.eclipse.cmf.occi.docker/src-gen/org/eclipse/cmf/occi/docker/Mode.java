@@ -51,10 +51,6 @@ public enum Mode implements Enumerator {
 	/**
 	 * The '<em><b>Read Write</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Read Write</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #READ_WRITE
 	 * @model name="readWrite"
@@ -66,10 +62,6 @@ public enum Mode implements Enumerator {
 	/**
 	 * The '<em><b>Read</b></em>' literal value.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of '<em><b>Read</b></em>' literal object isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @see #READ
 	 * @model name="read"
@@ -188,6 +180,7 @@ public enum Mode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -197,6 +190,7 @@ public enum Mode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -206,6 +200,7 @@ public enum Mode implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

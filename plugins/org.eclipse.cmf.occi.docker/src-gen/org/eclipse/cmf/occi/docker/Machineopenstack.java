@@ -45,7 +45,7 @@ package org.eclipse.cmf.occi.docker;
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getAvailabilityZone <em>Availability Zone</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getDomainId <em>Domain Id</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getDomainName <em>Domain Name</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#isInsecure <em>Insecure</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getInsecure <em>Insecure</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getIpVersion <em>Ip Version</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getKeypairName <em>Keypair Name</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineopenstack#getPrivateKeyFile <em>Private Key File</em>}</li>
@@ -68,8 +68,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Flavor Id</em>' attribute.
 	 * @see #setFlavorId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_FlavorId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!flavorId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getFlavorId();
@@ -94,8 +93,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Flavor Name</em>' attribute.
 	 * @see #setFlavorName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_FlavorName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!flavorName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getFlavorName();
@@ -120,8 +118,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Image Id</em>' attribute.
 	 * @see #setImageId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_ImageId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!imageId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImageId();
@@ -146,8 +143,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Image Name</em>' attribute.
 	 * @see #setImageName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_ImageName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!imageName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImageName();
@@ -172,8 +168,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Auth Url</em>' attribute.
 	 * @see #setAuthUrl(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_AuthUrl()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!authUrl'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAuthUrl();
@@ -198,8 +193,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_Username()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!username'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsername();
@@ -224,8 +218,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_Password()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!password'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPassword();
@@ -250,8 +243,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Tenant Name</em>' attribute.
 	 * @see #setTenantName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_TenantName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!tenantName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getTenantName();
@@ -276,8 +268,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Tenant Id</em>' attribute.
 	 * @see #setTenantId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_TenantId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!tenantId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getTenantId();
@@ -302,8 +293,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_Region()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!region'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRegion();
@@ -329,8 +319,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Endpoint Type</em>' attribute.
 	 * @see #setEndpointType(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_EndpointType()
-	 * @model default="publicURL" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!endpointType'"
+	 * @model default="publicURL" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEndpointType();
@@ -355,8 +344,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Net Id</em>' attribute.
 	 * @see #setNetId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_NetId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!netId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getNetId();
@@ -381,8 +369,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Net Name</em>' attribute.
 	 * @see #setNetName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_NetName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!netName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getNetName();
@@ -407,8 +394,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Sec Groups</em>' attribute.
 	 * @see #setSecGroups(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_SecGroups()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!secGroups'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSecGroups();
@@ -433,8 +419,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Floating Ip Pool</em>' attribute.
 	 * @see #setFloatingIpPool(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_FloatingIpPool()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!floatingIpPool'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getFloatingIpPool();
@@ -460,8 +445,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Active Time Out</em>' attribute.
 	 * @see #setActiveTimeOut(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_ActiveTimeOut()
-	 * @model default="200" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!activeTimeOut'"
+	 * @model default="200" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getActiveTimeOut();
@@ -486,8 +470,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Availability Zone</em>' attribute.
 	 * @see #setAvailabilityZone(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_AvailabilityZone()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!availabilityZone'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAvailabilityZone();
@@ -512,8 +495,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Domain Id</em>' attribute.
 	 * @see #setDomainId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_DomainId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!domainId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDomainId();
@@ -538,8 +520,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Domain Name</em>' attribute.
 	 * @see #setDomainName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_DomainName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!domainName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDomainName();
@@ -563,23 +544,22 @@ public interface Machineopenstack extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Insecure</em>' attribute.
-	 * @see #setInsecure(boolean)
+	 * @see #setInsecure(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_Insecure()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!insecure'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isInsecure();
+	Boolean getInsecure();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineopenstack#isInsecure <em>Insecure</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineopenstack#getInsecure <em>Insecure</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Insecure</em>' attribute.
-	 * @see #isInsecure()
+	 * @see #getInsecure()
 	 * @generated
 	 */
-	void setInsecure(boolean value);
+	void setInsecure(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Ip Version</b></em>' attribute.
@@ -592,8 +572,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Ip Version</em>' attribute.
 	 * @see #setIpVersion(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_IpVersion()
-	 * @model default="4" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!ipVersion'"
+	 * @model default="4" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getIpVersion();
@@ -618,8 +597,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Keypair Name</em>' attribute.
 	 * @see #setKeypairName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_KeypairName()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!keypairName'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getKeypairName();
@@ -644,8 +622,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Private Key File</em>' attribute.
 	 * @see #setPrivateKeyFile(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_PrivateKeyFile()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!privateKeyFile'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPrivateKeyFile();
@@ -671,8 +648,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Ssh Port</em>' attribute.
 	 * @see #setSshPort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_SshPort()
-	 * @model default="22" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!sshPort'"
+	 * @model default="22" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getSshPort();
@@ -698,8 +674,7 @@ public interface Machineopenstack extends Machine {
 	 * @return the value of the '<em>Ssh User</em>' attribute.
 	 * @see #setSshUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineopenstack_SshUser()
-	 * @model default="root" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineopenstack!sshUser'"
+	 * @model default="root" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshUser();

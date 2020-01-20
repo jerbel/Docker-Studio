@@ -32,10 +32,10 @@ package org.eclipse.cmf.occi.docker;
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getCpu <em>Cpu</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getDiskSize <em>Disk Size</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getDomain <em>Domain</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isHourlyBilling <em>Hourly Billing</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getHourlyBilling <em>Hourly Billing</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getImage <em>Image</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isLocalDisk <em>Local Disk</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isPrivateNetOnly <em>Private Net Only</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getLocalDisk <em>Local Disk</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getPrivateNetOnly <em>Private Net Only</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getRegion <em>Region</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getPublicVlanId <em>Public Vlan Id</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getPrivateVlanId <em>Private Vlan Id</em>}</li>
@@ -57,8 +57,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Api Endpoint</em>' attribute.
 	 * @see #setApiEndpoint(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_ApiEndpoint()
-	 * @model default="api.softlayer.com/rest/v3" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!apiEndpoint'"
+	 * @model default="api.softlayer.com/rest/v3" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getApiEndpoint();
@@ -83,8 +82,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>User</em>' attribute.
 	 * @see #setUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_User()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!user'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUser();
@@ -109,8 +107,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Api Key</em>' attribute.
 	 * @see #setApiKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_ApiKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!apiKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getApiKey();
@@ -135,8 +132,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Cpu</em>' attribute.
 	 * @see #setCpu(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_Cpu()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!cpu'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCpu();
@@ -161,8 +157,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Disk Size</em>' attribute.
 	 * @see #setDiskSize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_DiskSize()
-	 * @model dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!diskSize'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDiskSize();
@@ -187,8 +182,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Domain</em>' attribute.
 	 * @see #setDomain(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_Domain()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!domain'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDomain();
@@ -212,23 +206,22 @@ public interface Machineibmsoftlayer extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Hourly Billing</em>' attribute.
-	 * @see #setHourlyBilling(boolean)
+	 * @see #setHourlyBilling(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_HourlyBilling()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!hourlyBilling'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isHourlyBilling();
+	Boolean getHourlyBilling();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isHourlyBilling <em>Hourly Billing</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getHourlyBilling <em>Hourly Billing</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Hourly Billing</em>' attribute.
-	 * @see #isHourlyBilling()
+	 * @see #getHourlyBilling()
 	 * @generated
 	 */
-	void setHourlyBilling(boolean value);
+	void setHourlyBilling(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Image</b></em>' attribute.
@@ -241,8 +234,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_Image()
-	 * @model default="UBUNTU_LATEST" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!image'"
+	 * @model default="UBUNTU_LATEST" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImage();
@@ -266,23 +258,22 @@ public interface Machineibmsoftlayer extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Local Disk</em>' attribute.
-	 * @see #setLocalDisk(boolean)
+	 * @see #setLocalDisk(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_LocalDisk()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!localDisk'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isLocalDisk();
+	Boolean getLocalDisk();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isLocalDisk <em>Local Disk</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getLocalDisk <em>Local Disk</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Local Disk</em>' attribute.
-	 * @see #isLocalDisk()
+	 * @see #getLocalDisk()
 	 * @generated
 	 */
-	void setLocalDisk(boolean value);
+	void setLocalDisk(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Private Net Only</b></em>' attribute.
@@ -292,23 +283,22 @@ public interface Machineibmsoftlayer extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Private Net Only</em>' attribute.
-	 * @see #setPrivateNetOnly(boolean)
+	 * @see #setPrivateNetOnly(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_PrivateNetOnly()
-	 * @model dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!privateNetOnly'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isPrivateNetOnly();
+	Boolean getPrivateNetOnly();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isPrivateNetOnly <em>Private Net Only</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getPrivateNetOnly <em>Private Net Only</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Private Net Only</em>' attribute.
-	 * @see #isPrivateNetOnly()
+	 * @see #getPrivateNetOnly()
 	 * @generated
 	 */
-	void setPrivateNetOnly(boolean value);
+	void setPrivateNetOnly(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Region</b></em>' attribute.
@@ -320,8 +310,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Region</em>' attribute.
 	 * @see #setRegion(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_Region()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!region'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRegion();
@@ -347,8 +336,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Public Vlan Id</em>' attribute.
 	 * @see #setPublicVlanId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_PublicVlanId()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!publicVlanId'"
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPublicVlanId();
@@ -374,8 +362,7 @@ public interface Machineibmsoftlayer extends Machine {
 	 * @return the value of the '<em>Private Vlan Id</em>' attribute.
 	 * @see #setPrivateVlanId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineibmsoftlayer_PrivateVlanId()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineibmsoftlayer!privateVlanId'"
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPrivateVlanId();

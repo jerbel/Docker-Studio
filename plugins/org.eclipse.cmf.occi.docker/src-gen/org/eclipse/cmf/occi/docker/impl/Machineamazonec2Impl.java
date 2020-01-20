@@ -289,6 +289,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAccessKey() {
 		return accessKey;
 	}
@@ -298,6 +299,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessKey(String newAccessKey) {
 		String oldAccessKey = accessKey;
 		accessKey = newAccessKey;
@@ -310,6 +312,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAmi() {
 		return ami;
 	}
@@ -319,6 +322,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAmi(String newAmi) {
 		String oldAmi = ami;
 		ami = newAmi;
@@ -331,6 +335,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInstanceType() {
 		return instanceType;
 	}
@@ -340,6 +345,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstanceType(String newInstanceType) {
 		String oldInstanceType = instanceType;
 		instanceType = newInstanceType;
@@ -352,6 +358,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRegion() {
 		return region;
 	}
@@ -361,6 +368,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRegion(String newRegion) {
 		String oldRegion = region;
 		region = newRegion;
@@ -373,6 +381,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getRootSize() {
 		return rootSize;
 	}
@@ -382,6 +391,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRootSize(Integer newRootSize) {
 		Integer oldRootSize = rootSize;
 		rootSize = newRootSize;
@@ -394,6 +404,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSecretKey() {
 		return secretKey;
 	}
@@ -403,6 +414,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSecretKey(String newSecretKey) {
 		String oldSecretKey = secretKey;
 		secretKey = newSecretKey;
@@ -415,6 +427,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSecurityGroup() {
 		return securityGroup;
 	}
@@ -424,6 +437,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSecurityGroup(String newSecurityGroup) {
 		String oldSecurityGroup = securityGroup;
 		securityGroup = newSecurityGroup;
@@ -436,6 +450,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSessionToken() {
 		return sessionToken;
 	}
@@ -445,6 +460,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSessionToken(String newSessionToken) {
 		String oldSessionToken = sessionToken;
 		sessionToken = newSessionToken;
@@ -457,6 +473,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubnetId() {
 		return subnetId;
 	}
@@ -466,6 +483,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubnetId(String newSubnetId) {
 		String oldSubnetId = subnetId;
 		subnetId = newSubnetId;
@@ -478,6 +496,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVpcId() {
 		return vpcId;
 	}
@@ -487,6 +506,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVpcId(String newVpcId) {
 		String oldVpcId = vpcId;
 		vpcId = newVpcId;
@@ -499,6 +519,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getZone() {
 		return zone;
 	}
@@ -508,6 +529,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setZone(String newZone) {
 		String oldZone = zone;
 		zone = newZone;
@@ -682,7 +704,7 @@ public class Machineamazonec2Impl extends MachineImpl implements Machineamazonec
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (accessKey: ");
 		result.append(accessKey);
 		result.append(", ami: ");

@@ -37,7 +37,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinerackspaceImpl#getFlavorId <em>Flavor Id</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinerackspaceImpl#getSshUser <em>Ssh User</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinerackspaceImpl#getSshPort <em>Ssh Port</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinerackspaceImpl#isDockerInstall <em>Docker Install</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinerackspaceImpl#getDockerInstall <em>Docker Install</em>}</li>
  * </ul>
  *
  * @generated
@@ -204,24 +204,24 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	protected Integer sshPort = SSH_PORT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isDockerInstall() <em>Docker Install</em>}' attribute.
+	 * The default value of the '{@link #getDockerInstall() <em>Docker Install</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDockerInstall()
+	 * @see #getDockerInstall()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean DOCKER_INSTALL_EDEFAULT = true;
+	protected static final Boolean DOCKER_INSTALL_EDEFAULT = Boolean.TRUE;
 
 	/**
-	 * The cached value of the '{@link #isDockerInstall() <em>Docker Install</em>}' attribute.
+	 * The cached value of the '{@link #getDockerInstall() <em>Docker Install</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isDockerInstall()
+	 * @see #getDockerInstall()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean dockerInstall = DOCKER_INSTALL_EDEFAULT;
+	protected Boolean dockerInstall = DOCKER_INSTALL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -247,6 +247,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -256,6 +257,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsername(String newUsername) {
 		String oldUsername = username;
 		username = newUsername;
@@ -268,6 +270,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getApiKey() {
 		return apiKey;
 	}
@@ -277,6 +280,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiKey(String newApiKey) {
 		String oldApiKey = apiKey;
 		apiKey = newApiKey;
@@ -289,6 +293,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getRegion() {
 		return region;
 	}
@@ -298,6 +303,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRegion(String newRegion) {
 		String oldRegion = region;
 		region = newRegion;
@@ -310,6 +316,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getEndPointType() {
 		return endPointType;
 	}
@@ -319,6 +326,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEndPointType(String newEndPointType) {
 		String oldEndPointType = endPointType;
 		endPointType = newEndPointType;
@@ -331,6 +339,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImageId() {
 		return imageId;
 	}
@@ -340,6 +349,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImageId(String newImageId) {
 		String oldImageId = imageId;
 		imageId = newImageId;
@@ -352,6 +362,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getFlavorId() {
 		return flavorId;
 	}
@@ -361,6 +372,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFlavorId(String newFlavorId) {
 		String oldFlavorId = flavorId;
 		flavorId = newFlavorId;
@@ -373,6 +385,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshUser() {
 		return sshUser;
 	}
@@ -382,6 +395,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshUser(String newSshUser) {
 		String oldSshUser = sshUser;
 		sshUser = newSshUser;
@@ -394,6 +408,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getSshPort() {
 		return sshPort;
 	}
@@ -403,6 +418,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshPort(Integer newSshPort) {
 		Integer oldSshPort = sshPort;
 		sshPort = newSshPort;
@@ -415,7 +431,8 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isDockerInstall() {
+	@Override
+	public Boolean getDockerInstall() {
 		return dockerInstall;
 	}
 
@@ -424,8 +441,9 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDockerInstall(boolean newDockerInstall) {
-		boolean oldDockerInstall = dockerInstall;
+	@Override
+	public void setDockerInstall(Boolean newDockerInstall) {
+		Boolean oldDockerInstall = dockerInstall;
 		dockerInstall = newDockerInstall;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINERACKSPACE__DOCKER_INSTALL, oldDockerInstall, dockerInstall));
@@ -456,7 +474,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 			case DockerPackage.MACHINERACKSPACE__SSH_PORT:
 				return getSshPort();
 			case DockerPackage.MACHINERACKSPACE__DOCKER_INSTALL:
-				return isDockerInstall();
+				return getDockerInstall();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -564,7 +582,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 			case DockerPackage.MACHINERACKSPACE__SSH_PORT:
 				return SSH_PORT_EDEFAULT == null ? sshPort != null : !SSH_PORT_EDEFAULT.equals(sshPort);
 			case DockerPackage.MACHINERACKSPACE__DOCKER_INSTALL:
-				return dockerInstall != DOCKER_INSTALL_EDEFAULT;
+				return DOCKER_INSTALL_EDEFAULT == null ? dockerInstall != null : !DOCKER_INSTALL_EDEFAULT.equals(dockerInstall);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -578,7 +596,7 @@ public class MachinerackspaceImpl extends MachineImpl implements Machinerackspac
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (username: ");
 		result.append(username);
 		result.append(", apiKey: ");
