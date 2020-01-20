@@ -13,6 +13,7 @@
 package org.eclipse.cmf.occi.docker.connector;
 
 import org.eclipse.cmf.occi.docker.Network;
+import org.eclipse.cmf.occi.docker.connector.manager.NetworkStateMachine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
