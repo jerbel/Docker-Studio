@@ -413,7 +413,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * http://occiware.org/occi/docker/container/action# - term: kill - title:
 	 */
 	@Override
-	public void kill(final String signal) {
+	public void kill() {
+		String signal = "9";
 		LOGGER.debug("Action kill(" + "signal=" + signal + ") called on " + this);
 		Compute machine = getCompute();
 		if (!checkHostMachineStarted()) {

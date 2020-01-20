@@ -899,10 +899,10 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		// TODO : Replace by a mixin for engine options.
 		if (compute instanceof Machine) {
 			Machine machine = (Machine) compute;
-			if (machine.isSwarm()) {
+			if (machine.getSwarm()) {
 				parameter.append(" --swarm");
 			}
-			if (machine.isSwarmMaster()) {
+			if (machine.getSwarmMaster()) {
 				parameter.append(" --swarm-master");
 			}
 

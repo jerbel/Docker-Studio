@@ -82,14 +82,14 @@ public class MachineibmsoftlayerConnector extends org.eclipse.cmf.occi.docker.im
 			if (StringUtils.isNotBlank(getRegion())) {
 				sb.append(" --softlayer-region ").append(getRegion());
 			}
-			if (isPrivateNetOnly()) {
-				sb.append(" --softlayer-private-net-only ").append(isPrivateNetOnly());
+			if (getPrivateNetOnly()) {
+				sb.append(" --softlayer-private-net-only ").append(getPrivateNetOnly());
 			}
-			if (isLocalDisk()) {
-				sb.append(" --softlayer-local-disk ").append(isLocalDisk());
+			if (getLocalDisk()) {
+				sb.append(" --softlayer-local-disk ").append(getLocalDisk());
 			}
-			if (isPrivateNetOnly()) {
-				sb.append(" --softlayer-private-net-only ").append(isPrivateNetOnly());
+			if (getPrivateNetOnly()) {
+				sb.append(" --softlayer-private-net-only ").append(getPrivateNetOnly());
 			}
 			
 		}

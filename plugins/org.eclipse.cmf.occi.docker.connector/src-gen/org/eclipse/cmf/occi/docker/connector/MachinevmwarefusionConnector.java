@@ -55,8 +55,8 @@ public class MachinevmwarefusionConnector extends org.eclipse.cmf.occi.docker.im
 			if (getBoot2dockerURL() != null) {
 				sb.append(" --vmwarefusion-boot2docker-url ").append(getBoot2dockerURL());
 			}
-			if(isNoShare()){
-				sb.append(" --vmwarefusion-no-share ").append(isNoShare());
+			if(getNoShare()){
+				sb.append(" --vmwarefusion-no-share ").append(getNoShare());
 			}
 			
 		}

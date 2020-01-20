@@ -123,8 +123,8 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 
 				sb.append(" --openstack-ssh-user ").append(getSshUser());
 			}
-			if (isInsecure()) {
-				sb.append(" --openstack-insecure ").append(isInsecure());
+			if (getInsecure()) {
+				sb.append(" --openstack-insecure ").append(getInsecure());
 			}
 			if (StringUtils.isNotBlank(getEndpointType())) {
 

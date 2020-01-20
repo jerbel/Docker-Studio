@@ -73,8 +73,8 @@ public class MachinerackspaceConnector extends org.eclipse.cmf.occi.docker.impl.
 			if (StringUtils.isNotBlank(getFlavorId())) {
 				sb.append(" --rackspace-flavor-id ").append(getFlavorId());
 			}
-			if (!isDockerInstall()) {
-				sb.append(" --rackspace-docker-install ").append(isDockerInstall());
+			if (!getDockerInstall()) {
+				sb.append(" --rackspace-docker-install ").append(getDockerInstall());
 			}
 		}
 	};

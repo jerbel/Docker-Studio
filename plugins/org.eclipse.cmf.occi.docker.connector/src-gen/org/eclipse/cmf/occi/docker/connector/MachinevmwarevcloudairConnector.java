@@ -70,8 +70,8 @@ public class MachinevmwarevcloudairConnector extends org.eclipse.cmf.occi.docker
 			if (getMemorySize() > 0) {
 				sb.append(" --vmwarevcloudair-edgegateway ").append(getMemorySize());
 			}
-			if (isProvision()) {
-				sb.append(" --vmwarevcloudair-provision ").append(isProvision());
+			if (getProvision()) {
+				sb.append(" --vmwarevcloudair-provision ").append(getProvision());
 			}
 			if (StringUtils.isNotBlank(getPublicIp())) {
 				sb.append(" --vmwarevcloudair-publicip ").append(getPublicIp());
