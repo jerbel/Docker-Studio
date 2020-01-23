@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-core-2.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/jackson-databind-2.9.1.jar"/>
-	<classpathentry exported="true" kind="lib" path="lib/docker-java-3.0.14.jar"/>
+	<classpathentry kind="lib" path="lib/commons-io-2.5.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-core-2.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/jackson-databind-2.9.1.jar"/>
+	<classpathentry kind="lib" path="lib/docker-java-3.0.14.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src-gen"/>
-	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="/org.eclipse.cmf.occi.docker"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="output" path="bin"/>

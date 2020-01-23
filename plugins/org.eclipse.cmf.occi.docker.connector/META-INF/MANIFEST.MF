@@ -6,7 +6,8 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
  lib/docker-java-3.0.14.jar,
  lib/jackson-core-2.9.1.jar,
- lib/jackson-databind-2.9.1.jar
+ lib/jackson-databind-2.9.1.jar,
+ lib/commons-io-2.5.jar
 Bundle-Vendor: OCCIware
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
@@ -17,8 +18,7 @@ Require-Bundle: org.slf4j.api,
  org.eclipse.emf.compare;bundle-version="3.5.1",
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0",
  org.apache.commons.lang;bundle-version="2.6.0",
- com.jcraft.jsch;bundle-version="0.1.54",
- org.apache.commons.io;bundle-version="2.6.0"
+ com.jcraft.jsch;bundle-version="0.1.54"
 Export-Package: org.eclipse.cmf.occi.docker.connector,
  org.eclipse.cmf.occi.docker.connector.exceptions,
  org.eclipse.cmf.occi.docker.connector.helpers,
