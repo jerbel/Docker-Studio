@@ -10,7 +10,7 @@
  * - Christophe Gourdin <christophe.gourdin@inria.fr>
  *  
  */
-package org.eclipse.cmf.occi.docker.connector;
+package org.eclipse.cmf.occi.docker.connector.manager;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -35,6 +35,7 @@ import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
 import org.eclipse.cmf.occi.docker.Networklink;
 import org.eclipse.cmf.occi.docker.Volumesfrom;
+import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerConfigurationHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
@@ -288,8 +289,8 @@ public class DockerClientManager {
 		if (StringUtils.isNotBlank(container.getCpuSetMems())) {
 			createContainer.withCpusetCpus(container.getCpuSetMems());
 		}
-		if (container.isPrivileged()) {
-			createContainer.withPrivileged(container.isPrivileged());
+		if (container.getPrivileged()) {
+			createContainer.withPrivileged(container.getPrivileged());
 		}
 
 		if (container.getDns() != null && !container.getDns().trim().isEmpty()) {
@@ -366,11 +367,11 @@ public class DockerClientManager {
 		if (StringUtils.isNotBlank(container.getNet())) {
 			createContainer.withNetworkMode(StringUtils.deleteWhitespace(container.getNet()));
 		}
-		if (container.isPublishAll()) {
-			createContainer.withPublishAllPorts(container.isPublishAll());
+		if (container.getPublishAll()) {
+			createContainer.withPublishAllPorts(container.getPublishAll());
 		}
-		if (container.isStdinOpen()) {
-			createContainer.withStdinOpen(container.isStdinOpen());
+		if (container.getStdinOpen()) {
+			createContainer.withStdinOpen(container.getStdinOpen());
 		}
 		if (StringUtils.isNotBlank(container.getUser())) {
 			createContainer.withUser(container.getUser());
@@ -473,12 +474,12 @@ public class DockerClientManager {
 			createContainer.withPidMode(StringUtils.deleteWhitespace(container.getPid()));
 		}
 
-		if (container.isReadOnly()) {
-			createContainer.withReadonlyRootfs(container.isReadOnly());
+		if (container.getReadOnly()) {
+			createContainer.withReadonlyRootfs(container.getReadOnly());
 		}
 
-		if (container.isTty()) {
-			createContainer.withTty(container.isTty());
+		if (container.getTty()) {
+			createContainer.withTty(container.getTty());
 		}
 
 		if (StringUtils.isNotBlank(container.getRestart())) {
@@ -791,7 +792,7 @@ public class DockerClientManager {
 		try {
 			dockerClient.startContainerCmd(container.getContainerid()).exec();
 
-			if (container.isMonitored()) { // Allow the monitoring of a container.
+			if (container.getMonitored()) { // Allow the monitoring of a container.
 				// Collect monitoring data
 				System.out.println("Starting metrics collection");
 
@@ -817,7 +818,7 @@ public class DockerClientManager {
 	 */
 	public void stopContainer(Compute computeMachine, Container container) throws DockerException {
 		preCheckDockerClient(computeMachine);
-		if (container.isMonitored()) {
+		if (container.getMonitored()) {
 			System.out.println("Stopping monitoring container : " + container.getName());
 			// Stop the statscallbacks and recreate a new one.
 			try {

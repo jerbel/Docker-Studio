@@ -13,8 +13,8 @@
 package org.eclipse.cmf.occi.docker.connector.helpers;
 
 import org.eclipse.cmf.occi.docker.Container;
-import org.eclipse.cmf.occi.docker.connector.DockerClientManager;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.manager.DockerClientManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

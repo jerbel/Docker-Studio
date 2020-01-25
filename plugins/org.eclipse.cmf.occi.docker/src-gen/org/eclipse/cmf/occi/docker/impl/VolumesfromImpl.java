@@ -82,6 +82,7 @@ public class VolumesfromImpl extends LinkImpl implements Volumesfrom {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mode getMode() {
 		return mode;
 	}
@@ -91,6 +92,7 @@ public class VolumesfromImpl extends LinkImpl implements Volumesfrom {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMode(Mode newMode) {
 		Mode oldMode = mode;
 		mode = newMode == null ? MODE_EDEFAULT : newMode;
@@ -165,7 +167,7 @@ public class VolumesfromImpl extends LinkImpl implements Volumesfrom {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (mode: ");
 		result.append(mode);
 		result.append(')');

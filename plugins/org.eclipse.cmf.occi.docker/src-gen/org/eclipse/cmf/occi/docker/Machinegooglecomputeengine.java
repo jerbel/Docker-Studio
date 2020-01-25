@@ -49,8 +49,7 @@ public interface Machinegooglecomputeengine extends Machine {
 	 * @return the value of the '<em>Zone</em>' attribute.
 	 * @see #setZone(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegooglecomputeengine_Zone()
-	 * @model default="us-central1-a" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegooglecomputeengine!zone'"
+	 * @model default="us-central1-a" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getZone();
@@ -76,8 +75,7 @@ public interface Machinegooglecomputeengine extends Machine {
 	 * @return the value of the '<em>Machine Type</em>' attribute.
 	 * @see #setMachineType(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegooglecomputeengine_MachineType()
-	 * @model default="f1-micro" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegooglecomputeengine!machineType'"
+	 * @model default="f1-micro" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getMachineType();
@@ -103,8 +101,7 @@ public interface Machinegooglecomputeengine extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegooglecomputeengine_Username()
-	 * @model default="docker-user" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegooglecomputeengine!username'"
+	 * @model default="docker-user" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsername();
@@ -130,8 +127,7 @@ public interface Machinegooglecomputeengine extends Machine {
 	 * @return the value of the '<em>Instance Name</em>' attribute.
 	 * @see #setInstanceName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegooglecomputeengine_InstanceName()
-	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegooglecomputeengine!instanceName'"
+	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getInstanceName();
@@ -156,8 +152,7 @@ public interface Machinegooglecomputeengine extends Machine {
 	 * @return the value of the '<em>Project</em>' attribute.
 	 * @see #setProject(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinegooglecomputeengine_Project()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinegooglecomputeengine!project'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getProject();

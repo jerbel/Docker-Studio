@@ -55,8 +55,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Username()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!username'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsername();
@@ -81,8 +80,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Password()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!password'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPassword();
@@ -107,8 +105,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Boot2docker URL</em>' attribute.
 	 * @see #setBoot2dockerURL(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Boot2dockerURL()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!boot2dockerURL'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getBoot2dockerURL();
@@ -133,8 +130,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Compute Ip</em>' attribute.
 	 * @see #setComputeIp(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_ComputeIp()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!computeIp'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getComputeIp();
@@ -160,8 +156,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Cpu Count</em>' attribute.
 	 * @see #setCpuCount(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_CpuCount()
-	 * @model default="2" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!cpuCount'"
+	 * @model default="2" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCpuCount();
@@ -186,8 +181,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Datacenter</em>' attribute.
 	 * @see #setDatacenter(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Datacenter()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!datacenter'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDatacenter();
@@ -212,8 +206,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Datastore</em>' attribute.
 	 * @see #setDatastore(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Datastore()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!datastore'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDatastore();
@@ -239,8 +232,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Disk Size</em>' attribute.
 	 * @see #setDiskSize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_DiskSize()
-	 * @model default="20000" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!diskSize'"
+	 * @model default="20000" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDiskSize();
@@ -266,8 +258,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Memory Size</em>' attribute.
 	 * @see #setMemorySize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_MemorySize()
-	 * @model default="2048" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!memorySize'"
+	 * @model default="2048" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemorySize();
@@ -292,8 +283,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Network</em>' attribute.
 	 * @see #setNetwork(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Network()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!network'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getNetwork();
@@ -318,8 +308,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Pool</em>' attribute.
 	 * @see #setPool(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Pool()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!pool'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPool();
@@ -344,8 +333,7 @@ public interface Machinevmwarevsphere extends Machine {
 	 * @return the value of the '<em>Vcenter</em>' attribute.
 	 * @see #setVcenter(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevsphere_Vcenter()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevsphere!vcenter'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVcenter();

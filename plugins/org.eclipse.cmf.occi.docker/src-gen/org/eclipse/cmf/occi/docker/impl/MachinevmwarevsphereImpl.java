@@ -194,7 +194,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000);
+	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000); // TODO The default value literal "20000" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getDiskSize() <em>Disk Size</em>}' attribute.
@@ -214,7 +214,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer MEMORY_SIZE_EDEFAULT = new Integer(2048);
+	protected static final Integer MEMORY_SIZE_EDEFAULT = new Integer(2048); // TODO The default value literal "2048" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getMemorySize() <em>Memory Size</em>}' attribute.
@@ -310,6 +310,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -319,6 +320,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsername(String newUsername) {
 		String oldUsername = username;
 		username = newUsername;
@@ -331,6 +333,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -340,6 +343,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPassword(String newPassword) {
 		String oldPassword = password;
 		password = newPassword;
@@ -352,6 +356,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBoot2dockerURL() {
 		return boot2dockerURL;
 	}
@@ -361,6 +366,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBoot2dockerURL(String newBoot2dockerURL) {
 		String oldBoot2dockerURL = boot2dockerURL;
 		boot2dockerURL = newBoot2dockerURL;
@@ -373,6 +379,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getComputeIp() {
 		return computeIp;
 	}
@@ -382,6 +389,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setComputeIp(String newComputeIp) {
 		String oldComputeIp = computeIp;
 		computeIp = newComputeIp;
@@ -394,6 +402,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getCpuCount() {
 		return cpuCount;
 	}
@@ -403,6 +412,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCpuCount(Integer newCpuCount) {
 		Integer oldCpuCount = cpuCount;
 		cpuCount = newCpuCount;
@@ -415,6 +425,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDatacenter() {
 		return datacenter;
 	}
@@ -424,6 +435,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDatacenter(String newDatacenter) {
 		String oldDatacenter = datacenter;
 		datacenter = newDatacenter;
@@ -436,6 +448,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDatastore() {
 		return datastore;
 	}
@@ -445,6 +458,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDatastore(String newDatastore) {
 		String oldDatastore = datastore;
 		datastore = newDatastore;
@@ -457,6 +471,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDiskSize() {
 		return diskSize;
 	}
@@ -466,6 +481,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskSize(Integer newDiskSize) {
 		Integer oldDiskSize = diskSize;
 		diskSize = newDiskSize;
@@ -478,6 +494,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getMemorySize() {
 		return memorySize;
 	}
@@ -487,6 +504,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMemorySize(Integer newMemorySize) {
 		Integer oldMemorySize = memorySize;
 		memorySize = newMemorySize;
@@ -499,6 +517,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNetwork() {
 		return network;
 	}
@@ -508,6 +527,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNetwork(String newNetwork) {
 		String oldNetwork = network;
 		network = newNetwork;
@@ -520,6 +540,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPool() {
 		return pool;
 	}
@@ -529,6 +550,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPool(String newPool) {
 		String oldPool = pool;
 		pool = newPool;
@@ -541,6 +563,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVcenter() {
 		return vcenter;
 	}
@@ -550,6 +573,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVcenter(String newVcenter) {
 		String oldVcenter = vcenter;
 		vcenter = newVcenter;
@@ -734,7 +758,7 @@ public class MachinevmwarevsphereImpl extends MachineImpl implements Machinevmwa
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (username: ");
 		result.append(username);
 		result.append(", password: ");

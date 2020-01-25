@@ -91,7 +91,6 @@ public class NetworklinkItemProvider extends LinkItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**

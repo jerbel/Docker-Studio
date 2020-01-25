@@ -268,6 +268,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUrl() {
 		return url;
 	}
@@ -277,6 +278,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUrl(String newUrl) {
 		String oldUrl = url;
 		url = newUrl;
@@ -289,6 +291,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getApiKey() {
 		return apiKey;
 	}
@@ -298,6 +301,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiKey(String newApiKey) {
 		String oldApiKey = apiKey;
 		apiKey = newApiKey;
@@ -310,6 +314,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getApiSecretKey() {
 		return apiSecretKey;
 	}
@@ -319,6 +324,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setApiSecretKey(String newApiSecretKey) {
 		String oldApiSecretKey = apiSecretKey;
 		apiSecretKey = newApiSecretKey;
@@ -331,6 +337,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInstanceProfile() {
 		return instanceProfile;
 	}
@@ -340,6 +347,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstanceProfile(String newInstanceProfile) {
 		String oldInstanceProfile = instanceProfile;
 		instanceProfile = newInstanceProfile;
@@ -352,6 +360,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImage() {
 		return image;
 	}
@@ -361,6 +370,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImage(String newImage) {
 		String oldImage = image;
 		image = newImage;
@@ -373,6 +383,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSecurityGroup() {
 		return securityGroup;
 	}
@@ -382,6 +393,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSecurityGroup(String newSecurityGroup) {
 		String oldSecurityGroup = securityGroup;
 		securityGroup = newSecurityGroup;
@@ -394,6 +406,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAvailabilityZone() {
 		return availabilityZone;
 	}
@@ -403,6 +416,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAvailabilityZone(String newAvailabilityZone) {
 		String oldAvailabilityZone = availabilityZone;
 		availabilityZone = newAvailabilityZone;
@@ -415,6 +429,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshUser() {
 		return sshUser;
 	}
@@ -424,6 +439,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshUser(String newSshUser) {
 		String oldSshUser = sshUser;
 		sshUser = newSshUser;
@@ -436,6 +452,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUserData() {
 		return userData;
 	}
@@ -445,6 +462,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUserData(String newUserData) {
 		String oldUserData = userData;
 		userData = newUserData;
@@ -457,6 +475,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAffinityGroup() {
 		return affinityGroup;
 	}
@@ -466,6 +485,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAffinityGroup(String newAffinityGroup) {
 		String oldAffinityGroup = affinityGroup;
 		affinityGroup = newAffinityGroup;
@@ -630,7 +650,7 @@ public class MachineexoscaleImpl extends MachineImpl implements Machineexoscale 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (url: ");
 		result.append(url);
 		result.append(", apiKey: ");

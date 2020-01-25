@@ -18,10 +18,10 @@ import org.eclipse.cmf.occi.infrastructure.InfrastructurePackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
 
 /**
  * <!-- begin-user-doc -->
@@ -37,6 +37,7 @@ import org.eclipse.emf.ecore.EReference;
  * <!-- end-user-doc -->
  * @see org.eclipse.cmf.occi.docker.DockerFactory
  * @model kind="package"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore"
  * @generated
  */
 public interface DockerPackage extends EPackage {
@@ -891,7 +892,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER___KILL__STRING = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 5;
+	int CONTAINER___KILL = InfrastructurePackage.COMPUTE_OPERATION_COUNT + 5;
 
 	/**
 	 * The number of operations of the '<em>Container</em>' class.
@@ -10952,6 +10953,36 @@ public interface DockerPackage extends EPackage {
 	 */
 	int MODE = 25;
 
+	/**
+	 * The meta object id for the '<em>String</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.String
+	 * @see org.eclipse.cmf.occi.docker.impl.DockerPackageImpl#getString()
+	 * @generated
+	 */
+	int STRING = 26;
+
+	/**
+	 * The meta object id for the '<em>Bool</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Boolean
+	 * @see org.eclipse.cmf.occi.docker.impl.DockerPackageImpl#getBool()
+	 * @generated
+	 */
+	int BOOL = 27;
+
+	/**
+	 * The meta object id for the '<em>Int</em>' data type.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see java.lang.Integer
+	 * @see org.eclipse.cmf.occi.docker.impl.DockerPackageImpl#getInt()
+	 * @generated
+	 */
+	int INT = 28;
+
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.cmf.occi.docker.ArrayOfString <em>Array Of String</em>}'.
@@ -11216,11 +11247,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_MemorySwap();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isPrivileged <em>Privileged</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getPrivileged <em>Privileged</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Privileged</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isPrivileged()
+	 * @see org.eclipse.cmf.occi.docker.Container#getPrivileged()
 	 * @see #getContainer()
 	 * @generated
 	 */
@@ -11238,22 +11269,22 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_Restart();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isStdinOpen <em>Stdin Open</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getStdinOpen <em>Stdin Open</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Stdin Open</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isStdinOpen()
+	 * @see org.eclipse.cmf.occi.docker.Container#getStdinOpen()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EAttribute getContainer_StdinOpen();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isInteractive <em>Interactive</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getInteractive <em>Interactive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Interactive</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isInteractive()
+	 * @see org.eclipse.cmf.occi.docker.Container#getInteractive()
 	 * @see #getContainer()
 	 * @generated
 	 */
@@ -11315,11 +11346,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_MacAddress();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isRm <em>Rm</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getRm <em>Rm</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Rm</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isRm()
+	 * @see org.eclipse.cmf.occi.docker.Container#getRm()
 	 * @see #getContainer()
 	 * @generated
 	 */
@@ -11359,33 +11390,33 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_LxcConf();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isPublishAll <em>Publish All</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Publish All</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isPublishAll()
+	 * @see org.eclipse.cmf.occi.docker.Container#getPublishAll()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EAttribute getContainer_PublishAll();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isReadOnly <em>Read Only</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Read Only</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isReadOnly()
+	 * @see org.eclipse.cmf.occi.docker.Container#getReadOnly()
 	 * @see #getContainer()
 	 * @generated
 	 */
 	EAttribute getContainer_ReadOnly();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isMonitored <em>Monitored</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Monitored</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isMonitored()
+	 * @see org.eclipse.cmf.occi.docker.Container#getMonitored()
 	 * @see #getContainer()
 	 * @generated
 	 */
@@ -11546,11 +11577,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_CpuSetMems();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#isTty <em>Tty</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Tty</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#isTty()
+	 * @see org.eclipse.cmf.occi.docker.Container#getTty()
 	 * @see #getContainer()
 	 * @generated
 	 */
@@ -11607,14 +11638,14 @@ public interface DockerPackage extends EPackage {
 	EOperation getContainer__Unpause();
 
 	/**
-	 * Returns the meta object for the '{@link org.eclipse.cmf.occi.docker.Container#kill(java.lang.String) <em>Kill</em>}' operation.
+	 * Returns the meta object for the '{@link org.eclipse.cmf.occi.docker.Container#kill() <em>Kill</em>}' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the '<em>Kill</em>' operation.
-	 * @see org.eclipse.cmf.occi.docker.Container#kill(java.lang.String)
+	 * @see org.eclipse.cmf.occi.docker.Container#kill()
 	 * @generated
 	 */
-	EOperation getContainer__Kill__String();
+	EOperation getContainer__Kill();
 
 	/**
 	 * Returns the meta object for class '{@link org.eclipse.cmf.occi.docker.Link <em>Link</em>}'.
@@ -11777,11 +11808,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_EngineEnv();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machine#isSwarm <em>Swarm</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machine#getSwarm <em>Swarm</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Swarm</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machine#isSwarm()
+	 * @see org.eclipse.cmf.occi.docker.Machine#getSwarm()
 	 * @see #getMachine()
 	 * @generated
 	 */
@@ -11799,11 +11830,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachine_SwarmImage();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machine#isSwarmMaster <em>Swarm Master</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machine#getSwarmMaster <em>Swarm Master</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Swarm Master</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machine#isSwarmMaster()
+	 * @see org.eclipse.cmf.occi.docker.Machine#getSwarmMaster()
 	 * @see #getMachine()
 	 * @generated
 	 */
@@ -12071,11 +12102,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getNetwork_Gateway();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Network#isInternal <em>Internal</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Network#getInternal <em>Internal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Internal</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Network#isInternal()
+	 * @see org.eclipse.cmf.occi.docker.Network#getInternal()
 	 * @see #getNetwork()
 	 * @generated
 	 */
@@ -12115,11 +12146,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getNetwork_IpamOpt();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Network#isIpv6 <em>Ipv6</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Network#getIpv6 <em>Ipv6</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Ipv6</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Network#isIpv6()
+	 * @see org.eclipse.cmf.occi.docker.Network#getIpv6()
 	 * @see #getNetwork()
 	 * @generated
 	 */
@@ -12539,11 +12570,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachineibmsoftlayer_Domain();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isHourlyBilling <em>Hourly Billing</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getHourlyBilling <em>Hourly Billing</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Hourly Billing</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isHourlyBilling()
+	 * @see org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getHourlyBilling()
 	 * @see #getMachineibmsoftlayer()
 	 * @generated
 	 */
@@ -12561,22 +12592,22 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachineibmsoftlayer_Image();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isLocalDisk <em>Local Disk</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getLocalDisk <em>Local Disk</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Local Disk</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isLocalDisk()
+	 * @see org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getLocalDisk()
 	 * @see #getMachineibmsoftlayer()
 	 * @generated
 	 */
 	EAttribute getMachineibmsoftlayer_LocalDisk();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isPrivateNetOnly <em>Private Net Only</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getPrivateNetOnly <em>Private Net Only</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Private Net Only</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machineibmsoftlayer#isPrivateNetOnly()
+	 * @see org.eclipse.cmf.occi.docker.Machineibmsoftlayer#getPrivateNetOnly()
 	 * @see #getMachineibmsoftlayer()
 	 * @generated
 	 */
@@ -13108,11 +13139,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachineopenstack_DomainName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineopenstack#isInsecure <em>Insecure</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machineopenstack#getInsecure <em>Insecure</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Insecure</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machineopenstack#isInsecure()
+	 * @see org.eclipse.cmf.occi.docker.Machineopenstack#getInsecure()
 	 * @see #getMachineopenstack()
 	 * @generated
 	 */
@@ -13272,11 +13303,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachinerackspace_SshPort();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinerackspace#isDockerInstall <em>Docker Install</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinerackspace#getDockerInstall <em>Docker Install</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Docker Install</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinerackspace#isDockerInstall()
+	 * @see org.eclipse.cmf.occi.docker.Machinerackspace#getDockerInstall()
 	 * @see #getMachinerackspace()
 	 * @generated
 	 */
@@ -13315,11 +13346,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachinevirtualbox_DiskSize();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isHostDNSResolver <em>Host DNS Resolver</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostDNSResolver <em>Host DNS Resolver</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Host DNS Resolver</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#isHostDNSResolver()
+	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostDNSResolver()
 	 * @see #getMachinevirtualbox()
 	 * @generated
 	 */
@@ -13370,33 +13401,33 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachinevirtualbox_HostOnlyNICPromisc();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoShare <em>No Share</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoShare <em>No Share</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>No Share</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoShare()
+	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoShare()
 	 * @see #getMachinevirtualbox()
 	 * @generated
 	 */
 	EAttribute getMachinevirtualbox_NoShare();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoDNSProxy <em>No DNS Proxy</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoDNSProxy <em>No DNS Proxy</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>No DNS Proxy</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoDNSProxy()
+	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoDNSProxy()
 	 * @see #getMachinevirtualbox()
 	 * @generated
 	 */
 	EAttribute getMachinevirtualbox_NoDNSProxy();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoVTXCheck <em>No VTX Check</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoVTXCheck <em>No VTX Check</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>No VTX Check</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoVTXCheck()
+	 * @see org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoVTXCheck()
 	 * @see #getMachinevirtualbox()
 	 * @generated
 	 */
@@ -13457,11 +13488,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachinevmwarefusion_MemorySize();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#isNoShare <em>No Share</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevmwarefusion#getNoShare <em>No Share</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>No Share</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinevmwarefusion#isNoShare()
+	 * @see org.eclipse.cmf.occi.docker.Machinevmwarefusion#getNoShare()
 	 * @see #getMachinevmwarefusion()
 	 * @generated
 	 */
@@ -13599,11 +13630,11 @@ public interface DockerPackage extends EPackage {
 	EAttribute getMachinevmwarevcloudair_Orgvdcnetwork();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#isProvision <em>Provision</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getProvision <em>Provision</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Provision</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#isProvision()
+	 * @see org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getProvision()
 	 * @see #getMachinevmwarevcloudair()
 	 * @generated
 	 */
@@ -14054,6 +14085,39 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EEnum getMode();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.String <em>String</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>String</em>'.
+	 * @see java.lang.String
+	 * @model instanceClass="java.lang.String"
+	 * @generated
+	 */
+	EDataType getString();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Boolean <em>Bool</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Bool</em>'.
+	 * @see java.lang.Boolean
+	 * @model instanceClass="java.lang.Boolean"
+	 * @generated
+	 */
+	EDataType getBool();
+
+	/**
+	 * Returns the meta object for data type '{@link java.lang.Integer <em>Int</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for data type '<em>Int</em>'.
+	 * @see java.lang.Integer
+	 * @model instanceClass="java.lang.Integer"
+	 * @generated
+	 */
+	EDataType getInt();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -14568,7 +14632,7 @@ public interface DockerPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EOperation CONTAINER___KILL__STRING = eINSTANCE.getContainer__Kill__String();
+		EOperation CONTAINER___KILL = eINSTANCE.getContainer__Kill();
 
 		/**
 		 * The meta object literal for the '{@link org.eclipse.cmf.occi.docker.impl.LinkImpl <em>Link</em>}' class.
@@ -16409,6 +16473,36 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EEnum MODE = eINSTANCE.getMode();
+
+		/**
+		 * The meta object literal for the '<em>String</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.String
+		 * @see org.eclipse.cmf.occi.docker.impl.DockerPackageImpl#getString()
+		 * @generated
+		 */
+		EDataType STRING = eINSTANCE.getString();
+
+		/**
+		 * The meta object literal for the '<em>Bool</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Boolean
+		 * @see org.eclipse.cmf.occi.docker.impl.DockerPackageImpl#getBool()
+		 * @generated
+		 */
+		EDataType BOOL = eINSTANCE.getBool();
+
+		/**
+		 * The meta object literal for the '<em>Int</em>' data type.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see java.lang.Integer
+		 * @see org.eclipse.cmf.occi.docker.impl.DockerPackageImpl#getInt()
+		 * @generated
+		 */
+		EDataType INT = eINSTANCE.getInt();
 
 	}
 

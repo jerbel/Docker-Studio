@@ -37,7 +37,7 @@ package org.eclipse.cmf.occi.docker;
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getMemorySize <em>Memory Size</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getVappName <em>Vapp Name</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getOrgvdcnetwork <em>Orgvdcnetwork</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#isProvision <em>Provision</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getProvision <em>Provision</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getPublicIp <em>Public Ip</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getSshPort <em>Ssh Port</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getVdcId <em>Vdc Id</em>}</li>
@@ -58,8 +58,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Username</em>' attribute.
 	 * @see #setUsername(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_Username()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!username'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUsername();
@@ -84,8 +83,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_Password()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!password'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPassword();
@@ -111,8 +109,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Catalog</em>' attribute.
 	 * @see #setCatalog(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_Catalog()
-	 * @model default="Public Catalog" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!catalog'"
+	 * @model default="Public Catalog" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCatalog();
@@ -138,8 +135,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Catalog Item</em>' attribute.
 	 * @see #setCatalogItem(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_CatalogItem()
-	 * @model default="Ubuntu Server 12.04 LTS (amd64 20140927)" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!catalogItem'"
+	 * @model default="Ubuntu Server 12.04 LTS (amd64 20140927)" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getCatalogItem();
@@ -164,8 +160,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Compute Id</em>' attribute.
 	 * @see #setComputeId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_ComputeId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!computeId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getComputeId();
@@ -191,8 +186,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Cpu Count</em>' attribute.
 	 * @see #setCpuCount(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_CpuCount()
-	 * @model default="1" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!cpuCount'"
+	 * @model default="1" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getCpuCount();
@@ -218,8 +212,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Docker Port</em>' attribute.
 	 * @see #setDockerPort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_DockerPort()
-	 * @model default="2376" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!dockerPort'"
+	 * @model default="2376" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDockerPort();
@@ -245,8 +238,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Edgegateway</em>' attribute.
 	 * @see #setEdgegateway(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_Edgegateway()
-	 * @model default="&amp;lt;vdcid&gt;" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!edgegateway'"
+	 * @model default="&amp;lt;vdcid&gt;" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getEdgegateway();
@@ -272,8 +264,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Memory Size</em>' attribute.
 	 * @see #setMemorySize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_MemorySize()
-	 * @model default="2048" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!memorySize'"
+	 * @model default="2048" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getMemorySize();
@@ -299,8 +290,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Vapp Name</em>' attribute.
 	 * @see #setVappName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_VappName()
-	 * @model default="&amp;lt;autogenerated&gt;" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!vappName'"
+	 * @model default="&amp;lt;autogenerated&gt;" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVappName();
@@ -326,8 +316,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Orgvdcnetwork</em>' attribute.
 	 * @see #setOrgvdcnetwork(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_Orgvdcnetwork()
-	 * @model default="&amp;lt;vdcid&gt;-default-routed" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!orgvdcnetwork'"
+	 * @model default="&amp;lt;vdcid&gt;-default-routed" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getOrgvdcnetwork();
@@ -351,23 +340,22 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Provision</em>' attribute.
-	 * @see #setProvision(boolean)
+	 * @see #setProvision(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_Provision()
-	 * @model default="true" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!provision'"
+	 * @model default="true" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isProvision();
+	Boolean getProvision();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#isProvision <em>Provision</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevmwarevcloudair#getProvision <em>Provision</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Provision</em>' attribute.
-	 * @see #isProvision()
+	 * @see #getProvision()
 	 * @generated
 	 */
-	void setProvision(boolean value);
+	void setProvision(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Public Ip</b></em>' attribute.
@@ -379,8 +367,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Public Ip</em>' attribute.
 	 * @see #setPublicIp(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_PublicIp()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!publicIp'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPublicIp();
@@ -406,8 +393,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Ssh Port</em>' attribute.
 	 * @see #setSshPort(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_SshPort()
-	 * @model default="22" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!sshPort'"
+	 * @model default="22" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getSshPort();
@@ -432,8 +418,7 @@ public interface Machinevmwarevcloudair extends Machine {
 	 * @return the value of the '<em>Vdc Id</em>' attribute.
 	 * @see #setVdcId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevmwarevcloudair_VdcId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevmwarevcloudair!vdcId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getVdcId();

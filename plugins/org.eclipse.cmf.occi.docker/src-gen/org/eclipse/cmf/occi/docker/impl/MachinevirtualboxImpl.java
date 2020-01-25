@@ -31,14 +31,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getBoot2dockerURL <em>Boot2docker URL</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getDiskSize <em>Disk Size</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#isHostDNSResolver <em>Host DNS Resolver</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getHostDNSResolver <em>Host DNS Resolver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getImportBoot2DockerVM <em>Import Boot2 Docker VM</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getHostOnlyCIDR <em>Host Only CIDR</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getHostOnlyNICType <em>Host Only NIC Type</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getHostOnlyNICPromisc <em>Host Only NIC Promisc</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#isNoShare <em>No Share</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#isNoDNSProxy <em>No DNS Proxy</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#isNoVTXCheck <em>No VTX Check</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getNoShare <em>No Share</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getNoDNSProxy <em>No DNS Proxy</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getNoVTXCheck <em>No VTX Check</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.MachinevirtualboxImpl#getShareFolder <em>Share Folder</em>}</li>
  * </ul>
  *
@@ -73,7 +73,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000);
+	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000); // TODO The default value literal "20000" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getDiskSize() <em>Disk Size</em>}' attribute.
@@ -86,24 +86,24 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	protected Integer diskSize = DISK_SIZE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isHostDNSResolver() <em>Host DNS Resolver</em>}' attribute.
+	 * The default value of the '{@link #getHostDNSResolver() <em>Host DNS Resolver</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isHostDNSResolver()
+	 * @see #getHostDNSResolver()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean HOST_DNS_RESOLVER_EDEFAULT = false;
+	protected static final Boolean HOST_DNS_RESOLVER_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isHostDNSResolver() <em>Host DNS Resolver</em>}' attribute.
+	 * The cached value of the '{@link #getHostDNSResolver() <em>Host DNS Resolver</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isHostDNSResolver()
+	 * @see #getHostDNSResolver()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean hostDNSResolver = HOST_DNS_RESOLVER_EDEFAULT;
+	protected Boolean hostDNSResolver = HOST_DNS_RESOLVER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getImportBoot2DockerVM() <em>Import Boot2 Docker VM</em>}' attribute.
@@ -186,64 +186,64 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	protected String hostOnlyNICPromisc = HOST_ONLY_NIC_PROMISC_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isNoShare() <em>No Share</em>}' attribute.
+	 * The default value of the '{@link #getNoShare() <em>No Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoShare()
+	 * @see #getNoShare()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean NO_SHARE_EDEFAULT = false;
+	protected static final Boolean NO_SHARE_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isNoShare() <em>No Share</em>}' attribute.
+	 * The cached value of the '{@link #getNoShare() <em>No Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoShare()
+	 * @see #getNoShare()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean noShare = NO_SHARE_EDEFAULT;
+	protected Boolean noShare = NO_SHARE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isNoDNSProxy() <em>No DNS Proxy</em>}' attribute.
+	 * The default value of the '{@link #getNoDNSProxy() <em>No DNS Proxy</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoDNSProxy()
+	 * @see #getNoDNSProxy()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean NO_DNS_PROXY_EDEFAULT = false;
+	protected static final Boolean NO_DNS_PROXY_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isNoDNSProxy() <em>No DNS Proxy</em>}' attribute.
+	 * The cached value of the '{@link #getNoDNSProxy() <em>No DNS Proxy</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoDNSProxy()
+	 * @see #getNoDNSProxy()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean noDNSProxy = NO_DNS_PROXY_EDEFAULT;
+	protected Boolean noDNSProxy = NO_DNS_PROXY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isNoVTXCheck() <em>No VTX Check</em>}' attribute.
+	 * The default value of the '{@link #getNoVTXCheck() <em>No VTX Check</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoVTXCheck()
+	 * @see #getNoVTXCheck()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean NO_VTX_CHECK_EDEFAULT = false;
+	protected static final Boolean NO_VTX_CHECK_EDEFAULT = Boolean.FALSE;
 
 	/**
-	 * The cached value of the '{@link #isNoVTXCheck() <em>No VTX Check</em>}' attribute.
+	 * The cached value of the '{@link #getNoVTXCheck() <em>No VTX Check</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isNoVTXCheck()
+	 * @see #getNoVTXCheck()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean noVTXCheck = NO_VTX_CHECK_EDEFAULT;
+	protected Boolean noVTXCheck = NO_VTX_CHECK_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getShareFolder() <em>Share Folder</em>}' attribute.
@@ -289,6 +289,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBoot2dockerURL() {
 		return boot2dockerURL;
 	}
@@ -298,6 +299,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBoot2dockerURL(String newBoot2dockerURL) {
 		String oldBoot2dockerURL = boot2dockerURL;
 		boot2dockerURL = newBoot2dockerURL;
@@ -310,6 +312,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDiskSize() {
 		return diskSize;
 	}
@@ -319,6 +322,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskSize(Integer newDiskSize) {
 		Integer oldDiskSize = diskSize;
 		diskSize = newDiskSize;
@@ -331,7 +335,8 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isHostDNSResolver() {
+	@Override
+	public Boolean getHostDNSResolver() {
 		return hostDNSResolver;
 	}
 
@@ -340,8 +345,9 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setHostDNSResolver(boolean newHostDNSResolver) {
-		boolean oldHostDNSResolver = hostDNSResolver;
+	@Override
+	public void setHostDNSResolver(Boolean newHostDNSResolver) {
+		Boolean oldHostDNSResolver = hostDNSResolver;
 		hostDNSResolver = newHostDNSResolver;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEVIRTUALBOX__HOST_DNS_RESOLVER, oldHostDNSResolver, hostDNSResolver));
@@ -352,6 +358,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImportBoot2DockerVM() {
 		return importBoot2DockerVM;
 	}
@@ -361,6 +368,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImportBoot2DockerVM(String newImportBoot2DockerVM) {
 		String oldImportBoot2DockerVM = importBoot2DockerVM;
 		importBoot2DockerVM = newImportBoot2DockerVM;
@@ -373,6 +381,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getHostOnlyCIDR() {
 		return hostOnlyCIDR;
 	}
@@ -382,6 +391,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHostOnlyCIDR(String newHostOnlyCIDR) {
 		String oldHostOnlyCIDR = hostOnlyCIDR;
 		hostOnlyCIDR = newHostOnlyCIDR;
@@ -394,6 +404,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getHostOnlyNICType() {
 		return hostOnlyNICType;
 	}
@@ -403,6 +414,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHostOnlyNICType(String newHostOnlyNICType) {
 		String oldHostOnlyNICType = hostOnlyNICType;
 		hostOnlyNICType = newHostOnlyNICType;
@@ -415,6 +427,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getHostOnlyNICPromisc() {
 		return hostOnlyNICPromisc;
 	}
@@ -424,6 +437,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHostOnlyNICPromisc(String newHostOnlyNICPromisc) {
 		String oldHostOnlyNICPromisc = hostOnlyNICPromisc;
 		hostOnlyNICPromisc = newHostOnlyNICPromisc;
@@ -436,7 +450,8 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isNoShare() {
+	@Override
+	public Boolean getNoShare() {
 		return noShare;
 	}
 
@@ -445,8 +460,9 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNoShare(boolean newNoShare) {
-		boolean oldNoShare = noShare;
+	@Override
+	public void setNoShare(Boolean newNoShare) {
+		Boolean oldNoShare = noShare;
 		noShare = newNoShare;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEVIRTUALBOX__NO_SHARE, oldNoShare, noShare));
@@ -457,7 +473,8 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isNoDNSProxy() {
+	@Override
+	public Boolean getNoDNSProxy() {
 		return noDNSProxy;
 	}
 
@@ -466,8 +483,9 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNoDNSProxy(boolean newNoDNSProxy) {
-		boolean oldNoDNSProxy = noDNSProxy;
+	@Override
+	public void setNoDNSProxy(Boolean newNoDNSProxy) {
+		Boolean oldNoDNSProxy = noDNSProxy;
 		noDNSProxy = newNoDNSProxy;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEVIRTUALBOX__NO_DNS_PROXY, oldNoDNSProxy, noDNSProxy));
@@ -478,7 +496,8 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isNoVTXCheck() {
+	@Override
+	public Boolean getNoVTXCheck() {
 		return noVTXCheck;
 	}
 
@@ -487,8 +506,9 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setNoVTXCheck(boolean newNoVTXCheck) {
-		boolean oldNoVTXCheck = noVTXCheck;
+	@Override
+	public void setNoVTXCheck(Boolean newNoVTXCheck) {
+		Boolean oldNoVTXCheck = noVTXCheck;
 		noVTXCheck = newNoVTXCheck;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.MACHINEVIRTUALBOX__NO_VTX_CHECK, oldNoVTXCheck, noVTXCheck));
@@ -499,6 +519,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getShareFolder() {
 		return shareFolder;
 	}
@@ -508,6 +529,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setShareFolder(String newShareFolder) {
 		String oldShareFolder = shareFolder;
 		shareFolder = newShareFolder;
@@ -528,7 +550,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 			case DockerPackage.MACHINEVIRTUALBOX__DISK_SIZE:
 				return getDiskSize();
 			case DockerPackage.MACHINEVIRTUALBOX__HOST_DNS_RESOLVER:
-				return isHostDNSResolver();
+				return getHostDNSResolver();
 			case DockerPackage.MACHINEVIRTUALBOX__IMPORT_BOOT2_DOCKER_VM:
 				return getImportBoot2DockerVM();
 			case DockerPackage.MACHINEVIRTUALBOX__HOST_ONLY_CIDR:
@@ -538,11 +560,11 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 			case DockerPackage.MACHINEVIRTUALBOX__HOST_ONLY_NIC_PROMISC:
 				return getHostOnlyNICPromisc();
 			case DockerPackage.MACHINEVIRTUALBOX__NO_SHARE:
-				return isNoShare();
+				return getNoShare();
 			case DockerPackage.MACHINEVIRTUALBOX__NO_DNS_PROXY:
-				return isNoDNSProxy();
+				return getNoDNSProxy();
 			case DockerPackage.MACHINEVIRTUALBOX__NO_VTX_CHECK:
-				return isNoVTXCheck();
+				return getNoVTXCheck();
 			case DockerPackage.MACHINEVIRTUALBOX__SHARE_FOLDER:
 				return getShareFolder();
 		}
@@ -652,7 +674,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 			case DockerPackage.MACHINEVIRTUALBOX__DISK_SIZE:
 				return DISK_SIZE_EDEFAULT == null ? diskSize != null : !DISK_SIZE_EDEFAULT.equals(diskSize);
 			case DockerPackage.MACHINEVIRTUALBOX__HOST_DNS_RESOLVER:
-				return hostDNSResolver != HOST_DNS_RESOLVER_EDEFAULT;
+				return HOST_DNS_RESOLVER_EDEFAULT == null ? hostDNSResolver != null : !HOST_DNS_RESOLVER_EDEFAULT.equals(hostDNSResolver);
 			case DockerPackage.MACHINEVIRTUALBOX__IMPORT_BOOT2_DOCKER_VM:
 				return IMPORT_BOOT2_DOCKER_VM_EDEFAULT == null ? importBoot2DockerVM != null : !IMPORT_BOOT2_DOCKER_VM_EDEFAULT.equals(importBoot2DockerVM);
 			case DockerPackage.MACHINEVIRTUALBOX__HOST_ONLY_CIDR:
@@ -662,11 +684,11 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 			case DockerPackage.MACHINEVIRTUALBOX__HOST_ONLY_NIC_PROMISC:
 				return HOST_ONLY_NIC_PROMISC_EDEFAULT == null ? hostOnlyNICPromisc != null : !HOST_ONLY_NIC_PROMISC_EDEFAULT.equals(hostOnlyNICPromisc);
 			case DockerPackage.MACHINEVIRTUALBOX__NO_SHARE:
-				return noShare != NO_SHARE_EDEFAULT;
+				return NO_SHARE_EDEFAULT == null ? noShare != null : !NO_SHARE_EDEFAULT.equals(noShare);
 			case DockerPackage.MACHINEVIRTUALBOX__NO_DNS_PROXY:
-				return noDNSProxy != NO_DNS_PROXY_EDEFAULT;
+				return NO_DNS_PROXY_EDEFAULT == null ? noDNSProxy != null : !NO_DNS_PROXY_EDEFAULT.equals(noDNSProxy);
 			case DockerPackage.MACHINEVIRTUALBOX__NO_VTX_CHECK:
-				return noVTXCheck != NO_VTX_CHECK_EDEFAULT;
+				return NO_VTX_CHECK_EDEFAULT == null ? noVTXCheck != null : !NO_VTX_CHECK_EDEFAULT.equals(noVTXCheck);
 			case DockerPackage.MACHINEVIRTUALBOX__SHARE_FOLDER:
 				return SHARE_FOLDER_EDEFAULT == null ? shareFolder != null : !SHARE_FOLDER_EDEFAULT.equals(shareFolder);
 		}
@@ -682,7 +704,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (boot2dockerURL: ");
 		result.append(boot2dockerURL);
 		result.append(", diskSize: ");

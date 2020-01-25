@@ -44,8 +44,7 @@ public interface Link extends org.eclipse.cmf.occi.core.Link {
 	 * @return the value of the '<em>Alias</em>' attribute.
 	 * @see #setAlias(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getLink_Alias()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Link!alias'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAlias();

@@ -16,6 +16,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.manager.MachineManager;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
 import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
@@ -69,8 +70,8 @@ public class MachinevmwarevcloudairConnector extends org.eclipse.cmf.occi.docker
 			if (getMemorySize() > 0) {
 				sb.append(" --vmwarevcloudair-edgegateway ").append(getMemorySize());
 			}
-			if (isProvision()) {
-				sb.append(" --vmwarevcloudair-provision ").append(isProvision());
+			if (getProvision()) {
+				sb.append(" --vmwarevcloudair-provision ").append(getProvision());
 			}
 			if (StringUtils.isNotBlank(getPublicIp())) {
 				sb.append(" --vmwarevcloudair-publicip ").append(getPublicIp());

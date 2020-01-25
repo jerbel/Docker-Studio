@@ -54,8 +54,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Url</em>' attribute.
 	 * @see #setUrl(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_Url()
-	 * @model default="https://api.exoscale.ch/compute" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!url'"
+	 * @model default="https://api.exoscale.ch/compute" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUrl();
@@ -80,8 +79,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Api Key</em>' attribute.
 	 * @see #setApiKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_ApiKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!apiKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getApiKey();
@@ -106,8 +104,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Api Secret Key</em>' attribute.
 	 * @see #setApiSecretKey(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_ApiSecretKey()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!apiSecretKey'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getApiSecretKey();
@@ -133,8 +130,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Instance Profile</em>' attribute.
 	 * @see #setInstanceProfile(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_InstanceProfile()
-	 * @model default="small" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!instanceProfile'"
+	 * @model default="small" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getInstanceProfile();
@@ -160,8 +156,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Image</em>' attribute.
 	 * @see #setImage(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_Image()
-	 * @model default="ubuntu-16.04" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!image'"
+	 * @model default="ubuntu-16.04" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImage();
@@ -186,8 +181,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Security Group</em>' attribute.
 	 * @see #setSecurityGroup(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_SecurityGroup()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!securityGroup'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSecurityGroup();
@@ -212,8 +206,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Availability Zone</em>' attribute.
 	 * @see #setAvailabilityZone(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_AvailabilityZone()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!availabilityZone'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAvailabilityZone();
@@ -239,8 +232,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Ssh User</em>' attribute.
 	 * @see #setSshUser(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_SshUser()
-	 * @model default="ubuntu" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!sshUser'"
+	 * @model default="ubuntu" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSshUser();
@@ -265,8 +257,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>User Data</em>' attribute.
 	 * @see #setUserData(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_UserData()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!userData'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getUserData();
@@ -292,8 +283,7 @@ public interface Machineexoscale extends Machine {
 	 * @return the value of the '<em>Affinity Group</em>' attribute.
 	 * @see #setAffinityGroup(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachineexoscale_AffinityGroup()
-	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machineexoscale!affinityGroup'"
+	 * @model default="docker-machine" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAffinityGroup();

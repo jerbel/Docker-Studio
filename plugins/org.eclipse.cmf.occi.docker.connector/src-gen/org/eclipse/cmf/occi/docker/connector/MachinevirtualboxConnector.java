@@ -16,6 +16,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.manager.MachineManager;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
 import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
@@ -64,26 +65,26 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 				// Use boot2docker v1.11.2
 				sb.append(" --virtualbox-boot2docker-url ").append("https://github.com/boot2docker/boot2docker/releases/download/v1.11.2/boot2docker.iso");
 			}
-			if (isHostDNSResolver()) {
-				sb.append(" --virtualbox-host-dns-resolver ").append(isHostDNSResolver());
+			if (getHostDNSResolver()) {
+				sb.append(" --virtualbox-host-dns-resolver ").append(getHostDNSResolver());
 			}
 			if (!StringUtils.isEmpty(getImportBoot2DockerVM())) {
 				sb.append(" --virtualbox-import-boot2docker-vm ").append(getImportBoot2DockerVM());
 			}
-			if (isHostDNSResolver()) {
-				sb.append(" --virtualbox-host-dns-resolver ").append(isHostDNSResolver());
+			if (getHostDNSResolver()) {
+				sb.append(" --virtualbox-host-dns-resolver ").append(getHostDNSResolver());
 			}
 			if (!StringUtils.isEmpty(getHostOnlyNICType())) {
 				sb.append(" --virtualbox-hostonly-nictype ").append(getHostOnlyNICType());
 			}
-			if (isNoShare()) {
-				sb.append(" --virtualbox-no-share ").append(isNoShare());
+			if (getNoShare()) {
+				sb.append(" --virtualbox-no-share ").append(getNoShare());
 			}
-			if (isNoDNSProxy()) {
-				sb.append(" --virtualbox-no-dns-proxy ").append(isNoDNSProxy());
+			if (eIsProxy()) {
+				sb.append(" --virtualbox-no-dns-proxy ").append(eIsProxy());
 			}
-			if (isNoVTXCheck()) {
-				sb.append(" --virtualbox-no-vtx-check ").append(isNoVTXCheck());
+			if (getNoVTXCheck()) {
+				sb.append(" --virtualbox-no-vtx-check ").append(getNoVTXCheck());
 			}
 			if (!StringUtils.isEmpty(getShareFolder())) {
 				sb.append(" --virtualbox-share-folder ").append(getShareFolder());

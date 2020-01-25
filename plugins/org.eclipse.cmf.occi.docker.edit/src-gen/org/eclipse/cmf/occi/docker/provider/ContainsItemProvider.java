@@ -99,7 +99,6 @@ public class ContainsItemProvider extends LinkItemProvider {
 	@Override
 	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
-		super.notifyChanged(notification);
 	}
 
 	/**

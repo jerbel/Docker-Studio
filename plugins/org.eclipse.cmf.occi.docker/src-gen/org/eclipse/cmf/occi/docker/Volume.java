@@ -54,8 +54,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Driver</em>' attribute.
 	 * @see #setDriver(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Driver()
-	 * @model default="local" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!driver'"
+	 * @model default="local" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDriver();
@@ -80,8 +79,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Labels</em>' attribute.
 	 * @see #setLabels(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Labels()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!labels'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getLabels();
@@ -106,8 +104,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Options</em>' attribute.
 	 * @see #setOptions(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Options()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!options'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getOptions();
@@ -132,8 +129,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Source</em>' attribute.
 	 * @see #setSource(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Source()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!source'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSource();
@@ -158,8 +154,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Destination</em>' attribute.
 	 * @see #setDestination(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Destination()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!destination'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDestination();
@@ -184,8 +179,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Mode</em>' attribute.
 	 * @see #setMode(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Mode()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!mode'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getMode();
@@ -210,8 +204,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Rw</em>' attribute.
 	 * @see #setRw(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Rw()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!rw'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getRw();
@@ -236,8 +229,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Propagation</em>' attribute.
 	 * @see #setPropagation(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Propagation()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!propagation'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getPropagation();
@@ -262,8 +254,7 @@ public interface Volume extends Storage {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getVolume_Name()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Volume!name'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getName();

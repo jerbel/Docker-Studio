@@ -10,7 +10,7 @@
  * - Christophe Gourdin <christophe.gourdin@inria.fr>
  *  
  */
-package org.eclipse.cmf.occi.docker.connector;
+package org.eclipse.cmf.occi.docker.connector.manager;
 
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;

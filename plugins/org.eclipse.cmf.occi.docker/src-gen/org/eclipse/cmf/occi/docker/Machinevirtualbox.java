@@ -28,14 +28,14 @@ package org.eclipse.cmf.occi.docker;
  * <ul>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getBoot2dockerURL <em>Boot2docker URL</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getDiskSize <em>Disk Size</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isHostDNSResolver <em>Host DNS Resolver</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostDNSResolver <em>Host DNS Resolver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getImportBoot2DockerVM <em>Import Boot2 Docker VM</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostOnlyCIDR <em>Host Only CIDR</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostOnlyNICType <em>Host Only NIC Type</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostOnlyNICPromisc <em>Host Only NIC Promisc</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoShare <em>No Share</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoDNSProxy <em>No DNS Proxy</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoVTXCheck <em>No VTX Check</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoShare <em>No Share</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoDNSProxy <em>No DNS Proxy</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoVTXCheck <em>No VTX Check</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getShareFolder <em>Share Folder</em>}</li>
  * </ul>
  *
@@ -54,8 +54,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Boot2docker URL</em>' attribute.
 	 * @see #setBoot2dockerURL(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_Boot2dockerURL()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!boot2dockerURL'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getBoot2dockerURL();
@@ -81,8 +80,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Disk Size</em>' attribute.
 	 * @see #setDiskSize(Integer)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_DiskSize()
-	 * @model default="20000" dataType="org.eclipse.cmf.occi.core.Integer"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!diskSize'"
+	 * @model default="20000" dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
 	Integer getDiskSize();
@@ -106,23 +104,22 @@ public interface Machinevirtualbox extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Host DNS Resolver</em>' attribute.
-	 * @see #setHostDNSResolver(boolean)
+	 * @see #setHostDNSResolver(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_HostDNSResolver()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!hostDNSResolver'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isHostDNSResolver();
+	Boolean getHostDNSResolver();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isHostDNSResolver <em>Host DNS Resolver</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getHostDNSResolver <em>Host DNS Resolver</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Host DNS Resolver</em>' attribute.
-	 * @see #isHostDNSResolver()
+	 * @see #getHostDNSResolver()
 	 * @generated
 	 */
-	void setHostDNSResolver(boolean value);
+	void setHostDNSResolver(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Import Boot2 Docker VM</b></em>' attribute.
@@ -134,8 +131,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Import Boot2 Docker VM</em>' attribute.
 	 * @see #setImportBoot2DockerVM(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_ImportBoot2DockerVM()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!importBoot2DockerVM'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getImportBoot2DockerVM();
@@ -161,8 +157,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Host Only CIDR</em>' attribute.
 	 * @see #setHostOnlyCIDR(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_HostOnlyCIDR()
-	 * @model default="192.168.99.1/24" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!hostOnlyCIDR'"
+	 * @model default="192.168.99.1/24" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getHostOnlyCIDR();
@@ -188,8 +183,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Host Only NIC Type</em>' attribute.
 	 * @see #setHostOnlyNICType(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_HostOnlyNICType()
-	 * @model default="82540EM" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!hostOnlyNICType'"
+	 * @model default="82540EM" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getHostOnlyNICType();
@@ -215,8 +209,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Host Only NIC Promisc</em>' attribute.
 	 * @see #setHostOnlyNICPromisc(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_HostOnlyNICPromisc()
-	 * @model default="deny" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!hostOnlyNICPromisc'"
+	 * @model default="deny" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getHostOnlyNICPromisc();
@@ -240,23 +233,22 @@ public interface Machinevirtualbox extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Share</em>' attribute.
-	 * @see #setNoShare(boolean)
+	 * @see #setNoShare(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_NoShare()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!noShare'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isNoShare();
+	Boolean getNoShare();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoShare <em>No Share</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoShare <em>No Share</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>No Share</em>' attribute.
-	 * @see #isNoShare()
+	 * @see #getNoShare()
 	 * @generated
 	 */
-	void setNoShare(boolean value);
+	void setNoShare(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>No DNS Proxy</b></em>' attribute.
@@ -267,23 +259,22 @@ public interface Machinevirtualbox extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No DNS Proxy</em>' attribute.
-	 * @see #setNoDNSProxy(boolean)
+	 * @see #setNoDNSProxy(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_NoDNSProxy()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!noDNSProxy'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isNoDNSProxy();
+	Boolean getNoDNSProxy();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoDNSProxy <em>No DNS Proxy</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoDNSProxy <em>No DNS Proxy</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>No DNS Proxy</em>' attribute.
-	 * @see #isNoDNSProxy()
+	 * @see #getNoDNSProxy()
 	 * @generated
 	 */
-	void setNoDNSProxy(boolean value);
+	void setNoDNSProxy(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>No VTX Check</b></em>' attribute.
@@ -294,23 +285,22 @@ public interface Machinevirtualbox extends Machine {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No VTX Check</em>' attribute.
-	 * @see #setNoVTXCheck(boolean)
+	 * @see #setNoVTXCheck(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_NoVTXCheck()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!noVTXCheck'"
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isNoVTXCheck();
+	Boolean getNoVTXCheck();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#isNoVTXCheck <em>No VTX Check</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Machinevirtualbox#getNoVTXCheck <em>No VTX Check</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>No VTX Check</em>' attribute.
-	 * @see #isNoVTXCheck()
+	 * @see #getNoVTXCheck()
 	 * @generated
 	 */
-	void setNoVTXCheck(boolean value);
+	void setNoVTXCheck(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Share Folder</b></em>' attribute.
@@ -322,8 +312,7 @@ public interface Machinevirtualbox extends Machine {
 	 * @return the value of the '<em>Share Folder</em>' attribute.
 	 * @see #setShareFolder(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getMachinevirtualbox_ShareFolder()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machinevirtualbox!shareFolder'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getShareFolder();

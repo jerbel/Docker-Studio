@@ -163,6 +163,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getZone() {
 		return zone;
 	}
@@ -172,6 +173,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setZone(String newZone) {
 		String oldZone = zone;
 		zone = newZone;
@@ -184,6 +186,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getMachineType() {
 		return machineType;
 	}
@@ -193,6 +196,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setMachineType(String newMachineType) {
 		String oldMachineType = machineType;
 		machineType = newMachineType;
@@ -205,6 +209,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -214,6 +219,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsername(String newUsername) {
 		String oldUsername = username;
 		username = newUsername;
@@ -226,6 +232,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getInstanceName() {
 		return instanceName;
 	}
@@ -235,6 +242,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInstanceName(String newInstanceName) {
 		String oldInstanceName = instanceName;
 		instanceName = newInstanceName;
@@ -247,6 +255,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getProject() {
 		return project;
 	}
@@ -256,6 +265,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setProject(String newProject) {
 		String oldProject = project;
 		project = newProject;
@@ -370,7 +380,7 @@ public class MachinegooglecomputeengineImpl extends MachineImpl implements Machi
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (zone: ");
 		result.append(zone);
 		result.append(", machineType: ");

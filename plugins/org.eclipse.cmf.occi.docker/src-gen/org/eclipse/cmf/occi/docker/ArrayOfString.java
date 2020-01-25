@@ -37,15 +37,10 @@ public interface ArrayOfString extends EObject {
 	 * Returns the value of the '<em><b>Values</b></em>' attribute list.
 	 * The list contents are of type {@link java.lang.String}.
 	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Values</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Values</em>' attribute list.
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getArrayOfString_Values()
-	 * @model unique="false" dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!ArrayOfString!values'"
+	 * @model unique="false" dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	EList<String> getValues();

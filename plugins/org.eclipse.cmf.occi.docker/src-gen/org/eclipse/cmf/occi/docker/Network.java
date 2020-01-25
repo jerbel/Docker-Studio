@@ -31,11 +31,11 @@ package org.eclipse.cmf.occi.docker;
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getAuxAddress <em>Aux Address</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getDriver <em>Driver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getGateway <em>Gateway</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Network#isInternal <em>Internal</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Network#getInternal <em>Internal</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getIpRange <em>Ip Range</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getIpamDriver <em>Ipam Driver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getIpamOpt <em>Ipam Opt</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.Network#isIpv6 <em>Ipv6</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.Network#getIpv6 <em>Ipv6</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getOpt <em>Opt</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.Network#getSubnet <em>Subnet</em>}</li>
  * </ul>
@@ -55,8 +55,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Network Id</em>' attribute.
 	 * @see #setNetworkId(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_NetworkId()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!networkId'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getNetworkId();
@@ -81,8 +80,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Name()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!name'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getName();
@@ -107,8 +105,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Aux Address</em>' attribute.
 	 * @see #setAuxAddress(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_AuxAddress()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!auxAddress'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getAuxAddress();
@@ -133,8 +130,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Driver</em>' attribute.
 	 * @see #setDriver(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Driver()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!driver'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getDriver();
@@ -159,8 +155,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Gateway</em>' attribute.
 	 * @see #setGateway(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Gateway()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!gateway'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getGateway();
@@ -183,23 +178,22 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Internal</em>' attribute.
-	 * @see #setInternal(boolean)
+	 * @see #setInternal(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Internal()
-	 * @model dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!internal'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isInternal();
+	Boolean getInternal();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Network#isInternal <em>Internal</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Network#getInternal <em>Internal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Internal</em>' attribute.
-	 * @see #isInternal()
+	 * @see #getInternal()
 	 * @generated
 	 */
-	void setInternal(boolean value);
+	void setInternal(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Ip Range</b></em>' attribute.
@@ -211,8 +205,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Ip Range</em>' attribute.
 	 * @see #setIpRange(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_IpRange()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!ipRange'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getIpRange();
@@ -237,8 +230,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Ipam Driver</em>' attribute.
 	 * @see #setIpamDriver(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_IpamDriver()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!ipamDriver'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getIpamDriver();
@@ -263,8 +255,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Ipam Opt</em>' attribute.
 	 * @see #setIpamOpt(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_IpamOpt()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!ipamOpt'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getIpamOpt();
@@ -287,23 +278,22 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * 
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Ipv6</em>' attribute.
-	 * @see #setIpv6(boolean)
+	 * @see #setIpv6(Boolean)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Ipv6()
-	 * @model dataType="org.eclipse.cmf.occi.core.Boolean"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!ipv6'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.Bool"
 	 * @generated
 	 */
-	boolean isIpv6();
+	Boolean getIpv6();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Network#isIpv6 <em>Ipv6</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Network#getIpv6 <em>Ipv6</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Ipv6</em>' attribute.
-	 * @see #isIpv6()
+	 * @see #getIpv6()
 	 * @generated
 	 */
-	void setIpv6(boolean value);
+	void setIpv6(Boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Opt</b></em>' attribute.
@@ -315,8 +305,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Opt</em>' attribute.
 	 * @see #setOpt(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Opt()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!opt'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getOpt();
@@ -341,8 +330,7 @@ public interface Network extends org.eclipse.cmf.occi.infrastructure.Network {
 	 * @return the value of the '<em>Subnet</em>' attribute.
 	 * @see #setSubnet(String)
 	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getNetwork_Subnet()
-	 * @model dataType="org.eclipse.cmf.occi.core.String"
-	 *        annotation="http://www.eclipse.org/emf/2002/GenModel get='throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Network!subnet'"
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
 	 * @generated
 	 */
 	String getSubnet();

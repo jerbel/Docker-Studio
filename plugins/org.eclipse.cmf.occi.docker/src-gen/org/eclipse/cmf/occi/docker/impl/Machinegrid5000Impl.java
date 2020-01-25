@@ -268,6 +268,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUsername() {
 		return username;
 	}
@@ -277,6 +278,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUsername(String newUsername) {
 		String oldUsername = username;
 		username = newUsername;
@@ -289,6 +291,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getPassword() {
 		return password;
 	}
@@ -298,6 +301,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setPassword(String newPassword) {
 		String oldPassword = password;
 		password = newPassword;
@@ -310,6 +314,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSite() {
 		return site;
 	}
@@ -319,6 +324,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSite(String newSite) {
 		String oldSite = site;
 		site = newSite;
@@ -331,6 +337,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getWalltime() {
 		return walltime;
 	}
@@ -340,6 +347,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setWalltime(String newWalltime) {
 		String oldWalltime = walltime;
 		walltime = newWalltime;
@@ -352,6 +360,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshPrivateKey() {
 		return sshPrivateKey;
 	}
@@ -361,6 +370,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshPrivateKey(String newSshPrivateKey) {
 		String oldSshPrivateKey = sshPrivateKey;
 		sshPrivateKey = newSshPrivateKey;
@@ -373,6 +383,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSshPublicKey() {
 		return sshPublicKey;
 	}
@@ -382,6 +393,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSshPublicKey(String newSshPublicKey) {
 		String oldSshPublicKey = sshPublicKey;
 		sshPublicKey = newSshPublicKey;
@@ -394,6 +406,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getImage() {
 		return image;
 	}
@@ -403,6 +416,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImage(String newImage) {
 		String oldImage = image;
 		image = newImage;
@@ -415,6 +429,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getResourceProperties() {
 		return resourceProperties;
 	}
@@ -424,6 +439,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setResourceProperties(String newResourceProperties) {
 		String oldResourceProperties = resourceProperties;
 		resourceProperties = newResourceProperties;
@@ -436,6 +452,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getUseJobReservation() {
 		return useJobReservation;
 	}
@@ -445,6 +462,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUseJobReservation(String newUseJobReservation) {
 		String oldUseJobReservation = useJobReservation;
 		useJobReservation = newUseJobReservation;
@@ -457,6 +475,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getHostToProvision() {
 		return hostToProvision;
 	}
@@ -466,6 +485,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setHostToProvision(String newHostToProvision) {
 		String oldHostToProvision = hostToProvision;
 		hostToProvision = newHostToProvision;
@@ -630,7 +650,7 @@ public class Machinegrid5000Impl extends MachineImpl implements Machinegrid5000 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (username: ");
 		result.append(username);
 		result.append(", password: ");

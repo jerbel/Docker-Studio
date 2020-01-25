@@ -10,7 +10,7 @@
  * - Christophe Gourdin <christophe.gourdin@inria.fr>
  *  
  */
-package org.eclipse.cmf.occi.docker.connector;
+package org.eclipse.cmf.occi.docker.connector.manager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +28,7 @@ import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
 import org.eclipse.cmf.occi.docker.Networklink;
+import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
@@ -898,10 +899,10 @@ public abstract class MachineManager extends ComputeStateMachine<Compute> {
 		// TODO : Replace by a mixin for engine options.
 		if (compute instanceof Machine) {
 			Machine machine = (Machine) compute;
-			if (machine.isSwarm()) {
+			if (machine.getSwarm()) {
 				parameter.append(" --swarm");
 			}
-			if (machine.isSwarmMaster()) {
+			if (machine.getSwarmMaster()) {
 				parameter.append(" --swarm-master");
 			}
 

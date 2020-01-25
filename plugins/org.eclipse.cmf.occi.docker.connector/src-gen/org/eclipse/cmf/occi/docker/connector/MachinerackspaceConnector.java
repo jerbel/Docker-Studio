@@ -16,6 +16,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.manager.MachineManager;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
 import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
@@ -72,8 +73,8 @@ public class MachinerackspaceConnector extends org.eclipse.cmf.occi.docker.impl.
 			if (StringUtils.isNotBlank(getFlavorId())) {
 				sb.append(" --rackspace-flavor-id ").append(getFlavorId());
 			}
-			if (!isDockerInstall()) {
-				sb.append(" --rackspace-docker-install ").append(isDockerInstall());
+			if (!getDockerInstall()) {
+				sb.append(" --rackspace-docker-install ").append(getDockerInstall());
 			}
 		}
 	};

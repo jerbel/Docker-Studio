@@ -34,11 +34,11 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getAuxAddress <em>Aux Address</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getDriver <em>Driver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getGateway <em>Gateway</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#isInternal <em>Internal</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getInternal <em>Internal</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getIpRange <em>Ip Range</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getIpamDriver <em>Ipam Driver</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getIpamOpt <em>Ipam Opt</em>}</li>
- *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#isIpv6 <em>Ipv6</em>}</li>
+ *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getIpv6 <em>Ipv6</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getOpt <em>Opt</em>}</li>
  *   <li>{@link org.eclipse.cmf.occi.docker.impl.NetworkImpl#getSubnet <em>Subnet</em>}</li>
  * </ul>
@@ -147,24 +147,24 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	protected String gateway = GATEWAY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * The default value of the '{@link #getInternal() <em>Internal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isInternal()
+	 * @see #getInternal()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean INTERNAL_EDEFAULT = false;
+	protected static final Boolean INTERNAL_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isInternal() <em>Internal</em>}' attribute.
+	 * The cached value of the '{@link #getInternal() <em>Internal</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isInternal()
+	 * @see #getInternal()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean internal = INTERNAL_EDEFAULT;
+	protected Boolean internal = INTERNAL_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getIpRange() <em>Ip Range</em>}' attribute.
@@ -227,24 +227,24 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	protected String ipamOpt = IPAM_OPT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isIpv6() <em>Ipv6</em>}' attribute.
+	 * The default value of the '{@link #getIpv6() <em>Ipv6</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIpv6()
+	 * @see #getIpv6()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IPV6_EDEFAULT = false;
+	protected static final Boolean IPV6_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isIpv6() <em>Ipv6</em>}' attribute.
+	 * The cached value of the '{@link #getIpv6() <em>Ipv6</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIpv6()
+	 * @see #getIpv6()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean ipv6 = IPV6_EDEFAULT;
+	protected Boolean ipv6 = IPV6_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getOpt() <em>Opt</em>}' attribute.
@@ -310,6 +310,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getNetworkId() {
 		return networkId;
 	}
@@ -319,6 +320,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setNetworkId(String newNetworkId) {
 		String oldNetworkId = networkId;
 		networkId = newNetworkId;
@@ -331,6 +333,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -340,6 +343,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
@@ -352,6 +356,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getAuxAddress() {
 		return auxAddress;
 	}
@@ -361,6 +366,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAuxAddress(String newAuxAddress) {
 		String oldAuxAddress = auxAddress;
 		auxAddress = newAuxAddress;
@@ -373,6 +379,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getDriver() {
 		return driver;
 	}
@@ -382,6 +389,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDriver(String newDriver) {
 		String oldDriver = driver;
 		driver = newDriver;
@@ -394,6 +402,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getGateway() {
 		return gateway;
 	}
@@ -403,6 +412,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setGateway(String newGateway) {
 		String oldGateway = gateway;
 		gateway = newGateway;
@@ -415,7 +425,8 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isInternal() {
+	@Override
+	public Boolean getInternal() {
 		return internal;
 	}
 
@@ -424,8 +435,9 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setInternal(boolean newInternal) {
-		boolean oldInternal = internal;
+	@Override
+	public void setInternal(Boolean newInternal) {
+		Boolean oldInternal = internal;
 		internal = newInternal;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.NETWORK__INTERNAL, oldInternal, internal));
@@ -436,6 +448,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIpRange() {
 		return ipRange;
 	}
@@ -445,6 +458,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIpRange(String newIpRange) {
 		String oldIpRange = ipRange;
 		ipRange = newIpRange;
@@ -457,6 +471,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIpamDriver() {
 		return ipamDriver;
 	}
@@ -466,6 +481,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIpamDriver(String newIpamDriver) {
 		String oldIpamDriver = ipamDriver;
 		ipamDriver = newIpamDriver;
@@ -478,6 +494,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getIpamOpt() {
 		return ipamOpt;
 	}
@@ -487,6 +504,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setIpamOpt(String newIpamOpt) {
 		String oldIpamOpt = ipamOpt;
 		ipamOpt = newIpamOpt;
@@ -499,7 +517,8 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIpv6() {
+	@Override
+	public Boolean getIpv6() {
 		return ipv6;
 	}
 
@@ -508,8 +527,9 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIpv6(boolean newIpv6) {
-		boolean oldIpv6 = ipv6;
+	@Override
+	public void setIpv6(Boolean newIpv6) {
+		Boolean oldIpv6 = ipv6;
 		ipv6 = newIpv6;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DockerPackage.NETWORK__IPV6, oldIpv6, ipv6));
@@ -520,6 +540,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getOpt() {
 		return opt;
 	}
@@ -529,6 +550,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setOpt(String newOpt) {
 		String oldOpt = opt;
 		opt = newOpt;
@@ -541,6 +563,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSubnet() {
 		return subnet;
 	}
@@ -550,6 +573,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSubnet(String newSubnet) {
 		String oldSubnet = subnet;
 		subnet = newSubnet;
@@ -576,7 +600,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 			case DockerPackage.NETWORK__GATEWAY:
 				return getGateway();
 			case DockerPackage.NETWORK__INTERNAL:
-				return isInternal();
+				return getInternal();
 			case DockerPackage.NETWORK__IP_RANGE:
 				return getIpRange();
 			case DockerPackage.NETWORK__IPAM_DRIVER:
@@ -584,7 +608,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 			case DockerPackage.NETWORK__IPAM_OPT:
 				return getIpamOpt();
 			case DockerPackage.NETWORK__IPV6:
-				return isIpv6();
+				return getIpv6();
 			case DockerPackage.NETWORK__OPT:
 				return getOpt();
 			case DockerPackage.NETWORK__SUBNET:
@@ -708,7 +732,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 			case DockerPackage.NETWORK__GATEWAY:
 				return GATEWAY_EDEFAULT == null ? gateway != null : !GATEWAY_EDEFAULT.equals(gateway);
 			case DockerPackage.NETWORK__INTERNAL:
-				return internal != INTERNAL_EDEFAULT;
+				return INTERNAL_EDEFAULT == null ? internal != null : !INTERNAL_EDEFAULT.equals(internal);
 			case DockerPackage.NETWORK__IP_RANGE:
 				return IP_RANGE_EDEFAULT == null ? ipRange != null : !IP_RANGE_EDEFAULT.equals(ipRange);
 			case DockerPackage.NETWORK__IPAM_DRIVER:
@@ -716,7 +740,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 			case DockerPackage.NETWORK__IPAM_OPT:
 				return IPAM_OPT_EDEFAULT == null ? ipamOpt != null : !IPAM_OPT_EDEFAULT.equals(ipamOpt);
 			case DockerPackage.NETWORK__IPV6:
-				return ipv6 != IPV6_EDEFAULT;
+				return IPV6_EDEFAULT == null ? ipv6 != null : !IPV6_EDEFAULT.equals(ipv6);
 			case DockerPackage.NETWORK__OPT:
 				return OPT_EDEFAULT == null ? opt != null : !OPT_EDEFAULT.equals(opt);
 			case DockerPackage.NETWORK__SUBNET:
@@ -734,7 +758,7 @@ public class NetworkImpl extends org.eclipse.cmf.occi.infrastructure.impl.Networ
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (networkId: ");
 		result.append(networkId);
 		result.append(", name: ");

@@ -20,6 +20,8 @@ import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.DockerPackage;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.manager.ComputeStateMachine;
+import org.eclipse.cmf.occi.docker.connector.manager.DockerClientManager;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
 import org.eclipse.cmf.occi.docker.connector.observer.StatsCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
@@ -330,7 +332,11 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void create() {
+		LOGGER.info("HALLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOO WELLLLLLLLLLLLLLLLLTTTTTTTTTTTT");
 		LOGGER.debug("Action create() called on " + this);
+		
+		
+		/*
 		try {
 			Compute machine = getCompute();
 			if (!checkHostMachineStarted()) {
@@ -344,7 +350,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			LOGGER.error("Exception thrown while creating a container : " + this.getName());
 			ex.printStackTrace();
 		}
-
+*/
 		// TODO: Implement how to create this container.
 	}
 	// End of user code
@@ -407,7 +413,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * http://occiware.org/occi/docker/container/action# - term: kill - title:
 	 */
 	@Override
-	public void kill(final String signal) {
+	public void kill() {
+		String signal = "9";
 		LOGGER.debug("Action kill(" + "signal=" + signal + ") called on " + this);
 		Compute machine = getCompute();
 		if (!checkHostMachineStarted()) {

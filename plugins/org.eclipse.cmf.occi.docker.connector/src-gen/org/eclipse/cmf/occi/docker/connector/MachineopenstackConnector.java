@@ -16,6 +16,7 @@ import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.exceptions.ValueNotSetException;
 import org.eclipse.cmf.occi.docker.connector.helpers.Provider;
+import org.eclipse.cmf.occi.docker.connector.manager.MachineManager;
 import org.eclipse.cmf.occi.docker.connector.observer.MachineObserver;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
 import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
@@ -122,8 +123,8 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 
 				sb.append(" --openstack-ssh-user ").append(getSshUser());
 			}
-			if (isInsecure()) {
-				sb.append(" --openstack-insecure ").append(isInsecure());
+			if (getInsecure()) {
+				sb.append(" --openstack-insecure ").append(getInsecure());
 			}
 			if (StringUtils.isNotBlank(getEndpointType())) {
 

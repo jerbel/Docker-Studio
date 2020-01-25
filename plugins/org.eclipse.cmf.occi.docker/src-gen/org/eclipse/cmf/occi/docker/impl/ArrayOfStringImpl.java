@@ -73,6 +73,7 @@ public class ArrayOfStringImpl extends EObjectImpl implements ArrayOfString {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<String> getValues() {
 		if (values == null) {
 			values = new EDataTypeEList<String>(String.class, this, DockerPackage.ARRAY_OF_STRING__VALUES);
@@ -149,7 +150,7 @@ public class ArrayOfStringImpl extends EObjectImpl implements ArrayOfString {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (values: ");
 		result.append(values);
 		result.append(')');

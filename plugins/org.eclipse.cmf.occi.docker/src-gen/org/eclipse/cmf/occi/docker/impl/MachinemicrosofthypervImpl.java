@@ -87,7 +87,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000);
+	protected static final Integer DISK_SIZE_EDEFAULT = null; // TODO The default value literal "20000" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getDiskSize() <em>Disk Size</em>}' attribute.
@@ -163,6 +163,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVirtualSwitch() {
 		return virtualSwitch;
 	}
@@ -172,6 +173,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVirtualSwitch(String newVirtualSwitch) {
 		String oldVirtualSwitch = virtualSwitch;
 		virtualSwitch = newVirtualSwitch;
@@ -184,6 +186,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getBoot2dockerURL() {
 		return boot2dockerURL;
 	}
@@ -193,6 +196,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBoot2dockerURL(String newBoot2dockerURL) {
 		String oldBoot2dockerURL = boot2dockerURL;
 		boot2dockerURL = newBoot2dockerURL;
@@ -205,6 +209,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Integer getDiskSize() {
 		return diskSize;
 	}
@@ -214,6 +219,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDiskSize(Integer newDiskSize) {
 		Integer oldDiskSize = diskSize;
 		diskSize = newDiskSize;
@@ -226,6 +232,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getStaticMacAddress() {
 		return staticMacAddress;
 	}
@@ -235,6 +242,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setStaticMacAddress(String newStaticMacAddress) {
 		String oldStaticMacAddress = staticMacAddress;
 		staticMacAddress = newStaticMacAddress;
@@ -247,6 +255,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getVlanId() {
 		return vlanId;
 	}
@@ -256,6 +265,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setVlanId(String newVlanId) {
 		String oldVlanId = vlanId;
 		vlanId = newVlanId;
@@ -370,7 +380,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (virtualSwitch: ");
 		result.append(virtualSwitch);
 		result.append(", boot2dockerURL: ");
