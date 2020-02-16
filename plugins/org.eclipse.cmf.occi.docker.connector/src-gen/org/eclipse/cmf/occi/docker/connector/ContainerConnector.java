@@ -150,7 +150,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * Constructs a container connector.
 	 */
 	ContainerConnector() {
-		LOGGER.debug("Constructor called on " + this);
+		LOGGER.info("Constructor called on " + this);
 		// TODO: Implement this constructor.
 	}
 	// End of user code
@@ -164,8 +164,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void occiCreate() {
-		LOGGER.debug("occiCreate() called on " + this);
-		LOGGER.debug("Action create() called on " + this);
+		LOGGER.info("occiCreate() called on " + this);
+		LOGGER.info("Action create() called on " + this);
 		
 		try {
 			Compute machine = getCompute();
@@ -191,7 +191,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void occiRetrieve() {
-		LOGGER.debug("occiRetrieve() called on " + this);
+		LOGGER.info("occiRetrieve() called on " + this);
 		if (!checkHostMachineStarted()) {
 			throw new RuntimeException("Host machine is not started !");
 		}
@@ -223,7 +223,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void occiUpdate() {
-		LOGGER.debug("occiUpdate() called on " + this);
+		LOGGER.info("occiUpdate() called on " + this);
 		if (!checkHostMachineStarted()) {
 			throw new RuntimeException("Host machine is not started !");
 		}
@@ -237,7 +237,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void occiDelete() {
-		LOGGER.debug("occiDelete() called on " + this);
+		LOGGER.info("occiDelete() called on " + this);
 		Compute machine = getCompute();
 		if (!checkHostMachineStarted()) {
 			machine.start();
@@ -333,7 +333,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void create() {
 		LOGGER.info("HALLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOO WELLLLLLLLLLLLLLLLLTTTTTTTTTTTT");
-		LOGGER.debug("Action create() called on " + this);
+		LOGGER.info("Action create() called on " + this);
 		
 		
 		/*
@@ -362,7 +362,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void stop() {
-		LOGGER.debug("Action stop() called on " + this);
+		LOGGER.info("Action stop() called on " + this);
 		Compute machine = getCompute();
 		if (!checkHostMachineStarted()) {
 			machine.start();
@@ -378,7 +378,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void run() {
-		LOGGER.debug("Action run() called on " + this);
+		LOGGER.info("Action run() called on " + this);
 		start();
 	}
 	// End of user code
@@ -390,7 +390,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void pause() {
-		LOGGER.debug("Action pause() called on " + this);
+		LOGGER.info("Action pause() called on " + this);
 		suspend(SuspendMethod.SUSPEND);
 	}
 	// End of user code
@@ -402,7 +402,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void unpause() {
-		LOGGER.debug("Action unpause() called on " + this);
+		LOGGER.info("Action unpause() called on " + this);
 		start();
 	}
 	// End of user code
@@ -415,7 +415,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void kill() {
 		String signal = "9";
-		LOGGER.debug("Action kill(" + "signal=" + signal + ") called on " + this);
+		LOGGER.info("Action kill(" + "signal=" + signal + ") called on " + this);
 		Compute machine = getCompute();
 		if (!checkHostMachineStarted()) {
 			machine.start();
