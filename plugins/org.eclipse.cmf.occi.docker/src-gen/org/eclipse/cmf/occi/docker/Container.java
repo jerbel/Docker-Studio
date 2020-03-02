@@ -562,56 +562,6 @@ public interface Container extends Compute {
 	void setDomainName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Mem Limit</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Mem Limit</em>' attribute.
-	 * @see #setMemLimit(Integer)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemLimit()
-	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
-	 * @generated
-	 */
-	Integer getMemLimit();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMemLimit <em>Mem Limit</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Mem Limit</em>' attribute.
-	 * @see #getMemLimit()
-	 * @generated
-	 */
-	void setMemLimit(Integer value);
-
-	/**
-	 * Returns the value of the '<em><b>Memory Swap</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Memory Swap</em>' attribute.
-	 * @see #setMemorySwap(Integer)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemorySwap()
-	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
-	 * @generated
-	 */
-	Integer getMemorySwap();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMemorySwap <em>Memory Swap</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Memory Swap</em>' attribute.
-	 * @see #getMemorySwap()
-	 * @generated
-	 */
-	void setMemorySwap(Integer value);
-
-	/**
 	 * Returns the value of the '<em><b>Privileged</b></em>' attribute.
 	 * The default value is <code>"false"</code>.
 	 * <!-- begin-user-doc -->
@@ -841,6 +791,238 @@ public interface Container extends Compute {
 	void setMacAddress(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Publish All</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Publish All</em>' attribute.
+	 * @see #setPublishAll(Boolean)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_PublishAll()
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
+	 * @generated
+	 */
+	Boolean getPublishAll();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Publish All</em>' attribute.
+	 * @see #getPublishAll()
+	 * @generated
+	 */
+	void setPublishAll(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Read Only</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Read Only</em>' attribute.
+	 * @see #setReadOnly(Boolean)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_ReadOnly()
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
+	 * @generated
+	 */
+	Boolean getReadOnly();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Read Only</em>' attribute.
+	 * @see #getReadOnly()
+	 * @generated
+	 */
+	void setReadOnly(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Monitored</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Monitored</em>' attribute.
+	 * @see #setMonitored(Boolean)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Monitored()
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
+	 * @generated
+	 */
+	Boolean getMonitored();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Monitored</em>' attribute.
+	 * @see #getMonitored()
+	 * @generated
+	 */
+	void setMonitored(Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu Percent</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Cpu Percent</em>' attribute.
+	 * @see #setCpuPercent(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuPercent()
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
+	 * @generated
+	 */
+	String getCpuPercent();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuPercent <em>Cpu Percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu Percent</em>' attribute.
+	 * @see #getCpuPercent()
+	 * @generated
+	 */
+	void setCpuPercent(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Memory Percent</b></em>' attribute.
+	 * The default value is <code>"0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Memory Percent</em>' attribute.
+	 * @see #setMemoryPercent(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemoryPercent()
+	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
+	 * @generated
+	 */
+	String getMemoryPercent();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMemoryPercent <em>Memory Percent</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Memory Percent</em>' attribute.
+	 * @see #getMemoryPercent()
+	 * @generated
+	 */
+	void setMemoryPercent(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Core Max</b></em>' attribute.
+	 * The default value is <code>"1"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Core Max</em>' attribute.
+	 * @see #setCoreMax(Integer)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CoreMax()
+	 * @model default="1" dataType="org.eclipse.cmf.occi.docker.Int"
+	 * @generated
+	 */
+	Integer getCoreMax();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Core Max</em>' attribute.
+	 * @see #getCoreMax()
+	 * @generated
+	 */
+	void setCoreMax(Integer value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu Set Cpus</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * CPUs in which to allow execution (0-3, 0,1)
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Cpu Set Cpus</em>' attribute.
+	 * @see #setCpuSetCpus(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetCpus()
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
+	 * @generated
+	 */
+	String getCpuSetCpus();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu Set Cpus</em>' attribute.
+	 * @see #getCpuSetCpus()
+	 * @generated
+	 */
+	void setCpuSetCpus(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Cpu Set Mems</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Cpu Set Mems</em>' attribute.
+	 * @see #setCpuSetMems(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetMems()
+	 * @model dataType="org.eclipse.cmf.occi.docker.String"
+	 * @generated
+	 */
+	String getCpuSetMems();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cpu Set Mems</em>' attribute.
+	 * @see #getCpuSetMems()
+	 * @generated
+	 */
+	void setCpuSetMems(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Tty</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Tty</em>' attribute.
+	 * @see #setTty(Boolean)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Tty()
+	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
+	 * @generated
+	 */
+	Boolean getTty();
+
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Tty</em>' attribute.
+	 * @see #getTty()
+	 * @generated
+	 */
+	void setTty(Boolean value);
+
+	/**
 	 * Returns the value of the '<em><b>Rm</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -941,82 +1123,54 @@ public interface Container extends Compute {
 	void setLxcConf(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Publish All</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>Mem Limit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Publish All</em>' attribute.
-	 * @see #setPublishAll(Boolean)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_PublishAll()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
+	 * @return the value of the '<em>Mem Limit</em>' attribute.
+	 * @see #setMemLimit(Integer)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemLimit()
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
-	Boolean getPublishAll();
+	Integer getMemLimit();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMemLimit <em>Mem Limit</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Publish All</em>' attribute.
-	 * @see #getPublishAll()
+	 * @param value the new value of the '<em>Mem Limit</em>' attribute.
+	 * @see #getMemLimit()
 	 * @generated
 	 */
-	void setPublishAll(Boolean value);
+	void setMemLimit(Integer value);
 
 	/**
-	 * Returns the value of the '<em><b>Read Only</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Read Only</em>' attribute.
-	 * @see #setReadOnly(Boolean)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_ReadOnly()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
-	 * @generated
-	 */
-	Boolean getReadOnly();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Read Only</em>' attribute.
-	 * @see #getReadOnly()
-	 * @generated
-	 */
-	void setReadOnly(Boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Monitored</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
+	 * Returns the value of the '<em><b>Memory Swap</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * 
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Monitored</em>' attribute.
-	 * @see #setMonitored(Boolean)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Monitored()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
+	 * @return the value of the '<em>Memory Swap</em>' attribute.
+	 * @see #setMemorySwap(Integer)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemorySwap()
+	 * @model dataType="org.eclipse.cmf.occi.docker.Int"
 	 * @generated
 	 */
-	Boolean getMonitored();
+	Integer getMemorySwap();
 
 	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}' attribute.
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMemorySwap <em>Memory Swap</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Monitored</em>' attribute.
-	 * @see #getMonitored()
+	 * @param value the new value of the '<em>Memory Swap</em>' attribute.
+	 * @see #getMemorySwap()
 	 * @generated
 	 */
-	void setMonitored(Boolean value);
+	void setMemorySwap(Integer value);
 
 	/**
 	 * Returns the value of the '<em><b>Cpu Used</b></em>' attribute.
@@ -1067,58 +1221,6 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setMemoryUsed(Integer value);
-
-	/**
-	 * Returns the value of the '<em><b>Cpu Percent</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Cpu Percent</em>' attribute.
-	 * @see #setCpuPercent(String)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuPercent()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
-	 * @generated
-	 */
-	String getCpuPercent();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuPercent <em>Cpu Percent</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cpu Percent</em>' attribute.
-	 * @see #getCpuPercent()
-	 * @generated
-	 */
-	void setCpuPercent(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Memory Percent</b></em>' attribute.
-	 * The default value is <code>"0"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Memory Percent</em>' attribute.
-	 * @see #setMemoryPercent(String)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_MemoryPercent()
-	 * @model default="0" dataType="org.eclipse.cmf.occi.docker.String"
-	 * @generated
-	 */
-	String getMemoryPercent();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getMemoryPercent <em>Memory Percent</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Memory Percent</em>' attribute.
-	 * @see #getMemoryPercent()
-	 * @generated
-	 */
-	void setMemoryPercent(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Disk Used</b></em>' attribute.
@@ -1294,108 +1396,6 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setMemoryMaxValue(Integer value);
-
-	/**
-	 * Returns the value of the '<em><b>Core Max</b></em>' attribute.
-	 * The default value is <code>"1"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Core Max</em>' attribute.
-	 * @see #setCoreMax(Integer)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CoreMax()
-	 * @model default="1" dataType="org.eclipse.cmf.occi.docker.Int"
-	 * @generated
-	 */
-	Integer getCoreMax();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Core Max</em>' attribute.
-	 * @see #getCoreMax()
-	 * @generated
-	 */
-	void setCoreMax(Integer value);
-
-	/**
-	 * Returns the value of the '<em><b>Cpu Set Cpus</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * CPUs in which to allow execution (0-3, 0,1)
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Cpu Set Cpus</em>' attribute.
-	 * @see #setCpuSetCpus(String)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetCpus()
-	 * @model dataType="org.eclipse.cmf.occi.docker.String"
-	 * @generated
-	 */
-	String getCpuSetCpus();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cpu Set Cpus</em>' attribute.
-	 * @see #getCpuSetCpus()
-	 * @generated
-	 */
-	void setCpuSetCpus(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Cpu Set Mems</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Cpu Set Mems</em>' attribute.
-	 * @see #setCpuSetMems(String)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_CpuSetMems()
-	 * @model dataType="org.eclipse.cmf.occi.docker.String"
-	 * @generated
-	 */
-	String getCpuSetMems();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Cpu Set Mems</em>' attribute.
-	 * @see #getCpuSetMems()
-	 * @generated
-	 */
-	void setCpuSetMems(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Tty</b></em>' attribute.
-	 * The default value is <code>"false"</code>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * 
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Tty</em>' attribute.
-	 * @see #setTty(Boolean)
-	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Tty()
-	 * @model default="false" dataType="org.eclipse.cmf.occi.docker.Bool"
-	 * @generated
-	 */
-	Boolean getTty();
-
-	/**
-	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Tty</em>' attribute.
-	 * @see #getTty()
-	 * @generated
-	 */
-	void setTty(Boolean value);
 
 	/**
 	 * <!-- begin-user-doc -->

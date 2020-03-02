@@ -37,7 +37,8 @@ import org.eclipse.emf.ecore.EPackage;
  * <!-- end-user-doc -->
  * @see org.eclipse.cmf.occi.docker.DockerFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/Ecore"
+ *        annotation="http://www.eclipse.org/emf/2002/Ecore invocationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' settingDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot' validationDelegates='http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot'"
+ *        annotation="http://www.eclipse.org/OCL/Import occi='http://schemas.ogf.org/occi/core/ecore' infrastructure='http://schemas.ogf.org/occi/infrastructure/ecore'"
  * @generated
  */
 public interface DockerPackage extends EPackage {
@@ -11225,28 +11226,6 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_DomainName();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMemLimit <em>Mem Limit</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Mem Limit</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getMemLimit()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_MemLimit();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMemorySwap <em>Memory Swap</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Memory Swap</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getMemorySwap()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_MemorySwap();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getPrivileged <em>Privileged</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11346,6 +11325,105 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_MacAddress();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Publish All</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getPublishAll()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_PublishAll();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Read Only</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getReadOnly()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_ReadOnly();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Monitored</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getMonitored()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Monitored();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuPercent <em>Cpu Percent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu Percent</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getCpuPercent()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_CpuPercent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMemoryPercent <em>Memory Percent</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Memory Percent</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getMemoryPercent()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_MemoryPercent();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Core Max</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getCoreMax()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_CoreMax();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu Set Cpus</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getCpuSetCpus()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_CpuSetCpus();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cpu Set Mems</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getCpuSetMems()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_CpuSetMems();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Tty</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getTty()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Tty();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getRm <em>Rm</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -11390,37 +11468,26 @@ public interface DockerPackage extends EPackage {
 	EAttribute getContainer_LxcConf();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getPublishAll <em>Publish All</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMemLimit <em>Mem Limit</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Publish All</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getPublishAll()
+	 * @return the meta object for the attribute '<em>Mem Limit</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getMemLimit()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EAttribute getContainer_PublishAll();
+	EAttribute getContainer_MemLimit();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getReadOnly <em>Read Only</em>}'.
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMemorySwap <em>Memory Swap</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Read Only</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getReadOnly()
+	 * @return the meta object for the attribute '<em>Memory Swap</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getMemorySwap()
 	 * @see #getContainer()
 	 * @generated
 	 */
-	EAttribute getContainer_ReadOnly();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMonitored <em>Monitored</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Monitored</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getMonitored()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_Monitored();
+	EAttribute getContainer_MemorySwap();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuUsed <em>Cpu Used</em>}'.
@@ -11443,28 +11510,6 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContainer_MemoryUsed();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuPercent <em>Cpu Percent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cpu Percent</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getCpuPercent()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_CpuPercent();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getMemoryPercent <em>Memory Percent</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Memory Percent</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getMemoryPercent()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_MemoryPercent();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getDiskUsed <em>Disk Used</em>}'.
@@ -11542,50 +11587,6 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContainer_MemoryMaxValue();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCoreMax <em>Core Max</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Core Max</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getCoreMax()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_CoreMax();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetCpus <em>Cpu Set Cpus</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cpu Set Cpus</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getCpuSetCpus()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_CpuSetCpus();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getCpuSetMems <em>Cpu Set Mems</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cpu Set Mems</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getCpuSetMems()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_CpuSetMems();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getTty <em>Tty</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tty</em>'.
-	 * @see org.eclipse.cmf.occi.docker.Container#getTty()
-	 * @see #getContainer()
-	 * @generated
-	 */
-	EAttribute getContainer_Tty();
 
 	/**
 	 * Returns the meta object for the '{@link org.eclipse.cmf.occi.docker.Container#create() <em>Create</em>}' operation.
@@ -14323,22 +14324,6 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__DOMAIN_NAME = eINSTANCE.getContainer_DomainName();
 
 		/**
-		 * The meta object literal for the '<em><b>Mem Limit</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__MEM_LIMIT = eINSTANCE.getContainer_MemLimit();
-
-		/**
-		 * The meta object literal for the '<em><b>Memory Swap</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__MEMORY_SWAP = eINSTANCE.getContainer_MemorySwap();
-
-		/**
 		 * The meta object literal for the '<em><b>Privileged</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14411,6 +14396,78 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__MAC_ADDRESS = eINSTANCE.getContainer_MacAddress();
 
 		/**
+		 * The meta object literal for the '<em><b>Publish All</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__PUBLISH_ALL = eINSTANCE.getContainer_PublishAll();
+
+		/**
+		 * The meta object literal for the '<em><b>Read Only</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__READ_ONLY = eINSTANCE.getContainer_ReadOnly();
+
+		/**
+		 * The meta object literal for the '<em><b>Monitored</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MONITORED = eINSTANCE.getContainer_Monitored();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu Percent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_PERCENT = eINSTANCE.getContainer_CpuPercent();
+
+		/**
+		 * The meta object literal for the '<em><b>Memory Percent</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__MEMORY_PERCENT = eINSTANCE.getContainer_MemoryPercent();
+
+		/**
+		 * The meta object literal for the '<em><b>Core Max</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CORE_MAX = eINSTANCE.getContainer_CoreMax();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu Set Cpus</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_SET_CPUS = eINSTANCE.getContainer_CpuSetCpus();
+
+		/**
+		 * The meta object literal for the '<em><b>Cpu Set Mems</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__CPU_SET_MEMS = eINSTANCE.getContainer_CpuSetMems();
+
+		/**
+		 * The meta object literal for the '<em><b>Tty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__TTY = eINSTANCE.getContainer_Tty();
+
+		/**
 		 * The meta object literal for the '<em><b>Rm</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -14443,28 +14500,20 @@ public interface DockerPackage extends EPackage {
 		EAttribute CONTAINER__LXC_CONF = eINSTANCE.getContainer_LxcConf();
 
 		/**
-		 * The meta object literal for the '<em><b>Publish All</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Mem Limit</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONTAINER__PUBLISH_ALL = eINSTANCE.getContainer_PublishAll();
+		EAttribute CONTAINER__MEM_LIMIT = eINSTANCE.getContainer_MemLimit();
 
 		/**
-		 * The meta object literal for the '<em><b>Read Only</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Memory Swap</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CONTAINER__READ_ONLY = eINSTANCE.getContainer_ReadOnly();
-
-		/**
-		 * The meta object literal for the '<em><b>Monitored</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__MONITORED = eINSTANCE.getContainer_Monitored();
+		EAttribute CONTAINER__MEMORY_SWAP = eINSTANCE.getContainer_MemorySwap();
 
 		/**
 		 * The meta object literal for the '<em><b>Cpu Used</b></em>' attribute feature.
@@ -14481,22 +14530,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__MEMORY_USED = eINSTANCE.getContainer_MemoryUsed();
-
-		/**
-		 * The meta object literal for the '<em><b>Cpu Percent</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__CPU_PERCENT = eINSTANCE.getContainer_CpuPercent();
-
-		/**
-		 * The meta object literal for the '<em><b>Memory Percent</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__MEMORY_PERCENT = eINSTANCE.getContainer_MemoryPercent();
 
 		/**
 		 * The meta object literal for the '<em><b>Disk Used</b></em>' attribute feature.
@@ -14553,38 +14586,6 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__MEMORY_MAX_VALUE = eINSTANCE.getContainer_MemoryMaxValue();
-
-		/**
-		 * The meta object literal for the '<em><b>Core Max</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__CORE_MAX = eINSTANCE.getContainer_CoreMax();
-
-		/**
-		 * The meta object literal for the '<em><b>Cpu Set Cpus</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__CPU_SET_CPUS = eINSTANCE.getContainer_CpuSetCpus();
-
-		/**
-		 * The meta object literal for the '<em><b>Cpu Set Mems</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__CPU_SET_MEMS = eINSTANCE.getContainer_CpuSetMems();
-
-		/**
-		 * The meta object literal for the '<em><b>Tty</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTAINER__TTY = eINSTANCE.getContainer_Tty();
 
 		/**
 		 * The meta object literal for the '<em><b>Create</b></em>' operation.

@@ -166,22 +166,33 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void occiCreate() {
 		LOGGER.info("occiCreate() called on " + this);
 		LOGGER.info("Action create() called on " + this);
-		
-		try {
-			Compute machine = getCompute();
-			if (!checkHostMachineStarted()) {
-				machine.start();
-			}
-			this.createContainer(getCompute());
-			containerObserver = new ContainerObserver();
-			// Ensure that observer is not set.
-			containerObserver.removeListener(this);
-			containerObserver.listener(this, getCompute());
+		// Existence of compute node has to be checked because for modeling at runtime
+		// there won't be a compute node and the creation process would be stopped by
+		// NullPointerException thrown by checkHostMachineStarted()
+		if (hasCompute()) {
+			LOGGER.info("Container has a compute node");
+			try {
+				Compute machine = getCompute();
+				if (!checkHostMachineStarted()) {
+					machine.start();
+				}
+				this.createContainer(getCompute());
+				containerObserver = new ContainerObserver();
+				// Ensure that observer is not set.
+				containerObserver.removeListener(this);
+				containerObserver.listener(this, getCompute());
 
-		} catch (DockerException ex) {
-			LOGGER.error("Exception thrown while creating a container : " + this.getName());
-			ex.printStackTrace();
+			} catch (DockerException ex) {
+				LOGGER.error("Exception thrown while creating a container : " + this.getName());
+				ex.printStackTrace();
+			}
+		} else {
+			LOGGER.info("Container has no compute node");
 		}
+	}
+
+	private boolean hasCompute() {
+		return getCompute() != null;
 	}
 	// End of user code
 
@@ -238,12 +249,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiDelete() {
 		LOGGER.info("occiDelete() called on " + this);
-		Compute machine = getCompute();
-		if (!checkHostMachineStarted()) {
-			machine.start();
-		}
 		try {
-			removeContainer(getCompute());
+			if(hasCompute()) {
+				Compute machine = getCompute();
+				if (!checkHostMachineStarted()) {
+					machine.start();
+				}
+				removeContainer(getCompute());
+			}
+			
 			if (containerObserver != null) {
 				containerObserver.removeListener(this);
 			}
@@ -264,7 +278,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 				machine.start();
 			}
 			stateMachine.start();
-			
+
 			if (containerObserver == null && machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 				// Add listener here
 				containerObserver = new ContainerObserver();
@@ -334,23 +348,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void create() {
 		LOGGER.info("HALLLLLLLLLLLLLLLLLLLLLOOOOOOOOOOOOOOOOOOOOO WELLLLLLLLLLLLLLLLLTTTTTTTTTTTT");
 		LOGGER.info("Action create() called on " + this);
-		
-		
+
 		/*
-		try {
-			Compute machine = getCompute();
-			if (!checkHostMachineStarted()) {
-				machine.start();
-			}
-			this.createContainer(getCompute());
-			// Ensure that observer is not set.
-			containerObserver.removeListener(this);
-			containerObserver.listener(this, machine);
-		} catch (DockerException ex) {
-			LOGGER.error("Exception thrown while creating a container : " + this.getName());
-			ex.printStackTrace();
-		}
-*/
+		 * try { Compute machine = getCompute(); if (!checkHostMachineStarted()) {
+		 * machine.start(); } this.createContainer(getCompute()); // Ensure that
+		 * observer is not set. containerObserver.removeListener(this);
+		 * containerObserver.listener(this, machine); } catch (DockerException ex) {
+		 * LOGGER.error("Exception thrown while creating a container : " +
+		 * this.getName()); ex.printStackTrace(); }
+		 */
 		// TODO: Implement how to create this container.
 	}
 	// End of user code
@@ -423,7 +429,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		if (dockerClientManager == null) {
 			dockerClientManager = new DockerClientManager();
 		}
-		
+
 		if (containerid == null) {
 			occiRetrieve();
 		}
@@ -451,14 +457,24 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 *         executed locally (on linux only).
 	 */
 	public Compute getCompute() {
+//		LOGGER.debug("*****************************************************************************************");
+//		LOGGER.info("called ContainerConnector getCompute()");
 		Compute compute = null;
 		for (Link link : this.getRlinks()) {
+//			LOGGER.debug("connected link: " + link);
+//			LOGGER.debug("link instanceof Contains: " + (link instanceof Contains));
+//			LOGGER.debug("link.getSource(): " + link.getSource());
+//			LOGGER.debug("link.getSource() instanceof Machine: " + (link.getSource() instanceof Machine));
 			if (link instanceof Contains && link.getSource() instanceof Machine) {
+//				LOGGER.debug("the link is a Contains link and its source is a Machine");
 				compute = (Compute) link.getSource();
 				System.out.println("Container is contained in a Machine : " + link.getSource().toString());
 				break;
+			} else {
+				
 			}
 		}
+//		LOGGER.info("*****************************************************************************************");
 		return compute;
 	}
 
@@ -551,6 +567,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * @return
 	 */
 	public Compute linkContainerToMachine(Compute machine) {
+		LOGGER.info("Method linkContainerToMachine() called on ContainerConnector with compute node " + machine);
 		Contains contains = DockerPackage.eINSTANCE.getDockerFactory().createContains();
 		contains.setTarget(this);
 		contains.setSource(machine);
@@ -572,6 +589,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * @return true if host machine is activated else false.
 	 */
 	public boolean checkHostMachineStarted() {
+		
+		if (!hasCompute())
+			//Adding additional info for debugging purpose
+			throw new NullPointerException("Container has no Compute node!");
 		if (getCompute().getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 			return true;
 		} else {

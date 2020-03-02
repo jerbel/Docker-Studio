@@ -326,7 +326,7 @@ public class MachinedigitaloceanImpl extends MachineImpl implements Machinedigit
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (accessToken: ");
 		result.append(accessToken);
 		result.append(", image: ");

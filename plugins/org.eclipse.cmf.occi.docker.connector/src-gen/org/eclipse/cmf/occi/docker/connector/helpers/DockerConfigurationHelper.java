@@ -71,6 +71,7 @@ public class DockerConfigurationHelper {
 		Properties prop = new Properties();
 
 		try {
+			LOGGER.info("try to load docker config from: " + homePath + DOCKER_PROPERTIES_FILENAME);
 			in = new FileInputStream(homePath + DOCKER_PROPERTIES_FILENAME);
 			prop.load(in);
 			if (in != null) {
