@@ -9,5 +9,7 @@
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="src" path="/org.eclipse.cmf.occi.docker"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="lib" path="lib/slf4j-simple-1.7.25.jar"/>
+	<classpathentry kind="lib" path="lib/slf4j-api-1.7.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
