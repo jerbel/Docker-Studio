@@ -14,41 +14,47 @@ import org.eclipse.cmf.occi.infrastructure.Networkinterface;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class ContainerConnectorTest {
-	
-	static final String IP_ADDRESS = "localhost";
-	
-	ContainerConnector containerConnector;
-	MachineConnector machineConnector;
+class ContainerOnOpenStackVMTest {
 
-	@BeforeEach
-	public void setUp() throws Exception {
-		setUpExtensions();
-		containerConnector = new ContainerConnector();
-		containerConnector.setName(getRandomContainerName());//muss gesetzt sein
-		machineConnector = createMachineConnector();
-		
-		Contains containsLink = DockerFactory.eINSTANCE.createContains();
-		containsLink.setSource(machineConnector);
-		containerConnector.getRlinks().add(containsLink);
-	}
+	static final String IP_ADDRESS = "localhost";
 	
 	public void setUpExtensions() {
 		OcciRegistry.getInstance().registerExtension("http://occiware.org/occi/docker#",Paths.get("/org.eclipse.cmf.occi.docker/model/docker.occie").toString());
 		OcciRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#",Paths.get("testextensions/Infrastructure.occie").toString());
 	}
 	
-	public MachineConnector createMachineConnector() {
-		MachineConnector machineConnector = new MachineConnector();
+	@BeforeEach
+	public void setUp() {
+		setUpExtensions();
+	}
+	
+	@Test
+	void test() {
+		MachineopenstackConnector machineConnector = new MachineopenstackConnector();
 		machineConnector.setTitle("machine1");
-		machineConnector.setName("machine1"); //Muss gesetzt sein , da sonst in preCheckDockerClient des DockerClientManagers Nullponterexception auftritt.
+		machineConnector.setName("machine1");
+		machineConnector.setSwarm(false);
+		machineConnector.setSwarmMaster(false);
+		
+		machineConnector.setOcciComputeMemory((float)0.0F); //mit diesem value setzt der machinevirtualboxmanager den wert selbst
+		machineConnector.setOcciComputeCores(0); //selbe Situation
+		
+		machineConnector.setAuthUrl("");
+		machineConnector.setFlavorId("");
+		machineConnector.setImageId("");
+		machineConnector.setTenantId("");
+		machineConnector.setTenantName("");
+		machineConnector.setUsername("");
+		machineConnector.setPassword("");
+		machineConnector.setFloatingIpPool("");
+//		machineConnector.setDomainName(newDomainName);
 		
 		Networkinterface nic = InfrastructureFactory.eINSTANCE.createNetworkinterface();
 		Ipnetworkinterface ipNetworkMixinBase = InfrastructureFactory.eINSTANCE.createIpnetworkinterface();
-	
+		
 		AttributeState ipaddress = OCCIFactory.eINSTANCE.createAttributeState();
 		ipaddress.setName("occi.networkinterface.address");
-		// we set ip both as AttributeState and member variable, since otherwise we might encounter inconsistencies
+		
 		ipaddress.setValue(IP_ADDRESS);
 		ipNetworkMixinBase.setOcciNetworkinterfaceAddress(IP_ADDRESS);
 		ipNetworkMixinBase.getAttributes().add(ipaddress);
@@ -56,11 +62,13 @@ class ContainerConnectorTest {
 		
 		machineConnector.getLinks().add(nic);
 		
-		return machineConnector;
-	}
-
-	@Test
-	public void testOcciContainerCreation() {
+		ContainerConnector containerConnector = new ContainerConnector();
+		containerConnector.setName(getRandomContainerName());
+		
+		Contains containsLink = DockerFactory.eINSTANCE.createContains();
+		containsLink.setSource(machineConnector);
+		containerConnector.getRlinks().add(containsLink);
+		
 		containerConnector.occiCreate();
 		containerConnector.start();
 		containerConnector.stop();

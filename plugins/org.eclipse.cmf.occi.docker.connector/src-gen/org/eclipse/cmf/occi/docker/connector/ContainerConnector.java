@@ -279,9 +279,6 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 				machine.start();
 			}
 			
-			//edited
-			createContainer(machine);
-			
 			stateMachine.start();
 
 			if (containerObserver == null && machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {

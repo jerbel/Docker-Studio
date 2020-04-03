@@ -216,6 +216,11 @@ public class DockerMachineHelper {
 		String command = DockerMachineCommandFactory.createUrlCommand(machineName);
 		String temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp://", "");
 		int index = temp.indexOf(":");
+		
+		//In some cases temp is "" and a StringIndexOutOfBoundsException is thrown
+		if(temp.equals(""))
+			return "";
+		
 		String result = temp.substring(0, index);
 		return result;
 	}

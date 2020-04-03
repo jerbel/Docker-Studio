@@ -140,7 +140,9 @@ public class DockerConfigurationHelper {
 			prop = loadDockerConfig();
 		} catch (IOException ex) {
 			LOGGER.error("Error while loading configuration file : " + ex.getMessage());
-			throw new DockerException(ex);
+			LOGGER.info("The DockerClient will be created with the default configuration");
+			return DockerClientBuilder.getInstance().build();
+//			throw new DockerException(ex);
 		}
 
 		URI endpoint = DockerMachineHelper.getEndpoint(compute);

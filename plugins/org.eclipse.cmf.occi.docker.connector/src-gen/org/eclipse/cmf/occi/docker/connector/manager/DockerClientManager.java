@@ -609,7 +609,6 @@ public class DockerClientManager {
 			this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
 			this.compute = computeMachine;
 		}
-
 	}
 
 	/**
