@@ -4,10 +4,14 @@ Bundle-Name: org.eclipse.cmf.occi.docker.connector
 Bundle-SymbolicName: org.eclipse.cmf.occi.docker.connector;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
- lib/docker-java-3.0.14.jar,
  lib/jackson-core-2.9.1.jar,
  lib/jackson-databind-2.9.1.jar,
- lib/commons-io-2.5.jar
+ lib/commons-io-2.5.jar,
+ lib/docker-java-3.2.1.jar,
+ lib/docker-java-api-3.2.1.jar,
+ lib/docker-java-core-3.2.1.jar,
+ lib/docker-java-transport-jersey-3.2.1.jar,
+ lib/docker-java-transport-netty-3.2.1.jar
 Bundle-Vendor: OCCIware
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy

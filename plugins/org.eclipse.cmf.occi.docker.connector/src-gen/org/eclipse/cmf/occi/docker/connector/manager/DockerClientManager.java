@@ -53,6 +53,7 @@ import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.command.CreateNetworkCmd;
 import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.command.PullImageResultCallback;
 import com.github.dockerjava.api.exception.InternalServerErrorException;
 import com.github.dockerjava.api.model.Bind;
 import com.github.dockerjava.api.model.ExposedPort;
@@ -64,7 +65,6 @@ import com.github.dockerjava.api.model.Ports.Binding;
 import com.github.dockerjava.api.model.RestartPolicy;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.api.model.VolumesFrom;
-import com.github.dockerjava.core.command.PullImageResultCallback;
 import com.github.dockerjava.core.command.WaitContainerResultCallback;
 import com.google.common.collect.Multimap;
 import com.jcraft.jsch.Channel;
@@ -929,17 +929,27 @@ public class DockerClientManager {
 		try {
 			// If the given image tag doesn't contain a version number, add "latest" as tag
 			if (containerImage.indexOf(':') < 0) {
-				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback())
-						.awaitSuccess();
+				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).awaitCompletion();
 			} else {
-				dockerClient.pullImageCmd(containerImage).exec(new PullImageResultCallback()).awaitSuccess();
+				dockerClient.pullImageCmd(containerImage).exec(new PullImageResultCallback()).awaitCompletion();
 			}
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage());
-			throw new DockerException(e.getMessage(), e);
+			throw new DockerException(e);
 		}
 		System.out.println("Download is finished");
 		return this.dockerClient;
+	}
+	
+	public void runImage(Compute compute, String image) throws DockerException {
+		preCheckDockerClient(compute);
+		
+		LOGGER.info("Running Container");
+		if (!StringUtils.isNotBlank(image)) {
+			image = "busybox";
+			System.out.println("Use the default Docker Image: " + image);
+		}
+		
+		dockerClient.createContainerCmd(image).exec();
 	}
 
 	/**

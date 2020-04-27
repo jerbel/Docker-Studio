@@ -79,15 +79,20 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 						dockerClientManager = new DockerClientManager(machine, eventCallBack);
 					}
 					System.out.println("Command to execute : " + getCommand());
-					// First check if container already exist.
-					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
-						// Create the container..
-						createContainer(machine);
-					}
+					/**
+					 * This block was commented out due to debugging in the Martserver environment (IllegalStateException "Connection is still allocated" was thrown otherwise)
+					 */
+//					// First check if container already exist.
+//					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
+//						// Create the container..
+//						createContainer(machine);
+//					}
+					createContainer(machine);
+					
 					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
 				} catch (Exception e) {
 					throw new DockerException(
-							"Exception thrown while starting container : " + getName() + " --< " + e.getMessage());
+							"Exception thrown while starting container " + getName(),e);
 				}
 			} else {
 				System.out.println("Host is suspended or inactive.");
@@ -498,7 +503,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 
 		// Download image
-		dockerClientManager.pullImage(machine, this.image);
+		dockerClientManager.pullImage(machine, this.image); //throws focker exceptions runImage RESTEASY003145
+		
+//		dockerClientManager.runImage(machine, this.image);
 
 		// Create the container
 		dockerClientManager.createContainer(machine, this);

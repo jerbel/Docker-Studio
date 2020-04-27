@@ -33,6 +33,9 @@ import org.eclipse.emf.transaction.util.TransactionUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.github.dockerjava.api.model.CpuStatsConfig;
+import com.github.dockerjava.api.model.CpuUsageConfig;
+import com.github.dockerjava.api.model.StatisticNetworksConfig;
 import com.github.dockerjava.api.model.Statistics;
 import com.github.dockerjava.core.async.ResultCallbackTemplate;
 
@@ -92,33 +95,51 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 			return;
 		}
 		// Calculate the percentage of CPU used
-		Map<String, Object> cpu = stats.getCpuStats();
+//		Map<String, Object> cpu = stats.getCpuStats();
+		CpuStatsConfig cpu = stats.getCpuStats();
 
-		LinkedHashMap<String, Object> tmpcpu = (LinkedHashMap<String, Object>) cpu.get("cpu_usage");
-		Object cpuUsed = tmpcpu.get("total_usage");
-		Object percpuUsage = tmpcpu.get("percpu_usage");
-		Object systemCpuUsage = cpu.get("system_cpu_usage");
-		Object percpuUsageSize = (List<Object>) percpuUsage;
+//		LinkedHashMap<String, Object> tmpcpu = (LinkedHashMap<String, Object>) cpu.get("cpu_usage");
+		CpuUsageConfig cpuUsageConfig = cpu.getCpuUsage();
+//		Object cpuUsed = tmpcpu.get("total_usage");
+//		Object percpuUsage = tmpcpu.get("percpu_usage");
+//		Object systemCpuUsage = cpu.get("system_cpu_usage");
+//		Object percpuUsageSize = (List<Object>) percpuUsage;
+		
+		Object cpuUsed = cpuUsageConfig.getTotalUsage();
+		List<Long> percpuUsage = cpuUsageConfig.getPercpuUsage();
+		Object systemCpuUsage = cpu.getSystemCpuUsage();
+		
 		// Memory.
-		Integer memUsed = (Integer) stats.getMemoryStats().get("usage");
+//		Integer memUsed = (Integer) stats.getMemoryStats().get("usage");
+		Integer memUsed = stats.getMemoryStats().getUsage().intValue();
+		
 		System.out.println("mem used : " + memUsed);
 		
-		Object memLimitObj = stats.getMemoryStats().get("limit");
+//		Object memLimitObj = stats.getMemoryStats().get("limit");
+		Object memLimitObj = stats.getMemoryStats().getLimit();
+		
 		// Parse to long the memLimitObj
 		Long memLimit = Long.valueOf(memLimitObj.toString());
 		System.out.println("mem limit: " + memLimit);
 		
-		Map<String, Object> networks = stats.getNetworks();
+//		Map<String, Object> networks = stats.getNetworks();
+		Map<String, StatisticNetworksConfig> networks = stats.getNetworks();
+		
 		// Map<String, Object> network = stats.getNetwork();
 		Integer networkR = null;
 		Integer networkT = null;
 		Integer bandwitdh = null;
 		try {
 			if (networks != null) {
-				LinkedHashMap<String, Object> tmpnetworks = (LinkedHashMap<String, Object>) networks.get("eth0");
+//				LinkedHashMap<String, Object> tmpnetworks = (LinkedHashMap<String, Object>) networks.get("eth0");
+				StatisticNetworksConfig tmpnetworks = networks.get("eth0");
+				
 				// System.out.println("Networks : {}", tmpnetworks)
-				networkR = (Integer) tmpnetworks.get("rx_bytes");
-				networkT = (Integer) tmpnetworks.get("tx_bytes");
+//				networkR = (Integer) tmpnetworks.get("rx_bytes");
+//				networkT = (Integer) tmpnetworks.get("tx_bytes");
+				networkR = tmpnetworks.getRxBytes().intValue();
+				networkR = tmpnetworks.getTxBytes().intValue();
+				
 				bandwitdh = networkR + networkT;
 			}
 
@@ -136,13 +157,17 @@ public class StatsCallBack extends ResultCallbackTemplate<StatsCallBack, Statist
 
 		if (cpuTotalUsageQueue.size() == 2 && cpuSystemUsageQueue.size() == 2) {
 			// Calculate the percentage
+//			Float percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue,
+//					((List<Statistics>) percpuUsageSize).size());
 			Float percent = calculateCPUPercent(cpuTotalUsageQueue, cpuSystemUsageQueue,
-					((List<Statistics>) percpuUsageSize).size());
+					percpuUsage.size());
 			// Update the monitoring metrics
 			try {
 				System.out.println("Container : " + this.container.getContainerid());
+//				modifyResourceSet(this.container, cpuUsed.toString(), percent, memUsed, memLimit, bandwitdh,
+//						((List<Statistics>) percpuUsageSize).size(), updateMaxCpu);
 				modifyResourceSet(this.container, cpuUsed.toString(), percent, memUsed, memLimit, bandwitdh,
-						((List<Statistics>) percpuUsageSize).size(), updateMaxCpu);
+						percpuUsage.size(), updateMaxCpu);
 				updateMaxCpu = true;
 			} catch (Exception e) {
 				LOGGER.error("Exception thrown : " + e.getClass().getName() + " --> " + e.getMessage());
