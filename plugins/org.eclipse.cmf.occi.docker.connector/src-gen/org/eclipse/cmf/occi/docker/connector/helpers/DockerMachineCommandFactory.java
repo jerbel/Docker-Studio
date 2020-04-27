@@ -76,11 +76,12 @@ public class DockerMachineCommandFactory {
 		return command;
 	}
 
+	//had to add force flag otherwise the it will ask for yes and wont execute the command
 	public static String createRemoveCommand(String machineName) {
-		String command = String.format("%s rm %s", dockerMachineCmd, machineName);
+		String command = String.format("%s rm -f %s", dockerMachineCmd, machineName);
 		return command;
 	}
-
+	
 	public static String createUrlCommand(String machineName) {
 		String command = String.format("%s url %s", dockerMachineCmd, machineName);
 		return command;

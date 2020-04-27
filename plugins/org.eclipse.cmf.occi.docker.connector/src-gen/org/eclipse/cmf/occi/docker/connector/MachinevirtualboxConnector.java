@@ -48,32 +48,36 @@ public class MachinevirtualboxConnector extends org.eclipse.cmf.occi.docker.impl
 			if (getDiskSize() > 0) {
 				sb.append(" --virtualbox-disk-size ").append(getDiskSize());
 			}
-			if (getOcciComputeMemory() > 0.0F) {
+			if (getOcciComputeMemory() != null && getOcciComputeMemory() > 0.0F) {
 				sb.append(" --virtualbox-memory ").append(getOcciComputeMemory().intValue());
-			} else if (getOcciComputeMemory() == 0.0F) {
-				sb.append(" --virtualbox-memory ").append(1024);
-			}
-			if (getOcciComputeCores() > 0) {
+			} 
+//			else if (getOcciComputeMemory() == 0.0F) {
+//				sb.append(" --virtualbox-memory ").append(1024);
+//			}
+			
+			if (getOcciComputeCores() != null && getOcciComputeCores() > 0) {
 				sb.append(" --virtualbox-cpu-count ").append(getOcciComputeCores());
-			} else if (getOcciComputeCores() == 0) {
-				sb.append(" --virtualbox-cpu-count ").append(-1);
-			}
+			} 
+//			else if (getOcciComputeCores() == 0) {
+//				sb.append(" --virtualbox-cpu-count ").append(-1);
+//			}
+			
 			if (!StringUtils.isEmpty(getBoot2dockerURL())) {
 				sb.append(" --virtualbox-boot2docker-url ").append(getBoot2dockerURL());
-			}else{
-				// TODO : Update version, use configuration file for this value, this must not be set on hard as this..
-				// Use boot2docker v1.11.2
-				sb.append(" --virtualbox-boot2docker-url ").append("https://github.com/boot2docker/boot2docker/releases/download/v1.11.2/boot2docker.iso");
 			}
+//			else{
+//				// TODO : Update version, use configuration file for this value, this must not be set on hard as this..
+//				// Use boot2docker v1.11.2
+//				sb.append(" --virtualbox-boot2docker-url ").append("https://github.com/boot2docker/boot2docker/releases/download/v1.11.2/boot2docker.iso");
+//			}
+			
 			if (getHostDNSResolver()) {
 				sb.append(" --virtualbox-host-dns-resolver ").append(getHostDNSResolver());
 			}
 			if (!StringUtils.isEmpty(getImportBoot2DockerVM())) {
 				sb.append(" --virtualbox-import-boot2docker-vm ").append(getImportBoot2DockerVM());
 			}
-			if (getHostDNSResolver()) {
-				sb.append(" --virtualbox-host-dns-resolver ").append(getHostDNSResolver());
-			}
+			
 			if (!StringUtils.isEmpty(getHostOnlyNICType())) {
 				sb.append(" --virtualbox-hostonly-nictype ").append(getHostOnlyNICType());
 			}

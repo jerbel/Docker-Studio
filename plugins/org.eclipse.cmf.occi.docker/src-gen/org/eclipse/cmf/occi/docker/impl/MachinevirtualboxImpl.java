@@ -73,7 +73,7 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(20000); // TODO The default value literal "20000" is not valid.
+	protected static final Integer DISK_SIZE_EDEFAULT = new Integer(0); // TODO The default value literal "20000" is not valid.
 
 	/**
 	 * The cached value of the '{@link #getDiskSize() <em>Disk Size</em>}' attribute.
@@ -153,7 +153,8 @@ public class MachinevirtualboxImpl extends MachineImpl implements Machinevirtual
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String HOST_ONLY_NIC_TYPE_EDEFAULT = "82540EM";
+//	protected static final String HOST_ONLY_NIC_TYPE_EDEFAULT = "82540EM";
+	protected static final String HOST_ONLY_NIC_TYPE_EDEFAULT = null;
 
 	/**
 	 * The cached value of the '{@link #getHostOnlyNICType() <em>Host Only NIC Type</em>}' attribute.

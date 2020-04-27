@@ -226,7 +226,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Boolean SWARM_EDEFAULT = null;
+	protected static final Boolean SWARM_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #getSwarm() <em>Swarm</em>}' attribute.
@@ -266,7 +266,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Boolean SWARM_MASTER_EDEFAULT = null;
+	protected static final Boolean SWARM_MASTER_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #getSwarmMaster() <em>Swarm Master</em>}' attribute.
