@@ -16,7 +16,7 @@
 
    <!-- Register the docker extension. -->
    <extension point="org.eclipse.cmf.occi.core.occie">
-      <occie scheme="http://occiware.org/occi/docker#" file="model/docker.occie.test"/>
+      <occie scheme="http://occiware.org/occi/docker#" file="model/docker.occie"/>
    </extension>
 
    <!-- Define URI mapping. -->

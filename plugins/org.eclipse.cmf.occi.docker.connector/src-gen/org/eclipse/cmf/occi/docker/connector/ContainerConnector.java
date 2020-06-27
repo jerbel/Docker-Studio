@@ -82,12 +82,11 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					/**
 					 * This block was commented out due to debugging in the Martserver environment (IllegalStateException "Connection is still allocated" was thrown otherwise)
 					 */
-//					// First check if container already exist.
-//					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
-//						// Create the container..
-//						createContainer(machine);
-//					}
-					createContainer(machine);
+					// First check if container already exist.
+					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
+						// Create the container..
+						createContainer(machine);
+					}
 					
 					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
 				} catch (Exception e) {
@@ -225,7 +224,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 		// Retrieve infos...
 		try {
-			dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
+			if(dockerClientManager != null)
+				dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
+			else
+				LOGGER.warn("Failed to retrive infos from the container. dockerClientManager wasn't initialized!");
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while retrieving docker container on compute: " + getCompute()
 					+ " for container : " + this.getName());
@@ -503,9 +505,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 
 		// Download image
-		dockerClientManager.pullImage(machine, this.image); //throws focker exceptions runImage RESTEASY003145
-		
-//		dockerClientManager.runImage(machine, this.image);
+		dockerClientManager.pullImage(machine, this.image);
 
 		// Create the container
 		dockerClientManager.createContainer(machine, this);

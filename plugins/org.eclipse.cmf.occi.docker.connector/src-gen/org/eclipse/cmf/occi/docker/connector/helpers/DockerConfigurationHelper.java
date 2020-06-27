@@ -27,8 +27,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.command.DockerCmdExecFactory;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
+import com.github.dockerjava.jaxrs.JerseyDockerCmdExecFactory;
+import com.github.dockerjava.netty.NettyDockerCmdExecFactory;
 
 /**
  * Helper class to read properties config from docker.properties file located on
@@ -217,7 +220,11 @@ public class DockerConfigurationHelper {
 			.withDockerCertPath(certPathString).build();
 		}
 		
-		dockerClient = DockerClientBuilder.getInstance(config).build();
+		DockerCmdExecFactory dockerCmdExecFactory = new NettyDockerCmdExecFactory();
+		
+		dockerClient = DockerClientBuilder.getInstance(config)
+				.withDockerCmdExecFactory(dockerCmdExecFactory)
+				.build();
 
 		return dockerClient;
 	}

@@ -80,6 +80,8 @@ import com.jcraft.jsch.Session;
  *
  */
 public class DockerClientManager {
+	
+	public static final String DEFAULT_IMAGE = "ubuntu";
 
 	private DockerClient dockerClient = null;
 
@@ -91,7 +93,7 @@ public class DockerClientManager {
 
 	// private PreferenceValues properties = new PreferenceValues();
 
-	public static final String DEFAULT_IMAGE_NAME = "busybox";
+	public static final String DEFAULT_IMAGE_NAME = "ubuntu";
 
 	public DockerClientManager(Compute compute) throws DockerException {
 		this.compute = compute;
@@ -921,7 +923,7 @@ public class DockerClientManager {
 
 		String containerImage = image;
 		if (!StringUtils.isNotBlank(containerImage)) {
-			containerImage = "busybox";
+			containerImage = DEFAULT_IMAGE;
 			System.out.println("Use the default Docker Image: " + containerImage);
 		}
 		System.out.println("Downloading image: ->" + containerImage);
@@ -945,7 +947,7 @@ public class DockerClientManager {
 		
 		LOGGER.info("Running Container");
 		if (!StringUtils.isNotBlank(image)) {
-			image = "busybox";
+			image = DEFAULT_IMAGE;
 			System.out.println("Use the default Docker Image: " + image);
 		}
 		
