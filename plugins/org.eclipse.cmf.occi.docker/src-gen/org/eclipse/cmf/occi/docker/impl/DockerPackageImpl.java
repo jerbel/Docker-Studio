@@ -3242,6 +3242,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__CPU_SET_CPUS);
 		createEAttribute(containerEClass, CONTAINER__CPU_SET_MEMS);
 		createEAttribute(containerEClass, CONTAINER__TTY);
+		createEAttribute(containerEClass, CONTAINER__IPADDRESS);
 		createEOperation(containerEClass, CONTAINER___CREATE);
 		createEOperation(containerEClass, CONTAINER___STOP);
 		createEOperation(containerEClass, CONTAINER___RUN);
@@ -3618,6 +3619,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_CpuSetCpus(), this.getString(), "cpuSetCpus", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_CpuSetMems(), this.getString(), "cpuSetMems", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Tty(), this.getBool(), "tty", "false", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Ipaddress(), this.getString(), "ipaddress", "0.0.0.0", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -3931,6 +3933,11 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 			 "occi", "http://schemas.ogf.org/occi/core/ecore",
 			 "infrastructure", "http://schemas.ogf.org/occi/infrastructure/ecore"
 		   });
+	}
+
+	@Override
+	public EAttribute getContainer_Ipaddress() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(52);
 	}
 
 } //DockerPackageImpl

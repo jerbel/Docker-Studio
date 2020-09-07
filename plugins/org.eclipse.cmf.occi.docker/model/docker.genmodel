@@ -185,6 +185,9 @@
       <genFeatures createChild="false">
         <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/tty"/>
       </genFeatures>
+   	  <genFeatures createChild="false">
+        <ecoreFeature xsi:type="ecore:EAttribute" href="docker.ecore#//Container/ipaddress"/>
+      </genFeatures>
       <genOperations>
         <ecoreOperation href="docker.ecore#//Container/create"/>
       </genOperations>

@@ -1113,8 +1113,16 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 
 	/**
 	 * The default value of the '{@link #getTty() <em>Tty</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * 
+	 * ignore this command: 
+	 * Default is to set tty. This is because the container will keep running if the
+	 * tty flag is set. In the previous implementation this was accomplished by
+	 * applying the command "sleep
+	 * 9999"({@link DockerClientManager#containerBuilder(Container, Multimap<String, String>)}) This lead to the
+	 * container shutting down after 3 hours while with the tty flag it won't.
+	 * 
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getTty()
 	 * @generated
 	 * @ordered
@@ -1130,6 +1138,26 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * @ordered
 	 */
 	protected Boolean tty = TTY_EDEFAULT;
+	
+	/**
+	 * The default value of the '{@link #getIpaddress() <em>Ipaddress</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIpaddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String IPADDRESS_EDEFAULT = "0.0.0.0";
+	
+	/**
+	 * The cached value of the '{@link #getIpaddress() <em>Ipaddress</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIpaddress()
+	 * @generated
+	 * @ordered
+	 */
+	protected String ipaddress = IPADDRESS_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -2428,6 +2456,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return getCpuSetMems();
 			case DockerPackage.CONTAINER__TTY:
 				return getTty();
+			case DockerPackage.CONTAINER__IPADDRESS:
+				return getIpaddress();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -2596,7 +2626,10 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__TTY:
 				setTty((Boolean)newValue);
 				return;
-		}
+			case DockerPackage.CONTAINER__IPADDRESS:
+				setIpaddress((String)newValue);
+				return;
+		} 
 		super.eSet(featureID, newValue);
 	}
 
@@ -2764,6 +2797,9 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 			case DockerPackage.CONTAINER__TTY:
 				setTty(TTY_EDEFAULT);
 				return;
+			case DockerPackage.CONTAINER__IPADDRESS:
+				setIpaddress(IPADDRESS_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -2880,6 +2916,8 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 				return CPU_SET_MEMS_EDEFAULT == null ? cpuSetMems != null : !CPU_SET_MEMS_EDEFAULT.equals(cpuSetMems);
 			case DockerPackage.CONTAINER__TTY:
 				return TTY_EDEFAULT == null ? tty != null : !TTY_EDEFAULT.equals(tty);
+			case DockerPackage.CONTAINER__IPADDRESS:
+				return IPADDRESS_EDEFAULT == null ? ipaddress != null : !IPADDRESS_EDEFAULT.equals(ipaddress);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -3028,8 +3066,28 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 		result.append(cpuSetMems);
 		result.append(", tty: ");
 		result.append(tty);
+		result.append(", ipaddress: ");
+		result.append(ipaddress);
 		result.append(')');
 		return result.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getIpaddress() {
+		return ipaddress;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIpaddress(String ipaddress) {
+		this.ipaddress = ipaddress;
 	}
 
 } //ContainerImpl

@@ -3,12 +3,26 @@ package org.eclipse.cmf.occi.docker.connector;
 import java.nio.file.Paths;
 import java.util.Random;
 
+import org.eclipse.cmf.occi.core.Mixin;
+import org.eclipse.cmf.occi.core.MixinBase;
+import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.util.OcciRegistry;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machinevirtualbox;
+import org.eclipse.cmf.occi.infrastructure.InfrastructureFactory;
+import org.eclipse.cmf.occi.infrastructure.Networkinterface;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+//import org.modmacao.ansibleconfiguration.AnsibleconfigurationFactory;
+//import org.modmacao.ansibleconfiguration.Ansibleendpoint;
+//import org.modmacao.cm.ansible.AnsibleCMTool;
+import org.modmacao.occi.platform.Component;
+import org.modmacao.occi.platform.impl.PlatformFactoryImpl;
+import org.modmacao.placement.PlacementFactory;
+import org.modmacao.placement.Placementlink;
+
+import modmacao.impl.ModmacaoFactoryImpl;
 
 public class OpenstackLocalMachineTest {
 	/**
@@ -20,8 +34,12 @@ public class OpenstackLocalMachineTest {
 	
 	@BeforeAll
 	public static void setUpExtensions() {
-		OcciRegistry.getInstance().registerExtension("http://occiware.org/occi/docker#",Paths.get("/org.eclipse.cmf.occi.docker/model/docker.occie").toString());
+		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/modmacao#",Paths.get("testextensions/modmacao.occie").toString());
+		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/occi/platform#",Paths.get("testextensions/platform.occie").toString());
 		OcciRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/infrastructure#",Paths.get("testextensions/Infrastructure.occie").toString());
+		OcciRegistry.getInstance().registerExtension("http://schemas.ogf.org/occi/core#",Paths.get("testextensions/Core.occie").toString());
+		OcciRegistry.getInstance().registerExtension("http://schemas.modmacao.org/occi/ansible#",Paths.get("testextensions/ansibleconfiguration.occie").toString());
+		OcciRegistry.getInstance().registerExtension("http://occiware.org/occi/docker#",Paths.get("/org.eclipse.cmf.occi.docker/model/docker.occie").toString());
 	}
 	
 	/**
@@ -127,9 +145,33 @@ public class OpenstackLocalMachineTest {
 		containsConnector.setSource(machineConnector);
 		containerConnector.getRlinks().add(containsConnector);
 		
-		containerConnector.start();
+//		Networkinterface nic = InfrastructureFactory.eINSTANCE.createNetworkinterface();
+//		Ansibleendpoint ansibleendpoint = AnsibleconfigurationFactory.eINSTANCE.createAnsibleendpoint();
+//		nic.getParts().add(ansibleendpoint);
+//		containerConnector.getLinks().add(nic);
 //		
-		containerConnector.occiDelete();
+//		//setup component
+//		Component component;
+//		component = new PlatformFactoryImpl().createComponent();
+//		component.setTitle("testComponent");
+//		MixinBase modmacaoComponentMixinBase = new ModmacaoFactoryImpl().createComponent();
+//		Mixin mixin = OCCIFactory.eINSTANCE.createMixin();
+//		mixin.setScheme("http://schemas.modmacao.org/modmacao#");
+//		mixin.setName("testrole");
+//		modmacaoComponentMixinBase.setMixin(mixin);
+//		component.getParts().add(modmacaoComponentMixinBase);
+//		
+//		//connect component to container using a placementlink
+//		Placementlink placementLink = PlacementFactory.eINSTANCE.createPlacementlink();
+//		placementLink.setTarget(containerConnector);
+//		component.getLinks().add(placementLink);
+		
+		containerConnector.start();
+//		AnsibleCMTool cmTool = new AnsibleCMTool();
+//		cmTool.deploy(component);
+
 		machineConnector.occiDelete();
+		containerConnector.getRlinks().remove(0);
+		containerConnector.occiDelete();
 	}
 }

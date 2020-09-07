@@ -750,6 +750,15 @@ public interface DockerPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTAINER__TTY = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 51;
+	
+	/**
+	 * The feature id for the '<em><b>Ipaddress/b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTAINER__IPADDRESS = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 52;
 
 	/**
 	 * The number of structural features of the '<em>Container</em>' class.
@@ -758,7 +767,7 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 52;
+	int CONTAINER_FEATURE_COUNT = InfrastructurePackage.COMPUTE_FEATURE_COUNT + 53;
 
 	/**
 	 * The operation id for the '<em>Occi Create</em>' operation.
@@ -11422,6 +11431,17 @@ public interface DockerPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContainer_Tty();
+	
+	/**
+	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getIpaddress <em>Ipaddress</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Ipaddress</em>'.
+	 * @see org.eclipse.cmf.occi.docker.Container#getIpaddress()
+	 * @see #getContainer()
+	 * @generated
+	 */
+	EAttribute getContainer_Ipaddress();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.eclipse.cmf.occi.docker.Container#getRm <em>Rm</em>}'.
@@ -14466,6 +14486,14 @@ public interface DockerPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTAINER__TTY = eINSTANCE.getContainer_Tty();
+		
+		/**
+		 * The meta object literal for the '<em><b>Tty</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTAINER__IPADDRESS = eINSTANCE.getContainer_Ipaddress();
 
 		/**
 		 * The meta object literal for the '<em><b>Rm</b></em>' attribute feature.

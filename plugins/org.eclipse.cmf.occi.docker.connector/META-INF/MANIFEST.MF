@@ -36,9 +36,14 @@ Require-Bundle: org.slf4j.api,
  org.junit.vintage.engine,
  org.hamcrest.core,
  org.opentest4j,
- org.apiguardian
-Export-Package: org.eclipse.cmf.occi.docker.connector,
+ org.apiguardian,
+ org.modmacao.occi.platform,
+ org.modmacao.core
+Export-Package: com.github.dockerjava.api,
+ com.github.dockerjava.core,
+ org.eclipse.cmf.occi.docker.connector,
  org.eclipse.cmf.occi.docker.connector.exceptions,
  org.eclipse.cmf.occi.docker.connector.helpers,
+ org.eclipse.cmf.occi.docker.connector.manager,
  org.eclipse.cmf.occi.docker.connector.observer,
  org.eclipse.cmf.occi.docker.connector.utils

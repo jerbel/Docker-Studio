@@ -75,23 +75,31 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 
 			if (machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 				try {
-					if (dockerClientManager == null) {
-						dockerClientManager = new DockerClientManager(machine, eventCallBack);
-					}
+					/*
+					 * In the previous implementation the DockerClientManager instance was null
+					 * checked and only created if not existent. This had the flaw, that when a
+					 * container with a different machine was previously created, the same
+					 * DockerClientManager instance was used leading to the wrong connection being
+					 * used for configuring the container. Therefore the dockerClientManager has to
+					 * be recreated for the Container with the right machine instance every time
+					 * when it is started.
+					 */
+					dockerClientManager = new DockerClientManager(machine, eventCallBack);
+
 					System.out.println("Command to execute : " + getCommand());
 					/**
-					 * This block was commented out due to debugging in the Martserver environment (IllegalStateException "Connection is still allocated" was thrown otherwise)
+					 * This block was commented out due to debugging in the Martserver environment
+					 * (IllegalStateException "Connection is still allocated" was thrown otherwise)
 					 */
 					// First check if container already exist.
 					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
 						// Create the container..
 						createContainer(machine);
 					}
-					
+
 					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
 				} catch (Exception e) {
-					throw new DockerException(
-							"Exception thrown while starting container " + getName(),e);
+					throw new DockerException("Exception thrown while starting container " + getName(), e);
 				}
 			} else {
 				System.out.println("Host is suspended or inactive.");
@@ -169,9 +177,12 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiCreate() {
 		LOGGER.info("occiCreate() called on " + this);
-		// Existence of compute node has to be checked because for modeling at runtime
-		// there won't be a compute node and the creation process would be stopped by
-		// NullPointerException thrown by checkHostMachineStarted()
+		/*
+		 * Existence of compute node has to be checked because for the deployment
+		 * process of occi models in the Martserver. Ther instances are connected after
+		 * they are created. That means container haven't been connected with their
+		 * compute node when the occiCreate() Method is called.
+		 */
 		if (hasCompute()) {
 			LOGGER.info("Container has a compute node");
 			try {
@@ -206,7 +217,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiRetrieve() {
 		LOGGER.info("occiRetrieve() called on " + this);
-		if(hasCompute()) {
+		if (hasCompute()) {
 			if (!checkHostMachineStarted()) {
 				throw new RuntimeException("Host machine is not started !");
 			}
@@ -214,7 +225,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 				try {
 					dockerClientManager = new DockerClientManager(getCompute());
 					// dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
-	
+
 				} catch (DockerException ex) {
 					LOGGER.error("Exception thrown while building docker client with compute: " + getCompute()
 							+ " for container : " + this.getName());
@@ -224,7 +235,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 		// Retrieve infos...
 		try {
-			if(dockerClientManager != null)
+			if (dockerClientManager != null)
 				dockerClientManager.retrieveAndUpdateContainerModel(getCompute(), this);
 			else
 				LOGGER.warn("Failed to retrive infos from the container. dockerClientManager wasn't initialized!");
@@ -258,14 +269,28 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void occiDelete() {
 		LOGGER.info("occiDelete() called on " + this);
 		try {
-			if(hasCompute()) {
+			/*
+			 * If the container is still connected to a compute node the normal deletion
+			 * process is started. If it doesn't there are to possible cases: 
+			 * - the container was placed on the local docker host: 
+			 *    -> the local deletion process has to be started 
+			 * - the container was placed on a remote docker host: 
+			 *    -> assuming that following the smartwyrm deletion process the remote docker host
+			 *       was deleted before and with it the container, no additional deletion process
+			 * 		 has to be started.
+			 */
+			if (hasCompute()) {
 				Compute machine = getCompute();
 				if (!checkHostMachineStarted()) {
 					machine.start();
 				}
 				removeContainer(getCompute());
+			} else {
+				if (dockerClientManager.isOnLocalHost()) {
+					removeLocalContainer();
+				}
 			}
-			
+
 			if (containerObserver != null) {
 				containerObserver.removeListener(this);
 			}
@@ -285,7 +310,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			if (!checkHostMachineStarted()) {
 				machine.start();
 			}
-			
+
 			stateMachine.start();
 
 			if (containerObserver == null && machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
@@ -295,6 +320,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 				containerObserver.removeListener(this);
 				containerObserver.listener(this, machine);
 			}
+
+			this.ipaddress = retrieveIPAddress();
 
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while starting container : " + ex.getMessage());
@@ -308,10 +335,14 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		LOGGER.info("stop() called on " + this);
 		try {
 			Compute machine = getCompute();
-			if (!checkHostMachineStarted()) {
-				machine.start();
+			if (!dockerClientManager.isOnLocalHost()) {
+				if (!checkHostMachineStarted()) {
+					machine.start();
+				}
+				stateMachine.stop(method);
+			} else {
+				dockerClientManager.stopLocalContainer(this);
 			}
-			stateMachine.stop(method);
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while stopping container : " + ex.getMessage());
 			ex.printStackTrace();
@@ -381,8 +412,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	public void stop() {
 		LOGGER.info("stop() called on " + this);
 		Compute machine = getCompute();
-		if (!checkHostMachineStarted()) {
-			machine.start();
+		if (!dockerClientManager.isOnLocalHost()) {
+			if (!checkHostMachineStarted()) {
+				machine.start();
+			}
 		}
 		stop(StopMethod.GRACEFUL);
 	}
@@ -468,24 +501,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 *         executed locally (on linux only).
 	 */
 	public Compute getCompute() {
-//		LOGGER.debug("*****************************************************************************************");
-//		LOGGER.info("called ContainerConnector getCompute()");
 		Compute compute = null;
 		for (Link link : this.getRlinks()) {
-//			LOGGER.debug("connected link: " + link);
-//			LOGGER.debug("link instanceof Contains: " + (link instanceof Contains));
-//			LOGGER.debug("link.getSource(): " + link.getSource());
-//			LOGGER.debug("link.getSource() instanceof Machine: " + (link.getSource() instanceof Machine));
 			if (link instanceof Contains && link.getSource() instanceof Machine) {
-//				LOGGER.debug("the link is a Contains link and its source is a Machine");
 				compute = (Compute) link.getSource();
-//				System.out.println("Container is contained in a Machine : " + link.getSource().toString());
 				break;
 			} else {
-				
+
 			}
 		}
-//		LOGGER.info("*****************************************************************************************");
 		return compute;
 	}
 
@@ -539,8 +563,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	/**
 	 * Remove container from compute machine.
 	 * 
-	 * @param machine
-	 *            a compute.
+	 * @param machine a compute.
 	 */
 	public void removeContainer(Compute machine) throws DockerException {
 		if (dockerClientManager == null) {
@@ -562,6 +585,40 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			LOGGER.warn("Container : + " + this.getName() + " + is already removed.");
 		}
 
+	}
+
+	public void removeLocalContainer() {
+		/*
+		 * The deletion process of the smartwyrm deletes compute node before containers.
+		 * For containers hosted on these compute being remote machines this isn't a
+		 * problem because with the machine the container is removed as well. But for
+		 * Containers hosted on the local docker host the deletion process has to be
+		 * adapted in the way that it works without an connected compute node.
+		 */
+		LOGGER.info("Alternativ container deletion process is started");
+		occiRetrieve();
+		if (this.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
+			LOGGER.info("The container is active and has to be stopped");
+			stop(); // Stop the container before deleting it.
+		} else {
+			LOGGER.info("The container is inactive");
+		}
+
+		if (dockerClientManager != null) {
+			if (dockerClientManager.isOnLocalHost()) {
+				LOGGER.info("The deletion process for a local docker host is initialized");
+				if (getContainerid() != null) {
+					dockerClientManager.removeLocalContainer(getContainerid());
+				} else {
+					LOGGER.warn("The deletion process can't be proceeded because the container id is null");
+				}
+			} else {
+				LOGGER.info(
+						"No deletion process could be applied because the container has no machine and isn't connected to the local docker host!");
+			}
+		} else {
+			LOGGER.warn("The deletion process can't be proceeded because the dockerClientManager is null!");
+		}
 	}
 
 	/**
@@ -600,9 +657,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 * @return true if host machine is activated else false.
 	 */
 	public boolean checkHostMachineStarted() {
-		
+
 		if (!hasCompute())
-			//Adding additional info for debugging purpose
+			// Adding additional info for debugging purpose
 			throw new NullPointerException("Container has no Compute node!");
 		if (getCompute().getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 			return true;
@@ -611,4 +668,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 	}
 
+	public String retrieveIPAddress() {
+		return dockerClientManager.getContainerIP(this);
+	}
 }

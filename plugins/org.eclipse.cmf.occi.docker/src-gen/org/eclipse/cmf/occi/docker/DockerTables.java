@@ -617,6 +617,7 @@ public class DockerTables
 		public static final ExecutorProperty _Container__user = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__USER, Types._Container, 49);
 		public static final ExecutorProperty _Container__volumes = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__VOLUMES, Types._Container, 50);
 		public static final ExecutorProperty _Container__workingDir = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__WORKING_DIR, Types._Container, 51);
+		public static final ExecutorProperty _Container__ipaddress = new EcoreExecutorProperty(DockerPackage.Literals.CONTAINER__IPADDRESS, Types._Container, 52);
 
 		public static final ExecutorProperty _Link__alias = new EcoreExecutorProperty(DockerPackage.Literals.LINK__ALIAS, Types._Link, 0);
 
@@ -2918,6 +2919,7 @@ public class DockerTables
 			DockerTables.Properties._Container__securityOpt,
 			DockerTables.Properties._Container__stdinOpen,
 			DockerTables.Properties._Container__tty,
+			DockerTables.Properties._Container__ipaddress,
 			DockerTables.Properties._Container__user,
 			DockerTables.Properties._Container__volumes,
 			DockerTables.Properties._Container__workingDir

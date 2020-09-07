@@ -59,5 +59,6 @@
 	<classpathentry kind="lib" path="lib/docker-java-core-3.2.1.jar" sourcepath="lib/docker-java-3.2.1"/>
 	<classpathentry kind="lib" path="lib/docker-java-transport-jersey-3.2.1.jar" sourcepath="lib/docker-java-3.2.1"/>
 	<classpathentry kind="lib" path="lib/docker-java-transport-netty-3.2.1.jar" sourcepath="lib/docker-java-3.2.1"/>
+	<classpathentry kind="lib" path="/org.eclipse.cmf.occi.docker/bin" sourcepath="/org.eclipse.cmf.occi.docker"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

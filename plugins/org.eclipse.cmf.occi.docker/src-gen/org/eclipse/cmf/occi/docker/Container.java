@@ -1021,6 +1021,32 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setTty(Boolean value);
+	
+	/**
+	 * Returns the value of the '<em><b>Ipaddress</b></em>' attribute.
+	 * The default value is <code>"0.0.0.0"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * 
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Ipaddress</em>' attribute.
+	 * @see #setIpaddress(String)
+	 * @see org.eclipse.cmf.occi.docker.DockerPackage#getContainer_Tty()
+	 * @model default="0.0.0.0" dataType="org.eclipse.cmf.occi.docker.String"
+	 * @generated
+	 */
+	String getIpaddress();
+	
+	/**
+	 * Sets the value of the '{@link org.eclipse.cmf.occi.docker.Container#getIpaddress <em>Ipaddress</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Ipaddress</em>' attribute.
+	 * @see #getIpaddress()
+	 * @generated
+	 */
+	void setIpaddress(String ipaddress);
 
 	/**
 	 * Returns the value of the '<em><b>Rm</b></em>' attribute.
@@ -1396,7 +1422,7 @@ public interface Container extends Compute {
 	 * @generated
 	 */
 	void setMemoryMaxValue(Integer value);
-
+	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

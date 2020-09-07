@@ -55,6 +55,7 @@ import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.command.PullImageResultCallback;
 import com.github.dockerjava.api.exception.InternalServerErrorException;
+import com.github.dockerjava.api.exception.NotModifiedException;
 import com.github.dockerjava.api.model.Bind;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
@@ -90,6 +91,8 @@ public class DockerClientManager {
 	private Map<String, List<String>> images = new HashMap<>();
 
 	private static Logger LOGGER = LoggerFactory.getLogger(DockerClientManager.class);
+	
+	private boolean onLocalHost;
 
 	// private PreferenceValues properties = new PreferenceValues();
 
@@ -100,12 +103,31 @@ public class DockerClientManager {
 		// Build a docker client related to this compute, if compute is null,
 		// dockerclient will be relative to this local machine.
 		this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
+		setOnLocalHost();
 	}
 
 	public DockerClientManager(Compute compute, EventCallBack event) throws DockerException {
 		this.compute = compute;
 		this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
 		this.dockerClient.eventsCmd().exec(event);
+		setOnLocalHost();
+	}
+	
+	public void setOnLocalHost() {
+		try {
+			onLocalHost = DockerMachineHelper.getDockerHost(compute) == null;
+		} catch (DockerException e) {
+			onLocalHost = true;
+		}
+		if(onLocalHost) {
+			LOGGER.info("Target docker host is localhost");
+		} else {
+			LOGGER.info("Target docker host is not localhost");
+		}
+	}
+	
+	public boolean isOnLocalHost() {
+		return onLocalHost;
 	}
 
 	public DockerClientManager() {
@@ -261,7 +283,8 @@ public class DockerClientManager {
 			createContainer.withCmd(commands);
 			// createContainer.withCmd("/bin/sh", "-c", "httpd -p 8000 -h /www; tail -f
 			// /dev/null");
-		} else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
+		} 
+		else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
 			createContainer.withCmd("sleep", "9999");
 		}
 
@@ -775,6 +798,10 @@ public class DockerClientManager {
 		// TODO : Check response !!!
 		dockerClient.removeContainerCmd(containerId).exec();
 	}
+	
+	public void removeLocalContainer(String containerId) {
+		dockerClient.removeContainerCmd(containerId).exec();
+	}
 
 	public void killContainer(Compute computeMachine, String containerId) throws DockerException {
 		preCheckDockerClient(computeMachine);
@@ -831,7 +858,25 @@ public class DockerClientManager {
 		}
 		System.out.println("Effectively stop the container : " + container.getName());
 		dockerClient.stopContainerCmd(container.getContainerid()).exec();
-		
+	}
+	
+	public void stopLocalContainer(Container container) {
+//		if (container.getMonitored()) {
+//			System.out.println("Stopping monitoring container : " + container.getName());
+//			// Stop the statscallbacks and recreate a new one.
+//			try {
+//				((ContainerConnector)container).getStatsCallBack().close();
+//				((ContainerConnector)container).setStatsCallBack(new StatsCallBack(container));
+//			} catch (IOException ex) {
+//				ex.printStackTrace();
+//			}
+//		}
+		System.out.println("Effectively stop the container : " + container.getName() + " on local docker host");
+		try {
+		dockerClient.stopContainerCmd(container.getContainerid()).exec();
+		} catch (NotModifiedException e) {
+			LOGGER.warn("Exception thrown while stopping container. Probably the container isn't running anymore.", e);
+		}
 	}
 
 	/**
@@ -1160,5 +1205,28 @@ public class DockerClientManager {
 		}
 		return computeStatus;
 	}
+	
+	public com.github.dockerjava.api.model.Container getJavaApiContainerObject(String name) {
+		ArrayList<String> al = new ArrayList<String>();
+		al.add(name);
+		List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd()
+				.withShowAll(true)
+				.withNameFilter(al).exec();
+		if(containers.size() < 1)
+			return null;
+		return containers.get(0);
+		
+	}
 
+	public String getContainerIP(Container container) {
+		com.github.dockerjava.api.model.Container javaAPIContainer = getJavaApiContainerObject(container.getName());
+		if(javaAPIContainer == null)
+			return null;
+		try {
+		return javaAPIContainer.getNetworkSettings().getNetworks().get("bridge").getIpAddress();
+		} catch (NullPointerException e) {
+			LOGGER.warn("Can't retrieve the containers ip address. Probably because its not connected to the bridge network of its host.", e);
+			return "";
+		}
+	}
 }
