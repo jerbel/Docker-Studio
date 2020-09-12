@@ -68,7 +68,7 @@ public class OpenstackLocalMachineTest {
 		}
 	}
 	
-	private String getRandomContainerName() {
+	public static String getRandomContainerName() {
 		Random random = new Random();
 		return "container" + random.nextInt();
 	}
