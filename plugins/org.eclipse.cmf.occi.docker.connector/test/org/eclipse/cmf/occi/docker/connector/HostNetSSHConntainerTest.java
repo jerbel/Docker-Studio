@@ -45,5 +45,26 @@ class HostNetSSHConntainerTest {
 		containerConnector.getRlinks().remove(0);
 		containerConnector.occiDelete();
 	}
+	
+	@Test
+	public void createVBMachineTest() {
+		MachinevirtualboxConnector machineConnector = new MachinevirtualboxConnector();
+		machineConnector.setName(OpenstackLocalMachineTest.DEFAULT_MACHINE_NAME);
+		machineConnector.occiCreate();
+		
+		ContainerConnector containerConnector = new ContainerConnector();
+		containerConnector.setName(OpenstackLocalMachineTest.getRandomContainerName());
+		containerConnector.setNet("host");
+		
+		ContainsConnector containsConnector = new ContainsConnector();
+		
+		containerConnector.occiCreate();
+		
+		containsConnector.setSource(machineConnector);
+		containerConnector.getRlinks().add(containsConnector);
+		
+		containerConnector.run();
+		containerConnector.occiDelete();
+	}
 
 }

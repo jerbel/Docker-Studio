@@ -314,6 +314,10 @@ public class DockerMachineHelper {
 	public static String getDockerHost(Compute compute) throws DockerException {
 		return getDockerMachineEnvVar("DOCKER_HOST",compute);
 	}
+	
+	public static String getMachineIPAddress(Machine machine) throws DockerException {
+		return ipCmd(Runtime.getRuntime(), machine.getName());
+	}
 
 	/**
 	 * List all the containers contains by this compute (on model only).

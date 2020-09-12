@@ -668,7 +668,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		}
 	}
 
-	public String retrieveIPAddress() {
+	public String retrieveIPAddress() throws DockerException {
 		return dockerClientManager.getContainerIP(this);
 	}
 }

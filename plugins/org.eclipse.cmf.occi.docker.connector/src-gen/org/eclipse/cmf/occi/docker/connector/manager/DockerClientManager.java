@@ -29,8 +29,10 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.core.MixinBase;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
+import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
 import org.eclipse.cmf.occi.docker.Networklink;
@@ -44,6 +46,7 @@ import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
+import org.eclipse.cmf.occi.infrastructure.Networkinterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -1285,12 +1288,46 @@ public class DockerClientManager {
 		return containers.get(0);
 		
 	}
+	public static Machine getDockerHost(Container container) {
+		for(org.eclipse.cmf.occi.core.Link link: container.getRlinks()) {
+			if(link instanceof Contains) {
+				if(link.getSource() instanceof Machine) {
+					return (Machine) link.getSource();
+				}
+			}
+		}
+		return null;
+	}
 	
-	public static String readIPNetworksMap(Map<String, ContainerNetwork> networkMap) {
+	public static String getDockerHostIpAddress(Container container) throws DockerException {
+		Machine dockerHost = getDockerHost(container);
+		if(dockerHost != null) {
+			String ipAddress = DockerMachineHelper.getMachineIPAddress(dockerHost);
+			if(ipAddress == null) {
+				LOGGER.warn("Can't retrieve the ip address of the containers docker host! Maybe the container is placed on local docker host. Continuing with 127.0.0.1.");
+				return "127.0.0.1";
+			} else {
+				return ipAddress;
+			}
+		}
+		LOGGER.error("Container is not connected to a docker host (machine node)");
+		return null;
+	}
+	
+	/**
+	 * Reads the ip address of the container in the first network its connected to.
+	 * 
+	 * If container is connected to the host network it returns the ip address of its docker host.
+	 * @param networkMap
+	 * @param container
+	 * @return
+	 * @throws DockerException
+	 */
+	public static String readIPNetworksMap(Map<String, ContainerNetwork> networkMap, Container container) throws DockerException {
 		if(networkMap.size() == 1) {
 			for(Map.Entry<String, ContainerNetwork> entry : networkMap.entrySet()) {
 				if(entry.getKey().equals("host"))
-					return "127.0.0.1";
+					return getDockerHostIpAddress(container);
 				return entry.getValue().getIpAddress();
 			}
 		} else if(networkMap.size() < 1) {
@@ -1306,10 +1343,10 @@ public class DockerClientManager {
 		return null;
 	}
 
-	public String getContainerIP(Container container) {
+	public String getContainerIP(Container container) throws DockerException {
 		com.github.dockerjava.api.model.Container javaAPIContainer = getJavaApiContainerObject(container.getName());
 		if(javaAPIContainer == null)
 			return null;
-		return readIPNetworksMap(javaAPIContainer.getNetworkSettings().getNetworks());
+		return readIPNetworksMap(javaAPIContainer.getNetworkSettings().getNetworks(), container);
 	}
 }
