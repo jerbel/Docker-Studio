@@ -299,11 +299,21 @@ public class DockerClientManager {
 	 * @return
 	 */
 	public static String getSshPort(Container container) {
-		if(container.getPorts() == null)
+		return readSshPort(container.getPorts());
+	}
+	
+	public static String readSshPort(String ports) {
+		if(ports == null)
 			return null;
-		String[] portsArray = container.getPorts().split(";");
+		String[] portsArray = ports.split(";");
 		for(String port : portsArray) {
 			if(port.split(":").length == 1) {
+				if (port.contains("/tcp")) {
+					port = port.replace("/tcp", "");
+				}
+				if (port.contains("/udp")) {
+					port = port.replace("/udp", "");
+				}
 				return port;
 			}
 		}

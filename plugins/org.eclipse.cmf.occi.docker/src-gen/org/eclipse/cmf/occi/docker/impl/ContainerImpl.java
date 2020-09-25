@@ -13,6 +13,7 @@
 package org.eclipse.cmf.occi.docker.impl;
 
 import java.lang.reflect.InvocationTargetException;
+import java.util.Arrays;
 
 import org.eclipse.cmf.occi.docker.DockerPackage;
 
@@ -1300,6 +1301,12 @@ public class ContainerImpl extends ComputeImpl implements org.eclipse.cmf.occi.d
 	 * @generated
 	 */
 	public void setPorts(String newPorts) {
+//		System.out.println("Container ports are changed from " + ports + " to " + newPorts);
+//		try {
+//			Integer.parseInt(newPorts);
+//		} catch (NumberFormatException e) {
+//			System.out.println("Stack trace: " + Arrays.asList(Thread.currentThread().getStackTrace()));
+//		}
 		String oldPorts = ports;
 		ports = newPorts;
 		if (eNotificationRequired())
