@@ -271,7 +271,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		try {
 			/*
 			 * If the container is still connected to a compute node the normal deletion
-			 * process is started. If it doesn't there are to possible cases: 
+			 * process is started. If it doesn't there are two possible cases: 
 			 * - the container was placed on the local docker host: 
 			 *    -> the local deletion process has to be started 
 			 * - the container was placed on a remote docker host: 

@@ -90,6 +90,7 @@ public class DockerClientManager {
 	
 	//the name of the image that is capable of dynamic port configuration for ssh server. See lennse/ubuntuworkflow docker hub page.
 	public static final String DOCKER_SSH_PORTABLE_IMAGE = "lennse/ubuntuworkflow:portable";
+	public static final String IMAGE_PORTABLE_SUBSTRING = "portable";
 
 	private DockerClient dockerClient = null;
 
@@ -274,7 +275,11 @@ public class DockerClientManager {
 	public static boolean checkSshPortKonfiguration(Container container) {
 		if(container.getImage() == null)
 			return false;
-		return container.getImage().equals(DOCKER_SSH_PORTABLE_IMAGE) && getSshPort(container) != null;
+		return isImagePortable(container.getImage()) && getSshPort(container) != null;
+	}
+	
+	public static boolean isImagePortable(String image) {
+		return image.toLowerCase().contains(IMAGE_PORTABLE_SUBSTRING);
 	}
 	
 	public static boolean isInHostNetwork(Container container) {
@@ -285,8 +290,8 @@ public class DockerClientManager {
 	
 	public static void verifySshPortKonfiguration(Container container) {
 		if(container.getImage() != null) {
-			if(container.getImage().equals(DOCKER_SSH_PORTABLE_IMAGE) && getSshPort(container) == null) {
-				LOGGER.error("The image is set to " + DOCKER_SSH_PORTABLE_IMAGE + " but no ssh port was specified");
+			if(isImagePortable(container.getImage()) && getSshPort(container) == null) {
+				LOGGER.error("The image contains " + IMAGE_PORTABLE_SUBSTRING + " in its name but no ssh port was specified");
 			}
 		}
 	}
