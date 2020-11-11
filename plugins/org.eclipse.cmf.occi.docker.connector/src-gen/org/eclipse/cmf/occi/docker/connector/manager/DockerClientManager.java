@@ -29,8 +29,10 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.core.MixinBase;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
+import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.Network;
 import org.eclipse.cmf.occi.docker.Networklink;
@@ -44,6 +46,7 @@ import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
+import org.eclipse.cmf.occi.infrastructure.Networkinterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -53,8 +56,11 @@ import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.command.CreateNetworkCmd;
 import com.github.dockerjava.api.command.CreateNetworkResponse;
 import com.github.dockerjava.api.command.InspectContainerResponse;
+import com.github.dockerjava.api.command.PullImageResultCallback;
 import com.github.dockerjava.api.exception.InternalServerErrorException;
+import com.github.dockerjava.api.exception.NotModifiedException;
 import com.github.dockerjava.api.model.Bind;
+import com.github.dockerjava.api.model.ContainerNetwork;
 import com.github.dockerjava.api.model.ExposedPort;
 import com.github.dockerjava.api.model.Link;
 import com.github.dockerjava.api.model.LxcConf;
@@ -64,7 +70,6 @@ import com.github.dockerjava.api.model.Ports.Binding;
 import com.github.dockerjava.api.model.RestartPolicy;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.api.model.VolumesFrom;
-import com.github.dockerjava.core.command.PullImageResultCallback;
 import com.github.dockerjava.core.command.WaitContainerResultCallback;
 import com.google.common.collect.Multimap;
 import com.jcraft.jsch.Channel;
@@ -80,6 +85,12 @@ import com.jcraft.jsch.Session;
  *
  */
 public class DockerClientManager {
+	
+	public static final String DEFAULT_IMAGE = "ubuntu";
+	
+	//the name of the image that is capable of dynamic port configuration for ssh server. See lennse/ubuntuworkflow docker hub page.
+	public static final String DOCKER_SSH_PORTABLE_IMAGE = "lennse/ubuntuworkflow:portable";
+	public static final String IMAGE_PORTABLE_SUBSTRING = "portable";
 
 	private DockerClient dockerClient = null;
 
@@ -88,22 +99,43 @@ public class DockerClientManager {
 	private Map<String, List<String>> images = new HashMap<>();
 
 	private static Logger LOGGER = LoggerFactory.getLogger(DockerClientManager.class);
+	
+	private boolean onLocalHost;
 
 	// private PreferenceValues properties = new PreferenceValues();
 
-	public static final String DEFAULT_IMAGE_NAME = "busybox";
+	public static final String DEFAULT_IMAGE_NAME = "ubuntu";
 
 	public DockerClientManager(Compute compute) throws DockerException {
 		this.compute = compute;
 		// Build a docker client related to this compute, if compute is null,
 		// dockerclient will be relative to this local machine.
 		this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
+		setOnLocalHost();
 	}
 
 	public DockerClientManager(Compute compute, EventCallBack event) throws DockerException {
 		this.compute = compute;
 		this.dockerClient = DockerConfigurationHelper.buildDockerClient(compute);
 		this.dockerClient.eventsCmd().exec(event);
+		setOnLocalHost();
+	}
+	
+	public void setOnLocalHost() {
+		try {
+			onLocalHost = DockerMachineHelper.getDockerHost(compute) == null;
+		} catch (DockerException e) {
+			onLocalHost = true;
+		}
+		if(onLocalHost) {
+			LOGGER.info("Target docker host is localhost");
+		} else {
+			LOGGER.info("Target docker host is not localhost");
+		}
+	}
+	
+	public boolean isOnLocalHost() {
+		return onLocalHost;
 	}
 
 	public DockerClientManager() {
@@ -232,6 +264,66 @@ public class DockerClientManager {
 
 		return result;
 	}
+	
+	/**
+	 * Checks if the container has the suited portable ssh image and a ssh port specified.
+	 * For more information check out the image description of lennse/ubuntuworkflow on Docker Hub.
+	 * 
+	 * @param container
+	 * @return
+	 */
+	public static boolean checkSshPortKonfiguration(Container container) {
+		if(container.getImage() == null)
+			return false;
+		return isImagePortable(container.getImage()) && getSshPort(container) != null;
+	}
+	
+	public static boolean isImagePortable(String image) {
+		return image.toLowerCase().contains(IMAGE_PORTABLE_SUBSTRING);
+	}
+	
+	public static boolean isInHostNetwork(Container container) {
+		if(container.getNet() == null)
+			return false;
+		return container.getNet().equals("host");
+	}
+	
+	public static void verifySshPortKonfiguration(Container container) {
+		if(container.getImage() != null) {
+			if(isImagePortable(container.getImage()) && getSshPort(container) == null) {
+				LOGGER.error("The image contains " + IMAGE_PORTABLE_SUBSTRING + " in its name but no ssh port was specified");
+			}
+		}
+	}
+	
+	/**
+	 * Checks if the ports string has a entry without an portmapping (no ':'). In
+	 * this case its a ssh port used in host networks.
+	 * 
+	 * @param container
+	 * @return
+	 */
+	public static String getSshPort(Container container) {
+		return readSshPort(container.getPorts());
+	}
+	
+	public static String readSshPort(String ports) {
+		if(ports == null)
+			return null;
+		String[] portsArray = ports.split(";");
+		for(String port : portsArray) {
+			if(port.split(":").length == 1) {
+				if (port.contains("/tcp")) {
+					port = port.replace("/tcp", "");
+				}
+				if (port.contains("/udp")) {
+					port = port.replace("/udp", "");
+				}
+				return port;
+			}
+		}
+		return null;
+	}
 
 	/**
 	 * 
@@ -244,23 +336,13 @@ public class DockerClientManager {
 	public CreateContainerCmd containerBuilder(Container container, Multimap<String, String> containerDependency)
 			throws DockerException {
 		CreateContainerCmd createContainer = null;
-
+		
+		verifySshPortKonfiguration(container);
+		
 		if (container.getImage() == null || container.getImage().trim().isEmpty()) {
 			createContainer = this.dockerClient.createContainerCmd(DEFAULT_IMAGE_NAME);
 		} else {
 			createContainer = this.dockerClient.createContainerCmd(container.getImage().trim());
-		}
-
-		String command = container.getCommand(); // internal command to execute on creation.
-		if (command != null && !command.trim().isEmpty()) {
-			// String[] commands = (StringUtils.deleteWhitespace(command)).split(",");
-
-			String[] commands = getCmdArray(command);
-			createContainer.withCmd(commands);
-			// createContainer.withCmd("/bin/sh", "-c", "httpd -p 8000 -h /www; tail -f
-			// /dev/null");
-		} else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
-			createContainer.withCmd("sleep", "9999");
 		}
 
 		if (container.getCpuShares() > 0) {
@@ -310,57 +392,86 @@ public class DockerClientManager {
 		// !container.getEnvironment().getValues().isEmpty()) {
 		// createContainer.withEnv(container.getEnvironment().getValues());
 		// }
-
-		// Define exposed port and port binding access.
-
-		// ArrayOfString ports = container.getPorts();
-		List<String> ports = new ArrayList<>();
-		// Get the original tab.
-		String portsValues = container.getPorts();
-		if (portsValues != null && !portsValues.trim().isEmpty()) {
-			// example: 8080:80;4043:443 etc. ; is the separator for tab and : port
-			// separator.
-			String[] portsTab = container.getPorts().split(";");
-			// Build the ports list.
-			for (String port : portsTab) {
-				ports.add(port); // 8080:80..
-			}
-		}
-
-		if (ports != null && !ports.isEmpty()) {
-			System.out.println("Container ports : ");
-			List<ExposedPort> exposedPorts = new LinkedList<>();
-			List<PortBinding> portBindings = new LinkedList<>();
-
-			for (String port : ports) {
-				System.out.println("port: " + port);
-				String[] lrports = port.split(":"); // ex: 2000:80
-				if (lrports[0].contains("/tcp")) {
-					lrports[0] = lrports[0].replace("/tcp", "");
+		
+		/*
+		 * Verifies that the container is not in a host network.
+		 * In this case the port mapping wouldn't make sense because the ports of the host machine are directly used.
+		 */
+		if(!isInHostNetwork(container)) {
+			// Define exposed port and port binding access.
+	
+			// ArrayOfString ports = container.getPorts();
+			List<String> ports = new ArrayList<>();
+			// Get the original tab.
+			String portsValues = container.getPorts();
+			if (portsValues != null && !portsValues.trim().isEmpty()) {
+				// example: 8080:80;4043:443 etc. ; is the separator for tab and : port
+				// separator.
+				String[] portsTab = container.getPorts().split(";");
+				// Build the ports list.
+				for (String port : portsTab) {
+					ports.add(port); // 8080:80..
 				}
-				ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(lrports[0]));
-				PortBinding portBinding = null;
-				// Exposed port is set with lrPorts[0]
-				// Binding port is set with lrPorts[1]
-				if (lrports.length == 2) {
-					if (StringUtils.isNotBlank(lrports[1])) {
-						portBinding = new PortBinding(Binding.bindPort(Integer.parseInt(lrports[1])), tcp);
-					} else {
-						portBinding = new PortBinding(Binding.bindPort(32768), tcp); // TODO Create dynamic port number
+			}
+	
+			if (ports != null && !ports.isEmpty()) {
+				System.out.println("Container ports : ");
+				List<ExposedPort> exposedPorts = new LinkedList<>();
+				List<PortBinding> portBindings = new LinkedList<>();
+	
+				for (String port : ports) {
+					System.out.println("port: " + port);
+					String[] lrports = port.split(":"); // ex: 2000:80
+					if (lrports[0].contains("/tcp")) {
+						lrports[0] = lrports[0].replace("/tcp", "");
 					}
-					portBindings.add(portBinding);
+					ExposedPort tcp = ExposedPort.tcp(Integer.parseInt(lrports[0]));
+					PortBinding portBinding = null;
+					// Exposed port is set with lrPorts[0]
+					// Binding port is set with lrPorts[1]
+					if (lrports.length == 2) {
+						if (StringUtils.isNotBlank(lrports[1])) {
+							portBinding = new PortBinding(Binding.bindPort(Integer.parseInt(lrports[1])), tcp);
+						} else {
+							portBinding = new PortBinding(Binding.bindPort(32768), tcp); // TODO Create dynamic port number
+						}
+						portBindings.add(portBinding);
+					}
+					exposedPorts.add(tcp);
 				}
-				exposedPorts.add(tcp);
+				if (!exposedPorts.isEmpty()) {
+					createContainer.withExposedPorts(exposedPorts);
+				}
+				if (!portBindings.isEmpty()) {
+					createContainer.withPortBindings(portBindings);
+				}
+			} else {
+				LOGGER.warn("No exposed nor binding ports defined for the container : " + container.getName());
 			}
-			if (!exposedPorts.isEmpty()) {
-				createContainer.withExposedPorts(exposedPorts);
-			}
-			if (!portBindings.isEmpty()) {
-				createContainer.withPortBindings(portBindings);
-			}
-		} else {
-			LOGGER.warn("No exposed nor binding ports defined for the container : " + container.getName());
 		}
+		
+		String command = container.getCommand(); // internal command to execute on creation.
+		if(checkSshPortKonfiguration(container)) {
+			LOGGER.warn("The specified command of the container will be overriden with because the special ssh connection settings of the container are met!");
+			String sshPort = getSshPort(container);
+			
+			//See image description of lennse/ubuntuworkflow on Docker Hub
+			createContainer.withCmd("/bin/bash", "-c","./start.sh " + sshPort + "; sleep infinity");
+			LOGGER.info("Command that is executed on the Container: " + Arrays.asList(createContainer.getCmd()));
+		} else {
+			if (command != null && !command.trim().isEmpty()) {
+				// String[] commands = (StringUtils.deleteWhitespace(command)).split(",");
+	
+				String[] commands = getCmdArray(command);
+				createContainer.withCmd(commands);
+				// createContainer.withCmd("/bin/sh", "-c", "httpd -p 8000 -h /www; tail -f
+				// /dev/null");
+			} 
+			else if (!StringUtils.isNotBlank(container.getImage())) { // else overrides image command if any (often)
+				createContainer.withCmd("sleep", "9999");
+			}
+		}
+		
 		if (StringUtils.isNotBlank(container.getName())) {
 			createContainer.withName(StringUtils.deleteWhitespace(container.getName()));
 		}
@@ -609,7 +720,6 @@ public class DockerClientManager {
 			this.dockerClient = DockerConfigurationHelper.buildDockerClient(computeMachine);
 			this.compute = computeMachine;
 		}
-
 	}
 
 	/**
@@ -774,6 +884,10 @@ public class DockerClientManager {
 		// TODO : Check response !!!
 		dockerClient.removeContainerCmd(containerId).exec();
 	}
+	
+	public void removeLocalContainer(String containerId) {
+		dockerClient.removeContainerCmd(containerId).exec();
+	}
 
 	public void killContainer(Compute computeMachine, String containerId) throws DockerException {
 		preCheckDockerClient(computeMachine);
@@ -830,7 +944,25 @@ public class DockerClientManager {
 		}
 		System.out.println("Effectively stop the container : " + container.getName());
 		dockerClient.stopContainerCmd(container.getContainerid()).exec();
-		
+	}
+	
+	public void stopLocalContainer(Container container) {
+//		if (container.getMonitored()) {
+//			System.out.println("Stopping monitoring container : " + container.getName());
+//			// Stop the statscallbacks and recreate a new one.
+//			try {
+//				((ContainerConnector)container).getStatsCallBack().close();
+//				((ContainerConnector)container).setStatsCallBack(new StatsCallBack(container));
+//			} catch (IOException ex) {
+//				ex.printStackTrace();
+//			}
+//		}
+		System.out.println("Effectively stop the container : " + container.getName() + " on local docker host");
+		try {
+		dockerClient.stopContainerCmd(container.getContainerid()).exec();
+		} catch (NotModifiedException e) {
+			LOGGER.warn("Exception thrown while stopping container. Probably the container isn't running anymore.", e);
+		}
 	}
 
 	/**
@@ -922,7 +1054,7 @@ public class DockerClientManager {
 
 		String containerImage = image;
 		if (!StringUtils.isNotBlank(containerImage)) {
-			containerImage = "busybox";
+			containerImage = DEFAULT_IMAGE;
 			System.out.println("Use the default Docker Image: " + containerImage);
 		}
 		System.out.println("Downloading image: ->" + containerImage);
@@ -930,17 +1062,27 @@ public class DockerClientManager {
 		try {
 			// If the given image tag doesn't contain a version number, add "latest" as tag
 			if (containerImage.indexOf(':') < 0) {
-				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback())
-						.awaitSuccess();
+				dockerClient.pullImageCmd(containerImage).withTag("latest").exec(new PullImageResultCallback()).awaitCompletion();
 			} else {
-				dockerClient.pullImageCmd(containerImage).exec(new PullImageResultCallback()).awaitSuccess();
+				dockerClient.pullImageCmd(containerImage).exec(new PullImageResultCallback()).awaitCompletion();
 			}
 		} catch (Exception e) {
-			LOGGER.error(e.getMessage());
-			throw new DockerException(e.getMessage(), e);
+			throw new DockerException(e);
 		}
 		System.out.println("Download is finished");
 		return this.dockerClient;
+	}
+	
+	public void runImage(Compute compute, String image) throws DockerException {
+		preCheckDockerClient(compute);
+		
+		LOGGER.info("Running Container");
+		if (!StringUtils.isNotBlank(image)) {
+			image = DEFAULT_IMAGE;
+			System.out.println("Use the default Docker Image: " + image);
+		}
+		
+		dockerClient.createContainerCmd(image).exec();
 	}
 
 	/**
@@ -1149,5 +1291,77 @@ public class DockerClientManager {
 		}
 		return computeStatus;
 	}
+	
+	public com.github.dockerjava.api.model.Container getJavaApiContainerObject(String name) {
+		ArrayList<String> al = new ArrayList<String>();
+		al.add(name);
+		List<com.github.dockerjava.api.model.Container> containers = dockerClient.listContainersCmd()
+				.withShowAll(true)
+				.withNameFilter(al).exec();
+		if(containers.size() < 1)
+			return null;
+		return containers.get(0);
+		
+	}
+	public static Machine getDockerHost(Container container) {
+		for(org.eclipse.cmf.occi.core.Link link: container.getRlinks()) {
+			if(link instanceof Contains) {
+				if(link.getSource() instanceof Machine) {
+					return (Machine) link.getSource();
+				}
+			}
+		}
+		return null;
+	}
+	
+	public static String getDockerHostIpAddress(Container container) throws DockerException {
+		Machine dockerHost = getDockerHost(container);
+		if(dockerHost != null) {
+			String ipAddress = DockerMachineHelper.getMachineIPAddress(dockerHost);
+			if(ipAddress == null) {
+				LOGGER.warn("Can't retrieve the ip address of the containers docker host! Maybe the container is placed on local docker host. Continuing with 127.0.0.1.");
+				return "127.0.0.1";
+			} else {
+				return ipAddress;
+			}
+		}
+		LOGGER.error("Container is not connected to a docker host (machine node)");
+		return null;
+	}
+	
+	/**
+	 * Reads the ip address of the container in the first network its connected to.
+	 * 
+	 * If container is connected to the host network it returns the ip address of its docker host.
+	 * @param networkMap
+	 * @param container
+	 * @return
+	 * @throws DockerException
+	 */
+	public static String readIPNetworksMap(Map<String, ContainerNetwork> networkMap, Container container) throws DockerException {
+		if(networkMap.size() == 1) {
+			for(Map.Entry<String, ContainerNetwork> entry : networkMap.entrySet()) {
+				if(entry.getKey().equals("host"))
+					return getDockerHostIpAddress(container);
+				return entry.getValue().getIpAddress();
+			}
+		} else if(networkMap.size() < 1) {
+			LOGGER.error("The container is not connected to a network!");
+		} else {
+			LOGGER.warn("The container is connected to multiple networks but the current implementation can only maintain one ip address.");
+			for(Map.Entry<String, ContainerNetwork> entry : networkMap.entrySet()) {
+				LOGGER.warn("'The ip for the connected " + entry.getKey() + " network (" + entry.getValue().getIpAddress() +") will be used as the ip address for the container!");
+				return entry.getValue().getIpAddress();
+			}
+		}
+		LOGGER.error("The ip address couldn't be retrieved due to unknown reasons!");
+		return null;
+	}
 
+	public String getContainerIP(Container container) throws DockerException {
+		com.github.dockerjava.api.model.Container javaAPIContainer = getJavaApiContainerObject(container.getName());
+		if(javaAPIContainer == null)
+			return null;
+		return readIPNetworksMap(javaAPIContainer.getNetworkSettings().getNetworks(), container);
+	}
 }

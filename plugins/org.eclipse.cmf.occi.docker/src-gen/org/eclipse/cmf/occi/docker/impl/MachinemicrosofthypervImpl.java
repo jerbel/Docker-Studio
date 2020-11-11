@@ -380,7 +380,7 @@ public class MachinemicrosofthypervImpl extends MachineImpl implements Machinemi
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (virtualSwitch: ");
 		result.append(virtualSwitch);
 		result.append(", boot2dockerURL: ");

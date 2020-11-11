@@ -598,7 +598,7 @@ public class VolumeImpl extends StorageImpl implements Volume {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (driver: ");
 		result.append(driver);
 		result.append(", labels: ");

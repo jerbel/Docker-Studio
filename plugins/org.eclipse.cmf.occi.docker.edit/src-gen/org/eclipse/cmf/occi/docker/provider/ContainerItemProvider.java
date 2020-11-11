@@ -539,50 +539,6 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Mem Limit feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMemLimitPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_memLimit_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memLimit_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__MEM_LIMIT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Memory Swap feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMemorySwapPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_memorySwap_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memorySwap_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__MEMORY_SWAP,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
 	 * This adds a property descriptor for the Privileged feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -781,6 +737,204 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
+	 * This adds a property descriptor for the Publish All feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addPublishAllPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_publishAll_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_publishAll_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__PUBLISH_ALL,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Read Only feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addReadOnlyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_readOnly_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_readOnly_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__READ_ONLY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Monitored feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMonitoredPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_monitored_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_monitored_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MONITORED,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu Percent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpuPercentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpuPercent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuPercent_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_PERCENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Memory Percent feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addMemoryPercentPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_memoryPercent_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memoryPercent_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEMORY_PERCENT,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Core Max feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCoreMaxPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_coreMax_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_coreMax_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CORE_MAX,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu Set Cpus feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpuSetCpusPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpuSetCpus_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuSetCpus_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_SET_CPUS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Cpu Set Mems feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addCpuSetMemsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_cpuSetMems_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuSetMems_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__CPU_SET_MEMS,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Tty feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addTtyPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Container_tty_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_tty_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__TTY,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This adds a property descriptor for the Rm feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -869,19 +1023,19 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Publish All feature.
+	 * This adds a property descriptor for the Mem Limit feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addPublishAllPropertyDescriptor(Object object) {
+	protected void addMemLimitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Container_publishAll_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_publishAll_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__PUBLISH_ALL,
+				 getString("_UI_Container_memLimit_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memLimit_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEM_LIMIT,
 				 true,
 				 false,
 				 false,
@@ -891,41 +1045,19 @@ public class ContainerItemProvider extends ComputeItemProvider {
 	}
 
 	/**
-	 * This adds a property descriptor for the Read Only feature.
+	 * This adds a property descriptor for the Memory Swap feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addReadOnlyPropertyDescriptor(Object object) {
+	protected void addMemorySwapPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_Container_readOnly_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_readOnly_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__READ_ONLY,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Monitored feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMonitoredPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_monitored_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_monitored_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__MONITORED,
+				 getString("_UI_Container_memorySwap_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memorySwap_feature", "_UI_Container_type"),
+				 DockerPackage.Literals.CONTAINER__MEMORY_SWAP,
 				 true,
 				 false,
 				 false,
@@ -970,50 +1102,6 @@ public class ContainerItemProvider extends ComputeItemProvider {
 				 getString("_UI_Container_memoryUsed_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memoryUsed_feature", "_UI_Container_type"),
 				 DockerPackage.Literals.CONTAINER__MEMORY_USED,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Cpu Percent feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCpuPercentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_cpuPercent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuPercent_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__CPU_PERCENT,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Memory Percent feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addMemoryPercentPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_memoryPercent_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memoryPercent_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__MEMORY_PERCENT,
 				 true,
 				 false,
 				 false,
@@ -1168,94 +1256,6 @@ public class ContainerItemProvider extends ComputeItemProvider {
 				 getString("_UI_Container_memoryMaxValue_feature"),
 				 getString("_UI_PropertyDescriptor_description", "_UI_Container_memoryMaxValue_feature", "_UI_Container_type"),
 				 DockerPackage.Literals.CONTAINER__MEMORY_MAX_VALUE,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Core Max feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCoreMaxPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_coreMax_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_coreMax_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__CORE_MAX,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Cpu Set Cpus feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCpuSetCpusPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_cpuSetCpus_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuSetCpus_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__CPU_SET_CPUS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Cpu Set Mems feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addCpuSetMemsPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_cpuSetMems_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_cpuSetMems_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__CPU_SET_MEMS,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Tty feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addTtyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_Container_tty_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_Container_tty_feature", "_UI_Container_type"),
-				 DockerPackage.Literals.CONTAINER__TTY,
 				 true,
 				 false,
 				 false,

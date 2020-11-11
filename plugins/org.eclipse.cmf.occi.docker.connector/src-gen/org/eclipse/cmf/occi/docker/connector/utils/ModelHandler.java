@@ -305,6 +305,28 @@ public class ModelHandler {
 
 		String modelPortsStr = listToStringArrayWithSeparatorComma(modelPorts.getValues());
 
+		/*
+		 * Adds the special sshPort to the exposed ports read from the docker cli if it's not already contained.
+		 * The ssh port has to be maintained, although it won't be signed as exposed for the docker cli.
+		 */
+		System.out.println("Start ssh port adding meachanism");
+		String sshPort = DockerClientManager.getSshPort(modelContainer);
+		if(sshPort != null) {
+			System.out.println("Ssh port found for container");
+			String readSshPort = DockerClientManager.readSshPort(modelPortsStr);
+			if(readSshPort == null || readSshPort.equals("")) {
+				System.out.println("The ssh port has to be manually added to the ports attribute, because it isn't exposed.");
+				if(modelPortsStr == null || modelPortsStr.equals("")) {
+					modelPortsStr = sshPort;
+				} else {
+					modelPortsStr += ";" + sshPort;
+				}
+			} else {
+				System.out.println("Ssh port is already exposed (" + readSshPort + ")");
+			}
+		} else {
+			System.out.println("No ssh port found for container");
+		}
 		modelContainer.setPorts(modelPortsStr);
 		modelContainer.setMacAddress(currentContainer.getConfig().getMacAddress());
 		modelContainer.setDomainName(currentContainer.getConfig().getDomainName());

@@ -291,7 +291,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-	 *
+	 * 
 	 * <p>This method is used to initialize {@link DockerPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
@@ -305,8 +305,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		if (isInited) return (DockerPackage)EPackage.Registry.INSTANCE.getEPackage(DockerPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredDockerPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		DockerPackageImpl theDockerPackage = registeredDockerPackage instanceof DockerPackageImpl ? (DockerPackageImpl)registeredDockerPackage : new DockerPackageImpl();
+		DockerPackageImpl theDockerPackage = (DockerPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof DockerPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new DockerPackageImpl());
 
 		isInited = true;
 
@@ -323,6 +322,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		// Mark meta-data to indicate it can't be changed
 		theDockerPackage.freeze();
 
+  
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(DockerPackage.eNS_URI, theDockerPackage);
 		return theDockerPackage;
@@ -373,7 +373,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Containerid() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(1);
 	}
@@ -383,7 +382,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Image() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(2);
 	}
@@ -393,7 +391,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Build() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(3);
 	}
@@ -403,7 +400,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Command() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(4);
 	}
@@ -413,7 +409,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Ports() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(5);
 	}
@@ -423,7 +418,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Expose() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(6);
 	}
@@ -433,7 +427,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Volumes() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(7);
 	}
@@ -443,7 +436,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Environment() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(8);
 	}
@@ -453,7 +445,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_EnvFile() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(9);
 	}
@@ -463,7 +454,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Net() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(10);
 	}
@@ -473,7 +463,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Dns() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(11);
 	}
@@ -483,7 +472,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_DnsSearch() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(12);
 	}
@@ -493,7 +481,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_CapAdd() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(13);
 	}
@@ -503,7 +490,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_CapDrop() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(14);
 	}
@@ -513,7 +499,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_WorkingDir() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(15);
 	}
@@ -523,7 +508,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Entrypoint() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(16);
 	}
@@ -533,7 +517,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_User() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(17);
 	}
@@ -543,7 +526,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_DomainName() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(18);
 	}
@@ -553,27 +535,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getContainer_MemLimit() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(19);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_MemorySwap() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(20);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getContainer_Privileged() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(21);
 	}
@@ -583,7 +544,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Restart() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(22);
 	}
@@ -593,7 +553,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_StdinOpen() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(23);
 	}
@@ -603,7 +562,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Interactive() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(24);
 	}
@@ -613,7 +571,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_CpuShares() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(25);
 	}
@@ -623,7 +580,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Pid() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(26);
 	}
@@ -633,7 +589,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Ipc() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(27);
 	}
@@ -643,7 +598,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_AddHost() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(28);
 	}
@@ -653,7 +607,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_MacAddress() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(29);
 	}
@@ -663,47 +616,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getContainer_Rm() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(30);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_SecurityOpt() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(31);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_Device() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(32);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_LxcConf() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(33);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getContainer_PublishAll() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(34);
 	}
@@ -713,7 +625,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_ReadOnly() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(35);
 	}
@@ -723,7 +634,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Monitored() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(36);
 	}
@@ -733,27 +643,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getContainer_CpuUsed() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(37);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_MemoryUsed() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(38);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getContainer_CpuPercent() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(39);
 	}
@@ -763,7 +652,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_MemoryPercent() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(40);
 	}
@@ -773,77 +661,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
-	public EAttribute getContainer_DiskUsed() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(41);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_DiskPercent() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(42);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_BandwidthUsed() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(43);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_BandwidthPercent() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(44);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_MonitoringInterval() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(45);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_CpuMaxValue() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(46);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getContainer_MemoryMaxValue() {
-		return (EAttribute)containerEClass.getEStructuralFeatures().get(47);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getContainer_CoreMax() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(48);
 	}
@@ -853,7 +670,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_CpuSetCpus() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(49);
 	}
@@ -863,7 +679,6 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_CpuSetMems() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(50);
 	}
@@ -873,9 +688,143 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@Override
 	public EAttribute getContainer_Tty() {
 		return (EAttribute)containerEClass.getEStructuralFeatures().get(51);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Rm() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(30);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_SecurityOpt() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(31);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_Device() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(32);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_LxcConf() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(33);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_MemLimit() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(19);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_MemorySwap() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(20);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_CpuUsed() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(37);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_MemoryUsed() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(38);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_DiskUsed() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(41);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_DiskPercent() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(42);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_BandwidthUsed() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(43);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_BandwidthPercent() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(44);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_MonitoringInterval() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(45);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_CpuMaxValue() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(46);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getContainer_MemoryMaxValue() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(47);
 	}
 
 	/**
@@ -3293,6 +3242,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		createEAttribute(containerEClass, CONTAINER__CPU_SET_CPUS);
 		createEAttribute(containerEClass, CONTAINER__CPU_SET_MEMS);
 		createEAttribute(containerEClass, CONTAINER__TTY);
+		createEAttribute(containerEClass, CONTAINER__IPADDRESS);
 		createEOperation(containerEClass, CONTAINER___CREATE);
 		createEOperation(containerEClass, CONTAINER___STOP);
 		createEOperation(containerEClass, CONTAINER___RUN);
@@ -3669,6 +3619,7 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		initEAttribute(getContainer_CpuSetCpus(), this.getString(), "cpuSetCpus", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_CpuSetMems(), this.getString(), "cpuSetMems", null, 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getContainer_Tty(), this.getBool(), "tty", "false", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getContainer_Ipaddress(), this.getString(), "ipaddress", "0.0.0.0", 0, 1, org.eclipse.cmf.occi.docker.Container.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEOperation(getContainer__Create(), null, "create", 0, 1, IS_UNIQUE, IS_ORDERED);
 
@@ -3945,6 +3896,8 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 		// Create annotations
 		// http://www.eclipse.org/emf/2002/Ecore
 		createEcoreAnnotations();
+		// http://www.eclipse.org/OCL/Import
+		createImportAnnotations();
 	}
 
 	/**
@@ -3954,12 +3907,37 @@ public class DockerPackageImpl extends EPackageImpl implements DockerPackage {
 	 * @generated
 	 */
 	protected void createEcoreAnnotations() {
-		String source = "http://www.eclipse.org/emf/2002/Ecore";
+		String source = "http://www.eclipse.org/emf/2002/Ecore";	
 		addAnnotation
-		  (this,
-		   source,
+		  (this, 
+		   source, 
 		   new String[] {
+			 "invocationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "settingDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot",
+			 "validationDelegates", "http://www.eclipse.org/emf/2002/Ecore/OCL/Pivot"
 		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>http://www.eclipse.org/OCL/Import</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createImportAnnotations() {
+		String source = "http://www.eclipse.org/OCL/Import";	
+		addAnnotation
+		  (this, 
+		   source, 
+		   new String[] {
+			 "occi", "http://schemas.ogf.org/occi/core/ecore",
+			 "infrastructure", "http://schemas.ogf.org/occi/infrastructure/ecore"
+		   });
+	}
+
+	@Override
+	public EAttribute getContainer_Ipaddress() {
+		return (EAttribute)containerEClass.getEStructuralFeatures().get(52);
 	}
 
 } //DockerPackageImpl

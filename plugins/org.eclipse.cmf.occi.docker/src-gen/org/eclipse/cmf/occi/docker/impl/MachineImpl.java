@@ -226,7 +226,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Boolean SWARM_EDEFAULT = null;
+	protected static final Boolean SWARM_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #getSwarm() <em>Swarm</em>}' attribute.
@@ -266,7 +266,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Boolean SWARM_MASTER_EDEFAULT = null;
+	protected static final Boolean SWARM_MASTER_EDEFAULT = false;
 
 	/**
 	 * The cached value of the '{@link #getSwarmMaster() <em>Swarm Master</em>}' attribute.
@@ -858,7 +858,9 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	 */
 	@Override
 	public void startall() {
-		throw new UnsupportedOperationException();  // FIXME Unimplemented http://occiware.org/occi/docker/ecore!Machine!startall()
+		// TODO: implement this method
+		// Ensure that you remove @generated or mark it @generated NOT
+		throw new UnsupportedOperationException();
 	}
 
 	/**
@@ -1113,7 +1115,7 @@ public class MachineImpl extends ComputeImpl implements Machine {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
 		result.append(", engineInstallURL: ");

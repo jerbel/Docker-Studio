@@ -115,6 +115,13 @@ public class MachineopenstackConnector extends org.eclipse.cmf.occi.docker.impl.
 
 				sb.append(" --openstack-private-key-file ").append(getPrivateKeyFile());
 			}
+			
+			//angepasst
+			if (StringUtils.isNotBlank(getKeypairName())) {
+				sb.append(" --openstack-keypair-name ").append(getKeypairName());
+			}
+				
+				
 			if (StringUtils.isNotBlank(getSshPort().toString())) {
 
 				sb.append(" --openstack-ssh-port ").append(getSshPort());

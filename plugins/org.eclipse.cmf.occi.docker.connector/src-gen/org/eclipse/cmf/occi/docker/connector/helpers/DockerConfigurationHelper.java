@@ -27,8 +27,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.command.DockerCmdExecFactory;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 import com.github.dockerjava.core.DockerClientBuilder;
+import com.github.dockerjava.jaxrs.JerseyDockerCmdExecFactory;
+import com.github.dockerjava.netty.NettyDockerCmdExecFactory;
 
 /**
  * Helper class to read properties config from docker.properties file located on
@@ -71,6 +74,7 @@ public class DockerConfigurationHelper {
 		Properties prop = new Properties();
 
 		try {
+			LOGGER.info("try to load docker config from: " + homePath + DOCKER_PROPERTIES_FILENAME);
 			in = new FileInputStream(homePath + DOCKER_PROPERTIES_FILENAME);
 			prop.load(in);
 			if (in != null) {
@@ -132,75 +136,95 @@ public class DockerConfigurationHelper {
 	 */
 	public static DockerClient buildDockerClient(Compute compute) throws DockerException {
 		DockerClient dockerClient = null;
-		boolean localMachine = compute == null;
-		Properties prop = null;
-
-		try {
-			prop = loadDockerConfig();
-		} catch (IOException ex) {
-			LOGGER.error("Error while loading configuration file : " + ex.getMessage());
-			throw new DockerException(ex);
-		}
-
-		URI endpoint = DockerMachineHelper.getEndpoint(compute);
-		System.out.println("Compute endpoint : " + endpoint);
-
-		String certPath = null;
-		certPath = DockerMachineHelper.getCertificatePath(compute);
-
-		if (certPath == null) {
-			// Read docker property certPath.
-			LOGGER.warn("Reading property " + KEY_DOCKER_CERT_PATH);
-			certPath = prop.getProperty(KEY_DOCKER_CERT_PATH);
-			if (certPath == null) {
-				// Assign default certPath.
-				certPath = DEFAULT_DOCKER_CERT_PATH;
-			}
-		}
+//		boolean localMachine = compute == null;
+//		Properties prop = null;
+//
+//		try {
+//			prop = loadDockerConfig();
+//		} catch (IOException ex) {
+//			LOGGER.error("Error while loading configuration file : " + ex.getMessage());
+//			LOGGER.info("The DockerClient will be created with the default configuration");
+//			return DockerClientBuilder.getInstance().build();
+////			throw new DockerException(ex);
+//		}
+//
+//		URI endpoint = DockerMachineHelper.getEndpoint(compute);
+//		System.out.println("Compute endpoint : " + endpoint);
+//
+//		String certPath = null;
+//		certPath = DockerMachineHelper.getCertificatePath(compute);
+//
+//		if (certPath == null) {
+//			// Read docker property certPath.
+//			LOGGER.warn("Reading property " + KEY_DOCKER_CERT_PATH);
+//			certPath = prop.getProperty(KEY_DOCKER_CERT_PATH);
+//			if (certPath == null) {
+//				// Assign default certPath.
+//				certPath = DEFAULT_DOCKER_CERT_PATH;
+//			}
+//		}
 		DefaultDockerClientConfig config;
-		System.out.println("Certificate path : " + certPath);
-
-		String dockerHost = endpoint.toString();
-
-		System.out.println("Docker host : " + dockerHost);
-		String dockerHome = DEFAULT_DOCKER_HOME;
-		System.out.println("Default Docker home : " + dockerHome);
-		System.out.println("Defined Docker home : " + prop.getProperty(KEY_DOCKER_CONFIG));
-		String tlsVerify = prop.getProperty(KEY_DOCKER_TLS_VERIFY);
-		boolean withTlsCheck = false;
-		if (("1").equals(tlsVerify)) {
-			withTlsCheck = true;
-			System.out.println("TLS mode on");
+//		System.out.println("Certificate path : " + certPath);
+//
+//		String dockerHost = endpoint.toString();
+//
+//		System.out.println("Docker host : " + dockerHost);
+//		String dockerHome = DEFAULT_DOCKER_HOME;
+//		System.out.println("Default Docker home : " + dockerHome);
+//		System.out.println("Defined Docker home : " + prop.getProperty(KEY_DOCKER_CONFIG));
+//		String tlsVerify = prop.getProperty(KEY_DOCKER_TLS_VERIFY);
+//		boolean withTlsCheck = false;
+//		if (("1").equals(tlsVerify)) {
+//			withTlsCheck = true;
+//			System.out.println("TLS mode on");
+//		} else {
+//			System.out.println("TLS mode off");
+//		}
+//
+//		if (localMachine) {
+//			// Build generic default client.
+//			config = DefaultDockerClientConfig.createDefaultConfigBuilder()
+//					.withDockerHost(DEFAULT_LOCALHOST_MACHINE_ADDRESS + ":" + DEFAULT_DOCKER_API_PORT)
+//					.withApiVersion(prop.getProperty(KEY_DOCKER_API_VERSION)).withDockerCertPath(certPath)
+//					.withDockerTlsVerify(false).withRegistryEmail(prop.getProperty(KEY_DOCKER_EMAIL))
+//					.withRegistryUsername(prop.getProperty(KEY_DOCKER_USERNAME))
+//					.withRegistryPassword(prop.getProperty(KEY_DOCKER_PASSWORD))
+//					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome).build();
+//
+//		} else if (compute instanceof Machine) {
+//			// Build docker client for this compute machine.
+//			config = DefaultDockerClientConfig.createDefaultConfigBuilder().withDockerHost(dockerHost)
+//					.withApiVersion(prop.getProperty(KEY_DOCKER_API_VERSION)).withDockerCertPath(certPath)
+//					.withDockerTlsVerify(withTlsCheck).withDockerCertPath(prop.getProperty(KEY_DOCKER_CERT_PATH))
+//					.withDockerConfig(prop.getProperty(KEY_DOCKER_CONFIG))
+//					.withRegistryEmail(prop.getProperty(KEY_DOCKER_EMAIL))
+//					.withRegistryUsername(prop.getProperty(KEY_DOCKER_USERNAME))
+//					.withRegistryPassword(prop.getProperty(KEY_DOCKER_PASSWORD))
+//					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome).build();
+//
+//		} else {
+//			// Throw dockerException, it will be supported in the future.
+//			throw new DockerException("Other infrastructure extensions are not supported at this time.");
+//		}
+		
+		String dockerHostString = DockerMachineHelper.getDockerHost(compute);
+		
+		if(dockerHostString == null) {
+			config = DefaultDockerClientConfig.createDefaultConfigBuilder().build();
 		} else {
-			System.out.println("TLS mode off");
-		}
-
-		if (localMachine) {
-			// Build generic default client.
+			String tlsVerifyString = DockerMachineHelper.getDockerTLSVerifyFlag(compute);
+			String certPathString = DockerMachineHelper.getCertificatePath(compute);
 			config = DefaultDockerClientConfig.createDefaultConfigBuilder()
-					.withDockerHost(DEFAULT_LOCALHOST_MACHINE_ADDRESS + ":" + DEFAULT_DOCKER_API_PORT)
-					.withApiVersion(prop.getProperty(KEY_DOCKER_API_VERSION)).withDockerCertPath(certPath)
-					.withDockerTlsVerify(false).withRegistryEmail(prop.getProperty(KEY_DOCKER_EMAIL))
-					.withRegistryUsername(prop.getProperty(KEY_DOCKER_USERNAME))
-					.withRegistryPassword(prop.getProperty(KEY_DOCKER_PASSWORD))
-					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome).build();
-
-		} else if (compute instanceof Machine) {
-			// Build docker client for this compute machine.
-			config = DefaultDockerClientConfig.createDefaultConfigBuilder().withDockerHost(dockerHost)
-					.withApiVersion(prop.getProperty(KEY_DOCKER_API_VERSION)).withDockerCertPath(certPath)
-					.withDockerTlsVerify(withTlsCheck).withDockerCertPath(prop.getProperty(KEY_DOCKER_CERT_PATH))
-					.withDockerConfig(prop.getProperty(KEY_DOCKER_CONFIG))
-					.withRegistryEmail(prop.getProperty(KEY_DOCKER_EMAIL))
-					.withRegistryUsername(prop.getProperty(KEY_DOCKER_USERNAME))
-					.withRegistryPassword(prop.getProperty(KEY_DOCKER_PASSWORD))
-					.withRegistryUrl(prop.getProperty(KEY_DOCKER_API_URL)).withDockerConfig(dockerHome).build();
-
-		} else {
-			// Throw dockerException, it will be supported in the future.
-			throw new DockerException("Other infrastructure extensions are not supported at this time.");
+			.withDockerHost(dockerHostString)
+			.withDockerTlsVerify(tlsVerifyString)
+			.withDockerCertPath(certPathString).build();
 		}
-		dockerClient = DockerClientBuilder.getInstance(config).build();
+		
+		DockerCmdExecFactory dockerCmdExecFactory = new NettyDockerCmdExecFactory();
+		
+		dockerClient = DockerClientBuilder.getInstance(config)
+				.withDockerCmdExecFactory(dockerCmdExecFactory)
+				.build();
 
 		return dockerClient;
 	}

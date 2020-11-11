@@ -4,10 +4,14 @@ Bundle-Name: org.eclipse.cmf.occi.docker.connector
 Bundle-SymbolicName: org.eclipse.cmf.occi.docker.connector;singleton:=true
 Bundle-Version: 1.0.0.qualifier
 Bundle-ClassPath: .,
- lib/docker-java-3.0.14.jar,
  lib/jackson-core-2.9.1.jar,
  lib/jackson-databind-2.9.1.jar,
- lib/commons-io-2.5.jar
+ lib/commons-io-2.5.jar,
+ lib/docker-java-3.2.1.jar,
+ lib/docker-java-api-3.2.1.jar,
+ lib/docker-java-core-3.2.1.jar,
+ lib/docker-java-transport-jersey-3.2.1.jar,
+ lib/docker-java-transport-netty-3.2.1.jar
 Bundle-Vendor: OCCIware
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ActivationPolicy: lazy
@@ -18,9 +22,28 @@ Require-Bundle: org.slf4j.api,
  org.eclipse.emf.compare;bundle-version="3.5.1",
  org.eclipse.xtext.xbase.lib;bundle-version="2.12.0",
  org.apache.commons.lang;bundle-version="2.6.0",
- com.jcraft.jsch;bundle-version="0.1.54"
-Export-Package: org.eclipse.cmf.occi.docker.connector,
+ com.jcraft.jsch;bundle-version="0.1.54",
+ org.junit,
+ org.junit.jupiter.api,
+ org.junit.jupiter.engine,
+ org.junit.jupiter.migrationsupport,
+ org.junit.jupiter.params,
+ org.junit.platform.commons,
+ org.junit.platform.engine,
+ org.junit.platform.launcher,
+ org.junit.platform.runner,
+ org.junit.platform.suite.api,
+ org.junit.vintage.engine,
+ org.hamcrest.core,
+ org.opentest4j,
+ org.apiguardian,
+ org.modmacao.occi.platform,
+ org.modmacao.core
+Export-Package: com.github.dockerjava.api,
+ com.github.dockerjava.core,
+ org.eclipse.cmf.occi.docker.connector,
  org.eclipse.cmf.occi.docker.connector.exceptions,
  org.eclipse.cmf.occi.docker.connector.helpers,
+ org.eclipse.cmf.occi.docker.connector.manager,
  org.eclipse.cmf.occi.docker.connector.observer,
  org.eclipse.cmf.occi.docker.connector.utils

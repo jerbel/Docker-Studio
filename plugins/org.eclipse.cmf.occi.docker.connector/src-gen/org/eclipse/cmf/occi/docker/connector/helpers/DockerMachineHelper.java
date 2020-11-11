@@ -216,6 +216,11 @@ public class DockerMachineHelper {
 		String command = DockerMachineCommandFactory.createUrlCommand(machineName);
 		String temp = ProcessManager.getOutputCommand(command, runtime).replace("tcp://", "");
 		int index = temp.indexOf(":");
+		
+		//In some cases temp is "" and a StringIndexOutOfBoundsException is thrown
+		if(temp.equals(""))
+			return "";
+		
 		String result = temp.substring(0, index);
 		return result;
 	}
@@ -227,6 +232,11 @@ public class DockerMachineHelper {
 	 * @throws DockerException
 	 */
 	public static String getCertificatePath(Compute compute) throws DockerException {
+		
+		String dockerCertPath = getDockerMachineEnvVar("DOCKER_CERT_PATH",compute);
+		
+		if(dockerCertPath != null)
+			return dockerCertPath;
 		String machineName;
 		if (compute == null) {
 			machineName = "default";
@@ -235,10 +245,53 @@ public class DockerMachineHelper {
 		} else {
 			machineName = compute.getTitle();
 		}
+//		String data = getEnvCmd(Runtime.getRuntime(), machineName);
+//		List<String[]> hosts = new ArrayList<>();
+//		String[] result = null;
+//		String dockerCertPathChars = "DOCKER_CERT_PATH";
+//		if (data != null) {
+//			String[] st = data.split("\\r?\\n");
+//			for (String line : st) {
+//				if (line.startsWith("export") && line.contains(dockerCertPathChars)) {
+//					String[] lsCmd = line.split("\\s+");
+//					hosts.add(lsCmd);
+//					String currentLine = lsCmd[1];
+//					result = currentLine.split("=");
+//					return result[1].replaceAll("\"", "");
+//				}
+//			}
+//		}
+		String defaultMachineCertPath = System.getProperty("user.home") + File.separator + ".docker" + File.separator
+				+ "machine" + File.separator + "machines" + machineName;
+
+		if (new File(defaultMachineCertPath).canRead()) {
+			return defaultMachineCertPath; // else DockerException because null certPath
+		} else {
+			// Must never be here.
+			throw new DockerException(
+					"No machine certificate path could be found !, please set environnement variable with DOCKER_CERT_PATH");
+		}
+	}
+	
+	/**
+	 * Reads out the value of the given variable for a given docker host.
+	 * @param varName
+	 * @param compute
+	 * @return
+	 * @throws DockerException
+	 */
+	public static String getDockerMachineEnvVar(String varName, Compute compute) throws DockerException {
+		
+		String machineName;
+		if (!(compute instanceof Machine))
+			throw new IllegalArgumentException("The compute instanz has to be a machine");
+			
+		machineName = ((Machine) compute).getName();
+		
 		String data = getEnvCmd(Runtime.getRuntime(), machineName);
 		List<String[]> hosts = new ArrayList<>();
 		String[] result = null;
-		String dockerCertPathChars = "DOCKER_CERT_PATH";
+		String dockerCertPathChars = varName;
 		if (data != null) {
 			String[] st = data.split("\\r?\\n");
 			for (String line : st) {
@@ -251,16 +304,19 @@ public class DockerMachineHelper {
 				}
 			}
 		}
-		String defaultMachineCertPath = System.getProperty("user.home") + File.separator + ".docker" + File.separator
-				+ "machine" + File.separator + "machines" + machineName;
-
-		if (new File(defaultMachineCertPath).canRead()) {
-			return defaultMachineCertPath; // else DockerException because null certPath
-		} else {
-			// Must never be here.
-			throw new DockerException(
-					"No machine certificate path could be found !, please set environnement variable with DOCKER_CERT_PATH");
-		}
+		return null;
+	}
+	
+	public static String getDockerTLSVerifyFlag(Compute compute) throws DockerException {
+		return getDockerMachineEnvVar("DOCKER_TLS_VERIFY",compute);
+	}
+	
+	public static String getDockerHost(Compute compute) throws DockerException {
+		return getDockerMachineEnvVar("DOCKER_HOST",compute);
+	}
+	
+	public static String getMachineIPAddress(Machine machine) throws DockerException {
+		return ipCmd(Runtime.getRuntime(), machine.getName());
 	}
 
 	/**

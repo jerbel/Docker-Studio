@@ -55,6 +55,7 @@
     <attributes name="cpuSetCpus" mutable="true" description="CPUs in which to allow execution (0-3, 0,1)" type="//@types.2"/>
     <attributes name="cpuSetMems" mutable="true" description="Memory nodes (MEMs) in which to allow execution (0-3, 0,1). Only effective on NUMA systems." type="//@types.2"/>
     <attributes name="tty" mutable="true" default="false" type="//@types.3"/>
+    <attributes name="ipaddress" mutable="true" default="0.0.0.0" type="//@types.2"/>
     <actions name="create" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="stop" scheme="http://occiware.org/occi/docker/container/action#"/>
     <actions name="run" scheme="http://occiware.org/occi/docker/container/action#"/>

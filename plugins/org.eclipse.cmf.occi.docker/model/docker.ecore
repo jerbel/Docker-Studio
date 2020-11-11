@@ -325,6 +325,11 @@
         <details key="documentation" value=""/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ipaddress" eType="#//String" defaultValueLiteral="0.0.0.0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ipaddress of the container"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Link" eSuperTypes="platform:/plugin/org.eclipse.cmf.occi.core/model/OCCI.ecore#//Link">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">

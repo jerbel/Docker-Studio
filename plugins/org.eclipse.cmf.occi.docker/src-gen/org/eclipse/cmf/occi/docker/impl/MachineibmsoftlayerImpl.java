@@ -812,7 +812,7 @@ public class MachineibmsoftlayerImpl extends MachineImpl implements Machineibmso
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuilder result = new StringBuilder(super.toString());
+		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (apiEndpoint: ");
 		result.append(apiEndpoint);
 		result.append(", user: ");
