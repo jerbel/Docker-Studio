@@ -125,7 +125,11 @@ public class EventCallBack extends EventsResultCallback {
 			}
 		};
 		try {
-			((TransactionalCommandStack) domain.getCommandStack()).execute(cmd, null); // default options.
+			if(domain!= null) {
+				TransactionalCommandStack tcs = (TransactionalCommandStack) domain.getCommandStack();
+				tcs.execute(cmd, null);		
+			}
+			// default options.
 		} catch (RollbackException rbe) {
 			LOGGER.error(rbe.getStatus().toString());
 			rbe.printStackTrace();
