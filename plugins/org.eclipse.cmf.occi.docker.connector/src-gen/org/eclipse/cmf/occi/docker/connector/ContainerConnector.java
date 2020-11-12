@@ -65,6 +65,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 
 	// This is a cache of containers current machine
 	protected static Map<String, Machine> listCurrentMachine = new HashMap<>();
+	
+	private String ipaddress;
 
 	public ComputeStateMachine<org.eclipse.cmf.occi.docker.Container> stateMachine = new ComputeStateMachine<org.eclipse.cmf.occi.docker.Container>(
 			this) {
