@@ -3,26 +3,12 @@ package org.eclipse.cmf.occi.docker.connector;
 import java.nio.file.Paths;
 import java.util.Random;
 
-import org.eclipse.cmf.occi.core.Mixin;
-import org.eclipse.cmf.occi.core.MixinBase;
-import org.eclipse.cmf.occi.core.OCCIFactory;
 import org.eclipse.cmf.occi.core.util.OcciRegistry;
 import org.eclipse.cmf.occi.docker.Container;
 import org.eclipse.cmf.occi.docker.Contains;
 import org.eclipse.cmf.occi.docker.Machinevirtualbox;
-import org.eclipse.cmf.occi.infrastructure.InfrastructureFactory;
-import org.eclipse.cmf.occi.infrastructure.Networkinterface;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-//import org.modmacao.ansibleconfiguration.AnsibleconfigurationFactory;
-//import org.modmacao.ansibleconfiguration.Ansibleendpoint;
-//import org.modmacao.cm.ansible.AnsibleCMTool;
-import org.modmacao.occi.platform.Component;
-import org.modmacao.occi.platform.impl.PlatformFactoryImpl;
-import org.modmacao.placement.PlacementFactory;
-import org.modmacao.placement.Placementlink;
-
-import modmacao.impl.ModmacaoFactoryImpl;
 
 public class OpenstackLocalMachineTest {
 	/**
