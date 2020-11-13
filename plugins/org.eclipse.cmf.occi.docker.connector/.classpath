@@ -53,7 +53,6 @@
 	<classpathentry kind="lib" path="lib/netty-transport-native-kqueue-4.1.11.Final-osx-x86_64.jar"/>
 	<classpathentry kind="lib" path="lib/netty-transport-native-unix-common-4.1.11.Final.jar"/>
 	<classpathentry kind="lib" path="lib/osgi-resource-locator-1.0.1.jar"/>
-	<classpathentry kind="lib" path="/home/lennse/git/OCCI-Studio/plugins/org.eclipse.cmf.occi.infrastructure"/>
 	<classpathentry kind="lib" path="lib/docker-java-3.2.1.jar" sourcepath="lib/docker-java-3.2.1"/>
 	<classpathentry kind="lib" path="lib/docker-java-api-3.2.1.jar" sourcepath="lib/docker-java-3.2.1"/>
 	<classpathentry kind="lib" path="lib/docker-java-core-3.2.1.jar" sourcepath="lib/docker-java-3.2.1"/>
