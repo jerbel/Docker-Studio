@@ -288,8 +288,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 				}
 				removeContainer(getCompute());
 			} else {
-				if (dockerClientManager.isOnLocalHost()) {
-					removeLocalContainer();
+				if(dockerClientManager != null) {
+					if (dockerClientManager.isOnLocalHost()) {
+						removeLocalContainer();
+					}
 				}
 			}
 
@@ -337,13 +339,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		LOGGER.info("stop() called on " + this);
 		try {
 			Compute machine = getCompute();
-			if (!dockerClientManager.isOnLocalHost()) {
-				if (!checkHostMachineStarted()) {
-					machine.start();
+			if(dockerClientManager != null) {
+				if (!dockerClientManager.isOnLocalHost()) {
+					if (!checkHostMachineStarted()) {
+						machine.start();
+					}
+					stateMachine.stop(method);
+				} else {
+					dockerClientManager.stopLocalContainer(this);
 				}
-				stateMachine.stop(method);
-			} else {
-				dockerClientManager.stopLocalContainer(this);
 			}
 		} catch (DockerException ex) {
 			LOGGER.error("Exception thrown while stopping container : " + ex.getMessage());
