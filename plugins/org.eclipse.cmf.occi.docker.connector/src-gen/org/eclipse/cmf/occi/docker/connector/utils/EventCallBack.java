@@ -142,8 +142,7 @@ public class EventCallBack extends EventsResultCallback {
 
 	@Override
 	public void onNext(Event item) {
-		System.out.println(
-				"Received event #" + item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
+		//System.out.println("Received event #" + item.getAction() + " from : " + item.getFrom() + " status : " + item.getStatus());
 		if (item.getStatus() == null) {
 			return;
 		}
