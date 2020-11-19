@@ -152,7 +152,6 @@ public class EventCallBack extends EventsResultCallback {
 		if (compute != null && compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 			// Apply modification only when the machine is active
 			EList<Link> links = compute.getLinks();
-			LOGGER.warn("Links size : ", links.size());
 			for (Link link : links) {
 				if (link instanceof Contains) {
 					Contains contains = (Contains) link;
