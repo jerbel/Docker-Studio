@@ -29,6 +29,7 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.commons.lang.StringUtils;
+import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.MixinBase;
 import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Container;
@@ -47,6 +48,7 @@ import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
 import org.eclipse.cmf.occi.infrastructure.Compute;
 import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.cmf.occi.infrastructure.Networkinterface;
+import org.eclipse.cmf.occi.infrastructure.Ssh_key;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -275,11 +277,23 @@ public class DockerClientManager {
 	public static boolean checkSshPortKonfiguration(Container container) {
 		if(container.getImage() == null)
 			return false;
-		return isImagePortable(container.getImage()) && getSshPort(container) != null;
+		return isImagePortable(container.getImage()) && getSshPort(container) != null && hasSshKey(container);
 	}
 	
+	private static boolean hasSshKey(Container container) {
+		if(getKey(container).equals("")) {
+			return false;
+		}
+		return true;
+	}
+
 	public static boolean isImagePortable(String image) {
-		return image.toLowerCase().contains(IMAGE_PORTABLE_SUBSTRING);
+		if(image.toLowerCase().contains(IMAGE_PORTABLE_SUBSTRING)){
+			return true;
+		} else if(image.toLowerCase().contains("rwm")) {
+			return true;
+		}
+		return false;
 	}
 	
 	public static boolean isInHostNetwork(Container container) {
@@ -454,9 +468,11 @@ public class DockerClientManager {
 		if(checkSshPortKonfiguration(container)) {
 			LOGGER.warn("The specified command of the container will be overriden with because the special ssh connection settings of the container are met!");
 			String sshPort = getSshPort(container);
+			String key = getKey(container);
 			
 			//See image description of lennse/ubuntuworkflow on Docker Hub
-			createContainer.withCmd("/bin/bash", "-c","./start.sh " + sshPort + "; sleep infinity");
+			
+			createContainer.withCmd("/bin/bash", "-c","./start.sh " + sshPort + " '" + key +"'; sleep infinity");
 			LOGGER.info("Command that is executed on the Container: " + Arrays.asList(createContainer.getCmd()));
 		} else {
 			if (command != null && !command.trim().isEmpty()) {
@@ -663,6 +679,25 @@ public class DockerClientManager {
 		}
 
 		return createContainer;
+	}
+
+	private static String getKey(Container container) {
+		for(MixinBase mixB: container.getParts()) {
+			if(mixB instanceof Ssh_key) {
+				Ssh_key key = (Ssh_key) mixB;
+				if(key.getOcciCredentialsSshPublickey() != null &&
+						key.getOcciCredentialsSshPublickey().equals("") == false) {
+					return key.getOcciCredentialsSshPublickey();
+				} else {
+					for(AttributeState as: mixB.getAttributes()) {
+						if(as.getName().equals("occi.credentials.ssh.publickey")) {
+							return as.getValue();
+						}
+					}
+				}
+			}
+		}
+		return "";
 	}
 
 	public String[] getCmdArray(String command) {
