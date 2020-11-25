@@ -181,6 +181,9 @@ public class DockerClientManager {
 	 */
 	public boolean containerIsInsideMachine(Compute compute, final String containerId) throws DockerException {
 
+		if(containerId == null) {
+			return false;
+		}
 		// Check if it exist on compute.
 		InspectContainerResponse containerResponse = inspectContainer(compute, containerId);
 		String name = containerResponse.getName().replaceAll("/", "");
@@ -769,8 +772,9 @@ public class DockerClientManager {
 			throws DockerException {
 		preCheckDockerClient(computeMachine);
 		if (containerId == null) {
-			throw new DockerException("Container id is not set !");
+			throw new DockerException("Container id is not set ! (Id:" + containerId + ")");
 		}
+		
 
 		InspectContainerResponse containerResponse = dockerClient.inspectContainerCmd(containerId).exec();
 
