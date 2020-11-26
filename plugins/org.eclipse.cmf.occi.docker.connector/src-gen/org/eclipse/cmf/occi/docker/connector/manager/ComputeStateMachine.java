@@ -309,13 +309,13 @@ public class ComputeStateMachine<T extends Compute> {
 		switch (currentState) {
 		case INACTIVE:
 			System.out.println(className + ":suspend() - move from inactive to suspended state");
-			suspend_from_inactive_state(method);
+			//suspend_from_inactive_state(method);
 			// updateStatus(ComputeStatus.SUSPENDED);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;
 		case ACTIVE:
 			System.out.println(className + ":suspend() - move from active to suspended state");
-			suspend_from_active_state(method);
+			//suspend_from_active_state(method);
 			// updateStatus(ComputeStatus.SUSPENDED);
 			if (!(compute instanceof Container)) {
 				compute.setOcciComputeState(ComputeStatus.SUSPENDED);
@@ -323,7 +323,7 @@ public class ComputeStateMachine<T extends Compute> {
 			break;
 		case SUSPENDED:
 			System.out.println(className + ":suspend() - already suspended state");
-			suspend_from_suspended_state(method);
+			//suspend_from_suspended_state(method);
 			// updateStatus(ComputeStatus.SUSPENDED);
 			compute.setOcciComputeState(ComputeStatus.SUSPENDED);
 			break;

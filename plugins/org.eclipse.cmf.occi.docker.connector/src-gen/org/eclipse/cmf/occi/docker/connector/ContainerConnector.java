@@ -84,7 +84,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					 * be recreated for the Container with the right machine instance every time
 					 * when it is started.
 					 */
-					dockerClientManager = new DockerClientManager(machine, eventCallBack);
+					//dockerClientManager = new DockerClientManager(machine, eventCallBack);
 
 					System.out.println("Command to execute : " + getCommand());
 					/**
@@ -92,12 +92,15 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					 * (IllegalStateException "Connection is still allocated" was thrown otherwise)
 					 */
 					// First check if container already exist.
+					/*
 					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
 						// Create the container..
 						createContainer(machine);
 					}
 
 					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
+					*/
+					this.compute.setOcciComputeState(ComputeStatus.ACTIVE);
 				} catch (Exception e) {
 					throw new DockerException("Exception thrown while starting container " + getName(), e);
 				}
@@ -114,25 +117,25 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		public void stop_execute(StopMethod method) throws DockerException {
 			System.out.println("EXECUTE container stop");
 			Compute machine = getCompute();
-			try {
 				if (machine.getOcciComputeState().equals(ComputeStatus.ACTIVE)
 						&& this.compute.getOcciComputeState().equals(ComputeStatus.ACTIVE)) {
 
+					/*
 					if (dockerClientManager == null) {
 						dockerClientManager = new DockerClientManager(machine, eventCallBack);
 					}
+					*/
 					// Check if this container is already stopped before stopping.
+					/*
 					ComputeStatus status = dockerClientManager.getCurrentContainerStatus(machine, this.compute);
 					if (status.equals(ComputeStatus.ACTIVE) || status.equals(ComputeStatus.SUSPENDED)) {
 						dockerClientManager.stopContainer(machine, this.compute);
-					}
+					}*/
+					this.compute.setOcciComputeState(ComputeStatus.INACTIVE);
+					
 				} else {
 					System.out.println("Already stopped");
 				}
-			} catch (DockerException ex) {
-				ex.printStackTrace();
-				throw new DockerException(ex.getMessage(), ex.getCause());
-			}
 		}
 
 		/**
@@ -183,6 +186,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		 * they are created. That means container haven't been connected with their
 		 * compute node when the occiCreate() Method is called.
 		 */
+		
+		/*
 		if (hasCompute()) {
 			LOGGER.info("Container has a compute node");
 			try {
@@ -203,6 +208,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 		} else {
 			LOGGER.info("Container has no compute node");
 		}
+		*/
 	}
 
 	private boolean hasCompute() {
@@ -217,6 +223,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiRetrieve() {
 		LOGGER.info("occiRetrieve() called on " + this);
+		/*
 		if (hasCompute()) {
 			if (!checkHostMachineStarted()) {
 				throw new RuntimeException("Host machine is not started !");
@@ -244,6 +251,7 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					+ " for container : " + this.getName());
 			ex.printStackTrace();
 		}
+		*/
 	}
 	// End of user code
 
@@ -254,9 +262,11 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiUpdate() {
 		LOGGER.info("occiUpdate() called on " + this);
+		/*
 		if (!checkHostMachineStarted()) {
 			throw new RuntimeException("Host machine is not started !");
 		}
+		*/
 		// TODO: Implement this callback or remove this method.
 	}
 	// End of user code
@@ -268,17 +278,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiDelete() {
 		LOGGER.info("occiDelete() called on " + this);
+		/*
 		try {
-			/*
-			 * If the container is still connected to a compute node the normal deletion
-			 * process is started. If it doesn't there are two possible cases: 
-			 * - the container was placed on the local docker host: 
-			 *    -> the local deletion process has to be started 
-			 * - the container was placed on a remote docker host: 
-			 *    -> assuming that following the smartwyrm deletion process the remote docker host
-			 *       was deleted before and with it the container, no additional deletion process
-			 * 		 has to be started.
-			 */
 			if (hasCompute()) {
 				Compute machine = getCompute();
 				if (!checkHostMachineStarted()) {
@@ -301,12 +302,14 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			LOGGER.error("Error thrown while deleting the container : " + ex.getMessage());
 			ex.printStackTrace();
 		}
+		*/
 	}
 	// End of user code
 
 	@Override
 	public void start() {
 		LOGGER.info("start() called on " + this);
+		/*
 		try {
 			Compute machine = getCompute();
 			if (!checkHostMachineStarted()) {
@@ -329,11 +332,13 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			LOGGER.error("Exception thrown while starting container : " + ex.getMessage());
 			ex.printStackTrace();
 			throw new RuntimeException(ex);
-		}
+		}*/
+		this.setOcciComputeState(ComputeStatus.ACTIVE);
 	}
 
 	@Override
 	public void stop(StopMethod method) {
+		/*
 		LOGGER.info("stop() called on " + this);
 		try {
 			Compute machine = getCompute();
@@ -351,6 +356,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			LOGGER.error("Exception thrown while stopping container : " + ex.getMessage());
 			ex.printStackTrace();
 		}
+		*/
+		this.setOcciComputeState(ComputeStatus.INACTIVE);
 	}
 
 	@Override
