@@ -118,8 +118,8 @@ public class DockerMachineHelper {
 	 * @return
 	 * @throws DockerException
 	 */
-	public static boolean createHostCmd(Runtime runtime, Compute compute) throws DockerException {
-		String command = "";
+	public static boolean createHostCmd(Runtime runtime, Compute compute, String command) throws DockerException {
+		//String command = "";
 		String machineName;
 		LOGGER.warn(" Run ::==> " + command);
 		ProcessManager.runCommand(command, runtime, true);

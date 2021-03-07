@@ -15,11 +15,17 @@ package org.eclipse.cmf.occi.docker.connector;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.eclipse.cmf.occi.core.AttributeState;
+import org.eclipse.cmf.occi.core.Entity;
 import org.eclipse.cmf.occi.core.Link;
+import org.eclipse.cmf.occi.core.MixinBase;
+import org.eclipse.cmf.occi.core.Resource;
 import org.eclipse.cmf.occi.docker.Contains;
+import org.eclipse.cmf.occi.docker.DockerFactory;
 import org.eclipse.cmf.occi.docker.DockerPackage;
 import org.eclipse.cmf.occi.docker.Machine;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
+import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
 import org.eclipse.cmf.occi.docker.connector.manager.ComputeStateMachine;
 import org.eclipse.cmf.occi.docker.connector.manager.DockerClientManager;
 import org.eclipse.cmf.occi.docker.connector.observer.ContainerObserver;
@@ -30,6 +36,8 @@ import org.eclipse.cmf.occi.infrastructure.ComputeStatus;
 import org.eclipse.cmf.occi.infrastructure.RestartMethod;
 import org.eclipse.cmf.occi.infrastructure.StopMethod;
 import org.eclipse.cmf.occi.infrastructure.SuspendMethod;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EStructuralFeature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -62,6 +70,8 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	private Map<DockerClient, CreateContainerResponse> map = null;
 
 	protected static DockerClientManager dockerClientManager = null;
+	
+	private Machine localhost;
 
 	// This is a cache of containers current machine
 	protected static Map<String, Machine> listCurrentMachine = new HashMap<>();
@@ -92,12 +102,18 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 					 * (IllegalStateException "Connection is still allocated" was thrown otherwise)
 					 */
 					// First check if container already exist.
-					if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
-						// Create the container..
-						createContainer(machine);
+					if(getSimulationMixin(this.compute) == null) {
+						if (!dockerClientManager.containerIsInsideMachine(machine, this.compute)) {
+							System.out.println("Create Container");
+							// Create the container..
+							createContainer(machine);
+						}
 					}
 
+					System.out.println("Start Container");
 					dockerClientManager.startContainer(machine, this.compute, getStatsCallBack());
+					
+					//Execute after startup
 				} catch (Exception e) {
 					throw new DockerException("Exception thrown while starting container " + getName(), e);
 				}
@@ -202,6 +218,27 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			}
 		} else {
 			LOGGER.info("Container has no compute node");
+			if(getSimulationMixin(this) != null) {
+				MixinBase mixB =  getSimulationMixin(this);
+				if(getSimulationWeight(mixB) > 0) {
+					localhost = DockerFactory.eINSTANCE.createMachine();
+					addAttributesOfEntity(localhost, localhost.eClass());
+					localhost.setOcciComputeState(ComputeStatus.ACTIVE);
+					
+					try {
+						this.createContainer(getCompute());
+					
+						containerObserver = new ContainerObserver();
+						// Ensure that observer is not set.
+						containerObserver.removeListener(this);
+						containerObserver.listener(this, getCompute());
+						this.setPrivileged(true);
+					} catch (DockerException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+			}
 		}
 	}
 
@@ -216,6 +253,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	 */
 	@Override
 	public void occiRetrieve() {
+		if(isZeroSimulation()) {
+			return;
+		}
 		LOGGER.info("occiRetrieve() called on " + this);
 		if (hasCompute()) {
 			if (!checkHostMachineStarted()) {
@@ -254,6 +294,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiUpdate() {
 		LOGGER.info("occiUpdate() called on " + this);
+		if(isZeroSimulation()) {
+			return;
+		}
 		if (!checkHostMachineStarted()) {
 			throw new RuntimeException("Host machine is not started !");
 		}
@@ -268,6 +311,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void occiDelete() {
 		LOGGER.info("occiDelete() called on " + this);
+		if(isZeroSimulation()) {
+			return;
+		}
 		try {
 			/*
 			 * If the container is still connected to a compute node the normal deletion
@@ -306,6 +352,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 
 	@Override
 	public void start() {
+		if(isZeroSimulation()) {
+			this.setOcciComputeState(ComputeStatus.ACTIVE);
+			return;
+		}
 		LOGGER.info("start() called on " + this);
 		try {
 			Compute machine = getCompute();
@@ -335,6 +385,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void stop(StopMethod method) {
 		LOGGER.info("stop() called on " + this);
+		if(isZeroSimulation()) {
+			this.setOcciComputeState(ComputeStatus.INACTIVE);
+			return;
+		}
 		try {
 			Compute machine = getCompute();
 			if(dockerClientManager != null) {
@@ -356,6 +410,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void restart(RestartMethod method) {
 		LOGGER.info("restart() called on " + this);
+		if(isZeroSimulation()) {
+			this.setOcciComputeState(ComputeStatus.ACTIVE);
+			return;
+		}
 		try {
 			Compute machine = getCompute();
 			if (!checkHostMachineStarted()) {
@@ -371,6 +429,10 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void suspend(SuspendMethod method) {
 		LOGGER.info("suspend() called on " + this);
+		if(isZeroSimulation()) {
+			this.setOcciComputeState(ComputeStatus.SUSPENDED);
+			return;
+		}
 		try {
 			Compute machine = getCompute();
 			if (!checkHostMachineStarted()) {
@@ -415,6 +477,9 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 	@Override
 	public void stop() {
 		LOGGER.info("stop() called on " + this);
+		if(isZeroSimulation()) {
+			this.setOcciComputeState(ComputeStatus.INACTIVE);
+		}
 		Compute machine = getCompute();
 		if (!dockerClientManager.isOnLocalHost()) {
 			if (!checkHostMachineStarted()) {
@@ -510,11 +575,39 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 			if (link instanceof Contains && link.getSource() instanceof Machine) {
 				compute = (Compute) link.getSource();
 				break;
-			} else {
-
 			}
 		}
+		if(getSimulationMixin(this) != null && localhost != null) {
+			compute = localhost;
+		}
 		return compute;
+	}
+	
+	private boolean isZeroSimulation() {
+		if(getSimulationWeight(getSimulationMixin(this)) == 0) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static MixinBase getSimulationMixin(Resource res) {
+		for(MixinBase mixB: res.getParts()) {
+			System.out.println(mixB);
+			if(mixB.getMixin().getTerm().equals("computesim")) {
+				return mixB;
+			}
+		}
+		return null;
+	}
+	
+	public static int getSimulationWeight(MixinBase mixB) {
+		for(AttributeState attr: mixB.getAttributes()) {
+			if(attr.getName().equals("sim.level")){
+				return Integer.parseInt(attr.getValue());
+			}
+		}
+		return 0;
 	}
 
 	public ContainerObserver getObserver() {
@@ -674,5 +767,29 @@ public class ContainerConnector extends org.eclipse.cmf.occi.docker.impl.Contain
 
 	public String retrieveIPAddress() throws DockerException {
 		return dockerClientManager.getContainerIP(this);
+	}
+	
+	private static void addAttributesOfEntity(Entity ent, EClass eClass) {
+		try {
+			LOGGER.debug(("Adding attributes: " + ent.eClass().getName() + " : " + eClass.getName()));
+			if (eClass.getEPackage().getNsURI().equals("http://schemas.ogf.org/occi/core/ecore") == false) {
+				for (EStructuralFeature feat : eClass.getEStructuralFeatures()) {
+						System.out.println(feat.getName());
+						if(feat.getName().equals("name")) {
+							System.out.println("NAME FOUND!");
+							ent.eSet(feat, "localhost");
+						}
+						if(feat.getName().equals("occiComputeState")) {
+							System.out.println("STATE FOUND!");
+							ent.eSet(feat, "active");
+						}
+						
+					}
+				}
+			
+			
+		} catch (RuntimeException e) {
+			LOGGER.error("Kind#Could not be loaded!");
+		}
 	}
 }

@@ -12,11 +12,17 @@
  */
 package org.eclipse.cmf.occi.docker.connector.manager;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,7 +33,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.apache.commons.io.IOUtils;
+import org.apache.commons.lang.ArrayUtils;
 import org.apache.commons.lang.StringUtils;
 import org.eclipse.cmf.occi.core.AttributeState;
 import org.eclipse.cmf.occi.core.MixinBase;
@@ -42,6 +51,7 @@ import org.eclipse.cmf.occi.docker.connector.ContainerConnector;
 import org.eclipse.cmf.occi.docker.connector.exceptions.DockerException;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerConfigurationHelper;
 import org.eclipse.cmf.occi.docker.connector.helpers.DockerMachineHelper;
+import org.eclipse.cmf.occi.docker.connector.helpers.ProcessManager;
 import org.eclipse.cmf.occi.docker.connector.observer.StatsCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.EventCallBack;
 import org.eclipse.cmf.occi.docker.connector.utils.ModelHandler;
@@ -53,10 +63,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.async.ResultCallback;
 import com.github.dockerjava.api.command.CreateContainerCmd;
 import com.github.dockerjava.api.command.CreateContainerResponse;
 import com.github.dockerjava.api.command.CreateNetworkCmd;
 import com.github.dockerjava.api.command.CreateNetworkResponse;
+import com.github.dockerjava.api.command.ExecCreateCmd;
+import com.github.dockerjava.api.command.ExecCreateCmdResponse;
 import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.command.PullImageResultCallback;
 import com.github.dockerjava.api.exception.InternalServerErrorException;
@@ -72,6 +85,7 @@ import com.github.dockerjava.api.model.Ports.Binding;
 import com.github.dockerjava.api.model.RestartPolicy;
 import com.github.dockerjava.api.model.Volume;
 import com.github.dockerjava.api.model.VolumesFrom;
+import com.github.dockerjava.core.command.ExecStartResultCallback;
 import com.github.dockerjava.core.command.WaitContainerResultCallback;
 import com.google.common.collect.Multimap;
 import com.jcraft.jsch.Channel;
@@ -475,8 +489,8 @@ public class DockerClientManager {
 			
 			//See image description of lennse/ubuntuworkflow on Docker Hub
 			
-			createContainer.withCmd("/bin/bash", "-c","./start.sh " + sshPort + " '" + key +"'; sleep infinity");
-			LOGGER.info("Command that is executed on the Container: " + Arrays.asList(createContainer.getCmd()));
+			//createContainer.withCmd("/bin/bash", "-c","./start.sh " + sshPort + " '" + key +"'; sleep infinity");
+			//LOGGER.info("Command that is executed on the Container: " + Arrays.asList(createContainer.getCmd()));
 		} else {
 			if (command != null && !command.trim().isEmpty()) {
 				// String[] commands = (StringUtils.deleteWhitespace(command)).split(",");
@@ -515,7 +529,8 @@ public class DockerClientManager {
 				Volume newVolume = new Volume(volumeName);
 				vs.add(newVolume);
 			}
-			createContainer.withVolumes(vs);
+			//Commented out. sometimes volumes are declared in dockerfile
+			//createContainer.withVolumes(vs);
 		}
 
 		// With ArraysOfString datatype.
@@ -661,6 +676,12 @@ public class DockerClientManager {
 			}
 			createContainer.withVolumes(vs);
 			createContainer.withBinds(volumesBind);
+		} else {
+			if(container.getVolumes() != null) {
+				System.out.println("Volumes defined in attribute");
+				System.out.println("Adding: -v " + container.getVolumes());
+				createContainer.withBinds(Bind.parse(container.getVolumes()));
+			}
 		}
 
 		// Define container network links if any.
@@ -684,7 +705,7 @@ public class DockerClientManager {
 		return createContainer;
 	}
 
-	private static String getKey(Container container) {
+	public static String getKey(Container container) {
 		for(MixinBase mixB: container.getParts()) {
 			if(mixB instanceof Ssh_key) {
 				Ssh_key key = (Ssh_key) mixB;
@@ -954,7 +975,21 @@ public class DockerClientManager {
 				if (statsCallBack != null) {
 					System.out.println("Launch docker stats command for container : " + container.getName());
 					dockerClient.statsCmd(container.getContainerid()).exec(statsCallBack);
-				} 
+				}
+			}
+		
+			String cid = container.getName();
+	
+			if(this.isOnLocalHost()) {
+				String sshPort = getSshPort(container);
+				String key = getKey(container);
+				
+				System.out.println("Post startup execution on localhost!");
+				localExec(cid, "touch /tmp/test");
+				localExec(cid, "echo Port " + sshPort + " >> /etc/ssh/sshd_config");
+				localExec(cid, "echo " + key + " >> ~/.ssh/authorized_keys");
+				localExec(cid, "echo " + key + " >> /home/ubuntu/.ssh/authorized_keys");
+				localExec(cid, "systemctl restart ssh");
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -962,6 +997,16 @@ public class DockerClientManager {
 		}
 	}
 
+	public void localExec(String cid, String args) {
+		
+		try {
+			String result = ProcessManager.getOutputCommand("docker exec -d -u 0 " + cid + " sh -c '" + args + "'", Runtime.getRuntime());
+		} catch (DockerException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+	}
+	
 	/**
 	 * Stop a container.
 	 * 

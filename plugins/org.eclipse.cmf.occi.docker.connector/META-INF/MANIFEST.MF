@@ -38,6 +38,7 @@ Require-Bundle: org.slf4j.api,
  org.opentest4j,
  org.apiguardian
 Export-Package: com.github.dockerjava.api,
+ com.github.dockerjava.api.command,
  com.github.dockerjava.core,
  org.eclipse.cmf.occi.docker.connector,
  org.eclipse.cmf.occi.docker.connector.exceptions,
